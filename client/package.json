@@ -1,12 +1,12 @@
 {
-  "name": "spedxchange",
+  "name": "spedxchange-client",
   "version": "1.1.0",
   "private": true,
   "license": "MIT",
   "author": {
     "name": "Kevin Crawford",
     "email": "kevin@spedxchange.com",
-    "url": "https://spedxchange.com/"
+    "url": "https://www.spedxchange.com/"
   },
   "dependencies": {
     "@tinymce/tinymce-react": "^3.3.2",

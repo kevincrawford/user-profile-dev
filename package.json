@@ -7,7 +7,7 @@
   "author": {
     "name": "Kevin Crawford",
     "email": "kevin@spedxchange.com",
-    "url": "https://spedxchange.com/"
+    "url": "https://www.spedxchange.com/"
   },
   "scripts": {
     "start": "node server",
