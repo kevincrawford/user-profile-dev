@@ -1,0 +1,162 @@
+.app-header {
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--primary-color) !important;
+  color: rgba(255, 255, 255, 0.8);
+  .brand {
+    height: 40px;
+    margin: 0 1.5rem 0 0;
+    img {
+      height: 40px;
+      width: auto;
+    }
+  }
+  .nav-content {
+    height: 40px;
+    align-items: center;
+    justify-content: flex-end;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    button {
+      height: 40px;
+      width: 62px;
+      background: rgba(255, 255, 255, 0);
+      border: none;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.86rem;
+      font-weight: 500;
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 1);
+      }
+      &.square {
+        width: 40px;
+        img {
+          width: 1.33rem;
+          height: 1.33rem;
+          margin: 2px 0 0 0;
+        }
+        > i.icon {
+          margin: 3px 0 0 0;
+        }
+        &.mobile {
+          display: block;
+        }
+      }
+      &.guest {
+        display: block;
+      }
+    }
+    .user-menu {
+      padding: 0 0.75rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      .ui.spaced.image {
+        width: 1.33rem;
+        height: 1.33rem;
+      }
+      .ui.top.right.pointing.dropdown {
+        > .text {
+          font-size: 0.86rem;
+          font-weight: 500;
+        }
+        > .menu {
+          top: 16px;
+          right: -15px;
+        }
+      }
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      @media only screen and (min-width: 768px) {
+        height: 40px;
+        padding-top: 8.5px;
+      }
+      @media only screen and (max-width: 767px) {
+        height: 40px;
+        padding: 0;
+        margin: 0;
+        .ui.spaced.image {
+          display: none !important;
+        }
+        .ui.top.right.pointing.dropdown {
+          height: 40px;
+          > .text {
+            display: none !important;
+          }
+
+          > .menu {
+            top: 25px;
+            right: 0;
+          }
+          > .dropdown.icon {
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            margin: 0;
+            &:before {
+              top: 15px;
+              right: 14px;
+              position: absolute;
+              font-family: "Icons";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 1.05em;
+              content: "\f007";
+              color: rgba(255, 255, 255, 0.75);
+            }
+            &:hover {
+              background: rgba(255, 255, 255, 0.1);
+              &:before {
+                color: rgba(255, 255, 255, 1);
+              }
+            }
+          }
+        }
+      }
+    }
+    @media only screen and (max-width: 767px) {
+      button.square.mobile {
+        display: block;
+      }
+      button.guest {
+        display: none;
+      }
+    }
+  }
+  > .flex-box {
+    margin: 0 auto;
+    width: 1127px;
+    @media only screen and (max-width: 1199px) and (min-width: 992px) {
+      width: 933px;
+    }
+    @media only screen and (max-width: 991px) and (min-width: 768px) {
+      width: 723px;
+    }
+    @media only screen and (max-width: 766px) {
+      width: 100%;
+    }
+  }
+  &:after {
+    content: "";
+    display: block;
+    height: 40px;
+    width: calc((100% - 1125px) / 2);
+    position: absolute;
+    top: 0;
+    background: var(--secondary-color);
+    @media only screen and (min-width: 1200px) {
+      width: calc((100% - 1125px) / 2);
+    }
+    @media only screen and (max-width: 1199px) and (min-width: 992px) {
+      width: calc((100% - 931px) / 2);
+    }
+    @media only screen and (max-width: 991px) and (min-width: 768px) {
+      width: calc((100% - 721px) / 2);
+    }
+  }
+}

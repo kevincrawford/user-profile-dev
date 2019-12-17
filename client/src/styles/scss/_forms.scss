@@ -1,0 +1,73 @@
+.form-container,
+.ui.form.form-container {
+  max-width: 430px;
+  section {
+    margin: 1.5rem 0;
+  }
+  .field.input-wrap {
+    font-family: Arial, Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+      sans-serif !important;
+    transition: all 0.3s ease-out;
+    position: relative;
+    margin-bottom: 26px;
+    font-weight: normal;
+    .label {
+      color: #666;
+      margin: 0 !important;
+      font-size: 16px;
+      line-height: normal;
+      padding: 14px;
+      border: 0;
+      font-weight: normal;
+      left: 1px;
+      top: 3px;
+      overflow: hidden;
+      pointer-events: none;
+      position: absolute;
+      text-align: left;
+      text-overflow: ellipsis;
+      user-select: none;
+      white-space: nowrap;
+      width: 100%;
+      z-index: 1;
+    }
+    input {
+      color: #222;
+      font-size: 16px;
+      line-height: normal;
+      padding: 14px;
+      border: solid 1px #d8dbdc;
+      border-radius: 4;
+      width: 100%;
+      &:focus {
+        border: solid 1px #006646;
+      }
+    }
+    .error {
+      color: #d22;
+      font-size: 12px;
+    }
+    .hint {
+      color: #939393;
+      font-size: 12px;
+    }
+    &.filled {
+      .label {
+        color: #777;
+        font-size: 11px;
+        line-height: 12px;
+        padding: 6px 12px 2px;
+      }
+      input {
+        padding: 23px 12px 5px;
+      }
+    }
+    &.error {
+      margin-bottom: 8px;
+
+      .hint {
+        margin-top: 0;
+      }
+    }
+  }
+}

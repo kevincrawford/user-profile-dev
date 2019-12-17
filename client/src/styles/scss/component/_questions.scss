@@ -1,0 +1,98 @@
+.questions-dashboard,
+.tab-3 {
+  .activity {
+    width: 180px !important;
+  }
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .user {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px dotted var(--border-color);
+    margin-right: 1.5rem;
+  }
+}
+
+.question-detail {
+  .info {
+    padding-right: 1rem;
+    @media only screen and (max-width: 991px) {
+      padding-right: 0;
+      order: 2;
+    }
+  }
+  .user {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px dotted var(--border-color);
+    margin-right: 1.5rem;
+  }
+  .ask-button {
+    @media only screen and (max-width: 991px) {
+      order: 1;
+      text-align: right;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dotted var(--border-color);
+    }
+  }
+}
+
+.question-statistics {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px dotted var(--border-color);
+  padding: 0.25rem 0.5rem 0 0.5rem;
+  margin: 0.375rem 1.5rem 0 0;
+  .stacked {
+    padding: 0.5rem 0;
+    .value {
+      font-size: 1.25rem;
+      line-height: 1em;
+      font-weight: 500;
+      color: var(--primary-color);
+    }
+    .label {
+      font-size: 0.67rem;
+    }
+  }
+}
+
+.question-head {
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 1px dotted var(--border-color);
+  .top {
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .bottom {
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.ui.pagination.menu.questions {
+  margin-top: 1.5rem;
+}
+
+.vote-component {
+  margin-right: 1.5rem;
+  text-align: center;
+  i.big.icon {
+    display: block;
+    line-height: 0.56;
+    font-size: 3rem;
+    color: #666;
+    width: auto;
+    height: auto;
+  }
+  > div {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0.25rem 0.25rem 0.125rem 0;
+  }
+}

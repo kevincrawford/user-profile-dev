@@ -1,0 +1,101 @@
+.flex-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  > * {
+    flex: 0 0 auto;
+  }
+  > .grow {
+    flex: 1 1 auto;
+  }
+  > .spacer {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  &.column {
+    flex-direction: column;
+  }
+  &.start {
+    justify-content: flex-start;
+  }
+  &.end {
+    justify-content: flex-end;
+  }
+  &.center {
+    justify-content: center;
+  }
+  &.between {
+    justify-content: space-between;
+  }
+  &.around {
+    justify-content: space-around;
+  }
+  &.evenly {
+    justify-content: space-evenly;
+  }
+  &.align-start {
+    align-items: flex-start;
+  }
+  &.align-end {
+    align-items: flex-end;
+  }
+  &.align-stretch {
+    align-items: stretch;
+  }
+  &.wrap {
+    flex-wrap: wrap;
+  }
+  > .flex-1 {
+    flex: 1;
+  }
+  > .flex-2 {
+    flex: 2;
+  }
+  > .flex-3 {
+    flex: 3;
+  }
+  > .flex-4 {
+    flex: 4;
+  }
+  > .flex-5 {
+    flex: 5;
+  }
+  > .flex-6 {
+    flex: 6;
+  }
+  > .flex-7 {
+    flex: 7;
+  }
+  > .flex-8 {
+    flex: 8;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .flex-box.md {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .flex-box.sm {
+    flex-direction: column;
+  }
+}
+
+// flex grid (wrap content)
+.flex-box-wrap {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  > * {
+    flex: 0 0 auto;
+    margin: 0 0 1.5rem 0;
+  }
+}

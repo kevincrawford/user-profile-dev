@@ -1,0 +1,10 @@
+.ui.steps.account-steps {
+  font-family: Arial, Helvetica, sans-serif;
+  .step:first-child {
+    padding-left: 1.5em;
+  }
+  .step:before {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+}

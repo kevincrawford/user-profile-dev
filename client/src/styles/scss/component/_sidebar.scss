@@ -1,0 +1,66 @@
+/* sidebar */
+.ui.menu.vertical.app-sidebar {
+  position: fixed;
+  top: 6rem;
+  padding: 0;
+  width: 7.5rem;
+  margin: 0;
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px dotted var(--border-color);
+    margin: 0.5em 0;
+    padding: 0;
+  }
+
+  .link.item {
+    padding: 0.25em 0;
+    &.indent {
+      padding-left: 0.75rem;
+    }
+    &.active {
+      font-weight: 600;
+      color: var(--primary-color);
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 4px;
+        left: -14px;
+        background: var(--primary-color);
+        width: 3px;
+        height: 1em;
+      }
+      &:first-child {
+        &:after {
+          top: -1px;
+        }
+      }
+    }
+    &:first-child {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    left: calc((100% - 1127px) / 2);
+    padding-left: 12px;
+  }
+
+  @media only screen and (max-width: 1199px) and (min-width: 992px) {
+    left: calc((100% - 933px) / 2);
+    padding-left: 12px;
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 768px) {
+    left: calc((100% - 723px) / 2);
+    padding-left: 12px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    left: -10rem;
+  }
+}

@@ -1,0 +1,45 @@
+.flex-box-wrap {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  > * {
+    flex: 0 0 auto;
+    margin: 0 0 1.5rem 0;
+  }
+}
+
+.column-3 {
+  width: calc((100% / 3) - 18px);
+  img {
+    width: 100%;
+  }
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0.5rem 0;
+  }
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px dotted var(--border-color);
+    margin: 0.5rem 0;
+    padding: 0;
+  }
+  p {
+    margin: 0;
+  }
+  i.fitted.icon {
+    margin: 0 0.5rem 0 0 !important;
+  }
+  &:hover {
+    h3 {
+      color: var(--primary-color);
+    }
+  }
+}

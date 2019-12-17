@@ -1,0 +1,3 @@
+export const CONTACT_SUCCESS = 'CONTACT_SUCCESS';
+export const CONTACT_FAIL = 'CONTACT_FAIL';
+export const CONTACT_CLOSE = 'CONTACT_CLOSE';
