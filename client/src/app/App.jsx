@@ -13,8 +13,6 @@ import QuestionDetail from './feature/question/questionDetail/QuestionDetail';
 import UserDashboard from './feature/user/userDashboard/UserDashboard';
 import UserDetail from './feature/user/userDetail/UserDetail';
 import SettingsDashboard from './feature/user/settings/SettingsDashboard';
-import TestComponent from './feature/testarea/TestComponent';
-import TestForms from './feature/testarea/TestForms';
 import SearchBar from './feature/search/searchBar/SearchBar';
 import Appfooter from './common/ui/footer/AppFooter';
 import NavMobile from './common/ui/nav/navMobile/NavMobile';
@@ -31,7 +29,10 @@ import Tags from './feature/tags/Tags';
 import People from './feature/people/People';
 import Jobs from './feature/jobs/Jobs';
 import AccountForm from './feature/account/component/AccountForm';
+
 import CheckoutStore from './feature/testarea/CheckoutStore';
+import TestComponent from './feature/testarea/TestComponent';
+import TestForms from './feature/testarea/TestForms';
 
 const mapState = state => ({
   auth: state.auth

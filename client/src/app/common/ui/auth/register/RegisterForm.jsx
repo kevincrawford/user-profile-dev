@@ -1,3 +1,4 @@
+/* eslint no-useless-escape: 0 */
 import React from 'react';
 import { connect } from 'react-redux';
 import { ReCaptcha } from 'react-recaptcha-v3';
