@@ -30,7 +30,9 @@ import People from './feature/people/People';
 import Jobs from './feature/jobs/Jobs';
 import AccountForm from './feature/account/component/AccountForm';
 
-import CheckoutStore from './feature/testarea/CheckoutStore';
+// import CheckoutStore from './feature/testarea/CheckoutStore';
+// import SelectPlan from './feature/testarea/SelectPlan';
+import PlanSelector from './feature/testarea/PlanSelector';
 import TestComponent from './feature/testarea/TestComponent';
 import TestForms from './feature/testarea/TestForms';
 
@@ -78,7 +80,7 @@ class App extends Component {
                     <Route exact path='/account' component={AccountForm} />
                     <Route exact path='/testarea' component={TestComponent} />
                     <Route exact path='/testform' component={TestForms} />
-                    <Route exact path='/checkout' component={CheckoutStore} />
+                    <Route exact path='/checkout' component={PlanSelector} />
                   </Switch>
                 </div>
               </Container>
