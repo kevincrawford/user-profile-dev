@@ -1,18 +1,11 @@
-# SPEDXchange
+# SPEDxchange
 
-> Social network for Special Educators
+> The Community for Special Education Answers
 
 ## Quick Start
 
 ```
-# change default.json file in config folder
-
-# this file is located in config/default.json
-
-# add uri of your mongodb connection for example
-
- "mongoURI": "mongodb://localhost/spedxchange",
-
+# Configure Environments
 ```
 
 ```bash
@@ -27,7 +20,6 @@ npm install
 npm run dev
 
 # Build for production
-cd client
 npm run build
 ```
 
@@ -36,11 +28,11 @@ npm run build
 ### Author
 
 Kevin Crawford
-[SPEDXchange](http://www.spedxchange.com)
+[SPEDxchange](http://www.spedxchange.com)
 
 ### Version
 
-1.0.0
+1.1.0
 
 ### License
 
