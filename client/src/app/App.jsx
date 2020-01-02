@@ -37,7 +37,8 @@ import TestComponent from './feature/testarea/TestComponent';
 import TestForms from './feature/testarea/TestForms';
 
 const mapState = state => ({
-  auth: state.auth
+  auth: state.auth,
+  nav: state.nav
 });
 
 class App extends Component {
@@ -46,6 +47,9 @@ class App extends Component {
   }
 
   render() {
+    console.log('App: nav: ', this.props.nav);
+    console.log('App: props: ', this.props);
+    const pathName = this.props.location.pathname.replace('/', '');
     return (
       <>
         <ModalManager />
@@ -56,7 +60,7 @@ class App extends Component {
             <>
               <NavBar />
               <SearchBar />
-              <Container className='main'>
+              <Container className={`main ${pathName}`}>
                 <div className='content'>
                   <Switch key={this.props.location.key}>
                     <Route exact path='/questions' component={QuestionDashboard} />
@@ -86,7 +90,7 @@ class App extends Component {
               </Container>
               <NavMobile />
               <Appfooter />
-              <SideBar />
+              {this.props.nav.isSideBarOpen && <SideBar />}
             </>
           )}
         />

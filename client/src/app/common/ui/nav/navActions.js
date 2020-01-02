@@ -1,4 +1,4 @@
-import { ACTIVATE_NAV_ITEM, TOGGLE_MOBILE_NAV, TOGGLE_SEARCH_BAR } from './navConstants';
+import { ACTIVATE_NAV_ITEM, TOGGLE_MOBILE_NAV, TOGGLE_SEARCH_BAR, TOGGLE_SIDE_BAR } from './navConstants';
 
 export const navItemClick = item => {
   return dispatch => {
@@ -23,6 +23,15 @@ export const toggleSearchBar = () => {
   return dispatch => {
     dispatch({
       type: TOGGLE_SEARCH_BAR
+    });
+  };
+};
+
+export const toggleSideBar = isOpen => {
+  return dispatch => {
+    dispatch({
+      type: TOGGLE_SIDE_BAR,
+      payload: isOpen
     });
   };
 };

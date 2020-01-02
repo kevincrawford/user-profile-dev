@@ -1,0 +1,198 @@
+$color_1: #0078c1;
+$color_2: #009e2c;
+$color_3: #fff;
+$color_4: #999;
+$color_5: #ff5406;
+$color_6: #202020;
+
+.comparison {
+  max-width: 940px;
+  margin: 0 auto;
+  font: 13px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  padding: 10px;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    border-bottom: 1px solid #ccc;
+  }
+  td {
+    border-right: 1px solid #ccc;
+    empty-cells: show;
+    padding: 10px;
+  }
+  th {
+    border-right: 1px solid #ccc;
+    empty-cells: show;
+    padding: 10px;
+    font-weight: normal;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+  }
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        display: none;
+      }
+    }
+  }
+  .compare-row {
+    background: #f5f5f5;
+  }
+  .tickblue {
+    color: $color_1;
+  }
+  .tickgreen {
+    color: $color_2;
+  }
+  tr {
+    td {
+      &:first-child {
+        text-align: left;
+      }
+    }
+  }
+  .qbse {
+    color: $color_3;
+    padding: 10px;
+    font-size: 13px;
+    border-right: 1px solid #ccc;
+    border-bottom: 0;
+    background: #0078c1;
+    border-top-left-radius: 3px;
+    border-left: 0px;
+  }
+  .qbo {
+    color: $color_3;
+    padding: 10px;
+    font-size: 13px;
+    border-right: 1px solid #ccc;
+    border-bottom: 0;
+    background: #009e2c;
+    border-top-right-radius: 3px;
+    border-right: 0px;
+  }
+  .tl {
+    color: $color_3;
+    padding: 10px;
+    font-size: 13px;
+    border-right: 1px solid #ccc;
+    border-bottom: 0;
+  }
+  .tl2 {
+    border-right: 0;
+  }
+  .price-info {
+    padding: 5px 15px 15px 15px;
+  }
+  .price-was {
+    color: $color_4;
+    text-decoration: line-through;
+  }
+  .price-now {
+    color: $color_5;
+    span {
+      color: $color_5;
+      font-size: 32px;
+    }
+  }
+  .price-small {
+    font-size: 18px !important;
+    position: relative;
+    top: -11px;
+    left: 2px;
+  }
+  .price-buy {
+    background: #ff5406;
+    padding: 10px 20px;
+    font-size: 12px;
+    display: inline-block;
+    color: $color_3;
+    text-decoration: none;
+    border-radius: 3px;
+    text-transform: uppercase;
+    margin: 5px 0 10px 0;
+  }
+  .price-try {
+    font-size: 12px;
+    a {
+      color: $color_6;
+    }
+  }
+}
+.compare-heading {
+  font-size: 18px;
+  font-weight: bold !important;
+  border-bottom: 0 !important;
+  padding-top: 10px !important;
+}
+@media (max-width: 767px) {
+  .comparison {
+    td {
+      &:first-child {
+        display: none;
+      }
+      border: 1px solid #ccc;
+    }
+    th {
+      &:first-child {
+        display: none;
+      }
+      border: 1px solid #ccc;
+    }
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          display: table-row;
+          background: #f7f7f7;
+        }
+      }
+    }
+    .row {
+      background: #fff;
+    }
+  }
+  .price-info {
+    border-top: 0 !important;
+  }
+}
+@media (max-width: 639px) {
+  .comparison {
+    .price-buy {
+      padding: 5px 10px;
+      margin-top: 10px;
+    }
+    td {
+      padding: 10px 5px;
+    }
+    th {
+      padding: 10px 5px;
+    }
+    .hide-mobile {
+      display: none;
+    }
+    .price-now {
+      span {
+        font-size: 16px;
+      }
+    }
+    .price-small {
+      font-size: 16px !important;
+      top: 0;
+      left: 0;
+    }
+    .qbse {
+      font-size: 12px;
+      padding: 10px 5px;
+    }
+    .qbo {
+      font-size: 12px;
+      padding: 10px 5px;
+    }
+  }
+  .compare-heading {
+    font-size: 13px;
+  }
+}

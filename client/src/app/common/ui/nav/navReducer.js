@@ -4,6 +4,7 @@ import { ACTIVATE_NAV_ITEM, TOGGLE_MOBILE_NAV, TOGGLE_SEARCH_BAR, TOGGLE_SIDE_BA
 const initialState = {
   isMobileNavOpen: false,
   isSearchBarOpen: false,
+  isSideBarOpen: true,
   activeNavItem: {
     name: 'SPEDxchange',
     link: '/questions'
@@ -22,8 +23,8 @@ const toggleSearchBar = state => {
   return { ...state, isSearchBarOpen: !state.isSearchBarOpen };
 };
 
-const toggleSideBar = state => {
-  return { ...state, isSideBarOpen: !state.isSideBarOpen };
+const toggleSideBar = (state, payload) => {
+  return { ...state, isSideBarOpen: payload };
 };
 
 export default createReducer(initialState, {

@@ -269,16 +269,16 @@ const welcomeEmail = name => {
   
       <!-- Visually Hidden Preheader Text : BEGIN -->
       <div style="display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;">
-        <p><b>${name}</b></p>
-        <p>Congratulations and welcome! You have successfully joined our special education community; we are glad you are here!  SPEDxchange is dedicated to helping you connect with others in the special education field to discover and grow in your specific areas of interest.  By signing up and joining our community, you now have access to up-to-date curated postings related to numerous topics in special education.  Whether you are a student preparing to enter the special education field, a seasoned professional, or a parent looking for support and answers, we are confident that you will find our information beneficial and informative.  Be sure to connect with SPEDxchange on social media to stay up-to-date on the happenings within our special education community.</p>
-        <p>We look forward to connecting with you on our site.</p>
-        <p>Sincerely,<br>The SPEDxchange Team</p>
+      <p>Welcome to THE community for special education answers!</p>
+      <p>SPEDxchange is dedicated to helping you connect with others in the special education field to discover and grow in your specific areas of interest.</p>
+      <p>We look forward to connecting with you on our site.</p>
       </div>
       <!-- Visually Hidden Preheader Text : END -->
 
       <div style="margin-bottom: 16px;">
       <p><b>${name}</b></p>
-      <p>Congratulations and welcome!  You have successfully joined our special education community; we are glad you are here!  SPEDxchange is dedicated to helping you connect with others in the special education field to discover and grow in your specific areas of interest.  By signing up and joining our community, you now have access to up-to-date curated postings related to numerous topics in special education.  Whether you are a student preparing to enter the special education field, a seasoned professional, or a parent looking for support and answers, we are confident that you will find our information beneficial and informative.  Be sure to connect with SPEDxchange on social media to stay up-to-date on the happenings within our special education community.</p>
+      <p>Welcome to THE community for special education answers!</p>
+      <p>SPEDxchange is dedicated to helping you connect with others in the special education field to discover and grow in your specific areas of interest.</p>
       <p>We look forward to connecting with you on our site.</p>
       <p>Sincerely,<br>The SPEDxchange Team</p>
     </div>

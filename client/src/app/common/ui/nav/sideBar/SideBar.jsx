@@ -3,10 +3,17 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { openModal } from '../../modal/ModalActions';
+import { toggleSideBar } from '../navActions';
+
+const mapState = state => ({
+  isSideBarOpen: state.nav.isSideBarOpen
+});
 
 const actions = {
-  openModal
+  openModal,
+  toggleSideBar
 };
+
 class SideBar extends Component {
   state = {
     activeItem: '/' + this.props.match.url.split('/')[1],
@@ -18,17 +25,29 @@ class SideBar extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
+    if (this.props.location.pathName !== prevProps.location.pathName) {
       this.onRouteChanged();
     }
   }
 
   onRouteChanged() {
     const pathRoot = '/' + this.props.match.url.split('/')[1];
-    console.log('sideBar: onRouteChanged: pathRoot: ', pathRoot);
-    if (pathRoot === '/user') {
+    const offPaths = ['/user', '/checkout'];
+    if (offPaths.indexOf(pathRoot) > -1) {
+      console.log('should hide sidebar');
+      if (this.props.isSideBarOpen) {
+        console.log('did hide sidebar');
+        this.props.toggleSideBar(false);
+      }
+
       this.setState({ visible: false });
     } else {
+      console.log('should show sidebar');
+      if (!this.props.isSideBarOpen) {
+        console.log('did show sidebar');
+        this.props.toggleSideBar(true);
+      }
+
       this.setState({ visible: true });
     }
     this.setState({ activeItem: pathRoot });
@@ -63,4 +82,4 @@ class SideBar extends Component {
   }
 }
 
-export default withRouter(connect(null, actions)(SideBar));
+export default withRouter(connect(mapState, actions)(SideBar));

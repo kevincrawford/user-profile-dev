@@ -35,7 +35,7 @@ export const loadUser = () => {
 };
 
 // Register User
-export const registeredUser = user => {
+export const registerUser = user => {
   return async dispatch => {
     const body = JSON.stringify(user);
     try {

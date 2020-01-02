@@ -2,7 +2,6 @@
 .main {
   margin-top: 6rem;
   padding: 0 0 0 9rem;
-
   > .content {
     position: relative;
     width: 100%;
@@ -18,5 +17,13 @@
 
   @media only screen and (max-width: 767px) {
     padding: 0;
+  }
+  &.checkout,
+  &.user {
+    padding: 0 0 0 0;
+    > .content {
+      padding-left: 0;
+      border-left: none;
+    }
   }
 }
