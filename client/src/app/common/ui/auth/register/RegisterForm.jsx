@@ -7,20 +7,10 @@ import { Field, reduxForm } from 'redux-form';
 import { combineValidators, isRequired, hasLengthGreaterThan, composeValidators, createValidator } from 'revalidate';
 import { registerUser } from '../AuthActions';
 import TextInput from '../../form/TextInput';
-import CheckBoxInput from '../../form/CheckBoxInput';
 
 const actions = {
   registerUser
 };
-
-const isConfirmed = createValidator(
-  message => value => {
-    if (!value || value === false) {
-      return message;
-    }
-  },
-  field => `${field} must be confirmed`
-);
 
 const isValidEmail = createValidator(
   message => value => {
@@ -42,8 +32,7 @@ const validate = combineValidators({
     hasLengthGreaterThan(7)({
       message: 'Password must be 8 characters or more'
     })
-  )(),
-  confirm: composeValidators(isConfirmed({ message: 'confirm' }))()
+  )()
 });
 
 const verifyCallback = recaptchaToken => {
@@ -73,10 +62,7 @@ const RegisterForm = ({ handleSubmit, registerUser, error, invalid, subbmitting 
               Sign Up
             </Button>
           </div>
-          <div className='confirmCheck'>
-            <Field name='confirm' component={CheckBoxInput} />
-          </div>
-          <div className='grow small'>
+          <div className='grow small pl-3'>
             <p>
               By clicking "Sign Up" I agree to the{' '}
               <a href='https://app.termly.io/document/terms-of-use-for-website/c2c6e3f1-ffcf-4ff2-ad92-f67aba4f6f53' target='_blank' rel='noopener noreferrer'>

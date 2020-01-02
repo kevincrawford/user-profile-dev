@@ -2,12 +2,12 @@ import React, { useState, createRef } from 'react';
 import { Form } from 'semantic-ui-react';
 
 const FormSelectField = ({ input, label, options, placeholder, meta: { touched, error } }) => {
-  console.log('touched, error: ', touched, error);
+  // console.log('touched, error: ', touched, error);
   const ref = createRef();
   const [val, setVal] = useState('');
   const handleSelect = option => {
     setVal(option);
-    console.log(ref.current);
+    // console.log(ref.current);
     ref.current.focus();
     ref.current.blur();
   };

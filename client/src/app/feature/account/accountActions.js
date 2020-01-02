@@ -5,7 +5,7 @@ import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../com
 import { toastr } from 'react-redux-toastr';
 
 export const nextStep = () => {
-  console.log('nextStep');
+  // console.log('nextStep');
   return { type: NEXT_STEP };
 };
 
@@ -26,7 +26,7 @@ export const paySubscription = productId => {
     try {
       dispatch(asyncActionStart());
       const subscription = await axios.get(`/api/subscribe/${productId}`);
-      console.log('subscription: ', subscription.data);
+      // console.log('subscription: ', subscription.data);
       /*
        * Send reciept to user
        * Schedule future recipts

@@ -19,7 +19,7 @@ const actions = {
 
 export class Account extends Component {
   handleSubmit = values => {
-    console.log('values: ', values);
+    // console.log('values: ', values);
   };
   render() {
     const { step, nextStep, prevStep, setStep } = this.props;

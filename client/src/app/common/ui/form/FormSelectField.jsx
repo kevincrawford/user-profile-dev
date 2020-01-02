@@ -7,7 +7,7 @@ const FormSelectField = ({ input, label, options, placeholder, meta: { touched, 
   const ref = createRef();
   const [val, setVal] = useState('');
   const handleSelect = option => {
-    console.log('handleSelect: option: ', option);
+    // console.log('handleSelect: option: ', option);
     setVal(option);
     ref.current.focus();
     ref.current.blur();

@@ -47,8 +47,8 @@ class App extends Component {
   }
 
   render() {
-    console.log('App: nav: ', this.props.nav);
-    console.log('App: props: ', this.props);
+    // console.log('App: nav: ', this.props.nav);
+    // console.log('App: props: ', this.props);
     const pathName = this.props.location.pathname.replace('/', '');
     return (
       <>

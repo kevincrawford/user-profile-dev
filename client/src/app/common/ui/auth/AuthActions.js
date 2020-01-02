@@ -37,7 +37,14 @@ export const loadUser = () => {
 // Register User
 export const registerUser = user => {
   return async dispatch => {
-    const body = JSON.stringify(user);
+    const userData = {
+      displayName: user.displayName.toLowercase(),
+      email: user.email.toLowercase(),
+      password: user.password,
+      roles: user.roles
+    };
+
+    const body = JSON.stringify(userData);
     try {
       const userToken = await axios.post('/api/users', body, header);
       dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
@@ -68,6 +75,7 @@ export const welcomeUser = () => {
       const crmInfo = transformUserInfo(userInfo.data);
       const body = JSON.stringify(crmInfo);
       await axios.post('/api/crm/contact', body, header);
+      // console.log('sending emails:');
     } catch (error) {
       console.error(error.message);
     }

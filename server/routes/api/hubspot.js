@@ -71,16 +71,11 @@ router.post('/contact', auth, async (req, res) => {
       };
 
       await spedEmail.transporter.sendMail(welcomeConfig);
+      console.log('welcome sent.');
       await spedEmail.transporter.sendMail(notifyConfig);
+      console.log('notify sent.');
     });
-
-    // const contact = await request(options);
-    // console.log('contact: ', contact);
-
-    // user.vid = contact.vid;
-    // await user.save();
   } catch (error) {
-    // console.error(error.message);
     res.status(500).send('Server Error');
   }
 });

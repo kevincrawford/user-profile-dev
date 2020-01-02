@@ -38,7 +38,7 @@ const actions = {
 
 export class AccountForm extends Component {
   onSubmit = values => {
-    console.log('onSubmit: values: ', values);
+    // console.log('onSubmit: values: ', values);
   };
 
   render() {
