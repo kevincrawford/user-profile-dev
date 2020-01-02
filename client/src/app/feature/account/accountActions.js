@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 // import { HEADER_JSON } from '../../common/constants/apiConstants';
 import { NEXT_STEP, PREV_STEP, SET_STEP, SUBSCRIBE_SUCCESS, SET_PRODUCT } from './accountContants';
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../common/actions/async/asyncActions';
@@ -25,7 +25,7 @@ export const paySubscription = productId => {
   return async dispatch => {
     try {
       dispatch(asyncActionStart());
-      const subscription = await axios.get(`/api/subscribe/${productId}`);
+      // const subscription = await axios.get(`/api/subscribe/${productId}`);
       // console.log('subscription: ', subscription.data);
       /*
        * Send reciept to user

@@ -27,18 +27,13 @@ export class AppFooter extends Component {
             <div>
               <h6>Special Educators</h6>
               <Link to='/jobs'>Find a Job</Link>
-              <Link to='/profile'>Post a Resume</Link>
               <Link to='/resources'>Resources</Link>
+              <Link to='/profile'>Post a resume</Link>
             </div>
             <div>
               <h6>SPED Employers</h6>
-              {!this.props.auth.authenticated && (
-                <div onClick={() => this.props.openModal('RegisterModal', { intent: 'post-job' })}>
-                  <span className='link'>Post a Job</span>
-                </div>
-              )}
-              {this.props.auth.authenticated && <Link to='/dashboard/job/new'>Post a Job</Link>}
               <Link to='/resources'>Resources</Link>
+              <Link to='/dashboard'>Post a Job</Link>
             </div>
             <h6 className='social'>
               <h6>Connect</h6>

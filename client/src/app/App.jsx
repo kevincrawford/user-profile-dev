@@ -28,13 +28,15 @@ import Contact from './common/ui/contact/Contact';
 import Tags from './feature/tags/Tags';
 import People from './feature/people/People';
 import Jobs from './feature/jobs/Jobs';
-import AccountForm from './feature/account/component/AccountForm';
+import { ProfilePage } from './feature/profile/ProfilePage';
 
+// import AccountForm from './feature/account/component/AccountForm';
 // import CheckoutStore from './feature/testarea/CheckoutStore';
 // import SelectPlan from './feature/testarea/SelectPlan';
 import PlanSelector from './feature/testarea/PlanSelector';
 import TestComponent from './feature/testarea/TestComponent';
 import TestForms from './feature/testarea/TestForms';
+import { DashboardPage } from './feature/dashboard/DashboardPage';
 
 const mapState = state => ({
   auth: state.auth,
@@ -80,8 +82,9 @@ class App extends Component {
                     <Route path='/tags' component={Tags} />
                     <Route path='/people' component={People} />
                     <Route path='/jobs' component={Jobs} />
+                    <Route path='/profile' component={UserIsAuthenticated(ProfilePage)} />
+                    <Route path='/dashboard' component={UserIsAuthenticated(DashboardPage)} />
                     <Route path='/user/reset/:token' component={NewsMain} />
-                    <Route exact path='/account' component={AccountForm} />
                     <Route exact path='/testarea' component={TestComponent} />
                     <Route exact path='/testform' component={TestForms} />
                     <Route exact path='/checkout' component={PlanSelector} />
