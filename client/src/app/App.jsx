@@ -89,7 +89,7 @@ class App extends Component {
                 </div>
               </Container>
               <NavMobile />
-              <Appfooter />
+              <Appfooter auth={this.props.auth} />
               {this.props.nav.isSideBarOpen && <SideBar />}
             </>
           )}
