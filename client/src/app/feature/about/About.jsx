@@ -9,7 +9,7 @@ const actions = {};
 
 const About = () => {
   return (
-    <div class='about-us'>
+    <div className='about-us'>
       <h1>
         <strong>About Us</strong>
       </h1>

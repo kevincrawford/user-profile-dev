@@ -13,7 +13,7 @@ export class AppFooter extends Component {
     return (
       <div className='main-footer'>
         <Container>
-          <h6 className='flex-box sm'>
+          <div className='flex-box sm'>
             <div>
               <h6>SPEDxchange</h6>
               <div onClick={() => this.props.openModal('RegisterModal')}>
@@ -35,7 +35,7 @@ export class AppFooter extends Component {
               <Link to='/resources'>Resources</Link>
               <Link to='/dashboard'>Post a Job</Link>
             </div>
-            <h6 className='social'>
+            <div className='social'>
               <h6>Connect</h6>
               <a href='https://twitter.com/SPEDxchange_llc' target='_blank' rel='noopener noreferrer'>
                 <Icon fitted name='twitter' />
@@ -53,7 +53,7 @@ export class AppFooter extends Component {
                 <Icon fitted name='instagram' />
                 &nbsp; Instagram
               </a>
-            </h6>
+            </div>
             <div className='col-md mb-3'>
               <h6>Legal</h6>
               <a href='https://app.termly.io/document/privacy-policy/9e6f1ec2-6b4e-4bce-944c-dc3fa68768c5' target='_blank' rel='noopener noreferrer'>
@@ -63,7 +63,7 @@ export class AppFooter extends Component {
                 Terms of Use
               </a>
             </div>
-          </h6>
+          </div>
           <div className='flex-box sm legal'>
             <div className='grow'>
               <strong>SPEDxchange</strong> | 1740 Ridge Ave, Suite 500 | Evanston Il, 60201 | <a href='tel:1-224-300-7733'>224.300.7733</a>

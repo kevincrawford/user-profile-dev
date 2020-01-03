@@ -46,6 +46,19 @@ const mapState = state => ({
 class App extends Component {
   componentDidMount() {
     loadReCaptcha('6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M');
+    this.onRouteChanged();
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log('App: componentDidUpdate: props: ', this.props);
+    console.log('App: componentDidUpdate: prevProps: ', prevProps);
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      this.onRouteChanged();
+    }
+  }
+
+  onRouteChanged() {
+    console.log('App: onRouteChanged: ', this.props.location.pathname);
   }
 
   render() {

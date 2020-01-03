@@ -27,7 +27,7 @@ export class Resources extends Component {
             <p>
               We offer school district administrators content and a unique and effective platform for them to find the right candidates for their school districts open positions.
             </p>
-            <h5 className='mt-5' tabindex='0'>
+            <h5 className='mt-5'>
               <strong>Special Education Scholarships</strong>
             </h5>
             <p>
