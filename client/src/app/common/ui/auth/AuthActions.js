@@ -38,8 +38,8 @@ export const loadUser = () => {
 export const registerUser = user => {
   return async dispatch => {
     const userData = {
-      displayName: user.displayName.toLowercase(),
-      email: user.email.toLowercase(),
+      displayName: user.displayName.toLowerCase(),
+      email: user.email.toLowerCase(),
       password: user.password,
       roles: user.roles
     };

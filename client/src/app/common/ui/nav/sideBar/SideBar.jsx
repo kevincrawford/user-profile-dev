@@ -32,7 +32,7 @@ class SideBar extends Component {
 
   onRouteChanged() {
     const pathRoot = '/' + this.props.match.url.split('/')[1];
-    const offPaths = ['/user', '/checkout'];
+    const offPaths = ['/user', '/checkout', '/dashboard', '/profile'];
     if (offPaths.indexOf(pathRoot) > -1) {
       // console.log('should hide sidebar');
       if (this.props.isSideBarOpen) {
