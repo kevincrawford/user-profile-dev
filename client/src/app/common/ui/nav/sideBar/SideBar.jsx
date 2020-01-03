@@ -34,17 +34,12 @@ class SideBar extends Component {
     const pathRoot = '/' + this.props.match.url.split('/')[1];
     const offPaths = ['/user', '/checkout', '/dashboard', '/profile'];
     if (offPaths.indexOf(pathRoot) > -1) {
-      // console.log('should hide sidebar');
       if (this.props.isSideBarOpen) {
-        // console.log('did hide sidebar');
         this.props.toggleSideBar(false);
       }
-
       this.setState({ visible: false });
     } else {
-      // console.log('should show sidebar');
       if (!this.props.isSideBarOpen) {
-        // console.log('did show sidebar');
         this.props.toggleSideBar(true);
       }
 
