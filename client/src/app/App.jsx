@@ -24,11 +24,10 @@ import Scholarships from './feature/scholarships/Scholarships';
 import ScholarshipClinical from './feature/scholarships/ScholarshipClinical';
 import Resources from './feature/resources/Resources';
 import About from './feature/about/About';
-import Contact from './common/ui/contact/Contact';
 import Tags from './feature/tags/Tags';
 import People from './feature/people/People';
 import Jobs from './feature/jobs/Jobs';
-import { ProfilePage } from './feature/profile/ProfilePage';
+import ProfilePage from './feature/profile/ProfilePage';
 
 // import AccountForm from './feature/account/component/AccountForm';
 // import CheckoutStore from './feature/testarea/CheckoutStore';
@@ -36,7 +35,7 @@ import { ProfilePage } from './feature/profile/ProfilePage';
 import PlanSelector from './feature/testarea/PlanSelector';
 import TestComponent from './feature/testarea/TestComponent';
 import TestForms from './feature/testarea/TestForms';
-import { DashboardPage } from './feature/dashboard/DashboardPage';
+import DashboardPage from './feature/dashboard/DashboardPage';
 
 const mapState = state => ({
   auth: state.auth,
@@ -46,8 +45,14 @@ const mapState = state => ({
 class App extends Component {
   componentDidMount() {
     loadReCaptcha('6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M');
-    this.onRouteChanged();
+    // this.onRouteChanged();
   }
+
+  /*
+   * KEEP THIS TO MOVE ALL 
+   * ROUTE CHANGE FUNCTION
+   * TO APP LEVEL
+   * 
 
   componentDidUpdate(prevProps) {
     console.log('App: componentDidUpdate: props: ', this.props);
@@ -60,7 +65,7 @@ class App extends Component {
   onRouteChanged() {
     console.log('App: onRouteChanged: ', this.props.location.pathname);
   }
-
+ */
   render() {
     // console.log('App: nav: ', this.props.nav);
     // console.log('App: props: ', this.props);
@@ -91,13 +96,11 @@ class App extends Component {
                     <Route exact path='/scholarships/clinical' component={ScholarshipClinical} />
                     <Route path='/resources' component={Resources} />
                     <Route path='/about' component={About} />
-                    <Route path='/contact' component={Contact} />
                     <Route path='/tags' component={Tags} />
                     <Route path='/people' component={People} />
                     <Route path='/jobs' component={Jobs} />
                     <Route path='/profile' component={UserIsAuthenticated(ProfilePage)} />
                     <Route path='/dashboard' component={UserIsAuthenticated(DashboardPage)} />
-                    <Route path='/user/reset/:token' component={NewsMain} />
                     <Route exact path='/testarea' component={TestComponent} />
                     <Route exact path='/testform' component={TestForms} />
                     <Route exact path='/checkout' component={PlanSelector} />

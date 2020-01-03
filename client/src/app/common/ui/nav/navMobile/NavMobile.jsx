@@ -34,6 +34,10 @@ class NavMobile extends Component {
         this.props.openModal('RegisterModal');
         break;
 
+      case 'contact':
+        this.props.openModal('ContactModal');
+        break;
+
       default:
         this.props.navItemClick(item);
         this.props.history.push(item.link);
@@ -64,7 +68,7 @@ class NavMobile extends Component {
                 <span onClick={() => this.handleItemClick(navItems.about)}>About Us</span>
               </li>
               <li>
-                <span onClick={() => this.handleItemClick(navItems.contact)}>Contact Us</span>
+                <span onClick={() => this.handleItemClick('contact')}>Contact Us</span>
               </li>
               <li className='nav-spacer'></li>
               <li>

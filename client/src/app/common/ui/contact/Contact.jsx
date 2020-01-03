@@ -65,7 +65,7 @@ export class Contact extends Component {
     return (
       <>
         {!submitted && (
-          <Form className='register-form' onSubmit={handleSubmit(submitContact)} autoComplete='off'>
+          <Form className='contact-form' onSubmit={handleSubmit(submitContact)} autoComplete='off'>
             <ReCaptcha sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M' action='contact' verifyCallback={verifyCallback} />
             <Field name='user' component={HiddenInput} />
             <label>Full Name</label>
