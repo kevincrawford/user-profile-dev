@@ -159,12 +159,13 @@ router.post('/reset', async (req, res) => {
 router.post('/submit-scholarship', auth, async (req, res) => {
   try {
     const { school, graduation, essay, scholarshipName } = req.body;
-    var application = await ScholarshipApplication.findOne({ user: req.user.id, scholarshipName: scholarshipName || 'clinical' });
+    const scholarshipId = scholarshipName || 'teacher';
+    var application = await ScholarshipApplication.findOne({ user: req.user.id, scholarshipName: scholarshipId });
 
     if (!application) {
       application = new ScholarshipApplication({
         user: req.user.id,
-        scholarshipName: scholarshipName || 'clinical'
+        scholarshipName: scholarshipName || 'teacher'
       });
     }
 
@@ -194,6 +195,24 @@ router.post('/scholarship-application', auth, async (req, res) => {
         essay: ''
       };
     }
+    res.json({ school: application.school, graduation: application.graduation, essay: application.essay });
+  } catch (err) {
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    POST api/auth/scholarship-review
+// @desc     Get Users Scholarship Application
+// @access   Private
+router.put('/scholarship-review', auth, async (req, res) => {
+  try {
+    const { id, like, unlike } = req.body;
+    var application = await ScholarshipApplication.findById(id);
+    if (like) {
+
+    }
+
+   
     res.json({ school: application.school, graduation: application.graduation, essay: application.essay });
   } catch (err) {
     res.status(500).send('Server Error');

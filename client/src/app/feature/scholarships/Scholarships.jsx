@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+import { Icon, Button } from 'semantic-ui-react';
+import { openModal } from '../../common/ui/modal/ModalActions';
 
 const scholarshipList = [
   {
@@ -252,57 +253,97 @@ const scholarshipList = [
 ];
 
 export class Scholarships extends Component {
+  handleApply = () => {
+    if (this.props.auth.authenticated) {
+      this.props.openModal('ScholarshipModal', { scholarship: '2020Teacher' });
+    } else {
+      this.props.openModal('UnauthModal');
+    }
+  };
+
+  handleSocialClick = type => {
+    const url = window.location.protocol + '//' + window.location.host + '/scholarships/teacher';
+    if (type === 'twitter') {
+      window.open(
+        `https://twitter.com/intent/tweet?text=SPEDxchange:%202020%20Special%20Education%20Teacher%20Scholarship%20$1,000&amp;url=${url}`,
+        'twitter-share-dialog',
+        'width=600,height=480'
+      );
+    }
+    if (type === 'linkedin') {
+      window.open(
+        `https://www.linkedin.com/shareArticle?mini=true&amp;url=${url}&amp;title=Special%20Education%20Teacher%20Scholarship%20$1,000`,
+        'linkedin-share-dialog',
+        'width=600,height=480'
+      );
+    }
+    if (type === 'facebook') {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, 'facebook-share-dialog', 'width=600,height=480');
+    }
+  };
+
+  setEmailLink = () => {
+    const url = window.location.protocol + '//' + window.location.host + '/scholarships/teacher';
+    return `mailto:?subject=Special%20Education%20Teacher%20Scholarship%20$1,000&body=I thought you might be interested in reading this SPED Talk article.%0D%0A%0D%0ASpecial%20Education%20Teacher%20Scholarship%20$1,000%0D%0A${url}%0D%0A%0D%0A`.replace(
+      / /g,
+      '%20'
+    );
+  };
+
   render() {
     return (
       <>
-        <h1>Scholarships</h1>
-        <div className='flex-box sm pt-3 resources'>
-          <div className='grow'>
+        <div className='resources'>
+          <div>
             <h5 className='section-head mb-3'>SPEDxchange Scholarships</h5>
-            <div className='scholarship-link'>
-              <h4 className='text-primary'>
-                <strong>Clinical Special Educators Scholarship Award $1,000</strong>
-              </h4>
-              <div className='content'>
+
+            <div className='article-wrap'>
+              <div className='article'>
+                <div>
+                  <div>
+                    <img src='/assets/img/scholarship.png' alt='Clinical Special Educators Scholarship Award' />
+                  </div>
+                </div>
+                <div className='article-figure'>
+                  <div className='share'>SHARE</div>
+                  <Icon link circular name='twitter' onClick={() => this.handleSocialClick('twitter')} />
+                  <Icon link circular name='linkedin' onClick={() => this.handleSocialClick('linkedin')} />
+                  <Icon link circular name='facebook' onClick={() => this.handleSocialClick('facebook')} />
+                  <a href={this.setEmailLink()}>
+                    <Icon link circular name='envelope outline' />
+                  </a>
+                </div>
+                <h1 className='text-primary my-2'>
+                  <strong>
+                    2020 Special Education Teacher Scholarship - <small>$</small>1,000
+                  </strong>
+                </h1>
+                <p>SPEDxchange is offering a $1,000 scholarship for undergraduate or graduate students that are interested in working with special needs students.</p>
+                <p>This award is for undergraduate or graduate students that are pursuing a degree in folowing special education or a related fields:</p>
                 <p>
-                  SPEDxchange is offering a $1,000 scholarship for undergraduate or graduate students that are pursuing a degree in a "clinical"&nbsp;special education related
-                  field.
+                  <strong>Special Education Teacher</strong>
+                  <br />
+                  <strong>Special Education Diagnosticians</strong>
+                  <br />
+                  <strong>Teachers of the Deaf and Hard of Hearing</strong>
+                  <br />
+                  <strong>Teachers of the Visually Impaired</strong>
                 </p>
-                <p>SPEDxchange considers "clinical" special education to include the following professions:</p>
-                <p>
-                  <strong>Audiologists</strong>
-                  <br />
-                  <strong>Behavior and ABA Therapists</strong>
-                  <br />
-                  <strong>Occupational Therapists</strong>
-                  <br />
-                  <strong>Physical Therapists</strong>
-                  <br />
-                  <strong>School Psychologists</strong>
-                  <br />
-                  <strong>School Social Worker</strong>
-                  <br />
-                  <strong>Speech-Language Pathologists</strong>
-                  <br />
-                  <strong>Speech-Language Pathologist Assistant</strong>
-                  <br />
-                  <strong>Vision Specialists</strong>
-                </p>
-                <p>Applications will be accepted from June 15, 2019 until December 15, 2019.</p>
+                <p>Applications will be accepted until September 15, 2020.</p>
                 <p>
                   <em>
-                    <strong>Award recipients will be notified by January 15, 2020.</strong>
+                    <strong>Winner will be announced on October 15, 2020.</strong>
                   </em>
                 </p>
+                <Button color='green' className='mb-3' onClick={this.handleApply}>
+                  Apply Today!
+                </Button>
               </div>
-              <Button color='green' className='my-3' onClick={() => this.props.history.push('/scholarships/clinical')}>
-                Apply Here
-              </Button>
             </div>
           </div>
-          <div className='spacer' />
-          <div className='grow'>
-            <h5 className='section-head purple mb-3'>Scholarship Links</h5>
+          <hr className='my-3' />
+          <div className='pt-3'>
+            <h5 className='section-head purple mb-3'>More Scholarship Links</h5>
             {scholarshipList &&
               scholarshipList.map((item, idx) => (
                 <div key={idx.toString()} className='mb-3'>
@@ -324,8 +365,12 @@ export class Scholarships extends Component {
   }
 }
 
-const mapState = state => ({});
+const mapState = state => ({
+  auth: state.auth
+});
 
-const actions = {};
+const actions = {
+  openModal
+};
 
 export default withRouter(connect(mapState, actions)(Scholarships));

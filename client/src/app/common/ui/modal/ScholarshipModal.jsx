@@ -18,6 +18,7 @@ class ScholarshipModal extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <Modal size='small' open={true} onClose={this.handleCloseModal}>
         <Modal.Header>Scholarship Application Form</Modal.Header>

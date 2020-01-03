@@ -22,6 +22,22 @@ const ScholarshipApplicationSchema = new Schema({
   essay: {
     type: String
   },
+  reviewed: {
+    type: Boolean,
+    default: false
+  },
+  likes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'user'
+    }
+  ],
+  unlikes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'user'
+    }
+  ],
   created: {
     type: Date,
     default: Date.now

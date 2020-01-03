@@ -184,7 +184,7 @@ export const fetchScholarshipApplication = scholarshipName => {
   return async dispatch => {
     try {
       dispatch({ type: ASYNC_ACTION_START, payload: 'fetch-scholarship' });
-      const body = JSON.stringify({ scholarshipName: scholarshipName || 'clinical' });
+      const body = JSON.stringify({ scholarshipName: scholarshipName || 'teacher' });
       const application = await axios.post('/api/auth/scholarship-application', body, header);
       dispatch({ type: ASYNC_ACTION_FINISH });
       if (application.data.essay) {

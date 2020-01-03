@@ -45,3 +45,7 @@ small,
 .text-capitalize {
   text-transform: capitalize !important;
 }
+
+.text-primary {
+  color: var(--primary-color);
+}
