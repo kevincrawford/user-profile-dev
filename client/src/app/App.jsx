@@ -21,7 +21,7 @@ import NewsArticle from './feature/news/article/NewsArticle';
 import QuestionForm from './feature/question/questionForm/QuestionForm';
 import QuestionCategoryPage from './feature/question/categories/QuestionCategoryPage';
 import Scholarships from './feature/scholarships/Scholarships';
-import ScholarshipClinical from './feature/scholarships/ScholarshipClinical';
+import ScholarshipTeacher from './feature/scholarships/ScholarshipTeacher';
 import Resources from './feature/resources/Resources';
 import About from './feature/about/About';
 import Tags from './feature/tags/Tags';
@@ -83,24 +83,62 @@ class App extends Component {
               <Container className={`main ${pathName}`}>
                 <div className='content'>
                   <Switch key={this.props.location.key}>
-                    <Route exact path='/questions' component={QuestionDashboard} />
-                    <Route path='/questions/:uid/:slug' component={QuestionDetail} />
-                    <Route path='/categories' component={QuestionCategoryPage} />
-                    <Route path={['/ask', '/ask/:id', '/ask/:uid/:slug']} component={UserIsAuthenticated(QuestionForm)} />
-                    <Route exact path='/user' component={UserIsAuthenticated(UserDashboard)} />
-                    <Route path='/profile/:id' component={UserIsAuthenticated(UserDetail)} />
-                    <Route exact path='/settings' component={UserIsAuthenticated(SettingsDashboard)} />
+                    <Route
+                      exact
+                      path='/questions'
+                      component={QuestionDashboard}
+                    />
+                    <Route
+                      path='/questions/:uid/:slug'
+                      component={QuestionDetail}
+                    />
+                    <Route
+                      path='/categories'
+                      component={QuestionCategoryPage}
+                    />
+                    <Route
+                      path={['/ask', '/ask/:id', '/ask/:uid/:slug']}
+                      component={UserIsAuthenticated(QuestionForm)}
+                    />
+                    <Route
+                      exact
+                      path='/user'
+                      component={UserIsAuthenticated(UserDashboard)}
+                    />
+                    <Route
+                      path='/profile/:id'
+                      component={UserIsAuthenticated(UserDetail)}
+                    />
+                    <Route
+                      exact
+                      path='/settings'
+                      component={UserIsAuthenticated(SettingsDashboard)}
+                    />
                     <Route exact path='/news' component={NewsMain} />
                     <Route path='/news/:uid/:slug' component={NewsArticle} />
-                    <Route exact path='/scholarships' component={Scholarships} />
-                    <Route exact path='/scholarships/clinical' component={ScholarshipClinical} />
+                    <Route
+                      exact
+                      path='/scholarships'
+                      component={Scholarships}
+                    />
+                    <Route
+                      exact
+                      path='/scholarships/teacher'
+                      component={ScholarshipTeacher}
+                    />
                     <Route path='/resources' component={Resources} />
                     <Route path='/about' component={About} />
                     <Route path='/tags' component={Tags} />
                     <Route path='/people' component={People} />
                     <Route path='/jobs' component={Jobs} />
-                    <Route path='/profile' component={UserIsAuthenticated(ProfilePage)} />
-                    <Route path='/dashboard' component={UserIsAuthenticated(DashboardPage)} />
+                    <Route
+                      path='/profile'
+                      component={UserIsAuthenticated(ProfilePage)}
+                    />
+                    <Route
+                      path='/dashboard'
+                      component={UserIsAuthenticated(DashboardPage)}
+                    />
                     <Route exact path='/testarea' component={TestComponent} />
                     <Route exact path='/testform' component={TestForms} />
                     <Route exact path='/checkout' component={PlanSelector} />
