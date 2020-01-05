@@ -18,13 +18,12 @@ class ScholarshipModal extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <Modal size='small' open={true} onClose={this.handleCloseModal}>
-        <Modal.Header>Scholarship Application Form</Modal.Header>
+        <Modal.Header>Scholarship Application</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <ScholarshipForm />
+            <ScholarshipForm scholarshipId={this.props.scholarshipId} />
           </Modal.Description>
         </Modal.Content>
       </Modal>

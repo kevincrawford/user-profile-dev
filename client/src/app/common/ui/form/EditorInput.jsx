@@ -4,6 +4,7 @@ import { Form, Label } from 'semantic-ui-react';
 
 class EditorInput extends Component {
   constructor(props) {
+    console.log('EditorInput: props: ', props);
     super(props);
     this.state = { content: '' };
     this.handleEditorChange = this.handleEditorChange.bind(this);
@@ -30,6 +31,7 @@ class EditorInput extends Component {
           <input {...input} className='hidden-text-input' type='text' value={this.state.content} ref={ref => (this.inputRef = ref)} />
         </Form.Field>
         <Editor
+        initialValue={`<p>${this.state.content}</p>`}
           apiKey='twpt6v84p920kri6p37w1wk4258x70z5e2yjhikzlu6mysb6'
           onEditorChange={this.handleEditorChange}
           onBlur={this.blur}
