@@ -5,7 +5,7 @@
  * @param  {Object} filters: an object with the filter criteria
  * @return {Array}
  */
-function filterArray(array, filters) {
+export const filterArray = (array, filters) => {
   const filterKeys = Object.keys(filters);
   return array.filter(item => {
     // validates all filter criteria
@@ -15,4 +15,4 @@ function filterArray(array, filters) {
       return filters[key](item[key]);
     });
   });
-}
+};

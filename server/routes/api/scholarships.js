@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 });
 
 // @route    GET api/scholarship/applications/:scholarshipId
-// @desc     Get all Scholarship Application by ScholarshipId
+// @desc     Get all Scholarship Applications by ScholarshipId
 // @access   Public
 router.get('/applications/:scholarshipName', auth, async (req, res) => {
   try {
@@ -28,6 +28,28 @@ router.get('/applications/:scholarshipName', auth, async (req, res) => {
       scholarshipName: req.params.scholarshipName
     });
     res.json(applications);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    GET api/scholarship/application/:applicationId/:vote
+// @desc     Vote on Scholarship Application
+// @access   Public
+router.get('/application/:applicationId/:vote', async (req, res) => {
+  try {
+    const { applicationId, vote } = req.params;
+    // console.log('route: ', applicationId, vote);
+    const application = await ScholarshipApplication.findById(applicationId);
+    if (!application.likeCount) {
+      application.likeCount = 1;
+    } else {
+      application.likeCount = Number(application.likeCount) + Number(vote);
+    }
+    await application.save();
+    // console.log('application: ', application);
+    res.json(application);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

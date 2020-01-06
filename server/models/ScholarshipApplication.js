@@ -26,7 +26,19 @@ const ScholarshipApplicationSchema = new Schema({
     type: Boolean,
     default: false
   },
-  votes: {
+  likes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'user'
+    }
+  ],
+  unlikes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'user'
+    }
+  ],
+  likeCount: {
     type: Number
   },
   created: {
@@ -39,7 +51,4 @@ const ScholarshipApplicationSchema = new Schema({
   }
 });
 
-module.exports = ScholarshipApplication = mongoose.model(
-  'scholarship-application',
-  ScholarshipApplicationSchema
-);
+module.exports = ScholarshipApplication = mongoose.model('scholarship-application', ScholarshipApplicationSchema);

@@ -15,6 +15,7 @@ import NewsReducer from '../feature/news/newsReducer';
 import QuestionFormReducer from '../feature/question/questionForm/actions/questionFormReducer';
 import JobsReducer from '../feature/jobs/actions/jobsReducer';
 import AccountReducer from '../feature/account/accountReducer';
+import DashboardReducer from '../feature/dashboard/DashboardReducer';
 
 const rootReducer = combineReducers({
   toastr: ToastrReducer,
@@ -32,7 +33,8 @@ const rootReducer = combineReducers({
   tagInput: TagInput,
   jobs: JobsReducer,
   contact: ContactReducer,
-  account: AccountReducer
+  account: AccountReducer,
+  dashboard: DashboardReducer
 });
 
 export default rootReducer;
