@@ -103,7 +103,7 @@ class App extends Component {
                     <Route path='/jobs' component={Jobs} />
                     <Route path='/profile' component={UserIsAuthenticated(ProfilePage)} />
                     <Route exact path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
-                    <Route path='/dashboard/scholarship-review/:scholarshipName' component={ScholarshipReview} />
+                    <Route path='/dashboard/scholarship-review/:scholarshipName' component={UserIsAuthenticated(ScholarshipReview)} />
                     <Route exact path='/testarea' component={TestComponent} />
                     <Route exact path='/testform' component={TestForms} />
                     <Route exact path='/checkout' component={PlanSelector} />
