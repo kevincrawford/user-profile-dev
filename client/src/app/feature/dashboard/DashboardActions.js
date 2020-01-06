@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import { HEADER_JSON } from '../../common/constants/apiConstants';
-import { FETCH_SCHOLARSHIP_APPLICATIONS, FILTER_SCHOLARSHIP_APPLICATIONS, VOTE_SCHOLARSHIP_APPLICATION } from './DashboardContants';
+import { FETCH_SCHOLARSHIP_APPLICATIONS, FILTER_SCHOLARSHIP_APPLICATIONS, SORT_SCHOLARSHIP_APPLICATIONS, VOTE_SCHOLARSHIP_APPLICATION } from './DashboardContants';
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../common/actions/async/asyncActions';
 
 export const loadScholarshipApplications = (ScholarshipName, filters) => {
@@ -50,5 +50,13 @@ export const voteScholarshipApplication = (applicationId, vote) => {
       console.log(error);
       dispatch(asyncActionError());
     }
+  };
+};
+
+export const sortScholarshipApplications = () => {
+  return dispatch => {
+    dispatch({
+      type: SORT_SCHOLARSHIP_APPLICATIONS
+    });
   };
 };

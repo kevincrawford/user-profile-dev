@@ -26,7 +26,7 @@ router.get('/applications/:scholarshipName', auth, async (req, res) => {
   try {
     const applications = await ScholarshipApplication.find({
       scholarshipName: req.params.scholarshipName
-    });
+    }).sort({ _id: -1 });
     res.json(applications);
   } catch (err) {
     console.error(err.message);
@@ -48,7 +48,7 @@ router.get('/application/:applicationId/:vote', async (req, res) => {
       application.likeCount = Number(application.likeCount) + Number(vote);
     }
     await application.save();
-    // console.log('application: ', application);
+    console.log('application: ', application);
     res.json(application);
   } catch (err) {
     console.error(err.message);
