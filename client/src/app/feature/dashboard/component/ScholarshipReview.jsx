@@ -57,7 +57,7 @@ export class ScholarshipReview extends Component {
             <div key={application._id}>
               <hr />
               <div className='flex-box sm'>
-                <div className='grow pr-3'>
+                <div className='grow pr-3 pb-3'>
                   <div dangerouslySetInnerHTML={{ __html: application.essay }} />
                 </div>
                 <div>
