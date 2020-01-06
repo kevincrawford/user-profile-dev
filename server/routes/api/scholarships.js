@@ -4,14 +4,30 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 
 const Scholarship = require('../../models/Scholarship');
+const ScholarshipApplication = require('../../models/ScholarshipApplication');
 
-// @route    GET api/scholarships
+// @route    GET api/scholarship
 // @desc     Get all Scholarships
 // @access   Public
 router.get('/', async (req, res) => {
   try {
     const scholarships = await Scholarship.find();
     res.json(scholarships);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    GET api/scholarship/applications/:scholarshipId
+// @desc     Get all Scholarship Application by ScholarshipId
+// @access   Public
+router.get('/applications/:scholarshipName', auth, async (req, res) => {
+  try {
+    const applications = await ScholarshipApplication.find({
+      scholarshipName: req.params.scholarshipName
+    });
+    res.json(applications);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

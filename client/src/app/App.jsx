@@ -35,7 +35,7 @@ import ProfilePage from './feature/profile/ProfilePage';
 import PlanSelector from './feature/testarea/PlanSelector';
 import TestComponent from './feature/testarea/TestComponent';
 import TestForms from './feature/testarea/TestForms';
-import DashboardPage from './feature/dashboard/DashboardPage';
+import Dashboard from './feature/dashboard/Dashboard';
 
 const mapState = state => ({
   auth: state.auth,
@@ -137,7 +137,7 @@ class App extends Component {
                     />
                     <Route
                       path='/dashboard'
-                      component={UserIsAuthenticated(DashboardPage)}
+                      component={UserIsAuthenticated(Dashboard)}
                     />
                     <Route exact path='/testarea' component={TestComponent} />
                     <Route exact path='/testform' component={TestForms} />

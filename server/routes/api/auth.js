@@ -10,6 +10,10 @@ const SpedEmail = require('./templates/templates');
 const User = require('../../models/User');
 const ScholarshipApplication = require('../../models/ScholarshipApplication');
 
+const isNumeric = n => {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
 // @route    GET api/auth
 // @desc     Get User Record
 // @access   Private
@@ -52,7 +56,9 @@ router.post('/login', async (req, res) => {
     } else {
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
-        return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
     }
 
@@ -160,7 +166,10 @@ router.post('/submit-scholarship', auth, async (req, res) => {
   try {
     const { school, graduation, essay, scholarshipName } = req.body;
     const scholarshipId = scholarshipName || 'teacher';
-    var application = await ScholarshipApplication.findOne({ user: req.user.id, scholarshipName: scholarshipId });
+    var application = await ScholarshipApplication.findOne({
+      user: req.user.id,
+      scholarshipName: scholarshipId
+    });
 
     if (!application) {
       application = new ScholarshipApplication({
@@ -187,7 +196,10 @@ router.post('/submit-scholarship', auth, async (req, res) => {
 router.post('/scholarship-application', auth, async (req, res) => {
   try {
     const { scholarshipName } = req.body;
-    var application = await ScholarshipApplication.findOne({ user: req.user.id, scholarshipName: scholarshipName || 'clinical' });
+    var application = await ScholarshipApplication.findOne({
+      user: req.user.id,
+      scholarshipName: scholarshipName || 'clinical'
+    });
     if (!application) {
       application = {
         school: '',
@@ -195,7 +207,11 @@ router.post('/scholarship-application', auth, async (req, res) => {
         essay: ''
       };
     }
-    res.json({ school: application.school, graduation: application.graduation, essay: application.essay });
+    res.json({
+      school: application.school,
+      graduation: application.graduation,
+      essay: application.essay
+    });
   } catch (err) {
     res.status(500).send('Server Error');
   }
@@ -206,14 +222,16 @@ router.post('/scholarship-application', auth, async (req, res) => {
 // @access   Private
 router.put('/scholarship-review', auth, async (req, res) => {
   try {
-    const { id, like, unlike } = req.body;
+    const { id, vote } = req.body;
     var application = await ScholarshipApplication.findById(id);
-    if (like) {
-
+    if (isNumeric(like)) {
+      application.votes += vote;
     }
+    application.reviewed = true;
 
-   
-    res.json({ school: application.school, graduation: application.graduation, essay: application.essay });
+    await application.save();
+
+    res.json(application);
   } catch (err) {
     res.status(500).send('Server Error');
   }
