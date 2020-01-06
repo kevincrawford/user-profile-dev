@@ -44,13 +44,6 @@ export class ScholarshipReview extends Component {
       <>
         <div className='flex-box bottom'>
           <h4 className='grow'>Applications</h4>
-          <div>
-            <Button.Group basic size='mini'>
-              <Button>All</Button>
-              <Button>Unreviewed</Button>
-              <Button>Reviewed</Button>
-            </Button.Group>
-          </div>
         </div>
         {filteredApplications &&
           filteredApplications.sort(this.byCount).map(application => (
@@ -95,6 +88,18 @@ const mapDispatchToProps = {
 };
 
 /*
+          <div>
+            <Button.Group basic size='mini'>
+              <Button>All</Button>
+              <Button>Unreviewed</Button>
+              <Button>Reviewed</Button>
+            </Button.Group>
+          </div>
+
+
+
+
+
 <Form>
   <Button icon>
     <Icon name='thumbs up' />
