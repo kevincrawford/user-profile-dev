@@ -26,7 +26,7 @@ router.get('/applications/:scholarshipName', auth, async (req, res) => {
   try {
     const applications = await ScholarshipApplication.find({
       scholarshipName: req.params.scholarshipName
-    }).sort({ _id: -1 });
+    }).sort({ likeCount: -1 });
     res.json(applications);
   } catch (err) {
     console.error(err.message);

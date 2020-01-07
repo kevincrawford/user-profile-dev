@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadScholarshipApplications, filterScholarshipApplications, sortScholarshipApplications, voteScholarshipApplication } from '../DashboardActions';
+import {
+  loadScholarshipApplications,
+  filterScholarshipApplications,
+  sortScholarshipApplications,
+  voteScholarshipApplication
+} from '../DashboardActions';
 import Loading from '../../../common/ui/loading/Loading';
 import { Button, Icon } from 'semantic-ui-react';
+
+const mapState = state => ({
+  applications: state.dashboard.applications,
+  applicationFilters: state.dashboard.applicationFilters,
+  filteredApplications: state.dashboard.filteredApplications
+});
+
+const actions = {
+  loadScholarshipApplications,
+  filterScholarshipApplications,
+  voteScholarshipApplication,
+  sortScholarshipApplications
+};
 
 export class ScholarshipReview extends Component {
   componentDidMount() {
     const { scholarshipName } = this.props.match.params;
-    this.props.loadScholarshipApplications(scholarshipName, this.props.applicationFilters);
+    this.props.loadScholarshipApplications(
+      scholarshipName,
+      this.props.applicationFilters
+    );
   }
 
   handleFilterApplications(key) {
@@ -40,9 +61,13 @@ export class ScholarshipReview extends Component {
         <div className='flex-box bottom'>
           <h4 className='grow'>Applications</h4>
           <div>
-            <Button.Group basic size='mini'>
-              <Button onClick={() => this.props.sortScholarshipApplications()}>Sort</Button>
-            </Button.Group>
+            <Button
+              positive
+              size='mini'
+              onClick={() => this.props.sortScholarshipApplications()}
+            >
+              Sort
+            </Button>
           </div>
         </div>
         {filteredApplications &&
@@ -51,20 +76,30 @@ export class ScholarshipReview extends Component {
               <hr />
               <div className='flex-box sm'>
                 <div className='grow pr-3 pb-3'>
-                  <div dangerouslySetInnerHTML={{ __html: application.essay }} />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: application.essay }}
+                  />
                 </div>
                 <div>
-                  <Button icon className='mr-2' onClick={() => this.handleLike(application._id, 1)}>
-                    <Icon name='thumbs up' color='green' />
-                  </Button>
-                  <Button icon className='mr-2' onClick={() => this.handleLike(application._id, -1)}>
-                    <Icon name='thumbs down' />
-                  </Button>
-                  <button className='ui button mr-0 px-3'>
+                  <button className='ui button mr-2 px-3'>
                     <span className='text-black'>
                       <strong>{application.likeCount}</strong>
                     </span>
                   </button>
+                  <Button
+                    icon
+                    className='mr-2'
+                    onClick={() => this.handleLike(application._id, 1)}
+                  >
+                    <Icon name='thumbs up' color='green' />
+                  </Button>
+                  <Button
+                    icon
+                    className='mr-0'
+                    onClick={() => this.handleLike(application._id, -1)}
+                  >
+                    <Icon name='thumbs down' />
+                  </Button>
                 </div>
               </div>
             </div>
@@ -74,44 +109,4 @@ export class ScholarshipReview extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  applications: state.dashboard.applications,
-  applicationFilters: state.dashboard.applicationFilters,
-  filteredApplications: state.dashboard.filteredApplications
-});
-
-const mapDispatchToProps = {
-  loadScholarshipApplications,
-  filterScholarshipApplications,
-  voteScholarshipApplication,
-  sortScholarshipApplications
-};
-
-/*
-          <div>
-            <Button.Group basic size='mini'>
-              <Button>All</Button>
-              <Button>Unreviewed</Button>
-              <Button>Reviewed</Button>
-            </Button.Group>
-          </div>
-
-
-
-
-
-<Form>
-  <Button icon>
-    <Icon name='thumbs up' />
-  </Button>
-  <Button icon>
-    <Icon name='thumbs down' />
-  </Button>
-  <Form.Field size='mini' style={valueStyle}>
-    <input type='number' style={inputStyle} />
-  </Form.Field>
-</Form>
-*/
-
-export default connect(mapStateToProps, mapDispatchToProps)(ScholarshipReview);
+export default connect(mapState, actions)(ScholarshipReview);

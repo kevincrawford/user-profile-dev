@@ -1,5 +1,10 @@
 import { createReducer } from '../../common/util/ReducerUtil';
-import { FETCH_SCHOLARSHIP_APPLICATIONS, FILTER_SCHOLARSHIP_APPLICATIONS, SORT_SCHOLARSHIP_APPLICATIONS, VOTE_SCHOLARSHIP_APPLICATION } from './DashboardContants';
+import {
+  FETCH_SCHOLARSHIP_APPLICATIONS,
+  FILTER_SCHOLARSHIP_APPLICATIONS,
+  SORT_SCHOLARSHIP_APPLICATIONS,
+  VOTE_SCHOLARSHIP_APPLICATION
+} from './DashboardContants';
 import { filterArray } from '../../common/util/filterArray';
 
 const initialState = {};
@@ -44,10 +49,28 @@ const sortScholarshipApplications = state => {
 };
 
 const voteScholarshipApplication = (state, payload) => {
+  let idx;
+  let applications = [...state.applications];
+  let filteredApplications = [...state.applications];
+
+  idx = applications
+    .map(function(e) {
+      return e._id;
+    })
+    .indexOf(payload._id);
+  applications[idx].likeCount = payload.likeCount;
+
+  idx = filteredApplications
+    .map(function(e) {
+      return e._id;
+    })
+    .indexOf(payload._id);
+  filteredApplications[idx].likeCount = payload.likeCount;
+
   return {
     ...state,
-    applications: state.applications ? [...state.applications.filter(application => application._id !== payload._id), payload] : null,
-    filteredApplications: state.filteredApplications ? [...state.filteredApplications.filter(application => application._id !== payload._id), payload] : null
+    applications: applications,
+    filteredApplications: filteredApplications
   };
 };
 

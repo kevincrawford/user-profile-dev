@@ -1,13 +1,24 @@
 import axios from 'axios';
 // import { HEADER_JSON } from '../../common/constants/apiConstants';
-import { FETCH_SCHOLARSHIP_APPLICATIONS, FILTER_SCHOLARSHIP_APPLICATIONS, SORT_SCHOLARSHIP_APPLICATIONS, VOTE_SCHOLARSHIP_APPLICATION } from './DashboardContants';
-import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../common/actions/async/asyncActions';
+import {
+  FETCH_SCHOLARSHIP_APPLICATIONS,
+  FILTER_SCHOLARSHIP_APPLICATIONS,
+  SORT_SCHOLARSHIP_APPLICATIONS,
+  VOTE_SCHOLARSHIP_APPLICATION
+} from './DashboardContants';
+import {
+  asyncActionStart,
+  asyncActionFinish,
+  asyncActionError
+} from '../../common/actions/async/asyncActions';
 
 export const loadScholarshipApplications = (ScholarshipName, filters) => {
   return async dispatch => {
     try {
       dispatch(asyncActionStart());
-      const applications = await axios.get(`/api/scholarship/applications/${ScholarshipName}`);
+      const applications = await axios.get(
+        `/api/scholarship/applications/${ScholarshipName}`
+      );
       // console.log(applications);
       dispatch({
         type: FETCH_SCHOLARSHIP_APPLICATIONS,
@@ -39,7 +50,9 @@ export const voteScholarshipApplication = (applicationId, vote) => {
     try {
       dispatch(asyncActionStart());
       // console.log(`/api/scholarship/application/${applicationId}/${vote}`);
-      const application = await axios.get(`/api/scholarship/application/${applicationId}/${vote}`);
+      const application = await axios.get(
+        `/api/scholarship/application/${applicationId}/${vote}`
+      );
       // console.log(application);
       dispatch({
         type: VOTE_SCHOLARSHIP_APPLICATION,
