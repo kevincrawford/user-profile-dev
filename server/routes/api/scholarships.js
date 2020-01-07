@@ -41,14 +41,11 @@ router.get('/application/:applicationId/:vote', async (req, res) => {
   try {
     const { applicationId, vote } = req.params;
     // console.log('route: ', applicationId, vote);
-    const application = await ScholarshipApplication.findById(applicationId);
-    if (!application.likeCount) {
-      application.likeCount = 1;
-    } else {
-      application.likeCount = Number(application.likeCount) + Number(vote);
-    }
+    let application = await ScholarshipApplication.findById(applicationId);
+    application.likeCount = typeof application.likeCount === 'undefined' ? 1 : application.likeCount;
+    application.likeCount = Number(application.likeCount) + Number(vote);
     await application.save();
-    console.log('application: ', application);
+    // console.log('application: ', application);
     res.json(application);
   } catch (err) {
     console.error(err.message);
