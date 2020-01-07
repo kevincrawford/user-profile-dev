@@ -62,6 +62,8 @@ export class ScholarshipReview extends Component {
           filteredApplications.map(application => (
             <div key={application._id}>
               <hr />
+              <h3>{application.user}</h3>
+              <div>{application.school}</div>
               <div className='flex-box sm'>
                 <div className='grow pr-3 pb-3'>
                   <div dangerouslySetInnerHTML={{ __html: application.essay }} />
