@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  loadScholarshipApplications,
-  filterScholarshipApplications,
-  sortScholarshipApplications,
-  voteScholarshipApplication
-} from '../DashboardActions';
+import { loadScholarshipApplications, filterScholarshipApplications, sortScholarshipApplications, voteScholarshipApplication } from '../DashboardActions';
 import Loading from '../../../common/ui/loading/Loading';
 import { Button, Icon } from 'semantic-ui-react';
 
@@ -25,10 +20,7 @@ const actions = {
 export class ScholarshipReview extends Component {
   componentDidMount() {
     const { scholarshipName } = this.props.match.params;
-    this.props.loadScholarshipApplications(
-      scholarshipName,
-      this.props.applicationFilters
-    );
+    this.props.loadScholarshipApplications(scholarshipName, { likeCount: likeCount => likeCount > -1 });
   }
 
   handleFilterApplications(key) {
@@ -61,11 +53,7 @@ export class ScholarshipReview extends Component {
         <div className='flex-box bottom'>
           <h4 className='grow'>Applications</h4>
           <div>
-            <Button
-              positive
-              size='mini'
-              onClick={() => this.props.sortScholarshipApplications()}
-            >
+            <Button positive size='mini' onClick={() => this.props.sortScholarshipApplications()}>
               Sort
             </Button>
           </div>
@@ -76,9 +64,7 @@ export class ScholarshipReview extends Component {
               <hr />
               <div className='flex-box sm'>
                 <div className='grow pr-3 pb-3'>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: application.essay }}
-                  />
+                  <div dangerouslySetInnerHTML={{ __html: application.essay }} />
                 </div>
                 <div>
                   <button className='ui button mr-2 px-3'>
@@ -86,18 +72,10 @@ export class ScholarshipReview extends Component {
                       <strong>{application.likeCount}</strong>
                     </span>
                   </button>
-                  <Button
-                    icon
-                    className='mr-2'
-                    onClick={() => this.handleLike(application._id, 1)}
-                  >
+                  <Button icon className='mr-2' onClick={() => this.handleLike(application._id, 1)}>
                     <Icon name='thumbs up' color='green' />
                   </Button>
-                  <Button
-                    icon
-                    className='mr-0'
-                    onClick={() => this.handleLike(application._id, -1)}
-                  >
+                  <Button icon className='mr-0' onClick={() => this.handleLike(application._id, -1)}>
                     <Icon name='thumbs down' />
                   </Button>
                 </div>
