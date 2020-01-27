@@ -12,13 +12,11 @@ const OrganizationSchema = new Schema({
   description: {
     type: String
   },
-  website: {
-    type: String
+  type: {
+    type: string
   },
-  domain: {
-    type: String,
-    required: true,
-    unique: true
+  size: {
+    type: string
   },
   users: [
     {
@@ -30,10 +28,14 @@ const OrganizationSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'location'
   },
-  locations: [
+  parent: {
+    type: Schema.Types.ObjectId,
+    ref: 'organization'
+  },
+  children: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'location'
+      ref: 'organization'
     }
   ]
 });

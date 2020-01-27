@@ -32,7 +32,7 @@ class SideBar extends Component {
 
   onRouteChanged() {
     const pathRoot = '/' + this.props.match.url.split('/')[1];
-    const offPaths = ['/user', '/checkout', '/dashboard', '/profile'];
+    const offPaths = ['/user', '/checkout', '/admin', '/dashboard', '/profile'];
     if (offPaths.indexOf(pathRoot) > -1) {
       if (this.props.isSideBarOpen) {
         this.props.toggleSideBar(false);

@@ -29,12 +29,19 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  phone: {
+    type: String
+  },
   avatar: {
     type: String
   },
   profile: {
     type: Schema.Types.ObjectId,
     ref: 'profile'
+  },
+  organization: {
+    type: Schema.Types.ObjectId,
+    ref: 'organization'
   },
   roles: [
     {

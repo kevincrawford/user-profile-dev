@@ -60,7 +60,17 @@ $color_6: #202020;
     font-size: 13px;
     border-right: 1px solid #ccc;
     border-bottom: 0;
-    background: #0078c1;
+    background: var(--blue);
+    border-top-left-radius: 3px;
+    border-left: 0px;
+  }
+  .qbsa {
+    color: $color_3;
+    padding: 10px;
+    font-size: 13px;
+    border-right: 1px solid #ccc;
+    border-bottom: 0;
+    background: var(--primary-color);
     border-top-left-radius: 3px;
     border-left: 0px;
   }
@@ -70,7 +80,7 @@ $color_6: #202020;
     font-size: 13px;
     border-right: 1px solid #ccc;
     border-bottom: 0;
-    background: #009e2c;
+    background: var(--secondary-color);
     border-top-right-radius: 3px;
     border-right: 0px;
   }
@@ -194,5 +204,121 @@ $color_6: #202020;
   }
   .compare-heading {
     font-size: 13px;
+  }
+}
+
+.enrollment-selector {
+  .sliderticks {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    p {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      width: 1px;
+      background: #d3d3d3;
+      height: 10px;
+      line-height: 40px;
+      margin: 0 0 20px 0;
+    }
+  }
+
+  .ui.input > input {
+    margin: 2rem 0 1.5rem 0;
+  }
+
+  input[type="range"] {
+    padding: 0 !important;
+    -webkit-appearance: none;
+    width: 100%;
+  }
+  input[type="range"]:focus {
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0),
+      0px 0px 1px rgba(13, 13, 13, 0);
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    border: 0px solid rgba(0, 0, 0, 0);
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4),
+      0px 0px 1px rgba(13, 13, 13, 0.4);
+    border: 0px solid #000000;
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    background: #006646;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -14px;
+  }
+  input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: rgba(128, 128, 128, 0.25);
+  }
+  input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0),
+      0px 0px 1px rgba(13, 13, 13, 0);
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    border: 0px solid rgba(0, 0, 0, 0);
+  }
+  input[type="range"]::-moz-range-thumb {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4),
+      0px 0px 1px rgba(13, 13, 13, 0.4);
+    border: 0px solid #000000;
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    background: #006646;
+    cursor: pointer;
+  }
+  input[type="range"]::-ms-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  input[type="range"]::-ms-fill-lower {
+    background: rgba(0, 0, 0, 0.25);
+    border: 0px solid rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0),
+      0px 0px 1px rgba(13, 13, 13, 0);
+  }
+  input[type="range"]::-ms-fill-upper {
+    background: rgba(0, 0, 0, 0.25);
+    border: 0px solid rgba(0, 0, 0, 0);
+    border-radius: 0px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0),
+      0px 0px 1px rgba(13, 13, 13, 0);
+  }
+  input[type="range"]::-ms-thumb {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4),
+      0px 0px 1px rgba(13, 13, 13, 0.4);
+    border: 0px solid #000000;
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    background: #006646;
+    cursor: pointer;
+    height: 4px;
+  }
+  input[type="range"]:focus::-ms-fill-lower {
+    background: rgba(0, 0, 0, 0.25);
+  }
+  input[type="range"]:focus::-ms-fill-upper {
+    background: rgba(128, 128, 128, 0.25);
   }
 }

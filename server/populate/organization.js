@@ -3,13 +3,26 @@ dotenv.config();
 const connectDB = require('../config/db');
 const gravatar = require('gravatar');
 
-const User = require('../models/User');
+const Org = require('../models/Organization');
 
-const users = require('./data/users');
+const organizations = require('./data/organizations');
 
-const createUser = async user => {
+const createUser = async org => {
   try {
-    const { name, email } = user;
+    const { name, addrStreet, addrCity, addrState, lat, lng } = org;
+
+    const locationData = {
+      street: addrStreet,
+      city: addrCity,
+      state: addrState,
+      zip: addrZip,
+      lat: lat.data || 42.2621,
+      lng: lng.data || -71.1101
+    };
+
+    const orgData = {
+      name: name
+    };
 
     // upsert User
     const testUser = await User.findOne({ email: email });

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { loadReCaptcha } from 'react-recaptcha-v3';
-import { UserIsAuthenticated } from './common/ui/auth/AuthWrapper';
+import { UserIsAuthenticated, UserIsAdmin } from './common/ui/auth/AuthWrapper';
 import ModalManager from './common/ui/modal/ModalManager';
 import NavBar from './common/ui/nav/navBar/NavBar';
 import SideBar from './common/ui/nav/sideBar/SideBar';
@@ -28,6 +28,9 @@ import Tags from './feature/tags/Tags';
 import People from './feature/people/People';
 import Jobs from './feature/jobs/Jobs';
 import ProfilePage from './feature/profile/ProfilePage';
+
+import Admin from './feature/admin/Admin';
+import AdminJobEdit from './feature/admin/component/jobs/AdminJobEdit';
 
 // import AccountForm from './feature/account/component/AccountForm';
 // import CheckoutStore from './feature/testarea/CheckoutStore';
@@ -107,6 +110,8 @@ class App extends Component {
                     <Route exact path='/testarea' component={TestComponent} />
                     <Route exact path='/testform' component={TestForms} />
                     <Route exact path='/checkout' component={PlanSelector} />
+                    <Route exact path='/admin' component={UserIsAdmin(Admin)} />
+                    <Route path='/admin/job/:id' component={UserIsAdmin(AdminJobEdit)} />
                   </Switch>
                 </div>
               </Container>

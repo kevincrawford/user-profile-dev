@@ -1,0 +1,11 @@
+.job-edit {
+  div {
+    border: 1px solid #aaa;
+  }
+  .publish {
+    width: 276px;
+    @media only screen and (max-width: 767px) {
+      width: 100%;
+    }
+  }
+}

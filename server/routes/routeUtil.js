@@ -27,8 +27,17 @@ const toTitleCase = str => {
   });
 };
 
+const geoFindByAddress = address => {
+  const googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyC4D1LiEjXq9Gw_Jx4m0fk1vfKwb6frWiI',
+    Promise: Promise
+  });
+  return googleMapsClient.geocode({ address: address }).asPromise();
+};
+
 module.exports = RouteUtil = {
   createSlug: createSlug,
   createUid: createUid,
-  toTitleCase: toTitleCase
+  toTitleCase: toTitleCase,
+  geoFindByAddress: geoFindByAddress
 };
