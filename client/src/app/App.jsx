@@ -38,6 +38,7 @@ import AdminJobEdit from './feature/admin/component/jobs/AdminJobEdit';
 import PlanSelector from './feature/testarea/PlanSelector';
 import TestComponent from './feature/testarea/TestComponent';
 import TestForms from './feature/testarea/TestForms';
+import SiteForms from './feature/testarea/SiteForms';
 import Dashboard from './feature/dashboard/Dashboard';
 import ScholarshipReview from './feature/dashboard/component/ScholarshipReview';
 
@@ -109,6 +110,7 @@ class App extends Component {
                     <Route path='/dashboard/scholarship-review/:scholarshipName' component={UserIsAuthenticated(ScholarshipReview)} />
                     <Route exact path='/testarea' component={TestComponent} />
                     <Route exact path='/testform' component={TestForms} />
+                    <Route exact path='/siteform' component={SiteForms} />
                     <Route exact path='/checkout' component={PlanSelector} />
                     <Route exact path='/admin' component={UserIsAdmin(Admin)} />
                     <Route path='/admin/job/:id' component={UserIsAdmin(AdminJobEdit)} />

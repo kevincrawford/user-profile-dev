@@ -1,0 +1,35 @@
+.form-container {
+  .half {
+    width: calc(50% - 0.5rem);
+  }
+  .city {
+    padding-right: 1rem;
+    @media only screen and (max-width: 767px) {
+      padding-right: 0;
+    }
+  }
+  .state {
+    width: 20%;
+    padding-right: 1rem;
+    @media only screen and (max-width: 767px) {
+      padding-top: 1rem;
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+  .zip {
+    width: 20%;
+    @media only screen and (max-width: 767px) {
+      padding-top: 1rem;
+      width: 100%;
+    }
+  }
+  .phone {
+    width: 60%;
+    padding-right: 1rem;
+    @media only screen and (max-width: 767px) {
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+}
