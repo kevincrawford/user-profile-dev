@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({});
+const mapState = state => ({});
 
-const mapDispatchToProps = {};
+const actions = {};
 
 export class AdminJobList extends Component {
   render() {
-    return <div>jobs list</div>;
+    return <div>Jobs List</div>;
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminJobList);
+export default connect(mapState, actions)(AdminJobList);

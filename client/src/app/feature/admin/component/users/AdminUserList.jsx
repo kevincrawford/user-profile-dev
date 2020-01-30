@@ -5,10 +5,10 @@ const mapState = state => ({});
 
 const actions = {};
 
-export class AdminJobPreview extends Component {
+export class AdminUserList extends Component {
   render() {
-    return <div>Job Preview</div>;
+    return <h1>User List</h1>;
   }
 }
 
-export default connect(mapState, actions)(AdminJobPreview);
+export default connect(mapState, actions)(AdminUserList);

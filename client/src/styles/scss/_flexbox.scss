@@ -13,6 +13,9 @@
     width: 1.5rem;
     height: 1.5rem;
   }
+  > .half {
+    width: calc(50% - 0.75rem);
+  }
   &.column {
     flex-direction: column;
   }
