@@ -1,22 +1,11 @@
 .admin {
-  .ui.column.grid > [class*="four wide"].column,
-  .ui.grid > .column.row > [class*="four wide"].column,
-  .ui.grid > .row > [class*="four wide"].column,
-  .ui.grid > [class*="four wide"].column {
-    width: auto !important;
+  .ui.pointing.menu {
+    margin-bottom: 1.5rem !important;
   }
-
-  .ui.column.grid > [class*="twelve wide"].column,
-  .ui.grid > .column.row > [class*="twelve wide"].column,
-  .ui.grid > .row > [class*="twelve wide"].column,
-  .ui.grid > [class*="twelve wide"].column {
-    width: unset !important;
-    flex: 1 1 auto !important;
-    > div {
-      border: none !important;
-      padding: 0 !important;
-      margin: 0 !important;
-      background: none !important;
-    }
+  .ui.bottom.attached.segment.active.tab {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: none;
   }
 }

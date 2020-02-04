@@ -58,12 +58,12 @@ export class AdminJobForm extends Component {
             </div>
             <div className='spacer'></div>
             <div className='publish'>
-              <div>status</div>
               <div className='flex-box between md'>
                 <div className='half'>preview</div>
                 <div className='half'>save</div>
               </div>
               <div>publish</div>
+              <div>status</div>
             </div>
           </div>
         </Form>

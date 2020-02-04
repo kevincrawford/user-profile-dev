@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import OrganizationForm from './forms/OrganizationForm';
+import TestOrganizationForm from './forms/TestOrganizationForm';
 import OrganizationUserForm from './forms/OrganizationUserForm';
 import OrganizationLocationForm from './forms/OrganizationLocationForm';
 

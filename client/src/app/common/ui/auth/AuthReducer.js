@@ -8,7 +8,8 @@ import {
   LOGOUT,
   ACCOUNT_DELETED,
   TOGGLE_FORGOT_PASSWORD,
-  FETCH_SCHOLARSHIP_APPLICATION
+  FETCH_SCHOLARSHIP_APPLICATION,
+  SET_RECAPTCHA_TOKEN
 } from './AuthContantants';
 
 const initialState = {
@@ -75,6 +76,13 @@ const loadScholarshipApplication = (state, payload) => {
   };
 };
 
+const setRecaptchaToken = (state, payload) => {
+  return {
+    ...state,
+    recaptchaToken: payload
+  };
+};
+
 export default createReducer(initialState, {
   [USER_LOADED]: loadUser,
   [LOGIN_SUCCESS]: loginSuccess,
@@ -84,5 +92,6 @@ export default createReducer(initialState, {
   [LOGOUT]: logoutUser,
   [ACCOUNT_DELETED]: logoutUser,
   [TOGGLE_FORGOT_PASSWORD]: toggleForgotPassword,
-  [FETCH_SCHOLARSHIP_APPLICATION]: loadScholarshipApplication
+  [FETCH_SCHOLARSHIP_APPLICATION]: loadScholarshipApplication,
+  [SET_RECAPTCHA_TOKEN]: setRecaptchaToken
 });

@@ -26,8 +26,8 @@ const JobSchema = new Schema({
     ref: 'organization'
   },
   location: {
-    type: String,
-    required: true
+    type: Schema.Types.ObjectId,
+    ref: 'location'
   },
   status: {
     type: String,

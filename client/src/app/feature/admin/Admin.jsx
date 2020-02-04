@@ -52,7 +52,7 @@ export class Admin extends Component {
   render() {
     return (
       <div>
-        <Tab menu={{ fluid: true, pointing: true, vertical: true }} panes={panes} />
+        <Tab menu={{ pointing: true }} panes={panes} />
       </div>
     );
   }

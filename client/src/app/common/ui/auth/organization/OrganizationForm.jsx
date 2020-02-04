@@ -4,10 +4,8 @@ import { ReCaptcha } from 'react-recaptcha-v3';
 import { combineValidators, isRequired } from 'revalidate';
 import { Form, Button } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
-import { setRecaptchaToken } from '../../../common/ui/auth/AuthActions';
-import TextInput from '../../../common/ui/form/TextInput';
-
-import './styles.scss';
+import { setRecaptchaToken } from '../AuthActions';
+import TextInput from '../../form/TextInput';
 
 const mapState = state => ({
   loading: state.async.loading,
@@ -22,7 +20,7 @@ const validate = combineValidators({
   name: isRequired({ message: 'Name is required' })
 });
 
-export class TestOrganizationForm extends Component {
+export class OrganizationForm extends Component {
   onFormSubmit = values => {
     console.log('values: ', values);
   };
@@ -68,4 +66,4 @@ export class TestOrganizationForm extends Component {
   }
 }
 
-export default connect(mapState, actions)(reduxForm({ form: 'organizationForm', validate })(TestOrganizationForm));
+export default connect(mapState, actions)(reduxForm({ form: 'organizationForm', validate })(OrganizationForm));

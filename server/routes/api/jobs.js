@@ -4,14 +4,26 @@ const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 
 const Job = require('../../models/Tag');
+const Org = require('../../models/Organization');
+const User = require('../../models/User');
 
 // @route    GET api/jobs/:orgId
 // @desc     Get all Jobs by Organization
 // @access   Public
-router.get('/:orgId', async (req, res) => {
+router.get('/all', auth, async (req, res) => {
   try {
-    const jobs = await Job.find();
-    res.json(tags);
+    const user = await User.findById(req.user.id);
+    const org = await (await Org.findById(user.organization))
+    .populate({
+      path: 'answers',
+      populate: {
+        path: 'user',
+        select: ['displayName', 'screenName', 'avatar']
+      }
+    });
+    const jobs = await Job.find({ organization: user.organization });
+
+    res.json(jobs);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -39,8 +51,8 @@ router.get('/:jobId', async (req, res) => {
   }
 });
 
-// @route    POST api/tags
-// @desc     Create Tag
+// @route    POST api/job
+// @desc     Create Job
 // @access   Private
 router.post(
   '/',
@@ -50,28 +62,33 @@ router.post(
       check('description', 'Description is required')
         .not()
         .isEmpty(),
-        check('summary', 'Summary is required')
+      check('summary', 'Summary is required')
         .not()
         .isEmpty(),
-        check('title', 'Title is required')
-        .not()
-        .isEmpty(),
-        check('summary', 'Summary is required')
+      check('title', 'Title is required')
         .not()
         .isEmpty()
     ]
   ],
   async (req, res) => {
     const errors = validationResult(req);
+    const { jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount, start, publish } = req.body;
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
     try {
-      const newTag = new Tag({
-        name: req.body.name,
-        description: req.body.description,
-        questionCount: 0
+      const newJob = new Job({
+        jobId: jobId,
+        jobType,
+        title,
+        summary,
+        description,
+        status,
+        salaryPeriod,
+        salaryAmount,
+        start,
+        publish
       });
 
       const tag = await newTag.save();

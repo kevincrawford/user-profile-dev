@@ -16,7 +16,7 @@ const makeProperties = props => {
   ];
   const entries = Object.entries(props);
   for (const [key, val] of entries) {
-    console.log('key: ', key);
+    // console.log('key: ', key);
     if (key.toString() !== 'email' && key.toString() !== 'displayName') {
       properties.push({
         property: key.toString().toLowerCase(),
@@ -51,7 +51,7 @@ router.post('/contact', auth, async (req, res) => {
       if (error) res.status(500).send('Server Error');
 
       const contact = body;
-      console.log(`contact: `, contact);
+      // console.log(`contact: `, contact);
 
       user.vid = contact.vid;
       await user.save();
@@ -71,9 +71,9 @@ router.post('/contact', auth, async (req, res) => {
       };
 
       await spedEmail.transporter.sendMail(welcomeConfig);
-      console.log('welcome sent.');
+      // console.log('welcome sent.');
       await spedEmail.transporter.sendMail(notifyConfig);
-      console.log('notify sent.');
+      // console.log('notify sent.');
     });
   } catch (error) {
     res.status(500).send('Server Error');
