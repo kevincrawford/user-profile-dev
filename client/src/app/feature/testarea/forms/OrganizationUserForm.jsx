@@ -5,13 +5,16 @@ import { combineValidators, isRequired } from 'revalidate';
 import { Form, Button } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
 import TextInput from '../../../common/ui/form/TextInput';
+import { setRecaptchaToken } from '../../../common/ui/auth/AuthActions';
 
 const mapState = state => ({
   loading: state.async.loading,
   loadingName: state.async.elementName
 });
 
-const actions = {};
+const actions = {
+  setRecaptchaToken
+};
 
 const validate = combineValidators({
   name: isRequired({ message: 'Name is required' })
@@ -23,22 +26,41 @@ export class OrganizationUserForm extends Component {
   };
 
   verifyCallback = recaptchaToken => {
-    console.log('recaptcha token: ', recaptchaToken);
+    this.props.setRecaptchaToken(recaptchaToken);
   };
 
   render() {
     const { handleSubmit, loading, loadingName } = this.props;
     return (
-      <Form className='form-container' onSubmit={handleSubmit(this.onFormSubmit)} size='mini' autoComplete='off'>
-        <ReCaptcha sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M' action='organization_user' verifyCallback={this.verifyCallback} />
+      <Form
+        className='form-container'
+        onSubmit={handleSubmit(this.onFormSubmit)}
+        size='mini'
+        autoComplete='off'
+      >
+        <ReCaptcha
+          sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
+          action='organization_user'
+          verifyCallback={this.verifyCallback}
+        />
         <div className='flex-box between pb-3'>
           <div className='half'>
             <label>First Name</label>
-            <Field name='firstName' size='mini' component={TextInput} type='text' />
+            <Field
+              name='firstName'
+              size='mini'
+              component={TextInput}
+              type='text'
+            />
           </div>
           <div className='half'>
             <label>Last Name</label>
-            <Field name='lastName' size='mini' component={TextInput} type='text' />
+            <Field
+              name='lastName'
+              size='mini'
+              component={TextInput}
+              type='text'
+            />
           </div>
         </div>
         <label>Email</label>
@@ -52,11 +74,19 @@ export class OrganizationUserForm extends Component {
         </div>
 
         <div className='pt-2'>
-          <Button type='submit' color='green' loading={loadingName === 'create-organization-user' && loading} content={'Add User'} />
+          <Button
+            type='submit'
+            color='green'
+            loading={loadingName === 'create-organization-user' && loading}
+            content={'Add User'}
+          />
         </div>
       </Form>
     );
   }
 }
 
-export default connect(mapState, actions)(reduxForm({ form: 'organizationUserForm', validate })(OrganizationUserForm));
+export default connect(
+  mapState,
+  actions
+)(reduxForm({ form: 'organizationUserForm', validate })(OrganizationUserForm));

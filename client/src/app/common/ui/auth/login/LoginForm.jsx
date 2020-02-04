@@ -4,7 +4,12 @@ import { ReCaptcha } from 'react-recaptcha-v3';
 import { Form, Button, Label } from 'semantic-ui-react';
 import { combineValidators, isRequired } from 'revalidate';
 import { Field, reduxForm } from 'redux-form';
-import { login, requestResetInstructions, toggleForgotPassword } from '../AuthActions';
+import {
+  login,
+  requestResetInstructions,
+  toggleForgotPassword,
+  setRecaptchaToken
+} from '../AuthActions';
 import TextInput from '../../form/TextInput';
 
 const mapState = state => ({
@@ -16,7 +21,8 @@ const mapState = state => ({
 const actions = {
   login,
   requestResetInstructions,
-  toggleForgotPassword
+  toggleForgotPassword,
+  setRecaptchaToken
 };
 
 const validate = combineValidators({
@@ -34,14 +40,29 @@ export class LoginForm extends Component {
   };
 
   verifyCallback = recaptchaToken => {
-    // console.log(recaptchaToken, '<= your recaptcha token');
+    this.props.setRecaptchaToken(recaptchaToken);
   };
 
   render() {
-    const { loading, loadingName, isPasswordForgot, toggleForgotPassword, handleSubmit, error } = this.props;
+    const {
+      loading,
+      loadingName,
+      isPasswordForgot,
+      toggleForgotPassword,
+      handleSubmit,
+      error
+    } = this.props;
     return (
-      <Form className='register-form' onSubmit={handleSubmit(this.onLoginSubmit)} autoComplete='off'>
-        <ReCaptcha sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M' action='login' verifyCallback={this.verifyCallback} />
+      <Form
+        className='register-form'
+        onSubmit={handleSubmit(this.onLoginSubmit)}
+        autoComplete='off'
+      >
+        <ReCaptcha
+          sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
+          action='login'
+          verifyCallback={this.verifyCallback}
+        />
         <label>Email</label>
         <Field name='email' component={TextInput} type='text' />
         {!isPasswordForgot && (
@@ -57,7 +78,11 @@ export class LoginForm extends Component {
         )}
         <div className='flex-box pt-2'>
           <div className='pr-3'>
-            <Button color='green' loading={loadingName === 'request-password-reset' && loading} content={!isPasswordForgot ? 'Login' : 'Reset Password'} />
+            <Button
+              color='green'
+              loading={loadingName === 'request-password-reset' && loading}
+              content={!isPasswordForgot ? 'Login' : 'Reset Password'}
+            />
           </div>
           <div className='grow pt-2 text-right'>
             <span className='link small' onClick={toggleForgotPassword}>
@@ -70,4 +95,7 @@ export class LoginForm extends Component {
   }
 }
 
-export default connect(mapState, actions)(reduxForm({ form: 'loginForm', validate })(LoginForm));
+export default connect(
+  mapState,
+  actions
+)(reduxForm({ form: 'loginForm', validate })(LoginForm));

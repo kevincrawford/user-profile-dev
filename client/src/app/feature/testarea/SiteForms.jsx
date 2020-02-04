@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TestOrganizationForm from './forms/TestOrganizationForm';
+import TestOrganizationForm from './forms/OrganizationForm';
 import OrganizationUserForm from './forms/OrganizationUserForm';
 import OrganizationLocationForm from './forms/OrganizationLocationForm';
 
@@ -15,7 +15,7 @@ export class SiteForms extends Component {
         <section>
           <h4>Organization</h4>
           <hr />
-          <OrganizationForm />
+          <TestOrganizationForm />
           <hr />
         </section>
         <section>

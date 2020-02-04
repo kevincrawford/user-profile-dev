@@ -32,8 +32,17 @@ export class OrganizationForm extends Component {
   render() {
     const { handleSubmit, loading, loadingName } = this.props;
     return (
-      <Form className='form-container' onSubmit={handleSubmit(this.onFormSubmit)} size='mini' autoComplete='off'>
-        <ReCaptcha sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M' action='create_organization' verifyCallback={this.verifyCallback} />
+      <Form
+        className='form-container'
+        onSubmit={handleSubmit(this.onFormSubmit)}
+        size='mini'
+        autoComplete='off'
+      >
+        <ReCaptcha
+          sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
+          action='create_organization'
+          verifyCallback={this.verifyCallback}
+        />
         <label>Company Name</label>
         <Field name='name' component={TextInput} type='text' />
         <label>Address</label>
@@ -59,11 +68,18 @@ export class OrganizationForm extends Component {
           <Field name='phone' component={TextInput} type='text' />
         </div>
         <div className='pt-2'>
-          <Button color='green' loading={loadingName === 'create-organization' && loading} content={'Create Company'} />
+          <Button
+            color='green'
+            loading={loadingName === 'create-organization' && loading}
+            content={'Create Company'}
+          />
         </div>
       </Form>
     );
   }
 }
 
-export default connect(mapState, actions)(reduxForm({ form: 'organizationForm', validate })(OrganizationForm));
+export default connect(
+  mapState,
+  actions
+)(reduxForm({ form: 'organizationForm', validate })(OrganizationForm));

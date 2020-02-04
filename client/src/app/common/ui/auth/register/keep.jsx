@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+/* eslint no-useless-escape: 0 */
+import React from 'react';
 import { connect } from 'react-redux';
 import { ReCaptcha } from 'react-recaptcha-v3';
 import { Form, Button, Label } from 'semantic-ui-react';
@@ -12,11 +13,6 @@ import {
 } from 'revalidate';
 import { registerUser, setRecaptchaToken } from '../AuthActions';
 import TextInput from '../../form/TextInput';
-
-const mapState = state => ({
-  loading: state.async.loading,
-  loadingName: state.async.elementName
-});
 
 const actions = {
   registerUser,
@@ -51,28 +47,19 @@ const validate = combineValidators({
   )()
 });
 
-export class RegisterForm extends Component {
-  onLoginSubmit = values => {
-    if (!this.props.isPasswordForgot) {
-      return this.props.login(values);
-    } else {
-      this.props.requestResetInstructions(values);
-    }
-  };
+const verifyCallback = recaptchaToken => {
+  setRecaptchaToken(recaptchaToken);
+};
 
-  verifyCallback = recaptchaToken => {
-    this.props.setRecaptchaToken(recaptchaToken);
-  };
-
-  render() {
-    const {
-      registerUser,
-      handleSubmit,
-      error,
-      invalid,
-      subbmitting
-    } = this.props;
-    return (
+const RegisterForm = ({
+  handleSubmit,
+  registerUser,
+  error,
+  invalid,
+  subbmitting
+}) => {
+  return (
+    <div>
       <Form
         className='register-form'
         onSubmit={handleSubmit(registerUser)}
@@ -82,7 +69,7 @@ export class RegisterForm extends Component {
         <ReCaptcha
           sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
           action='signup'
-          verifyCallback={this.verifyCallback}
+          verifyCallback={verifyCallback}
         />
         <label>Full Name</label>
         <Field name='displayName' type='text' component={TextInput} />
@@ -126,11 +113,13 @@ export class RegisterForm extends Component {
           </div>
         </div>
       </Form>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default connect(
-  mapState,
+  null,
   actions
-)(reduxForm({ form: 'registerForm', validate })(RegisterForm));
+)(
+  reduxForm({ form: 'registerForm', validate, initialValues: {} })(RegisterForm)
+);

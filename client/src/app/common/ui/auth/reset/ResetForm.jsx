@@ -5,7 +5,7 @@ import { ReCaptcha } from 'react-recaptcha-v3';
 import { Form, Button, Label } from 'semantic-ui-react';
 import { combineValidators, isRequired } from 'revalidate';
 import { Field, reduxForm } from 'redux-form';
-import { updatePassword } from '../AuthActions';
+import { updatePassword, setRecaptchaToken } from '../AuthActions';
 import TextInput from '../../form/TextInput';
 import HiddenInput from '../../form/HiddenInput';
 
@@ -21,7 +21,8 @@ const mapState = (state, ownProps) => {
 };
 
 const actions = {
-  updatePassword
+  updatePassword,
+  setRecaptchaToken
 };
 
 const validate = combineValidators({
@@ -31,15 +32,29 @@ const validate = combineValidators({
 
 export class ResetForm extends Component {
   verifyCallback = recaptchaToken => {
-    // console.log(recaptchaToken, '<= your recaptcha token');
+    this.props.setRecaptchaToken(recaptchaToken);
   };
 
   render() {
-    const { loading, loadingName, updatePassword, handleSubmit, error } = this.props;
+    const {
+      loading,
+      loadingName,
+      updatePassword,
+      handleSubmit,
+      error
+    } = this.props;
     return (
-      <Form className='register-form' onSubmit={handleSubmit(updatePassword)} autoComplete='off'>
+      <Form
+        className='register-form'
+        onSubmit={handleSubmit(updatePassword)}
+        autoComplete='off'
+      >
         <Field name='token' component={HiddenInput} />
-        <ReCaptcha sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M' action='resetPasswordRequest' verifyCallback={this.verifyCallback} />
+        <ReCaptcha
+          sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
+          action='resetPasswordRequest'
+          verifyCallback={this.verifyCallback}
+        />
         <label>New Password</label>
         <Field name='newPassword' component={TextInput} type='text' />
         <label>Confirm Password</label>
@@ -49,10 +64,19 @@ export class ResetForm extends Component {
             {error}
           </Label>
         )}
-        <Button color='green' loading={loadingName === 'update-password' && loading} content='Reset Password' />
+        <Button
+          color='green'
+          loading={loadingName === 'update-password' && loading}
+          content='Reset Password'
+        />
       </Form>
     );
   }
 }
 
-export default withRouter(connect(mapState, actions)(reduxForm({ form: 'resetPasswordForm', validate })(ResetForm)));
+export default withRouter(
+  connect(
+    mapState,
+    actions
+  )(reduxForm({ form: 'resetPasswordForm', validate })(ResetForm))
+);
