@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-import RegisterForm from '../auth/register/RegisterForm';
+import RegisterOrganizationForm from '../auth/register/RegisterOrganizationForm';
 import { closeModal } from './ModalActions';
 
 const mapState = state => ({
@@ -37,7 +37,7 @@ class RegisterModal extends Component {
         <Modal.Header>Sign Up for SPEDxchange!</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <RegisterForm />
+            <RegisterOrganizationForm />
           </Modal.Description>
         </Modal.Content>
       </Modal>
