@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ReCaptcha } from 'react-recaptcha-v3';
-import { combineValidators, isRequired } from 'revalidate';
-import { Form, Button } from 'semantic-ui-react';
-import { Field, reduxForm } from 'redux-form';
-import { registerUser, setRecaptchaToken } from '../AuthActions';
-import TextInput from '../../form/TextInput';
 
-const mapState = state => ({
+const mapStateToProps = state => ({
   loading: state.async.loading,
   loadingName: state.async.elementName,
-  userType: state.auth.userType
+  identity: state.auth.identity
 });
 
-const actions = {
-  registerUser,
-  setRecaptchaToken
-};
+const mapDispatchToProps = {};
+
+const isValidEmail = createValidator(
+  message => value => {
+    if (
+      value &&
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(value)
+    ) {
+      return message;
+    }
+  },
+  'Invalid email address'
+);
 
 const validate = combineValidators({
-  name: isRequired({ message: 'Name is required' })
+  displayName: isRequired({ message: 'Your Name is required' }),
+  email: composeValidators(isRequired({ message: 'Email is required' }), isValidEmail({ message: 'Invalid Email' }))(),
+  password: composeValidators(
+    isRequired({ message: 'Password is required' }),
+    hasLengthGreaterThan(7)({
+      message: 'Password must be 8 characters or more'
+    })
+  )()
 });
 
-export class RegisterOrganizationForm extends Component {
+export class RegisterPage extends Component {
   onFormSubmit = values => {
     console.log('values: ', values);
   };
@@ -32,8 +42,8 @@ export class RegisterOrganizationForm extends Component {
   };
 
   render() {
-    const { userType, handleSubmit, loading, loadingName } = this.props;
-    if (userType)
+    const { identity, handleSubmit, loading, loadingName } = this.props;
+    if (!identity)
       return (
         <div>
           <h3>Tell Us About Yourself</h3>
@@ -83,4 +93,4 @@ export class RegisterOrganizationForm extends Component {
   }
 }
 
-export default connect(mapState, actions)(reduxForm({ form: 'registerOrganizationForm', validate })(RegisterOrganizationForm));
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'registerForm', validate })(RegisterPage));

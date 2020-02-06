@@ -13,9 +13,8 @@ const AuthMenu = ({ signOut, onNav, profile }) => {
       <Image avatar spaced='right' src={profile.photoURL || '/assets/img/user.png'} />
       <Dropdown pointing='top right' text={name}>
         <Dropdown.Menu>
-          <Dropdown.Item text='Profile' icon='user' onClick={() => onNav('/ask')} />
-          <Dropdown.Item text='Dashboard' icon='dashboard' onClick={() => onNav('/ask')} />
-          <Dropdown.Item text='Notifications' icon='bell' onClick={() => onNav('/ask')} />
+          <Dropdown.Item text='Profile' icon='user' onClick={() => onNav('/profile')} />
+          <Dropdown.Item text='Dashboard' icon='dashboard' onClick={() => onNav('/dashboard')} />
           <Dropdown.Divider />
           <Dropdown.Item text='Ask Question' icon='plus' onClick={() => onNav('/ask')} />
           <Dropdown.Divider />
