@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ReCaptcha } from 'react-recaptcha-v3';
+import { Form, Button, Label } from 'semantic-ui-react';
+import { Field, reduxForm } from 'redux-form';
+import {
+  combineValidators,
+  isRequired,
+  hasLengthGreaterThan,
+  composeValidators,
+  createValidator
+} from 'revalidate';
+import { registerUser, setRecaptchaToken } from '../AuthActions';
+import TextInput from '../../form/TextInput';
 
 const mapStateToProps = state => ({
   loading: state.async.loading,
   loadingName: state.async.elementName,
-  identity: state.auth.identity
+  registerStep: state.auth.registerStep
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { registerUser, setRecaptchaToken };
 
 const isValidEmail = createValidator(
   message => value => {
     if (
       value &&
-      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(value)
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(
+        value
+      )
     ) {
       return message;
     }
@@ -23,7 +37,10 @@ const isValidEmail = createValidator(
 
 const validate = combineValidators({
   displayName: isRequired({ message: 'Your Name is required' }),
-  email: composeValidators(isRequired({ message: 'Email is required' }), isValidEmail({ message: 'Invalid Email' }))(),
+  email: composeValidators(
+    isRequired({ message: 'Email is required' }),
+    isValidEmail({ message: 'Invalid Email' })
+  )(),
   password: composeValidators(
     isRequired({ message: 'Password is required' }),
     hasLengthGreaterThan(7)({
@@ -52,8 +69,17 @@ export class RegisterPage extends Component {
         </div>
       );
     return (
-      <Form className='form-container' onSubmit={handleSubmit(this.onFormSubmit)} size='mini' autoComplete='off'>
-        <ReCaptcha sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M' action='create_organization' verifyCallback={this.verifyCallback} />
+      <Form
+        className='form-container'
+        onSubmit={handleSubmit(this.onFormSubmit)}
+        size='mini'
+        autoComplete='off'
+      >
+        <ReCaptcha
+          sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
+          action='create_organization'
+          verifyCallback={this.verifyCallback}
+        />
         <label>Full Name</label>
         <Field name='displayName' type='text' component={TextInput} />
         <label>Email</label>
@@ -86,11 +112,18 @@ export class RegisterPage extends Component {
           <Field name='phone' component={TextInput} type='text' />
         </div>
         <div className='pt-2'>
-          <Button color='green' loading={loadingName === 'create-organization' && loading} content={'Create Company'} />
+          <Button
+            color='green'
+            loading={loadingName === 'create-organization' && loading}
+            content={'Create Company'}
+          />
         </div>
       </Form>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'registerForm', validate })(RegisterPage));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(reduxForm({ form: 'registerForm', validate })(RegisterPage));
