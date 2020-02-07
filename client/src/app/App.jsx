@@ -32,6 +32,8 @@ import ProfilePage from './feature/profile/ProfilePage';
 import Admin from './feature/admin/Admin';
 import AdminJobForm from './feature/admin/component/jobs/AdminJobForm';
 
+import RegisterPage from './feature/login/RegisterPage';
+
 // import AccountForm from './feature/account/component/AccountForm';
 // import CheckoutStore from './feature/testarea/CheckoutStore';
 // import SelectPlan from './feature/testarea/SelectPlan';
@@ -112,6 +114,7 @@ class App extends Component {
                     <Route exact path='/testform' component={TestForms} />
                     <Route exact path='/siteform' component={SiteForms} />
                     <Route exact path='/checkout' component={PlanSelector} />
+                    <Route exact path='/register' component={RegisterPage} />
                     <Route exact path='/admin' component={UserIsAdmin(Admin)} />
                     <Route path='/admin/job/:id' component={UserIsAdmin(AdminJobForm)} />
                   </Switch>

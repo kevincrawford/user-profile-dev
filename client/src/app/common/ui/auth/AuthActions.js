@@ -59,6 +59,46 @@ export const registerUser = user => {
   };
 };
 
+// Register User
+export const register2 = user => {
+  return async dispatch => {
+    const orgLoca = {};
+    const orgData = {};
+    const userData = {
+      displayName: user.displayName.toLowerCase().trim(),
+      email: user.email.toLowerCase().trim(),
+      password: user.password
+    };
+  
+  
+    if(user.isEmployer) {
+      orgData.name = user.organization;
+      orgData.website = user.website;
+
+      orgLoca.street = user.street;
+      orgLoca.city = user.city;
+      orgLoca.state = user.state;
+      orgLoca.zip = user.zip;
+      orgLoca.phone = user.phone;
+    }
+
+    const orgBody = JSON.stringify(orgData);
+    const body = JSON.stringify(userData);
+    try {
+      const organization = await axios.post('/api/users', body, header)
+      const userToken = await axios.post('/api/users', body, header);
+      dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
+      await dispatch(loadUser());
+      dispatch(closeModal());
+      dispatch(welcomeUser());
+    } catch (error) {
+      throw new SubmissionError({
+        _error: error.message
+      });
+    }
+  };
+};
+
 export const transformUserInfo = data => {
   return {
     firstname: data.firstName,
