@@ -22,13 +22,16 @@
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     button {
       height: 40px;
-      width: 62px;
+      width: 70px;
       background: rgba(255, 255, 255, 0);
       border: none;
       border-left: 1px solid rgba(255, 255, 255, 0.1);
       color: rgba(255, 255, 255, 0.75);
       font-size: 0.86rem;
       font-weight: 500;
+      &.post-job {
+        width: 90px;
+      }
       &:hover {
         background: rgba(255, 255, 255, 0.1);
         color: rgba(255, 255, 255, 1);
@@ -102,11 +105,11 @@
               top: 15px;
               right: 14px;
               position: absolute;
-              font-family: "Icons";
+              font-family: 'Icons';
               font-style: normal;
               font-weight: 500;
               font-size: 1.05em;
-              content: "\f007";
+              content: '\f007';
               color: rgba(255, 255, 255, 0.75);
             }
             &:hover {
@@ -142,7 +145,7 @@
     }
   }
   &:after {
-    content: "";
+    content: '';
     display: block;
     height: 40px;
     width: calc((100% - 1125px) / 2);

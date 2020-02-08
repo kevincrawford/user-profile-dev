@@ -30,6 +30,10 @@ class NavBar extends Component {
     this.props.openModal('LoginModal');
   };
 
+  handlePostJob = () => {
+    this.props.openModal('RegisterModal');
+  };
+
   handleSignUp = () => {
     this.props.openModal('RegisterModal');
   };
@@ -56,14 +60,22 @@ class NavBar extends Component {
             <img src={logo} alt='SPEDxchange' />
           </Link>
           <div className='flex-box grow nav-content'>
+            {authenticated ? (
+              <AuthMenu
+                profile={auth.currentUser}
+                onNav={this.handleMenuNavigation}
+                signOut={this.handleSignOut}
+              />
+            ) : (
+              <GuestMenu
+                postJob={this.handlePostJob}
+                login={this.handleLogin}
+                register={this.handleSignUp}
+              />
+            )}
             <button className='square' onClick={this.props.toggleSearchBar}>
               <Icon name='search' />
             </button>
-            {authenticated ? (
-              <AuthMenu profile={auth.currentUser} onNav={this.handleMenuNavigation} signOut={this.handleSignOut} />
-            ) : (
-              <GuestMenu login={this.handleLogin} register={this.handleSignUp} />
-            )}
             <button className='square mobile' onClick={this.toggleNav}>
               <Icon name='bars' />
             </button>

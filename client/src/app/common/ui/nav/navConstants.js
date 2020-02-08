@@ -2,6 +2,7 @@ export const ACTIVATE_NAV_ITEM = 'UPDATE_ACTIVE_NAV_ITEM';
 export const TOGGLE_MOBILE_NAV = 'TOGGLE_MOBILE_NAV';
 export const TOGGLE_SEARCH_BAR = 'TOGGLE_SEARCH_BAR';
 export const TOGGLE_SIDE_BAR = 'TOGGLE_SIDE_BAR';
+export const SET_RETURN_URL = 'SET_RETURN_URL';
 
 export const NAV_ITEMS = {
   news: {

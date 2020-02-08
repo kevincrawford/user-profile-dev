@@ -1,7 +1,20 @@
 import axios from 'axios';
 import { SubmissionError } from 'redux-form';
-import { ASYNC_ACTION_START, ASYNC_ACTION_FINISH, ASYNC_ACTION_ERROR } from '../../actions/async/asyncConstants';
-import { USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGOUT, CLEAR_PROFILE, TOGGLE_FORGOT_PASSWORD, FETCH_SCHOLARSHIP_APPLICATION, SET_RECAPTCHA_TOKEN } from './AuthContantants';
+import {
+  ASYNC_ACTION_START,
+  ASYNC_ACTION_FINISH,
+  ASYNC_ACTION_ERROR
+} from '../../actions/async/asyncConstants';
+import {
+  USER_LOADED,
+  AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGOUT,
+  CLEAR_PROFILE,
+  TOGGLE_FORGOT_PASSWORD,
+  FETCH_SCHOLARSHIP_APPLICATION,
+  SET_RECAPTCHA_TOKEN
+} from './AuthContantants';
 import { HEADER_JSON } from '../../constants/apiConstants';
 import { closeModal } from '../../ui/modal/ModalActions';
 import { toastr } from 'react-redux-toastr';
@@ -62,30 +75,22 @@ export const registerUser = user => {
 // Register User
 export const register2 = user => {
   return async dispatch => {
-    const orgLoca = {};
-    const orgData = {};
     const userData = {
+      isEmployer: user.isEmployer,
       displayName: user.displayName.toLowerCase().trim(),
       email: user.email.toLowerCase().trim(),
-      password: user.password
+      password: user.password,
+      organizationName: user.organization.trim(),
+      street: user.street.trim(),
+      city: user.city.trim(),
+      state: user.state.trim(),
+      zip: user.zip.trim(),
+      phone: user.phone.trim(),
+      website: user.website.trim()
     };
-  
-  
-    if(user.isEmployer) {
-      orgData.name = user.organization;
-      orgData.website = user.website;
 
-      orgLoca.street = user.street;
-      orgLoca.city = user.city;
-      orgLoca.state = user.state;
-      orgLoca.zip = user.zip;
-      orgLoca.phone = user.phone;
-    }
-
-    const orgBody = JSON.stringify(orgData);
     const body = JSON.stringify(userData);
     try {
-      const organization = await axios.post('/api/users', body, header)
       const userToken = await axios.post('/api/users', body, header);
       dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
       await dispatch(loadUser());
@@ -115,7 +120,6 @@ export const welcomeUser = () => {
       const crmInfo = transformUserInfo(userInfo.data);
       const body = JSON.stringify(crmInfo);
       await axios.post('/api/crm/contact', body, header);
-      // console.log('sending emails:');
     } catch (error) {
       console.error(error.message);
     }
@@ -225,7 +229,11 @@ export const fetchScholarshipApplication = scholarshipName => {
     try {
       dispatch({ type: ASYNC_ACTION_START, payload: 'fetch-scholarship' });
       const body = JSON.stringify({ scholarshipName: scholarshipName });
-      const application = await axios.post('/api/auth/scholarship-application', body, header);
+      const application = await axios.post(
+        '/api/auth/scholarship-application',
+        body,
+        header
+      );
       dispatch({ type: ASYNC_ACTION_FINISH });
       if (application.data.essay) {
         dispatch({

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-import RegisterOrganizationForm from '../auth/register/RegisterOrganizationForm';
+import RegisterForm from '../auth/register/RegisterForm';
 import { closeModal } from './ModalActions';
 
 const mapState = state => ({
@@ -24,7 +24,10 @@ class RegisterModal extends Component {
   }
 
   handleCloseModal = () => {
-    if (this.props.currentModal.modalProps && this.props.currentModal.modalProps.fromAuth) {
+    if (
+      this.props.currentModal.modalProps &&
+      this.props.currentModal.modalProps.fromAuth
+    ) {
       this.props.history.goBack();
     }
     this.props.closeModal();
@@ -37,7 +40,7 @@ class RegisterModal extends Component {
         <Modal.Header>Sign Up for SPEDxchange!</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <RegisterOrganizationForm />
+            <RegisterForm />
           </Modal.Description>
         </Modal.Content>
       </Modal>

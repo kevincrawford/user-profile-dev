@@ -55,9 +55,9 @@ router.post('/', async (req, res) => {
         }
       }
     } else {
-      const newRole = await Role.findOne({ type: 'reader' });
-      if (newRole) {
-        user.roles.push(newRole._id);
+      const reader = await Role.findOne({ type: 'reader' });
+      if (reader) {
+        user.roles.push(reader._id);
       }
     }
     await user.save();

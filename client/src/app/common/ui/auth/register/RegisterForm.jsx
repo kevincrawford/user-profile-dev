@@ -104,7 +104,7 @@ export class RegisterForm extends Component {
           </div>
           <div className='grow small pl-3'>
             <p>
-              By clicking "Sign Up" I agree to the{' '}
+              By clicking "Sign Up" you agree to the SPEDxchange{' '}
               <a
                 href='https://app.termly.io/document/terms-of-use-for-website/c2c6e3f1-ffcf-4ff2-ad92-f67aba4f6f53'
                 target='_blank'
@@ -113,7 +113,7 @@ export class RegisterForm extends Component {
                 {' '}
                 Terms of Use
               </a>{' '}
-              and acknowledge I have read the{' '}
+              and{' '}
               <a
                 href='https://app.termly.io/document/privacy-policy/9e6f1ec2-6b4e-4bce-944c-dc3fa68768c5'
                 target='_blank'
