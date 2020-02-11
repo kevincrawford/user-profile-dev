@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const fetchJobs = (state, payload) => {
-  console.log('fetchJobs: jobs: ', payload);
   return {
     ...state,
     jobs: payload || []

@@ -113,13 +113,13 @@ const validate = combineValidators({
   website: isRequired({ message: 'Company website is required' })
 });
 
-const mapStateToProps = state => ({
+const mapState = state => ({
   auth: state.auth
 });
 
-const mapDispatchToProps = {
+const actions = {
   setRecaptchaToken,
   registerOrg
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'registerOrgForm', validate })(AdminLanding));
+export default connect(mapState, actions)(reduxForm({ form: 'registerOrgForm', validate })(AdminLanding));

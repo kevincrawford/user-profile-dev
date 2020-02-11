@@ -15,11 +15,6 @@ const mapState = state => ({
 const actions = { closeModal, reset };
 
 class LoginModal extends Component {
-  componentDidMount() {
-    console.log('loginModal: path: ', this.props.location.pathname);
-    console.log('fromAuth: ', this.props.currentModal.modalProps);
-  }
-
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this.onRouteChanged();

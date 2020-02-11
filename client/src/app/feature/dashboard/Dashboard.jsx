@@ -7,8 +7,8 @@ export class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapState = state => ({});
 
-const mapDispatchToProps = {};
+const actions = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapState, actions)(Dashboard);

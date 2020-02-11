@@ -7,8 +7,8 @@ export class ProfilePage extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapState = state => ({});
 
-const mapDispatchToProps = {};
+const actions = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
+export default connect(mapState, actions)(ProfilePage);

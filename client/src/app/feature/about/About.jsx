@@ -29,8 +29,8 @@ export class About extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapState = state => ({});
 
-const mapDispatchToProps = { openModal };
+const actions = { openModal };
 
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(mapState, actions)(About);

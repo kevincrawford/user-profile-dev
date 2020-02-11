@@ -42,7 +42,6 @@ const loadUser = (state, payload) => {
 };
 
 const loginSuccess = (state, payload) => {
-  console.log('loginSuccess: ', payload);
   localStorage.setItem('token', payload.token);
   return {
     ...state,

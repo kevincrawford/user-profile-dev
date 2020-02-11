@@ -22,12 +22,12 @@ const validate = combineValidators({
 export class AdminLocationForm extends Component {
   componentDidMount() {
     if (this.props.match.params !== 'new') {
-      console.log('lookup job');
+      // console.log('lookup job');
     }
   }
 
   onFormSubmit = values => {
-    console.log('values: ', values);
+    // console.log('values: ', values);
   };
 
   render() {

@@ -11,7 +11,6 @@ export const UserIsAuthenticated = connectedReduxRedirect({
   redirectPath: '/ask',
   authenticatedSelector: state => (state.auth.loading ? true : state.auth.authenticated),
   redirectAction: newLoc => dispatch => {
-    console.log('UserIsAuthenticated: newLoc: ', newLoc);
     dispatch(openModal('UnauthModal'));
   }
 });
@@ -22,7 +21,6 @@ export const UserIsAdmin = connectedReduxRedirect({
   redirectPath: '/',
   authenticatedSelector: state => (state.auth.loading ? true : state.auth.authenticated && state.auth.currentUser && state.auth.currentUser.roles.findIndex(isAdmin) > -1),
   redirectAction: newLoc => dispatch => {
-    console.log('UserIsAdmin: newLoc: ', newLoc);
     dispatch(openModal('UnauthModal'));
   }
 });

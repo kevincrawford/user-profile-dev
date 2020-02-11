@@ -76,12 +76,12 @@ export class AppFooter extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapState = state => ({
   auth: state.auth
 });
 
-const mapDispatchToProps = {
+const actions = {
   openModal
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppFooter);
+export default connect(mapState, actions)(AppFooter);

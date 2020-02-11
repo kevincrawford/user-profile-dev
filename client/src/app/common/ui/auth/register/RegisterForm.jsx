@@ -48,7 +48,7 @@ const validate = combineValidators({
 
 export class RegisterForm extends Component {
   componentDidMount() {
-    console.log('RegisterForm: props: ', this.props);
+    // console.log('RegisterForm: props: ', this.props);
     if (this.props.config && this.props.config.postJobs) {
       this.props.change('isEmployer', true);
     }

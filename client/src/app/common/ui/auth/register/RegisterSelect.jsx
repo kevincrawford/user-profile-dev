@@ -18,8 +18,8 @@ export class RegisterSelect extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapState = state => ({});
 
-const mapDispatchToProps = {};
+const actions = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterSelect);
+export default connect(mapState, actions)(RegisterSelect);

@@ -33,13 +33,6 @@ import Admin from './feature/admin/Admin';
 import AdminJobForm from './feature/admin/component/jobs/AdminJobForm';
 import AdminLanding from './feature/admin/AdminLanding';
 
-// import AccountForm from './feature/account/component/AccountForm';
-// import CheckoutStore from './feature/testarea/CheckoutStore';
-// import SelectPlan from './feature/testarea/SelectPlan';
-import PlanSelector from './feature/testarea/PlanSelector';
-import TestComponent from './feature/testarea/TestComponent';
-import TestForms from './feature/testarea/TestForms';
-import SiteForms from './feature/testarea/SiteForms';
 import Dashboard from './feature/dashboard/Dashboard';
 import ScholarshipReview from './feature/dashboard/component/ScholarshipReview';
 
@@ -109,10 +102,6 @@ class App extends Component {
                     <Route path='/profile' component={UserIsAuthenticated(ProfilePage)} />
                     <Route exact path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
                     <Route path='/dashboard/scholarship-review/:scholarshipName' component={UserIsAuthenticated(ScholarshipReview)} />
-                    <Route exact path='/testarea' component={TestComponent} />
-                    <Route exact path='/testform' component={TestForms} />
-                    <Route exact path='/siteform' component={SiteForms} />
-                    <Route exact path='/checkout' component={PlanSelector} />
                     <Route exact path='/postjob' component={AdminLanding} />
                     <Route exact path='/admin' component={UserIsAdmin(Admin)} />
                     <Route path='/admin/job/:id' component={UserIsAdmin(AdminJobForm)} />

@@ -24,7 +24,7 @@ const validate = combineValidators({
 
 export class RegisterOrganizationForm extends Component {
   onFormSubmit = values => {
-    console.log('values: ', values);
+    // console.log('values: ', values);
   };
 
   verifyCallback = recaptchaToken => {

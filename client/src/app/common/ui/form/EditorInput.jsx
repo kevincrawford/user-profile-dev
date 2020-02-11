@@ -4,7 +4,7 @@ import { Form, Label } from 'semantic-ui-react';
 
 class EditorInput extends Component {
   constructor(props) {
-    console.log('EditorInput: props: ', props);
+    // console.log('EditorInput: props: ', props);
     super(props);
     this.state = { content: '' };
     this.handleEditorChange = this.handleEditorChange.bind(this);

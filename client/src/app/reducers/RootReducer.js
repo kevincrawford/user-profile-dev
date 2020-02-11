@@ -10,7 +10,6 @@ import AsyncReducer from '../common/actions/async/asyncReducer';
 import TagInput from '../common/ui/form/actions/tagInputReducer';
 import CategoryReducer from '../common/actions/category/categoryReducer';
 import QuestionReducer from '../feature/question/questionReducer';
-import TestReducer from '../feature/testarea/TestReducer';
 import NewsReducer from '../feature/news/newsReducer';
 import QuestionFormReducer from '../feature/question/questionForm/actions/questionFormReducer';
 import JobsReducer from '../feature/jobs/actions/jobsReducer';
@@ -26,7 +25,6 @@ const rootReducer = combineReducers({
   form: FormReducer,
   nav: NavReducer,
   search: SearchReducer,
-  test: TestReducer,
   questions: QuestionReducer,
   news: NewsReducer,
   category: CategoryReducer,

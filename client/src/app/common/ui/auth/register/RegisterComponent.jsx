@@ -7,8 +7,8 @@ export class RegisterComponent extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapState = state => ({});
 
-const mapDispatchToProps = {};
+const actions = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterComponent);
+export default connect(mapState, actions)(RegisterComponent);

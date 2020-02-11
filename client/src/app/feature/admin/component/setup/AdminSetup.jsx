@@ -10,7 +10,7 @@ import TextInput from '../../../../common/ui/form/TextInput';
 
 export class AdminSetup extends Component {
   onFormSubmit = values => {
-    console.log('values: ', values);
+    // console.log('values: ', values);
   };
 
   verifyCallback = recaptchaToken => {
@@ -67,12 +67,12 @@ const validate = combineValidators({
   website: isRequired({ message: 'Company website is required' })
 });
 
-const mapStateToProps = state => ({
+const mapState = state => ({
   auth: state.auth
 });
 
-const mapDispatchToProps = {
+const actions = {
   setRecaptchaToken
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ form: 'registerOrgForm', validate })(AdminSetup));
+export default connect(mapState, actions)(reduxForm({ form: 'registerOrgForm', validate })(AdminSetup));
