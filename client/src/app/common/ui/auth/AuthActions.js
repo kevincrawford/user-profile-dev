@@ -1,10 +1,6 @@
 import axios from 'axios';
-import { SubmissionError } from 'redux-form';
-import {
-  ASYNC_ACTION_START,
-  ASYNC_ACTION_FINISH,
-  ASYNC_ACTION_ERROR
-} from '../../actions/async/asyncConstants';
+import { reset, SubmissionError } from 'redux-form';
+import { ASYNC_ACTION_START, ASYNC_ACTION_FINISH, ASYNC_ACTION_ERROR } from '../../actions/async/asyncConstants';
 import {
   USER_LOADED,
   AUTH_ERROR,
@@ -13,7 +9,9 @@ import {
   CLEAR_PROFILE,
   TOGGLE_FORGOT_PASSWORD,
   FETCH_SCHOLARSHIP_APPLICATION,
-  SET_RECAPTCHA_TOKEN
+  SET_RECAPTCHA_TOKEN,
+  SET_REGISTER_STEP,
+  SET_EMPLOYER
 } from './AuthContantants';
 import { HEADER_JSON } from '../../constants/apiConstants';
 import { closeModal } from '../../ui/modal/ModalActions';
@@ -48,13 +46,13 @@ export const loadUser = () => {
 };
 
 // Register User
-export const registerUser = user => {
+export const registerUser = (user, history) => {
   return async dispatch => {
     const userData = {
       displayName: user.displayName.toLowerCase(),
       email: user.email.toLowerCase(),
       password: user.password,
-      roles: user.roles
+      isEmployer: user.isEmployer
     };
 
     const body = JSON.stringify(userData);
@@ -63,42 +61,14 @@ export const registerUser = user => {
       dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
       await dispatch(loadUser());
       dispatch(closeModal());
+      dispatch(reset('registerForm'));
       dispatch(welcomeUser());
+      if (user.isEmployer) {
+        history.push('/admin');
+      }
     } catch (error) {
       throw new SubmissionError({
-        _error: error.message
-      });
-    }
-  };
-};
-
-// Register User
-export const register2 = user => {
-  return async dispatch => {
-    const userData = {
-      isEmployer: user.isEmployer,
-      displayName: user.displayName.toLowerCase().trim(),
-      email: user.email.toLowerCase().trim(),
-      password: user.password,
-      organizationName: user.organization.trim(),
-      street: user.street.trim(),
-      city: user.city.trim(),
-      state: user.state.trim(),
-      zip: user.zip.trim(),
-      phone: user.phone.trim(),
-      website: user.website.trim()
-    };
-
-    const body = JSON.stringify(userData);
-    try {
-      const userToken = await axios.post('/api/users', body, header);
-      dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
-      await dispatch(loadUser());
-      dispatch(closeModal());
-      dispatch(welcomeUser());
-    } catch (error) {
-      throw new SubmissionError({
-        _error: error.message
+        _error: 'Sign Up Failed'
       });
     }
   };
@@ -138,6 +108,7 @@ export const login = creds => {
       });
       await dispatch(loadUser());
       dispatch(closeModal());
+      dispatch(reset('loginForm'));
     } catch (error) {
       throw new SubmissionError({
         _error: 'Login Failed'
@@ -229,11 +200,7 @@ export const fetchScholarshipApplication = scholarshipName => {
     try {
       dispatch({ type: ASYNC_ACTION_START, payload: 'fetch-scholarship' });
       const body = JSON.stringify({ scholarshipName: scholarshipName });
-      const application = await axios.post(
-        '/api/auth/scholarship-application',
-        body,
-        header
-      );
+      const application = await axios.post('/api/auth/scholarship-application', body, header);
       dispatch({ type: ASYNC_ACTION_FINISH });
       if (application.data.essay) {
         dispatch({
@@ -254,5 +221,19 @@ export const fetchScholarshipApplication = scholarshipName => {
 export const setRecaptchaToken = token => {
   return dispatch => {
     dispatch({ type: SET_RECAPTCHA_TOKEN, payload: token });
+  };
+};
+
+// Set Register Step
+export const setRegisterStep = step => {
+  return dispatch => {
+    dispatch({ type: SET_REGISTER_STEP, payload: step });
+  };
+};
+
+// Set Employer State
+export const setIsEmployer = isEmployer => {
+  return dispatch => {
+    dispatch({ type: SET_EMPLOYER, payload: isEmployer });
   };
 };

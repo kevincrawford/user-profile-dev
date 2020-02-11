@@ -1,10 +1,10 @@
 import React from 'react';
-import { Form } from 'semantic-ui-react';
+import { Checkbox, Form } from 'semantic-ui-react';
 
-const CheckBoxInput = ({ input }) => {
+const CheckBoxInput = ({ input, label }) => {
   return (
     <Form.Field>
-      <input {...input} type='checkbox' />
+      <Checkbox label={label} checked={input.value ? true : false} onChange={(e, { checked }) => input.onChange(checked)} />
     </Form.Field>
   );
 };

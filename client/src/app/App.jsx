@@ -32,7 +32,8 @@ import ProfilePage from './feature/profile/ProfilePage';
 import Admin from './feature/admin/Admin';
 import AdminJobForm from './feature/admin/component/jobs/AdminJobForm';
 
-import RegisterPage from './feature/login/RegisterPage';
+import RegisterPage from './feature/auth/RegisterPage';
+import LoginPage from './feature/auth/LoginPage';
 
 // import AccountForm from './feature/account/component/AccountForm';
 // import CheckoutStore from './feature/testarea/CheckoutStore';
@@ -91,77 +92,33 @@ class App extends Component {
               <Container className={`main ${pathName}`}>
                 <div className='content'>
                   <Switch key={this.props.location.key}>
-                    <Route
-                      exact
-                      path='/questions'
-                      component={QuestionDashboard}
-                    />
-                    <Route
-                      path='/questions/:uid/:slug'
-                      component={QuestionDetail}
-                    />
-                    <Route
-                      path='/categories'
-                      component={QuestionCategoryPage}
-                    />
-                    <Route
-                      path={['/ask', '/ask/:id', '/ask/:uid/:slug']}
-                      component={UserIsAuthenticated(QuestionForm)}
-                    />
-                    <Route
-                      exact
-                      path='/user'
-                      component={UserIsAuthenticated(UserDashboard)}
-                    />
-                    <Route
-                      path='/profile/:id'
-                      component={UserIsAuthenticated(UserDetail)}
-                    />
-                    <Route
-                      exact
-                      path='/settings'
-                      component={UserIsAuthenticated(SettingsDashboard)}
-                    />
+                    <Route exact path='/questions' component={QuestionDashboard} />
+                    <Route path='/questions/:uid/:slug' component={QuestionDetail} />
+                    <Route path='/categories' component={QuestionCategoryPage} />
+                    <Route path={['/ask', '/ask/:id', '/ask/:uid/:slug']} component={UserIsAuthenticated(QuestionForm)} />
+                    <Route exact path='/user' component={UserIsAuthenticated(UserDashboard)} />
+                    <Route path='/profile/:id' component={UserIsAuthenticated(UserDetail)} />
+                    <Route exact path='/settings' component={UserIsAuthenticated(SettingsDashboard)} />
                     <Route exact path='/news' component={NewsMain} />
                     <Route path='/news/:uid/:slug' component={NewsArticle} />
-                    <Route
-                      exact
-                      path='/scholarships'
-                      component={Scholarships}
-                    />
-                    <Route
-                      exact
-                      path='/scholarships/teacher'
-                      component={ScholarshipTeacher}
-                    />
+                    <Route exact path='/scholarships' component={Scholarships} />
+                    <Route exact path='/scholarships/teacher' component={ScholarshipTeacher} />
                     <Route path='/resources' component={Resources} />
                     <Route path='/about' component={About} />
                     <Route path='/tags' component={Tags} />
                     <Route path='/people' component={People} />
                     <Route path='/jobs' component={Jobs} />
-                    <Route
-                      path='/profile'
-                      component={UserIsAuthenticated(ProfilePage)}
-                    />
-                    <Route
-                      exact
-                      path='/dashboard'
-                      component={UserIsAuthenticated(Dashboard)}
-                    />
-                    <Route
-                      path='/dashboard/scholarship-review/:scholarshipName'
-                      component={UserIsAuthenticated(ScholarshipReview)}
-                    />
+                    <Route path='/profile' component={UserIsAuthenticated(ProfilePage)} />
+                    <Route exact path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
+                    <Route path='/dashboard/scholarship-review/:scholarshipName' component={UserIsAuthenticated(ScholarshipReview)} />
                     <Route exact path='/testarea' component={TestComponent} />
                     <Route exact path='/testform' component={TestForms} />
                     <Route exact path='/siteform' component={SiteForms} />
                     <Route exact path='/checkout' component={PlanSelector} />
                     <Route exact path='/register' component={RegisterPage} />
+                    <Route exact path='/login' component={LoginPage} />
                     <Route exact path='/admin' component={UserIsAdmin(Admin)} />
-                    <Route
-                      path='/admin/job/:id'
-                      component={UserIsAdmin(AdminJobForm)}
-                    />
+                    <Route path='/admin/job/:id' component={UserIsAdmin(AdminJobForm)} />
                   </Switch>
                 </div>
               </Container>

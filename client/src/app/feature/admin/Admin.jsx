@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react';
+import { openModal } from '../../common/ui/modal/ModalActions';
 
 import AdminOverview from './component/overview/AdminOverview';
 import AdminJobList from './component/jobs/AdminJobList';
@@ -9,9 +10,15 @@ import AdminUserList from './component/users/AdminUserList';
 
 import './Admin.scss';
 
-const mapState = state => ({});
+const mapState = state => ({
+  loading: state.async.loading,
+  loadingName: state.async.loadingName,
+  auth: state.auth
+});
 
-const actions = {};
+const actions = {
+  openModal
+};
 
 const panes = [
   {
@@ -50,6 +57,10 @@ const panes = [
 
 export class Admin extends Component {
   render() {
+    const { auth } = this.props;
+    const authenticated = auth.authenticated && auth.currentUser.displayName;
+    // const isAdmin = auth.authenticated && auth.currentUser.organization;
+    if (!authenticated) return <>sign in</>;
     return (
       <div>
         <Tab menu={{ pointing: true }} panes={panes} />

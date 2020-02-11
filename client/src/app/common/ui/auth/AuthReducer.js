@@ -9,7 +9,9 @@ import {
   ACCOUNT_DELETED,
   TOGGLE_FORGOT_PASSWORD,
   FETCH_SCHOLARSHIP_APPLICATION,
-  SET_RECAPTCHA_TOKEN
+  SET_RECAPTCHA_TOKEN,
+  SET_REGISTER_STEP,
+  SET_EMPLOYER
 } from './AuthContantants';
 
 const initialState = {
@@ -18,6 +20,8 @@ const initialState = {
   loading: true,
   isPasswordForgot: false,
   isPasswordSent: false,
+  registerStep: 1,
+  isEmployer: false,
   currentUser: {},
   scholarshipApplication: {
     school: '',
@@ -38,6 +42,7 @@ const loadUser = (state, payload) => {
 };
 
 const loginSuccess = (state, payload) => {
+  console.log('loginSuccess: ', payload);
   localStorage.setItem('token', payload.token);
   return {
     ...state,
@@ -83,6 +88,20 @@ const setRecaptchaToken = (state, payload) => {
   };
 };
 
+const setRegisterStep = (state, payload) => {
+  return {
+    ...state,
+    registerStep: payload
+  };
+};
+
+const setIsEmployer = (state, payload) => {
+  return {
+    ...state,
+    isEmployer: payload
+  };
+};
+
 export default createReducer(initialState, {
   [USER_LOADED]: loadUser,
   [LOGIN_SUCCESS]: loginSuccess,
@@ -93,5 +112,7 @@ export default createReducer(initialState, {
   [ACCOUNT_DELETED]: logoutUser,
   [TOGGLE_FORGOT_PASSWORD]: toggleForgotPassword,
   [FETCH_SCHOLARSHIP_APPLICATION]: loadScholarshipApplication,
-  [SET_RECAPTCHA_TOKEN]: setRecaptchaToken
+  [SET_RECAPTCHA_TOKEN]: setRecaptchaToken,
+  [SET_REGISTER_STEP]: setRegisterStep,
+  [SET_EMPLOYER]: setIsEmployer
 });

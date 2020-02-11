@@ -31,7 +31,7 @@ class NavBar extends Component {
   };
 
   handlePostJob = () => {
-    this.props.openModal('RegisterModal');
+    this.props.history.push('/admin');
   };
 
   handleSignUp = () => {
@@ -61,17 +61,9 @@ class NavBar extends Component {
           </Link>
           <div className='flex-box grow nav-content'>
             {authenticated ? (
-              <AuthMenu
-                profile={auth.currentUser}
-                onNav={this.handleMenuNavigation}
-                signOut={this.handleSignOut}
-              />
+              <AuthMenu profile={auth.currentUser} onNav={this.handleMenuNavigation} signOut={this.handleSignOut} />
             ) : (
-              <GuestMenu
-                postJob={this.handlePostJob}
-                login={this.handleLogin}
-                register={this.handleSignUp}
-              />
+              <GuestMenu postJob={this.handlePostJob} login={this.handleLogin} register={this.handleSignUp} />
             )}
             <button className='square' onClick={this.props.toggleSearchBar}>
               <Icon name='search' />

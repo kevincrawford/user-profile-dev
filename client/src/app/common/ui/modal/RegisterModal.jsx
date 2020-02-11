@@ -24,10 +24,7 @@ class RegisterModal extends Component {
   }
 
   handleCloseModal = () => {
-    if (
-      this.props.currentModal.modalProps &&
-      this.props.currentModal.modalProps.fromAuth
-    ) {
+    if (this.props.currentModal.modalProps && this.props.currentModal.modalProps.fromAuth) {
       this.props.history.goBack();
     }
     this.props.closeModal();
@@ -36,7 +33,7 @@ class RegisterModal extends Component {
   render() {
     console.log('RegisterModal: props: ', this.props);
     return (
-      <Modal size='mini' open={true} onClose={this.handleCloseModal}>
+      <Modal size='small' history={this.props.history} open={true} onClose={this.handleCloseModal}>
         <Modal.Header>Sign Up for SPEDxchange!</Modal.Header>
         <Modal.Content>
           <Modal.Description>

@@ -1,6 +1,9 @@
 .form-container,
 .ui.form.form-container {
   max-width: 430px;
+  .ui.checkbox {
+    line-height: 20px;
+  }
   section {
     margin: 1.5rem 0;
   }

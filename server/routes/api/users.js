@@ -14,7 +14,8 @@ const Role = require('../../models/Role');
 // @access   Public
 router.post('/', async (req, res) => {
   try {
-    const { displayName, email, password, roles } = req.body;
+    const { displayName, email, password, isEmployer } = req.body;
+    console.log('req.body: ', req.body);
     let user = await User.findOne({ email });
 
     if (user) {
@@ -27,8 +28,13 @@ router.post('/', async (req, res) => {
       .split(' ');
     const firstName = names[0];
     const lastName = names.length > 1 ? names[names.length - 1] : '';
-
     const avatar = gravatar.url(email, { s: '200', r: 'pg', d: 'mp' });
+
+    let roles = ['reader'];
+    if (isEmployer) {
+      roles.push('client-user');
+    }
+    console.log('roles: ', roles);
 
     user = new User({
       displayName: displayName,
@@ -46,18 +52,10 @@ router.post('/', async (req, res) => {
 
     // Handle roles
     user.roles = [];
-    if (roles && roles.length > 0) {
-      let role;
-      for (role of roles) {
-        const existingRole = await Role.findOne({ type: role });
-        if (existingRole) {
-          user.roles.push(existingRole._id);
-        }
-      }
-    } else {
-      const reader = await Role.findOne({ type: 'reader' });
-      if (reader) {
-        user.roles.push(reader._id);
+    for (role of roles) {
+      const existingRole = await Role.findOne({ type: role });
+      if (existingRole) {
+        user.roles.push(existingRole._id);
       }
     }
     await user.save();

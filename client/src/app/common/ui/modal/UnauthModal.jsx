@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Modal, Button, Divider } from 'semantic-ui-react';
 import { openModal, closeModal } from './ModalActions';
 
+const mapState = state => ({});
+
 const actions = { openModal, closeModal };
 
 export class UnauthModal extends Component {
@@ -47,9 +49,4 @@ export class UnauthModal extends Component {
   }
 }
 
-export default withRouter(
-  connect(
-    null,
-    actions
-  )(UnauthModal)
-);
+export default withRouter(connect(mapState, actions)(UnauthModal));

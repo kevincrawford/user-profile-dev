@@ -1,12 +1,15 @@
 import { createReducer } from '../../common/util/ReducerUtil';
 import { FETCH_JOBS, SET_JOB, UPDATE_JOB, DELETE_JOB, JOB_LOADED, JOB_SAVED } from './AdminConstants';
 
-const initialState = {};
+const initialState = {
+  jobs: []
+};
 
 const fetchJobs = (state, payload) => {
+  console.log('fetchJobs: jobs: ', payload);
   return {
     ...state,
-    jobs: payload
+    jobs: payload || []
   };
 };
 
