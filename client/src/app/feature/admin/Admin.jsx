@@ -7,6 +7,7 @@ import AdminOverview from './component/overview/AdminOverview';
 import AdminJobList from './component/jobs/AdminJobList';
 import AdminLocationList from './component/locations/AdminLocationList';
 import AdminUserList from './component/users/AdminUserList';
+import AdminSetup from './component/setup/AdminSetup';
 
 import './Admin.scss';
 
@@ -58,9 +59,8 @@ const panes = [
 export class Admin extends Component {
   render() {
     const { auth } = this.props;
-    const authenticated = auth.authenticated && auth.currentUser.displayName;
-    // const isAdmin = auth.authenticated && auth.currentUser.organization;
-    if (!authenticated) return <>sign in</>;
+    const authenticated = auth.authenticated && auth.currentUser.organization;
+    if (!authenticated) return <AdminSetup />;
     return (
       <div>
         <Tab menu={{ pointing: true }} panes={panes} />

@@ -1,5 +1,5 @@
 import { createReducer } from '../../common/util/ReducerUtil';
-import { FETCH_JOBS, SET_JOB, UPDATE_JOB, DELETE_JOB, JOB_LOADED, JOB_SAVED } from './AdminConstants';
+import { FETCH_JOBS, JOB_LOADED, JOB_SAVED } from './AdminConstants';
 
 const initialState = {
   jobs: []

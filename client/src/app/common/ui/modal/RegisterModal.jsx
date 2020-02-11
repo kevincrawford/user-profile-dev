@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { reset } from 'redux-form';
 
 import RegisterForm from '../auth/register/RegisterForm';
 import { closeModal } from './ModalActions';
@@ -10,7 +11,7 @@ const mapState = state => ({
   currentModal: state.modals
 });
 
-const actions = { closeModal };
+const actions = { closeModal, reset };
 
 class RegisterModal extends Component {
   componentDidUpdate(prevProps) {
@@ -28,16 +29,16 @@ class RegisterModal extends Component {
       this.props.history.goBack();
     }
     this.props.closeModal();
+    this.props.reset('registerForm');
   };
 
   render() {
-    console.log('RegisterModal: props: ', this.props);
     return (
-      <Modal size='small' history={this.props.history} open={true} onClose={this.handleCloseModal}>
+      <Modal size='mini' open={true} onClose={this.handleCloseModal}>
         <Modal.Header>Sign Up for SPEDxchange!</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <RegisterForm />
+            <RegisterForm config={this.props.currentModal.modalProps} />
           </Modal.Description>
         </Modal.Content>
       </Modal>

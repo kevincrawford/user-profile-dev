@@ -9,9 +9,6 @@ const GuestMenu = ({ postJob, login, register }) => {
       <button className='guest' onClick={login}>
         Login
       </button>
-      <button className='guest' onClick={register}>
-        Sign Up
-      </button>
     </>
   );
 };

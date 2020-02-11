@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import { reset } from 'redux-form';
 
 import LoginForm from '../auth/login/LoginForm';
 import { closeModal } from './ModalActions';
@@ -11,11 +12,16 @@ const mapState = state => ({
   isPasswordForgot: state.auth.isPasswordForgot
 });
 
-const actions = { closeModal };
+const actions = { closeModal, reset };
 
 class LoginModal extends Component {
+  componentDidMount() {
+    console.log('loginModal: path: ', this.props.location.pathname);
+    console.log('fromAuth: ', this.props.currentModal.modalProps);
+  }
+
   componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
       this.onRouteChanged();
     }
   }
@@ -29,6 +35,7 @@ class LoginModal extends Component {
       this.props.history.goBack();
     }
     this.props.closeModal();
+    this.props.reset('loginForm');
   };
 
   render() {

@@ -18,8 +18,6 @@ import { closeModal } from '../../ui/modal/ModalActions';
 import { toastr } from 'react-redux-toastr';
 import setAuthToken from '../../util/setAuthToken';
 
-const header = HEADER_JSON;
-
 // Load User
 export const loadUser = () => {
   return async dispatch => {
@@ -57,7 +55,7 @@ export const registerUser = (user, history) => {
 
     const body = JSON.stringify(userData);
     try {
-      const userToken = await axios.post('/api/users', body, header);
+      const userToken = await axios.post('/api/users', body, HEADER_JSON);
       dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
       await dispatch(loadUser());
       dispatch(closeModal());
@@ -69,6 +67,20 @@ export const registerUser = (user, history) => {
     } catch (error) {
       throw new SubmissionError({
         _error: 'Sign Up Failed'
+      });
+    }
+  };
+};
+
+export const registerOrg = org => {
+  return async dispatch => {
+    const body = JSON.stringify(org);
+    try {
+      await axios.post('/api/organization', body, HEADER_JSON);
+      await dispatch(loadUser());
+    } catch (error) {
+      throw new SubmissionError({
+        _error: 'Set Org Info Failed'
       });
     }
   };
@@ -89,7 +101,7 @@ export const welcomeUser = () => {
       const userInfo = await axios.get('/api/auth');
       const crmInfo = transformUserInfo(userInfo.data);
       const body = JSON.stringify(crmInfo);
-      await axios.post('/api/crm/contact', body, header);
+      await axios.post('/api/crm/contact', body, HEADER_JSON);
     } catch (error) {
       console.error(error.message);
     }
@@ -101,7 +113,7 @@ export const login = creds => {
   return async dispatch => {
     try {
       const body = JSON.stringify(creds);
-      const userToken = await axios.post('/api/auth/login', body, header);
+      const userToken = await axios.post('/api/auth/login', body, HEADER_JSON);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: userToken.data
@@ -131,7 +143,7 @@ export const requestResetInstructions = form => {
     try {
       const body = JSON.stringify(form);
       dispatch({ type: ASYNC_ACTION_START, payload: 'request-password-reset' });
-      const resp = await axios.post('/api/auth/request-reset', body, header);
+      const resp = await axios.post('/api/auth/request-reset', body, HEADER_JSON);
       const msg = `Check your email inbox at for the password reset instructions.`;
       const err = `No account for ${form.email} was found.`;
       const confirmMessage = !resp.data || !resp.data.success ? err : msg;
@@ -158,7 +170,7 @@ export const updatePassword = form => {
     try {
       const body = JSON.stringify(form);
       dispatch({ type: ASYNC_ACTION_START, payload: 'update-password' });
-      await axios.post('/api/auth/reset', body, header);
+      await axios.post('/api/auth/reset', body, HEADER_JSON);
       dispatch({ type: ASYNC_ACTION_FINISH });
       dispatch(closeModal());
       toastr.success('Success', 'Your password has been updated');
@@ -182,7 +194,7 @@ export const submitScholarshipApplication = form => {
     try {
       dispatch({ type: ASYNC_ACTION_START, payload: 'submit-scholarship' });
       const body = JSON.stringify(form);
-      await axios.post('/api/auth/submit-scholarship', body, header);
+      await axios.post('/api/auth/submit-scholarship', body, HEADER_JSON);
       dispatch({ type: ASYNC_ACTION_FINISH });
       dispatch(closeModal());
       toastr.success('Success', 'Your Application has been submitted!');
@@ -200,7 +212,7 @@ export const fetchScholarshipApplication = scholarshipName => {
     try {
       dispatch({ type: ASYNC_ACTION_START, payload: 'fetch-scholarship' });
       const body = JSON.stringify({ scholarshipName: scholarshipName });
-      const application = await axios.post('/api/auth/scholarship-application', body, header);
+      const application = await axios.post('/api/auth/scholarship-application', body, HEADER_JSON);
       dispatch({ type: ASYNC_ACTION_FINISH });
       if (application.data.essay) {
         dispatch({

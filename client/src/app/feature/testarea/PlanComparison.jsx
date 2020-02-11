@@ -28,7 +28,7 @@ export class PlanComparison extends Component {
   };
 
   render() {
-    const { price, count } = this.state;
+    const { count } = this.state;
     return (
       <>
         <div className='comparison'>

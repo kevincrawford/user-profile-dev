@@ -23,7 +23,6 @@ if (localStorage.token) {
 
 const AppRoot = () => {
   useEffect(() => {
-    console.log('AppRoot: useEffect');
     store.dispatch(loadUser());
   }, []);
 

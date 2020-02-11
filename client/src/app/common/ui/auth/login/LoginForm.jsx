@@ -4,12 +4,8 @@ import { ReCaptcha } from 'react-recaptcha-v3';
 import { Form, Button, Label } from 'semantic-ui-react';
 import { combineValidators, isRequired } from 'revalidate';
 import { Field, reduxForm } from 'redux-form';
-import {
-  login,
-  requestResetInstructions,
-  toggleForgotPassword,
-  setRecaptchaToken
-} from '../AuthActions';
+import { login, requestResetInstructions, toggleForgotPassword, setRecaptchaToken } from '../AuthActions';
+import { openModal, closeModal } from '../../modal/ModalActions';
 import TextInput from '../../form/TextInput';
 
 const mapState = state => ({
@@ -22,7 +18,9 @@ const actions = {
   login,
   requestResetInstructions,
   toggleForgotPassword,
-  setRecaptchaToken
+  setRecaptchaToken,
+  openModal,
+  closeModal
 };
 
 const validate = combineValidators({
@@ -39,30 +37,20 @@ export class LoginForm extends Component {
     }
   };
 
+  handleSwitchModal = () => {
+    this.props.closeModal();
+    this.props.openModal('RegisterModal');
+  };
+
   verifyCallback = recaptchaToken => {
     this.props.setRecaptchaToken(recaptchaToken);
   };
 
   render() {
-    const {
-      loading,
-      loadingName,
-      isPasswordForgot,
-      toggleForgotPassword,
-      handleSubmit,
-      error
-    } = this.props;
+    const { loading, loadingName, isPasswordForgot, toggleForgotPassword, handleSubmit, error } = this.props;
     return (
-      <Form
-        className='register-form'
-        onSubmit={handleSubmit(this.onLoginSubmit)}
-        autoComplete='off'
-      >
-        <ReCaptcha
-          sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
-          action='login'
-          verifyCallback={this.verifyCallback}
-        />
+      <Form className='register-form' onSubmit={handleSubmit(this.onLoginSubmit)} autoComplete='off'>
+        <ReCaptcha sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M' action='login' verifyCallback={this.verifyCallback} />
         <label>Email</label>
         <Field name='email' component={TextInput} type='text' />
         {!isPasswordForgot && (
@@ -78,11 +66,7 @@ export class LoginForm extends Component {
         )}
         <div className='flex-box pt-2'>
           <div className='pr-3'>
-            <Button
-              color='green'
-              loading={loadingName === 'request-password-reset' && loading}
-              content={!isPasswordForgot ? 'Login' : 'Reset Password'}
-            />
+            <Button color='green' loading={loadingName === 'request-password-reset' && loading} content={!isPasswordForgot ? 'Login' : 'Reset Password'} />
           </div>
           <div className='grow pt-2 text-right'>
             <span className='link small' onClick={toggleForgotPassword}>
@@ -90,12 +74,13 @@ export class LoginForm extends Component {
             </span>
           </div>
         </div>
+        <hr className='mb-0' />
+        <span className='link small mt-0' onClick={this.handleSwitchModal}>
+          Not a Member?&nbsp;&nbsp;Create a Free Account
+        </span>
       </Form>
     );
   }
 }
 
-export default connect(
-  mapState,
-  actions
-)(reduxForm({ form: 'loginForm', validate })(LoginForm));
+export default connect(mapState, actions)(reduxForm({ form: 'loginForm', validate })(LoginForm));

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { combineValidators, composeValidators, isRequired, hasLengthGreaterThan } from 'revalidate';
-import { Form, Button } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 import './AdminJob.scss';
 
@@ -27,10 +27,7 @@ export class AdminJobForm extends Component {
   }
 
   onSubmit = values => {
-    this.props.saveJob();
-    setTimeout(() => {
-      this.props.reload(this.props.question.uid, this.props.question.slug);
-    }, 150);
+    console.log(values);
   };
 
   render() {

@@ -77,7 +77,9 @@ router.post(
   ],
   async (req, res) => {
     const errors = validationResult(req);
-    const { name, summary, description, website, location } = req.body;
+    const { name, street, city, state, zip, phone, website } = req.body;
+    const domainParts = website.split('.');
+    const domain = `${domainParts[domainParts.len - 2]}.${domainParts[domainParts.len - 1]}`;
 
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -85,9 +87,8 @@ router.post(
 
     try {
       let user = await User.findById(req.user.id);
-      const domain = user.email.split('@')[1];
 
-      if (!domain) {
+      if (!user) {
         return res.status(404).json({ msg: 'User not found' });
       }
 
@@ -97,32 +98,31 @@ router.post(
         return res.status(400).json({ msg: 'Organization aleady exists' });
       }
 
+      const latlng = await util.geoFindByAddress(`${street}, ${city} ${state}`);
+      locationData.lat = latlng.lat;
+      locationData.lng = latlng.lng;
+
       let locationData = {
         contact: req.user.id,
-        name: location.name,
-        contact: req.user.id,
-        street: location.street,
-        city: location.city,
-        state: location.state,
-        zip: location.zip,
-        phone: location.phone,
-        lat: location.lat,
-        lng: location.lng
+        name: name,
+        street: street,
+        city: city,
+        state: state,
+        zip: zip,
+        phone: phone,
+        lat: latlng.lat,
+        lng: latlng.lng
       };
-      if (!location.lat) {
-        const latlng = await util.geoFindByAddress(`${location.street}, ${location.city} ${location.state}`);
-        locationData.lat = latlng.lat;
-        locationData.lng = latlng.lng;
-      }
 
       let orgLocation = new Location(locationData);
       await orgLocation.save();
 
       let organization = new Organization({
         name: name,
-        summary: summary,
-        description: description,
+        summary: '',
+        description: '',
         location: orgLocation._id,
+        locations: [orgLocation._id],
         users: [req.user.id],
         website: website,
         domain: domain
