@@ -1,8 +1,25 @@
 import axios from 'axios';
 import { HEADER_JSON } from '../../common/constants/apiConstants';
 import { FETCH_JOBS, SET_JOB, UPDATE_JOB, DELETE_JOB, JOB_LOADED, JOB_SAVED } from './AdminConstants';
+import { LOGIN_SUCCESS } from '../../common/ui/auth/AuthContantants';
+import { loadUser, welcomeUser } from '../../common/ui/auth/AuthActions';
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../common/actions/async/asyncActions';
 import { toastr } from 'react-redux-toastr';
+
+// Register User
+export const registerOrg = org => {
+  return async dispatch => {
+    const body = JSON.stringify(org);
+    try {
+      const userToken = await axios.post('/api/organization/register', body, HEADER_JSON);
+      dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
+      await dispatch(loadUser());
+      dispatch(welcomeUser());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 
 export const fetchJobs = () => {
   return async dispatch => {
