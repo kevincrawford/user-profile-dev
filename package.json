@@ -13,6 +13,7 @@
     "start": "node server",
     "build": "npm run build --prefix client && node moveAssets.js",
     "server": "nodemon server",
+    "install:client": "cd client && npm install",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "move:assets": "node moveAssets.js",

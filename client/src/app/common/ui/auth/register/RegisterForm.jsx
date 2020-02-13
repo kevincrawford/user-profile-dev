@@ -55,7 +55,7 @@ export class RegisterForm extends Component {
   }
 
   onRegisterSubmit = values => {
-    this.props.registerUser(values, this.props.history);
+    this.props.registerUser(values);
   };
 
   handleSwitchModal = () => {

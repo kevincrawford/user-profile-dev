@@ -9,8 +9,12 @@ export const UserIsAuthenticated = connectedReduxRedirect({
   wrapperDisplayName: 'UserIsAuthenticated',
   allowRedirectBack: true,
   redirectPath: '/ask',
-  authenticatedSelector: state => (state.auth.loading ? true : state.auth.authenticated),
+  authenticatedSelector: state => {
+    console.log('UserIsAuthenticated: state: ', state);
+    return state.auth.loading ? true : state.auth.authenticated;
+  },
   redirectAction: newLoc => dispatch => {
+    console.log('UserIsAuthenticated: newLoc: ', newLoc);
     dispatch(openModal('UnauthModal'));
   }
 });
@@ -18,9 +22,14 @@ export const UserIsAuthenticated = connectedReduxRedirect({
 export const UserIsAdmin = connectedReduxRedirect({
   wrapperDisplayName: 'UserIsAdmin',
   allowRedirectBack: true,
-  redirectPath: '/',
-  authenticatedSelector: state => (state.auth.loading ? true : state.auth.authenticated && state.auth.currentUser && state.auth.currentUser.roles.findIndex(isAdmin) > -1),
+  redirectPath: '/news',
+  authenticatedSelector: state => {
+    console.log('UserIsAdmin: state: ', state);
+    return state.auth.loading ? true : state.auth.authenticated && state.auth.currentUser && state.auth.currentUser.roles.findIndex(isAdmin) > -1;
+  },
   redirectAction: newLoc => dispatch => {
+    console.log('UserIsAdmin: newLoc: ', newLoc);
+    console.log('UserIsAdmin: dispatch: ', dispatch);
     dispatch(openModal('UnauthModal'));
   }
 });

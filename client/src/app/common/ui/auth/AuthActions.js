@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { reset, SubmissionError } from 'redux-form';
+import { SubmissionError } from 'redux-form';
 import { ASYNC_ACTION_START, ASYNC_ACTION_FINISH, ASYNC_ACTION_ERROR } from '../../actions/async/asyncConstants';
 import {
   USER_LOADED,
@@ -59,7 +59,6 @@ export const registerUser = (user, history) => {
       dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
       await dispatch(loadUser());
       dispatch(closeModal());
-      dispatch(reset('registerForm'));
       dispatch(welcomeUser());
       if (user.isEmployer) {
         history.push('/admin');
@@ -120,7 +119,6 @@ export const login = creds => {
       });
       await dispatch(loadUser());
       dispatch(closeModal());
-      dispatch(reset('loginForm'));
     } catch (error) {
       throw new SubmissionError({
         _error: 'Login Failed'
