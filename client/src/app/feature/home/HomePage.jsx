@@ -25,7 +25,7 @@ const pro = {
   backgroundImage: `url(${proImg})`
 };
 
-const scrollToRef = ref => window.scrollTo({ top: ref.current.offsetTop, behavior: 'smooth' });
+const scrollToRef = ref => window.scrollTo({ top: ref.current.offsetTop - 40, behavior: 'smooth' });
 
 const HomePage = ({ history, openModal }) => {
   const studentRef = useRef(null);
