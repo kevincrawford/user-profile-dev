@@ -4,9 +4,34 @@ import { Link } from 'react-router-dom';
 import { Container, Icon } from 'semantic-ui-react';
 import { openModal } from '../modal/ModalActions';
 
+const isUserAdmin = role => {
+  return role.type === 'client-user';
+};
+
 export class AppFooter extends Component {
   openRegisterModal = () => {
     this.props.openModal('RegisterModal', { link: 'test' });
+  };
+
+  checkUser = pathName => {
+    const { auth, history, openModal } = this.props;
+    const isUser = auth.authenticated && auth.currentUser ? true : false;
+    const isAdmin = auth.authenticated && auth.currentUser && auth.currentUser.roles.findIndex(isUserAdmin) > -1 ? true : false;
+
+    if (!isUser && !isAdmin) {
+      openModal('RegisterModal');
+      return;
+    }
+    if (pathName === '/profile' && isUser) {
+      history.push(pathName);
+      return;
+    }
+    if (pathName === '/admin' && isAdmin) {
+      history.push(pathName);
+      return;
+    }
+    openModal('RegisterModal');
+    return;
   };
 
   render() {
@@ -28,12 +53,16 @@ export class AppFooter extends Component {
               <h6>Special Educators</h6>
               <Link to='/jobs'>Find a Job</Link>
               <Link to='/resources'>Resources</Link>
-              <Link to='/profile'>Post a resume</Link>
+              <div onClick={() => this.checkUser('/profile')}>
+                <span className='link'>Post a Resume</span>
+              </div>
             </div>
             <div>
               <h6>SPED Employers</h6>
               <Link to='/resources'>Resources</Link>
-              <Link to='/dashboard'>Post a Job</Link>
+              <div onClick={() => this.checkUser('/admin')}>
+                <span className='link'>Post a Job</span>
+              </div>
             </div>
             <div className='social'>
               <h6>Connect</h6>
