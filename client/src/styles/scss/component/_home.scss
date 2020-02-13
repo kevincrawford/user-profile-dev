@@ -62,9 +62,10 @@
         }
       }
       .actions {
-        max-width: 420px;
+        max-width: 300px;
         margin: 1.5rem auto 0 auto;
         .ui.button {
+          width: 100%;
           margin: 0.5rem;
         }
       }
@@ -79,6 +80,43 @@
       > * {
         max-width: 24rem;
       }
+      ul {
+        padding-left: 1rem;
+        max-width: 17rem;
+        li {
+          padding-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+  &.professional {
+    // background-image: url("/assets/img/speducator-reading.jpg");
+    background-position: center;
+    background-size: cover;
+    .ui.container {
+      color: #222;
+      .narrow {
+        max-width: 28rem;
+        margin-bottom: 1.5rem;
+      }
+      .wide {
+        max-width: 35rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h4 {
+        font-weight: 600;
+        margin-bottom: 0;
+        color: var(--primary-color);
+      }
+      @media only screen and (max-width: 767px) {
+        .narrow {
+          max-width: 75%;
+        }
+        .wide {
+          max-width: 75%;
+        }
+      }
     }
   }
   &.shortage {
@@ -86,6 +124,17 @@
     .ui.container {
       color: #fff;
       text-align: center;
+      ul {
+        padding-left: 1rem;
+        max-width: 360px;
+        text-align: left;
+        li {
+          padding-bottom: 0.5rem;
+        }
+      }
+      p {
+        max-width: 570px;
+      }
       > * {
         max-width: 720px;
         margin-left: auto;

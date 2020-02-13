@@ -15,21 +15,19 @@ export class HomeMasthead extends Component {
     return (
       <Container>
         <h1>
-          We empower SPEDucation
+          The community for
           <br />
-          and connect people to solutions
+          Special Education Answers
           <br />
-          that enable growth and discovery.
+          Resources, and Jobs.
         </h1>
         <Button>For Educators</Button>
         <Button>For Students</Button>
+        <Button>For Schools</Button>
         <Button>For Schools</Button>
       </Container>
     );
   }
 }
 
-export default connect(
-  mapState,
-  actions
-)(HomeMasthead);
+export default connect(mapState, actions)(HomeMasthead);

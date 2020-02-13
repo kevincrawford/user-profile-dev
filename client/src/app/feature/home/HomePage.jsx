@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { Component, useRef, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button, Container } from 'semantic-ui-react';
+import { openModal } from '../../common/ui/modal/ModalActions';
 
 import NavBar from '../../common/ui/nav/navBar/NavBar';
 import SearchBar from '../../feature/search/searchBar/SearchBar';
@@ -9,6 +11,7 @@ import NavMobile from '../../common/ui/nav/navMobile/NavMobile';
 
 import heroImg from './bg-home.png';
 import newsImg from './speducator-reading.jpg';
+import proImg from './educator.jpg';
 
 const hero = {
   backgroundImage: `url(${heroImg}), linear-gradient(135deg, rgb(103, 28, 142) 0%, rgb(0, 102, 70) 96%)`
@@ -18,7 +21,16 @@ const news = {
   backgroundImage: `url(${newsImg})`
 };
 
-const HomePage = ({ history }) => {
+const pro = {
+  backgroundImage: `url(${proImg})`
+};
+
+const scrollToRef = ref => window.scrollTo({ top: ref.current.offsetTop, behavior: 'smooth' });
+
+const HomePage = ({ history, openModal }) => {
+  const studentRef = useRef(null);
+  const teacherRef = useRef(null);
+  const adminRef = useRef(null);
   return (
     <>
       <NavBar />
@@ -26,59 +38,82 @@ const HomePage = ({ history }) => {
 
       <section className='home-section hero' style={hero}>
         <Container>
-          <h5>
-            <em>The Community for Special Education Answers</em>
-          </h5>
           <h2>
-            We empower SPEDucation
+            The Community for
             <br />
-            and connect people to solutions
+            Special Education Answers,
             <br />
-            that enable growth and discovery.
+            Resources, and Jobs
           </h2>
           <div className='actions'>
-            <Button onClick={() => history.push('/news')}>For Educators</Button>
-            <Button color='purple' onClick={() => history.push('/news')}>
-              For Students
+            <Button color='purple' onClick={() => scrollToRef(studentRef)}>
+              For SPED University Students
             </Button>
-            <Button color='green' onClick={() => history.push('/news')}>
-              For Schools
+            <Button color='green' onClick={() => scrollToRef(teacherRef)}>
+              For Special Education Professionals
+            </Button>
+            <Button onClick={() => scrollToRef(adminRef)}>For School Admins &amp; HR Managers</Button>
+            <Button color='blue' onClick={() => history.push('/questions')}>
+              For SPED Related Questions
             </Button>
           </div>
         </Container>
       </section>
 
-      <section className='home-section news' style={news}>
+      <section ref={studentRef} className='home-section news' style={news}>
         <Container>
-          <h2>
-            Latest News
-            <br />
-            and Updates
-          </h2>
+          <h2>Future Graduates...</h2>
           <p>
-            We have extensive informations related to special education. Get valuable insights from our social media,
-            blogs, and unique content from our partners and our community.
+            The field of special education is waiting for you! Whether you have just taken your first university class or are preparing for your first job, we, at SPEDxchange, know
+            you are going to make an impact!
           </p>
           <p>
-            <span className='text-warning'>Sign up</span> today and you will also have access to exclusive content.
+            <strong className='text-warning'>Sign up</strong> today and you will also have access to exclusive content and more...
           </p>
+          <ul>
+            <li>Get answers to your questions, provide input, and share feedback on the special education issues that matter to you</li>
+            <li>Connect with other members in the special education field</li>
+            <li>Find scholarship opportunities nationwide</li>
+            <li>Prepare yourself for the job search and preparation process</li>
+            <li>Receive job alerts for the programs and locations that are attractive to you</li>
+          </ul>
           <Button color='purple' onClick={() => history.push('/news')}>
             Read Our Latest news...
           </Button>
         </Container>
       </section>
 
-      <section className='home-section shortage'>
+      <section ref={adminRef} className='home-section shortage'>
         <Container>
-          <h2>How does the nationwide shortage of special education staff affect you?</h2>
+          <h2>
+            Make <strong>hiring</strong> qualified
+            <br />
+            Special Education staff
+            <br />
+            your district needs
+            <br />
+            <strong>happen!</strong>
+          </h2>
           <p>
-            <strong>Let’s do something about it together!</strong>
+            <strong>
+              Our platform and candidate engagement
+              <br />
+              will help your district:
+            </strong>
+          </p>
+          <ul>
+            <li>Expand your districts visibility to qualified candidates locally and nationwide</li>
+            <li>Secure future graduates earlier than your competition</li>
+            <li>Leverage social media actively to increase candidate’s awareness of your open positions</li>
+            <li>Increase the inbound traffic of special education candidates to your district’s website</li>
+            <li>Build and curate your districts Brand across social media and ongoing online presence</li>
+          </ul>
+          <p>
+            SPEDxchange offers new methods to source and attract candidates to your district. <strong>Contact us</strong> today to advance your chances for success in this intense
+            and short hiring window.
           </p>
           <p>
-            Our team is diverse, and we have over 30 years of special education staffing experience. Our sophisticated
-            understanding of special education job placement and challenges are successful. We are not recruiters, we
-            are experts in the process of matching districts and open positions. We use our technology and social media
-            community to make that happen.
+            <em>Make your SPED staff more consistent year over year, within budget, dependable and loyal.</em>
           </p>
           <Button color='orange' onClick={() => history.push('/about')}>
             Learn More!
@@ -86,36 +121,51 @@ const HomePage = ({ history }) => {
         </Container>
       </section>
 
-      <section className='home-section resources'>
+      <section ref={teacherRef} className='home-section professional' style={pro}>
         <Container>
-          <h2>SPED&nbsp;Resources You&nbsp;Need</h2>
-          <p>Check out what you can do by becoming a SPEDxchange member today!</p>
-          <div className='flex-box sm callout'>
-            <div className='grow'>
-              <i className='icon-present text-primary'></i>
-              <h3>Latest SPED Trends</h3>
-              <p>We offer free specialized content that will help special education staff.</p>
-            </div>
-            <div className='grow'>
-              <i className='icon-lock-open text-primary'></i>
-              <h3>Alerts &amp; Notification</h3>
-              <p>Let us do the work based on your preferences. We'll keep you up-to-date!</p>
-            </div>
+          <div className='wide'>
+            <h2>SPED Professionals...</h2>
+            <p>
+              At SPEDxchange, we understand the demands special educators and clinical special education professionals face daily, and we support you. We are the special education
+              community you can turn to for answers. Build connections with other professionals while sharing your insights, knowledge, and experiences. Our unique question and
+              answer platform is a community you can count on for support and feedback on complex situations. At SPEDxchange, we believe that discovery and growth come from seeking
+              answers and working together to find solutions.
+            </p>
+            <p>
+              While SPEDxchange is first and foremost a community to support special education professionals as they grow in their careers, it also can support you in the job
+              search process. Throughout your career, your definition of a dream job may change. Build your profile, post your resume, and set job criteria in order to locate and
+              secure the dream job for the next chapter of your career.
+            </p>
           </div>
-          <div className='flex-box sm callout'>
-            <div className='grow'>
-              <i className='icon-camera'></i>
-              <h3>Career Portfolio</h3>
-              <p>Get organized for a successful job search, discovery, relocation, and hiring process.</p>
-            </div>
-            <div className='grow'>
-              <i className='icon-screen-smartphone'></i>
-              <h3>Job Matching</h3>
-              <p>Better understand the job market and openings across the united states.</p>
-            </div>
+          <div className='narrow'>
+            <h4>CARRER</h4>
+            <p>
+              Make a change to land your dream job for your next chapter!
+              <br />
+              <span className='link' onClick={() => history.push('/jobs')}>
+                Search for Jobs
+              </span>
+            </p>
+            <h4>COMMUNITY</h4>
+            <p>
+              Connect with others special education students and professionals to learn and grow
+              <br />
+              <span className='link' onClick={() => history.push('/questions')}>
+                Ask Questions
+              </span>
+            </p>
+            <h4>KNOWLEDGE</h4>
+            <p>
+              Dig into our archives of articles and information to learn more about topics of interest to you
+              <br />
+              <span className='link' onClick={() => history.push('/news')}>
+                Read Latest News
+              </span>
+            </p>
           </div>
-          <Button color='blue' onClick={() => history.push('/resources')}>
-            Visit Our Resource Center...
+
+          <Button color='green' onClick={() => openModal('RegisterModal')}>
+            Join Today
           </Button>
         </Container>
       </section>
@@ -128,18 +178,10 @@ const HomePage = ({ history }) => {
   );
 };
 
-/*
-      <section className='home-section sectionname'>
-        <Container>
-          <h2>header</h2>
-          <p>
-            Paragraph text here<br />
-            with line break
-          </p>
-          <Button color='purple'>Action</Button>
-        </Container>
-      </section>
+const mapState = state => ({});
 
-*/
+const actions = {
+  openModal
+};
 
-export default withRouter(HomePage);
+export default withRouter(connect(mapState, actions)(HomePage));
