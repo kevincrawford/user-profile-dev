@@ -68,7 +68,7 @@ const HomePage = ({ history, openModal }) => {
             you are going to make an impact!
           </p>
           <p>
-            <strong className='text-warning'>Sign up</strong> today and you will also have access to exclusive content and more...
+            <strong onClick={() => openModal('RegisterModal')}>Sign up</strong> today and you will also have access to exclusive content and more...
           </p>
           <ul>
             <li>Get answers to your questions, provide input, and share feedback on the special education issues that matter to you</li>
@@ -77,8 +77,8 @@ const HomePage = ({ history, openModal }) => {
             <li>Prepare yourself for the job search and preparation process</li>
             <li>Receive job alerts for the programs and locations that are attractive to you</li>
           </ul>
-          <Button color='purple' onClick={() => history.push('/news')}>
-            Read Our Latest news...
+          <Button color='purple' onClick={() => openModal('RegisterModal')}>
+            Sign Up Today
           </Button>
         </Container>
       </section>
@@ -86,13 +86,11 @@ const HomePage = ({ history, openModal }) => {
       <section ref={adminRef} className='home-section shortage'>
         <Container>
           <h2>
-            Make <strong>hiring</strong> qualified
+            Hire the qualified
             <br />
-            Special Education staff
+            special education staff
             <br />
-            your district needs
-            <br />
-            <strong>happen!</strong>
+            you need!
           </h2>
           <p>
             <strong>
@@ -109,14 +107,14 @@ const HomePage = ({ history, openModal }) => {
             <li>Build and curate your districts Brand across social media and ongoing online presence</li>
           </ul>
           <p>
-            SPEDxchange offers new methods to source and attract candidates to your district. <strong>Contact us</strong> today to advance your chances for success in this intense
-            and short hiring window.
+            SPEDxchange offers new methods to source and attract candidates to your district. <strong onClick={() => openModal('ContactModal')}>Contact us</strong> today to advance
+            your chances for success in this intense and short hiring window.
           </p>
           <p>
             <em>Make your SPED staff more consistent year over year, within budget, dependable and loyal.</em>
           </p>
-          <Button color='orange' onClick={() => history.push('/about')}>
-            Learn More!
+          <Button color='orange' onClick={() => openModal('RegisterModal')}>
+            Join Today
           </Button>
         </Container>
       </section>
