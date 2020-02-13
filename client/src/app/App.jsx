@@ -103,8 +103,8 @@ class App extends Component {
                     <Route exact path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
                     <Route path='/dashboard/scholarship-review/:scholarshipName' component={UserIsAuthenticated(ScholarshipReview)} />
                     <Route exact path='/postjob' component={AdminLanding} />
-                    <Route exact path='/admin' component={UserIsAdmin(Admin)} />
-                    <Route path='/admin/job/:id' component={UserIsAdmin(AdminJobForm)} />
+                    <Route exact path='/admin' component={Admin} />
+                    <Route path='/admin/job/:id' component={AdminJobForm} />
                   </Switch>
                 </div>
               </Container>

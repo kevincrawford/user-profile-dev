@@ -21,6 +21,7 @@ const validate = combineValidators({
 
 export class AdminJobForm extends Component {
   componentDidMount() {
+    this.props.history.push('/');
     if (this.props.match.params !== 'new') {
       // console.log('lookup job');
     }

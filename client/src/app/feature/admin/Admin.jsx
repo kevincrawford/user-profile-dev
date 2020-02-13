@@ -57,6 +57,10 @@ const panes = [
 ];
 
 export class Admin extends Component {
+  componentDidMount() {
+    this.props.history.push('/');
+  }
+
   render() {
     const { auth } = this.props;
     const authenticated = auth.authenticated && auth.currentUser.organization;

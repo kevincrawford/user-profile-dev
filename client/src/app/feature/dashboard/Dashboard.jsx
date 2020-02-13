@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import Loading from '../../common/ui/loading/Loading';
 
 export class Dashboard extends Component {
+  componentDidMount() {
+    this.props.history.push('/');
+  }
   render() {
     const { loading } = this.props;
     if (loading) return <Loading />;
