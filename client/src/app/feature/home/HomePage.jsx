@@ -1,4 +1,4 @@
-import React, { Component, useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button, Container } from 'semantic-ui-react';

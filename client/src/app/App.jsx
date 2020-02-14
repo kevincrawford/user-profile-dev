@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { loadReCaptcha } from 'react-recaptcha-v3';
-import { UserIsAuthenticated, UserIsAdmin } from './common/ui/auth/AuthWrapper';
+import { UserIsAuthenticated } from './common/ui/auth/AuthWrapper';
 import ModalManager from './common/ui/modal/ModalManager';
 import NavBar from './common/ui/nav/navBar/NavBar';
 import SideBar from './common/ui/nav/sideBar/SideBar';
