@@ -94,9 +94,12 @@
     background-position: center;
     background-size: cover;
     .ui.container {
-      color: #222;
+      color: #111;
+      p {
+        font-size: 1.125rem;
+      }
       .narrow {
-        max-width: 28rem;
+        max-width: 24rem;
         margin-bottom: 1.5rem;
       }
       .wide {
@@ -110,11 +113,22 @@
         color: var(--primary-color);
       }
       @media only screen and (max-width: 767px) {
+        .wide {
+          max-width: 70%;
+        }
+      }
+      @media only screen and (max-width: 600px) {
+        p {
+          font-size: 1rem;
+        }
+        .hidden-sm {
+          display: none;
+        }
         .narrow {
-          max-width: 75%;
+          max-width: 100%;
         }
         .wide {
-          max-width: 75%;
+          max-width: 80%;
         }
       }
     }
@@ -177,6 +191,9 @@
         }
       }
     }
+  }
+  @media only screen and (max-width: 767px) {
+    padding: 2.5rem 0;
   }
 }
 

@@ -62,7 +62,7 @@ const HomePage = ({ history, openModal }) => {
 
       <section ref={studentRef} className='home-section news' style={news}>
         <Container>
-          <h2>Future Graduates...</h2>
+          <h2>Future Graduates</h2>
           <p>
             The field of special education is waiting for you! Whether you have just taken your first university class or are preparing for your first job, we, at SPEDxchange, know
             you are going to make an impact!
@@ -122,14 +122,14 @@ const HomePage = ({ history, openModal }) => {
       <section ref={teacherRef} className='home-section professional' style={pro}>
         <Container>
           <div className='wide'>
-            <h2>SPED Professionals...</h2>
+            <h2>SPED Professionals</h2>
             <p>
               At SPEDxchange, we understand the demands special educators and clinical special education professionals face daily, and we support you. We are the special education
               community you can turn to for answers. Build connections with other professionals while sharing your insights, knowledge, and experiences. Our unique question and
               answer platform is a community you can count on for support and feedback on complex situations. At SPEDxchange, we believe that discovery and growth come from seeking
               answers and working together to find solutions.
             </p>
-            <p>
+            <p className='hidden-sm'>
               While SPEDxchange is first and foremost a community to support special education professionals as they grow in their careers, it also can support you in the job
               search process. Throughout your career, your definition of a dream job may change. Build your profile, post your resume, and set job criteria in order to locate and
               secure the dream job for the next chapter of your career.
@@ -138,26 +138,23 @@ const HomePage = ({ history, openModal }) => {
           <div className='narrow'>
             <h4>CAREER</h4>
             <p>
-              Make a change to land your dream job for your next chapter!
-              <br />
+              Make a change to land your dream job for your next chapter!{' '}
               <span className='link' onClick={() => history.push('/jobs')}>
                 Search for Jobs
               </span>
             </p>
             <h4>COMMUNITY</h4>
             <p>
-              Connect with others special education students and professionals to learn and grow
-              <br />
+              Connect with others special education students and professionals to learn and grow{' '}
               <span className='link' onClick={() => history.push('/questions')}>
                 Ask Questions
               </span>
             </p>
             <h4>KNOWLEDGE</h4>
             <p>
-              Dig into our archives of articles and information to learn more about topics of interest to you
-              <br />
+              Dig into our archives of articles and information to learn more about topics of interest to you{' '}
               <span className='link' onClick={() => history.push('/news')}>
-                Read Latest News
+                Latest News
               </span>
             </p>
           </div>
