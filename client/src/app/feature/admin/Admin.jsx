@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Tab } from 'semantic-ui-react';
 import { openModal } from '../../common/ui/modal/ModalActions';
 
@@ -58,7 +59,7 @@ const panes = [
 
 export class Admin extends Component {
   componentDidMount() {
-    this.props.history.push('/');
+    this.props.history.push('/postJob');
   }
 
   render() {
@@ -73,4 +74,4 @@ export class Admin extends Component {
   }
 }
 
-export default connect(mapState, actions)(Admin);
+export default withRouter(connect(mapState, actions)(Admin));

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Container, Icon } from 'semantic-ui-react';
 import { openModal } from '../modal/ModalActions';
@@ -18,17 +19,23 @@ export class AppFooter extends Component {
     const isUser = auth.authenticated && auth.currentUser ? true : false;
     const isAdmin = auth.authenticated && auth.currentUser && auth.currentUser.roles.findIndex(isUserAdmin) > -1 ? true : false;
 
-    if (!isUser && !isAdmin) {
-      openModal('RegisterModal');
-      return;
+    if (pathName === '/profile') {
+      if (isUser) {
+        history.push(pathName);
+        return;
+      } else {
+        openModal('RegisterModal');
+        return;
+      }
     }
-    if (pathName === '/profile' && isUser) {
-      history.push(pathName);
-      return;
-    }
-    if (pathName === '/admin' && isAdmin) {
-      history.push(pathName);
-      return;
+    if (pathName === '/admin') {
+      if (isAdmin) {
+        history.push(pathName);
+        return;
+      } else {
+        history.push('/postJob');
+        return;
+      }
     }
     openModal('RegisterModal');
     return;
@@ -113,4 +120,4 @@ const actions = {
   openModal
 };
 
-export default connect(mapState, actions)(AppFooter);
+export default withRouter(connect(mapState, actions)(AppFooter));
