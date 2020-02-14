@@ -36,7 +36,6 @@ class SideBar extends Component {
         <Menu.Item link name='Contact Us' item={NAV_ITEMS.contact} active={activeNavItem.link === '/contact'} onClick={this.openContactModal} />
         <hr />
         <Menu.Item link name='Questions' item={NAV_ITEMS.questions} active={activeNavItem.link === '/questions'} onClick={this.handleItemClick} />
-        <Menu.Item link name='Categories' item={NAV_ITEMS.categories} active={activeNavItem.link === '/categories'} onClick={this.handleItemClick} />
         <hr />
         <Menu.Item link name='Jobs' item={NAV_ITEMS.jobs} active={activeNavItem.link === '/jobs'} onClick={this.handleItemClick} />
       </Menu>
