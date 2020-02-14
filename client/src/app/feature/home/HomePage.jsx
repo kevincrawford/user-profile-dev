@@ -136,7 +136,7 @@ const HomePage = ({ history, openModal }) => {
             </p>
           </div>
           <div className='narrow'>
-            <h4>CARRER</h4>
+            <h4>CAREER</h4>
             <p>
               Make a change to land your dream job for your next chapter!
               <br />
