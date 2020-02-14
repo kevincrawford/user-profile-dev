@@ -11,20 +11,6 @@ import GuestMenu from './menus/GuestMenu';
 import AuthMenu from './menus/AuthMenu';
 import logo from './spedxchange-brand.svg';
 
-const mapState = state => ({
-  auth: state.auth,
-  activeNavItem: state.nav.activeNavItem,
-  isMobileNavOpen: state.nav.isMobileNavOpen
-});
-
-const actions = {
-  toggleSearchBar,
-  toggleMobileNav,
-  navItemClick,
-  openModal,
-  signOut
-};
-
 class NavBar extends Component {
   handleLogin = () => {
     this.props.openModal('LoginModal');
@@ -78,5 +64,19 @@ class NavBar extends Component {
     );
   }
 }
+
+const mapState = state => ({
+  auth: state.auth,
+  activeNavItem: state.nav.activeNavItem,
+  isMobileNavOpen: state.nav.isMobileNavOpen
+});
+
+const actions = {
+  toggleSearchBar,
+  toggleMobileNav,
+  navItemClick,
+  openModal,
+  signOut
+};
 
 export default withRouter(connect(mapState, actions)(NavBar));

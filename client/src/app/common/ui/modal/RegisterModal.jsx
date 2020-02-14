@@ -28,8 +28,8 @@ class RegisterModal extends Component {
     if (this.props.currentModal.modalProps && this.props.currentModal.modalProps.fromAuth) {
       this.props.history.goBack();
     }
-    this.props.closeModal();
     this.props.reset('registerForm');
+    this.props.closeModal();
   };
 
   render() {
@@ -38,7 +38,7 @@ class RegisterModal extends Component {
         <Modal.Header>Sign Up for SPEDxchange!</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            <RegisterForm config={this.props.currentModal.modalProps} />
+            <RegisterForm config={this.props.currentModal.modalProps || {}} />
           </Modal.Description>
         </Modal.Content>
       </Modal>

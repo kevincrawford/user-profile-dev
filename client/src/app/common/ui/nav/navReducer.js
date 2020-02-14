@@ -1,11 +1,5 @@
 import { createReducer } from '../../util/ReducerUtil';
-import {
-  ACTIVATE_NAV_ITEM,
-  TOGGLE_MOBILE_NAV,
-  TOGGLE_SEARCH_BAR,
-  SET_RETURN_URL,
-  TOGGLE_SIDE_BAR
-} from './navConstants';
+import { ACTIVATE_NAV_ITEM, TOGGLE_MOBILE_NAV, TOGGLE_SEARCH_BAR, SET_RETURN_URL, TOGGLE_SIDE_BAR } from './navConstants';
 
 const initialState = {
   isMobileNavOpen: false,
@@ -18,7 +12,7 @@ const initialState = {
 };
 
 const onNavItemClick = (state, payload) => {
-  return { ...state, activeNavItem: payload };
+  return { ...state, activeNavItem: payload.item };
 };
 
 const toggleMobileNav = state => {

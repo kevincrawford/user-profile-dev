@@ -14,7 +14,7 @@ const AuthMenu = ({ signOut, onNav, profile }) => {
       <Dropdown pointing='top right' text={name}>
         <Dropdown.Menu>
           <Dropdown.Item text='Profile' icon='user' onClick={() => onNav('/profile')} />
-          <Dropdown.Item text='Dashboard' icon='dashboard' onClick={() => onNav('/dashboard')} />
+          <Dropdown.Item text='Dashboard' icon='dashboard' onClick={() => onNav('/admin')} />
           <Dropdown.Divider />
           <Dropdown.Item text='Ask Question' icon='plus' onClick={() => onNav('/ask')} />
           <Dropdown.Divider />

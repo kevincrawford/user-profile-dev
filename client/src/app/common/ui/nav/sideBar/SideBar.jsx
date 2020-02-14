@@ -4,8 +4,10 @@ import { withRouter } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { openModal } from '../../modal/ModalActions';
 import { toggleSideBar } from '../navActions';
+import { NAV_ITEMS } from '../navConstants';
 
 const mapState = state => ({
+  activeNavItem: state.nav.activeNavItem,
   isSideBarOpen: state.nav.isSideBarOpen
 });
 
@@ -15,42 +17,8 @@ const actions = {
 };
 
 class SideBar extends Component {
-  state = {
-    activeItem: '/' + this.props.match.url.split('/')[1],
-    visible: true
-  };
-
-  componentDidMount() {
-    this.onRouteChanged();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.location.pathName !== prevProps.location.pathName) {
-      this.onRouteChanged();
-    }
-  }
-
-  onRouteChanged() {
-    const pathRoot = '/' + this.props.match.url.split('/')[1];
-    const offPaths = ['/user', '/checkout', '/admin', '/dashboard', '/profile'];
-    if (offPaths.indexOf(pathRoot) > -1) {
-      if (this.props.isSideBarOpen) {
-        this.props.toggleSideBar(false);
-      }
-      this.setState({ visible: false });
-    } else {
-      if (!this.props.isSideBarOpen) {
-        this.props.toggleSideBar(true);
-      }
-
-      this.setState({ visible: true });
-    }
-    this.setState({ activeItem: pathRoot });
-  }
-
-  handleItemClick = (e, { path }) => {
-    this.setState({ activeItem: path });
-    this.props.history.push(path);
+  handleItemClick = (e, { item }) => {
+    this.props.history.push(item.link);
   };
 
   openContactModal = () => {
@@ -58,20 +26,19 @@ class SideBar extends Component {
   };
 
   render() {
-    const { activeItem, visible } = this.state;
-
+    const { isSideBarOpen, activeNavItem } = this.props;
     return (
-      <Menu text vertical className={visible ? 'app-sidebar' : 'app-sidebar hidden'}>
-        <Menu.Item link name='Eye On SPED' path='/news' active={activeItem === '/news'} onClick={this.handleItemClick} />
-        <Menu.Item link name='Resources' path='/resources' active={activeItem === '/resources'} onClick={this.handleItemClick} />
-        <Menu.Item link name='Scholarships' path='/scholarships' active={activeItem === '/scholarships'} onClick={this.handleItemClick} />
-        <Menu.Item link name='About Us' path='/about' active={activeItem === '/about'} onClick={this.handleItemClick} />
-        <Menu.Item link name='Contact Us' path='/contact' active={activeItem === '/contact'} onClick={this.openContactModal} />
+      <Menu text vertical className={isSideBarOpen ? 'app-sidebar' : 'app-sidebar hidden'}>
+        <Menu.Item link name='Eye On SPED' item={NAV_ITEMS.news} active={activeNavItem.link === '/news'} onClick={this.handleItemClick} />
+        <Menu.Item link name='Resources' item={NAV_ITEMS.resources} active={activeNavItem.link === '/resources'} onClick={this.handleItemClick} />
+        <Menu.Item link name='Scholarships' item={NAV_ITEMS.scholarships} active={activeNavItem.link === '/scholarships'} onClick={this.handleItemClick} />
+        <Menu.Item link name='About Us' item={NAV_ITEMS.about} active={activeNavItem.link === '/about'} onClick={this.handleItemClick} />
+        <Menu.Item link name='Contact Us' item={NAV_ITEMS.contact} active={activeNavItem.link === '/contact'} onClick={this.openContactModal} />
         <hr />
-        <Menu.Item link name='Questions' path='/questions' active={activeItem === '/questions'} onClick={this.handleItemClick} />
-        <Menu.Item link name='Categories' path='/categories' active={activeItem === '/categories'} onClick={this.handleItemClick} />
+        <Menu.Item link name='Questions' item={NAV_ITEMS.questions} active={activeNavItem.link === '/questions'} onClick={this.handleItemClick} />
+        <Menu.Item link name='Categories' item={NAV_ITEMS.categories} active={activeNavItem.link === '/categories'} onClick={this.handleItemClick} />
         <hr />
-        <Menu.Item link name='Jobs' path='/jobs' active={activeItem === '/jobs'} onClick={this.handleItemClick} />
+        <Menu.Item link name='Jobs' item={NAV_ITEMS.jobs} active={activeNavItem.link === '/jobs'} onClick={this.handleItemClick} />
       </Menu>
     );
   }

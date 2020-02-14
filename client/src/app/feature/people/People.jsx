@@ -1,17 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-const mapState = state => {
-  return {};
-};
+export class People extends Component {
+  render() {
+    return <div>people</div>;
+  }
+}
 
-const actions = {};
+const mapStateToProps = state => ({});
 
-const People = () => {
-  return <h1>People</h1>;
-};
+const mapDispatchToProps = {};
 
-export default connect(
-  mapState,
-  actions
-)(People);
+export default connect(mapStateToProps, mapDispatchToProps)(People);

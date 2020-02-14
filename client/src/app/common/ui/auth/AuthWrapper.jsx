@@ -1,29 +1,15 @@
 import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
 import { openModal } from '../../ui/modal/ModalActions';
 
-const isAdmin = role => {
-  return role.type === 'client-user';
-};
+// const isClient = role => {
+//   return role.type === 'client-user';
+// };
 
-export const UserIsAuthenticated = connectedReduxRedirect({
-  wrapperDisplayName: 'UserIsAuthenticated',
+export const UserCanAsk = connectedReduxRedirect({
+  wrapperDisplayName: 'UserCanAsk',
   allowRedirectBack: true,
   redirectPath: '/ask',
-  authenticatedSelector: state => {
-    return state.auth.loading ? true : state.auth.authenticated;
-  },
-  redirectAction: newLoc => dispatch => {
-    dispatch(openModal('UnauthModal'));
-  }
-});
-
-export const UserIsAdmin = connectedReduxRedirect({
-  wrapperDisplayName: 'UserIsAdmin',
-  allowRedirectBack: true,
-  redirectPath: '/news',
-  authenticatedSelector: state => {
-    return state.auth.loading ? true : state.auth.authenticated && state.auth.currentUser && state.auth.currentUser.roles.findIndex(isAdmin) > -1;
-  },
+  authenticatedSelector: state => (state.auth.loading ? true : state.auth.authenticated),
   redirectAction: newLoc => dispatch => {
     dispatch(openModal('UnauthModal'));
   }

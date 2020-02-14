@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { loadUser } from './app/common/ui/auth/AuthActions';
 import App from './app/App';
 import store from './app/store/Store';
-import ScrollToTop from './app/common/util/ScrollToTop';
+import RouterStateHandler from './app/common/util/RouterStateHandler';
 import setAuthToken from './app/common/util/setAuthToken';
 import * as serviceWorker from './serviceWorker';
 
@@ -30,10 +30,10 @@ const AppRoot = () => {
     <HttpsRedirect>
       <Provider store={store}>
         <BrowserRouter>
-          <ScrollToTop>
+          <RouterStateHandler>
             <ReduxToastr position='bottom-right' transitionIn='fadeIn' transitionOut='fadeOut' />
             <App />
-          </ScrollToTop>
+          </RouterStateHandler>
         </BrowserRouter>
       </Provider>
     </HttpsRedirect>

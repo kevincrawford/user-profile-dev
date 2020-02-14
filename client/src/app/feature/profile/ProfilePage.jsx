@@ -3,7 +3,29 @@ import { connect } from 'react-redux';
 
 export class ProfilePage extends Component {
   render() {
-    return <h1>profile</h1>;
+    return (
+      <div className='flex-box md'>
+        <div className='grow'>
+          <div>about me</div>
+          <div>progress</div>
+          <div>social</div>
+        </div>
+        <div className='spacer'></div>
+        <div className='grow'>
+          <div>summary</div>
+          <div>experience</div>
+          <div>education</div>
+          <div>certifications</div>
+        </div>
+        <div className='spacer'></div>
+        <div className='grow'>
+          <div>visible</div>
+          <div>relocate</div>
+          <div>resumes</div>
+          <div>other</div>
+        </div>
+      </div>
+    );
   }
 }
 

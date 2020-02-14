@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { ScrollTo, ScrollArea } from 'react-scroll-to';
-import { toggleMobileNav, navItemClick } from '../navActions';
+import { toggleMobileNav } from '../navActions';
 import { openModal } from '../../modal/ModalActions';
 import { NAV_ITEMS } from '../navConstants';
 
@@ -14,7 +14,6 @@ const mapState = state => ({
 
 const actions = {
   toggleMobileNav,
-  navItemClick,
   openModal
 };
 
@@ -39,7 +38,6 @@ class NavMobile extends Component {
         break;
 
       default:
-        this.props.navItemClick(item);
         this.props.history.push(item.link);
         break;
     }
@@ -49,7 +47,6 @@ class NavMobile extends Component {
     const navItems = NAV_ITEMS;
     const { auth } = this.props;
     const authenticated = auth.authenticated && auth.currentUser.displayName;
-
     return (
       <ScrollTo>
         {({ scrollTo }) => (
