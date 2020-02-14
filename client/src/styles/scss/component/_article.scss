@@ -28,6 +28,12 @@
       color: var(--primary-color);
     }
   }
+  @media only screen and (max-width: 991px) {
+    width: calc((100% / 2) - 12px) !important;
+  }
+  @media only screen and (max-width: 767px) {
+    width: 100% !important;
+  }
 }
 
 .article-wrap {
