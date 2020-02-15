@@ -17,7 +17,6 @@ class NavBar extends Component {
   };
 
   handlePostJob = () => {
-    // this.props.openModal('RegisterModal');
     this.props.history.push('/postjob');
   };
 
