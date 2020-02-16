@@ -1,14 +1,29 @@
 .job-edit {
-  .grow {
-    div {
-      border: 1px solid #aaa;
-      padding: 3px;
-    }
-  }
   .publish {
-    width: 276px;
+    width: 226px;
     @media only screen and (max-width: 767px) {
       margin: 0 auto;
+    }
+  }
+  .react-datepicker__input-container {
+    &:before {
+      position: absolute;
+      top: 9px;
+      left: 12px;
+      color: #666;
+      font-family: Icons;
+      font-style: normal;
+      font-weight: 500;
+      content: "\f073";
+      pointer-events: none;
+    }
+    input {
+      padding-left: 42px !important;
+    }
+  }
+  .half {
+    .ui.button {
+      width: 100%;
     }
   }
 }

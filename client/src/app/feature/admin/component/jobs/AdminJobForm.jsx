@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { combineValidators, composeValidators, isRequired, hasLengthGreaterThan } from 'revalidate';
 import { Form, Button } from 'semantic-ui-react';
+
+import DateInput from '../../../../common/ui/form/DateInput';
+import TextInput from '../../../../common/ui/form/TextInput';
+import SelectInput from '../../../../common/ui/form/SelectInput';
+import EditorInput from '../../../../common/ui/form/EditorInput';
 
 import './AdminJob.scss';
 
@@ -18,6 +23,12 @@ const validate = combineValidators({
     })
   )()
 });
+
+const typeOptions = [
+  { key: 'm', text: 'Type 1', value: '1' },
+  { key: 'f', text: 'Type 2', value: '2' },
+  { key: 'o', text: 'Type 3', value: '3' }
+];
 
 export class AdminJobForm extends Component {
   componentDidMount() {
@@ -38,29 +49,55 @@ export class AdminJobForm extends Component {
         <Form onSubmit={handleSubmit(this.onSubmit)} autoComplete='off'>
           <div className='job-edit flex-box sm'>
             <div className='grow'>
-              <div className='flex-box between sm'>
-                <div className='half sm'>jobid</div>
-                <div className='half sm'>admin</div>
+              <div className='flex-box between sm mb-3'>
+                <div className='half sm'>
+                  <label>Job ID</label>
+                  <Field name='jobId' component={TextInput} type='text' />
+                </div>
+                <div className='half sm'>
+                  <label>Job Administartor</label>
+                  <Field name='admin' component={SelectInput} options={typeOptions} placeholder='Select Type...' />
+                </div>
               </div>
-              <div className='flex-box between sm'>
-                <div className='half sm'>title</div>
-                <div className='half sm'>type</div>
+              <div className='flex-box between sm mb-3'>
+                <div className='half sm'>
+                  <label>title</label>
+                  <Field name='title' component={TextInput} type='text' />
+                </div>
+                <div className='half sm'>
+                  <label>Job Type</label>
+                  <Field name='type' component={SelectInput} options={typeOptions} placeholder='Select Type...' />
+                </div>
               </div>
-              <div className='flex-box between sm'>
-                <div className='half sm'>location</div>
+              <div className='flex-box between sm mb-3'>
+                <div className='half sm'>
+                  <label>Location</label>
+                  <Field name='location' component={SelectInput} options={typeOptions} placeholder='Select Type...' />
+                </div>
                 <div className='half sm'>salary</div>
               </div>
-              <div>summary</div>
-              <div>description</div>
+              <div>
+                <label>Summary</label>
+                <Field name='summary' component={TextInput} type='text' />
+              </div>
+              <div>
+                <label>Summary</label>
+                <Field name='description' component={EditorInput} />
+              </div>
             </div>
             <div className='spacer'></div>
             <div className='publish'>
-              <div className='flex-box between mb-2'>
-                <Button className='half' color='gray' content='preview' />
-                <Button className='half' color='blue' content='save' />
+              <div className='mt-2'>status</div>
+              <div className='flex-box between mb-3'>
+                <div className='half'>
+                  <Button color='gray' content='preview' />
+                </div>
+                <div className='half'>
+                  <Button color='blue' content='save' />
+                </div>
               </div>
               <Button color='green' content='Publish' />
-              <div className='mt-2'>status</div>
+              <Field name='publish date' component={DateInput} />
             </div>
           </div>
         </Form>
