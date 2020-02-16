@@ -57,29 +57,8 @@ const panes = [
   }
 ];
 
-const isUserClient = role => {
-  return role.type === 'client-user';
-};
-
 export class Admin extends Component {
-  componentDidMount() {
-    const { auth } = this.props;
-    const isClient = auth.authenticated && auth.currentUser && auth.currentUser.roles.findIndex(isUserClient) > -1;
-    if (!isClient) {
-      this.props.history.push('/postJob');
-    }
-  }
-  /*
-  componentDidMount() {
-    this.props.history.push('/postJob');
-  }
-*/
   render() {
-    /*
-    const { auth } = this.props;
-    const authenticated = auth.authenticated && auth.currentUser.organization;
-    if (!authenticated) return <AdminSetup />;
-    */
     return (
       <div>
         <Tab menu={{ pointing: true }} panes={panes} />

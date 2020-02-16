@@ -73,17 +73,21 @@
   > .flex-8 {
     flex: 8;
   }
-}
-
-@media only screen and (max-width: 991px) {
-  .flex-box.md {
-    flex-direction: column;
+  &.md {
+    @media only screen and (max-width: 991px) {
+      flex-direction: column;
+      > .half {
+        width: 100%;
+      }
+    }
   }
-}
-
-@media only screen and (max-width: 767px) {
-  .flex-box.sm {
-    flex-direction: column;
+  &.sm {
+    @media only screen and (max-width: 767px) {
+      flex-direction: column;
+      > .half {
+        width: 100%;
+      }
+    }
   }
 }
 

@@ -7,7 +7,12 @@ const actions = {};
 
 export class AdminOverview extends Component {
   render() {
-    return <div>Admin Overview</div>;
+    return (
+      <>
+        <div>Admin Overview</div>
+        <a href='/admin/job/new'>new job</a>
+      </>
+    );
   }
 }
 

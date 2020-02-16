@@ -1,15 +1,13 @@
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 import connectedAuthWrapper from 'redux-auth-wrapper/connectedAuthWrapper';
+import Loading from '../loading/Loading';
 
 const locationHelper = locationHelperBuilder({});
 
-const isAdmin = role => {
-  return role.type === 'client-user';
-};
-
 const userIsAuthenticatedDefaults = {
-  authenticatedSelector: state => (state.auth.loading ? true : state.auth.authenticated),
+  authenticatedSelector: state => state.auth.authenticated,
+  authenticatingSelector: state => state.auth.loading,
   wrapperDisplayName: 'UserIsAuthenticated'
 };
 
@@ -17,13 +15,32 @@ export const userIsAuthenticated = connectedAuthWrapper(userIsAuthenticatedDefau
 
 export const userIsAuthenticatedRedir = connectedRouterRedirect({
   ...userIsAuthenticatedDefaults,
+  AuthenticatingComponent: Loading,
   redirectPath: '/login'
 });
 
+/*
 export const userIsAdminRedir = connectedRouterRedirect({
   redirectPath: '/login',
   allowRedirectBack: false,
-  authenticatedSelector: state => (state.auth.loading ? true : state.auth.authenticated && state.auth.currentUser && state.auth.currentUser.roles.findIndex(isAdmin) > -1),
+  authenticatedSelector: state => {
+    console.log('userIsAdminRedir');
+    console.log('authenticated: ', state.auth.authenticated);
+    console.log('currentUser: ', !!state.auth.currentUser);
+    console.log('roles: ', state.auth.currentUser.roles.findIndex(isAdmin));
+    return state.auth.loading ? true : !!state.auth.currentUser && state.auth.currentUser.roles.findIndex(isAdmin) > -1;
+  },
+  wrapperDisplayName: 'UserIsAdmin'
+});
+
+  predicate: user => user.roles.findIndex(isAdmin) > -1,
+
+*/
+
+export const userIsAdminRedir = connectedRouterRedirect({
+  redirectPath: '/',
+  allowRedirectBack: false,
+  authenticatedSelector: state => !!state.auth.currentUser.organization,
   wrapperDisplayName: 'UserIsAdmin'
 });
 

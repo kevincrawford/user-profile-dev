@@ -21,14 +21,13 @@ const validate = combineValidators({
 
 export class AdminJobForm extends Component {
   componentDidMount() {
-    this.props.history.push('/');
     if (this.props.match.params !== 'new') {
-      // console.log('lookup job');
+      console.log('lookup job');
     }
   }
 
   onSubmit = values => {
-    // console.log(values);
+    console.log(values);
   };
 
   render() {
@@ -39,24 +38,24 @@ export class AdminJobForm extends Component {
         <Form onSubmit={handleSubmit(this.onSubmit)} autoComplete='off'>
           <div className='job-edit flex-box sm'>
             <div className='grow'>
-              <div className='flex-box between md'>
-                <div className='half'>jobid</div>
-                <div className='half'>admin</div>
+              <div className='flex-box between sm'>
+                <div className='half sm'>jobid</div>
+                <div className='half sm'>admin</div>
               </div>
-              <div className='flex-box between md'>
-                <div className='half'>title</div>
-                <div className='half'>type</div>
+              <div className='flex-box between sm'>
+                <div className='half sm'>title</div>
+                <div className='half sm'>type</div>
               </div>
-              <div className='flex-box between md'>
-                <div className='half'>location</div>
-                <div className='half'>salary</div>
+              <div className='flex-box between sm'>
+                <div className='half sm'>location</div>
+                <div className='half sm'>salary</div>
               </div>
               <div>summary</div>
               <div>description</div>
             </div>
             <div className='spacer'></div>
             <div className='publish'>
-              <div className='flex-box between md'>
+              <div className='flex-box between'>
                 <div className='half'>preview</div>
                 <div className='half'>save</div>
               </div>

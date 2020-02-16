@@ -1,11 +1,12 @@
 .job-edit {
   div {
     border: 1px solid #aaa;
+    padding: 3px;
   }
   .publish {
     width: 276px;
     @media only screen and (max-width: 767px) {
-      width: 100%;
+      margin: 0 auto;
     }
   }
 }
