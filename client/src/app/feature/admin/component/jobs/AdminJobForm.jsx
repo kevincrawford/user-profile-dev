@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { combineValidators, composeValidators, isRequired, hasLengthGreaterThan } from 'revalidate';
-import { Form } from 'semantic-ui-react';
+import { Form, Button } from 'semantic-ui-react';
 
 import './AdminJob.scss';
 
@@ -55,12 +55,12 @@ export class AdminJobForm extends Component {
             </div>
             <div className='spacer'></div>
             <div className='publish'>
-              <div className='flex-box between'>
-                <div className='half'>preview</div>
-                <div className='half'>save</div>
+              <div className='flex-box between mb-2'>
+                <Button className='half' color='gray' content='preview' />
+                <Button className='half' color='blue' content='save' />
               </div>
-              <div>publish</div>
-              <div>status</div>
+              <Button color='green' content='Publish' />
+              <div className='mt-2'>status</div>
             </div>
           </div>
         </Form>
