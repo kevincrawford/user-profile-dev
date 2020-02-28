@@ -26,4 +26,9 @@
       width: 100%;
     }
   }
+  .period {
+    .ui.selection.dropdown {
+      min-width: 90px;
+    }
+  }
 }

@@ -30,6 +30,12 @@ const typeOptions = [
   { key: 'o', text: 'Type 3', value: '3' }
 ];
 
+const salaryOptions = [
+  { key: 'm', text: 'Year', value: '1' },
+  { key: 'f', text: 'Hour', value: '2' },
+  { key: 'o', text: 'Day', value: '3' }
+];
+
 export class AdminJobForm extends Component {
   componentDidMount() {
     if (this.props.match.params !== 'new') {
@@ -50,31 +56,40 @@ export class AdminJobForm extends Component {
           <div className='job-edit flex-box sm'>
             <div className='grow'>
               <div className='flex-box between sm mb-3'>
-                <div className='half sm'>
+                <div className='half'>
                   <label>Job ID</label>
                   <Field name='jobId' component={TextInput} type='text' />
                 </div>
-                <div className='half sm'>
+                <div className='half'>
                   <label>Job Administartor</label>
                   <Field name='admin' component={SelectInput} options={typeOptions} placeholder='Select Type...' />
                 </div>
               </div>
               <div className='flex-box between sm mb-3'>
-                <div className='half sm'>
+                <div className='half'>
                   <label>title</label>
                   <Field name='title' component={TextInput} type='text' />
                 </div>
-                <div className='half sm'>
+                <div className='half'>
                   <label>Job Type</label>
                   <Field name='type' component={SelectInput} options={typeOptions} placeholder='Select Type...' />
                 </div>
               </div>
               <div className='flex-box between sm mb-3'>
-                <div className='half sm'>
+                <div className='half'>
                   <label>Location</label>
                   <Field name='location' component={SelectInput} options={typeOptions} placeholder='Select Type...' />
                 </div>
-                <div className='half sm'>salary</div>
+                <div className='half'>
+                  <label>Salary</label>
+                  <div className='flex-box'>
+                    <div className='grow'>$</div>
+                    <div className='per'>/</div>
+                    <div className='period'>
+                      <Field name='salaryPeriod' component={SelectInput} options={salaryOptions} placeholder='Select...' />
+                    </div>
+                  </div>
+                </div>
               </div>
               <div>
                 <label>Summary</label>
