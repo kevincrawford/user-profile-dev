@@ -96,7 +96,7 @@ class App extends Component {
                     <Route path='/resources' component={Resources} />
                     <Route path='/about' component={About} />
                     <Route path='/jobs' component={Jobs} />
-                    <Route path='/profile' component={Profile} />
+                    <Route exact path='/profile' component={Profile} />
                     <Route exact path='/postjob' component={AdminLanding} />
                     <Route exact path='/admin' component={AdminMain} />
                     <Route path='/admin/job/:id' component={AdminJob} />

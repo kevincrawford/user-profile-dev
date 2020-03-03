@@ -1,0 +1,85 @@
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  font-size: 67%;
+  font-weight: 300;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.5rem;
+  transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.profile-wrap {
+  .w-100 {
+    width: 100% !important;
+  }
+
+  .d-flex {
+    display: flex !important;
+  }
+
+  .m-0 {
+    margin: 0 !important;
+  }
+  .flex-grow-1 {
+    flex-grow: 1 !important;
+  }
+
+  h6 {
+    font-size: 1rem;
+    font-weight: bolder;
+  }
+
+  .section-content {
+    margin: 0.25rem 0 2rem;
+    background-color: #fff;
+    border: 1px solid #e0e2e3;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    padding: 1rem;
+  }
+
+  .avatar_wrap {
+    margin: 0 auto 5px;
+    position: relative;
+    width: 70px;
+    .avatar {
+      display: inline-block;
+      position: relative;
+      height: 68px;
+      width: 68px;
+      .photo {
+        display: inline-block;
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #e0e2e3;
+        overflow: hidden;
+        padding: 0;
+        border-radius: 50%;
+        text-align: center;
+        width: 4em;
+        height: 4em;
+        -webkit-perspective: 1px;
+        perspective: 1px;
+        .badge {
+          white-space: nowrap;
+          overflow: hidden;
+          text-indent: 200%;
+          background: #5dabfc;
+          box-shadow: 0 0 0 2px #fff;
+          border-radius: 50%;
+          bottom: 2px;
+          right: -4px;
+          box-sizing: border-box;
+          position: absolute;
+          width: 22px;
+          height: 22px;
+        }
+      }
+    }
+  }
+}
