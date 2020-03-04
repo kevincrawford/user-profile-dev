@@ -46,6 +46,9 @@
   &.align-stretch {
     align-items: stretch;
   }
+  &.align-center {
+    align-items: center;
+  }
   &.wrap {
     flex-wrap: wrap;
   }

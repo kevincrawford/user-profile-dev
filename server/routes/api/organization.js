@@ -32,13 +32,19 @@ router.get('/', auth, async (req, res) => {
 // @access   Public
 router.get('/:id', async (req, res) => {
   try {
-    const org = await Organization.findById(req.params.id).populate({
-      path: 'location',
-      populate: {
-        path: 'contact',
-        select: ['displayName', 'email']
-      }
-    });
+    const org = await Organization.findById(req.params.id)
+      .populate({
+        path: 'location'
+      })
+      .populate({
+        path: 'locations'
+      })
+      .populate({
+        path: 'users'
+      })
+      .populate({
+        path: 'jobs'
+      });
 
     if (!org) {
       return res.status(404).json({ msg: 'Organization not found' });

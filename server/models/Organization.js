@@ -35,6 +35,12 @@ const OrganizationSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'location'
     }
+  ],
+  jobs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'job'
+    }
   ]
 });
 

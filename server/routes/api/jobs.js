@@ -3,7 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
 
-const Job = require('../../models/Tag');
+const Job = require('../../models/Job');
 const Org = require('../../models/Organization');
 const User = require('../../models/User');
 
@@ -13,8 +13,7 @@ const User = require('../../models/User');
 router.get('/all', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    const org = await (await Org.findById(user.organization))
-    .populate({
+    const org = await (await Org.findById(user.organization)).populate({
       path: 'answers',
       populate: {
         path: 'user',
@@ -72,28 +71,30 @@ router.post(
   ],
   async (req, res) => {
     const errors = validationResult(req);
-    const { jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount, start, publish } = req.body;
+    const { jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount, location } = req.body;
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
     try {
+      const user = await User.findById(req.user.id);
+
       const newJob = new Job({
+        organization: user.organization,
         jobId: jobId,
-        jobType,
-        title,
-        summary,
-        description,
-        status,
-        salaryPeriod,
-        salaryAmount,
-        start,
-        publish
+        jobType: jobType,
+        title: title,
+        summary: summary,
+        description: description,
+        status: status,
+        salaryPeriod: salaryPeriod,
+        salaryAmount: salaryAmount,
+        location: location
       });
 
-      const tag = await newTag.save();
+      const job = await newJob.save();
 
-      res.json(tag);
+      res.json(job);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');

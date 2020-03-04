@@ -77,7 +77,7 @@ export class AdminLanding extends Component {
         </p>
         <span className='link small mt-0' onClick={this.handleSwitchModal}>
           Have an Account?&nbsp;&nbsp;Login
-        </span>{' '}
+        </span>
       </Form>
     );
   }

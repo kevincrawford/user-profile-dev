@@ -39,12 +39,6 @@ const JobSchema = new Schema({
   salaryAmount: {
     type: String
   },
-  start: {
-    type: Date
-  },
-  publish: {
-    type: Date
-  },
   created: {
     type: Date,
     default: Date.now

@@ -1,14 +1,22 @@
 import { createReducer } from '../../common/util/ReducerUtil';
-import { FETCH_JOBS, JOB_LOADED, JOB_SAVED } from './AdminConstants';
+import { FETCH_JOBS, FETCH_ORG, JOB_LOADED, JOB_SAVED } from './AdminConstants';
 
 const initialState = {
-  jobs: []
+  org: null,
+  job: null
 };
 
 const fetchJobs = (state, payload) => {
   return {
     ...state,
     jobs: payload || []
+  };
+};
+
+const fetchOrg = (state, payload) => {
+  return {
+    ...state,
+    org: payload
   };
 };
 
@@ -29,5 +37,6 @@ const saveJob = (state, payload) => {
 export default createReducer(initialState, {
   [FETCH_JOBS]: fetchJobs,
   [JOB_LOADED]: loadJob,
-  [JOB_SAVED]: saveJob
+  [JOB_SAVED]: saveJob,
+  [FETCH_ORG]: fetchOrg
 });

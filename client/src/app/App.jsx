@@ -29,7 +29,7 @@ import Admin from './feature/admin/Admin';
 import AdminJobForm from './feature/admin/component/jobs/AdminJobForm';
 import AdminLanding from './feature/admin/AdminLanding';
 
-import LoginPage from './common/ui/auth/login/LoginPage';
+import LoginForm from './common/ui/auth/login/LoginForm';
 
 const mapState = state => ({
   auth: state.auth,
@@ -37,10 +37,10 @@ const mapState = state => ({
 });
 
 // Need to apply the hocs here to avoid applying them inside the render method
-const Login = userIsNotAuthenticatedRedir(LoginPage);
-const Profile = userIsAuthenticatedRedir(ProfilePage);
+const Login     = userIsNotAuthenticatedRedir(LoginForm);
+const Profile   = userIsAuthenticatedRedir(ProfilePage);
 const AdminMain = userIsAuthenticatedRedir(userIsAdminRedir(Admin));
-const AdminJob = userIsAuthenticatedRedir(userIsAdminRedir(AdminJobForm));
+const AdminJob  = userIsAuthenticatedRedir(userIsAdminRedir(AdminJobForm));
 
 class App extends Component {
   componentDidMount() {
