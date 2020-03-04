@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const pointSchema = require('./PointSchema');
 
 const LocationSchema = new Schema({
   name: {
@@ -34,11 +35,8 @@ const LocationSchema = new Schema({
     type: String,
     required: true
   },
-  lat: {
-    type: Number
-  },
-  lng: {
-    type: Number
+  loc: {
+    type: pointSchema
   }
 });
 

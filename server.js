@@ -40,7 +40,7 @@ app.use('/api/contact', require('./server/routes/api/contact'));
 app.use('/api/crm', require('./server/routes/api/hubspot'));
 app.use('/api/payment', require('./server/routes/api/payment'));
 app.use('/api/scholarship', require('./server/routes/api/scholarships'));
-app.use('/api/jobs', require('./server/routes/api/jobs'));
+app.use('/api/job', require('./server/routes/api/jobs'));
 app.use('/api/organization', require('./server/routes/api/organization'));
 
 // Serve static assets in production

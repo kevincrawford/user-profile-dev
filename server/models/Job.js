@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const pointSchema = require('./PointSchema');
 
 const JobSchema = new Schema({
   jobId: {
@@ -10,20 +11,20 @@ const JobSchema = new Schema({
     default: 'Full-time'
   },
   title: {
-    type: String,
-    required: true
+    type: String
   },
   summary: {
-    type: String,
-    required: true
+    type: String
   },
   description: {
-    type: String,
-    required: true
+    type: String
   },
   organization: {
     type: Schema.Types.ObjectId,
     ref: 'organization'
+  },
+  loc: {
+    type: pointSchema
   },
   location: {
     type: Schema.Types.ObjectId,

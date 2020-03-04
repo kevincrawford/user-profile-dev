@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { HEADER_JSON } from '../../common/constants/apiConstants';
-import { FETCH_JOBS, SET_JOB, UPDATE_JOB, DELETE_JOB, JOB_LOADED, JOB_SAVED, FETCH_ORG } from './AdminConstants';
+import { FETCH_ORG, FETCH_JOBS, FETCH_JOB, UPDATE_JOB, DELETE_JOB } from './AdminConstants';
 import { LOGIN_SUCCESS } from '../../common/ui/auth/AuthContantants';
 import { loadUser, welcomeUser } from '../../common/ui/auth/AuthActions';
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../common/actions/async/asyncActions';
@@ -39,7 +39,7 @@ export const fetchJobs = () => {
   return async dispatch => {
     try {
       dispatch(asyncActionStart('admin-job-list'));
-      const jobs = await axios.get(`/api/job/all`);
+      const jobs = await axios.get(`/api/job/list`);
       dispatch({ type: FETCH_JOBS, payload: jobs.data });
       dispatch(asyncActionFinish());
     } catch (error) {
@@ -49,31 +49,33 @@ export const fetchJobs = () => {
   };
 };
 
-export const setJob = job => {
-  return dispatch => {
-    dispatch({ type: SET_JOB, payload: job });
+export const fetchJob = (id, history) => {
+  return async dispatch => {
+    try {
+      dispatch(asyncActionStart('fetch-job'));
+      const job = await axios.get(`/api/job/${id}`);
+      console.log('job: ', job.data);
+      dispatch({ type: FETCH_JOB, payload: job.data });
+      dispatch(asyncActionFinish());
+    } catch (error) {
+      console.log(error);
+      dispatch(asyncActionError());
+      if (history) {
+        history.push(`/admin/job/new`);
+      }
+    }
   };
 };
 
-export const createJob = (orgId, LocationId) => {
-  const body = JSON.stringify({
-    organization: orgId,
-    location: LocationId,
-    jobId: '',
-    jobType: 'Full-time',
-    title: '',
-    summary: '',
-    description: '',
-    status: 'Draft',
-    salaryPeriod: 'Year',
-    salaryAmount: ''
-  });
+export const createJob = (job, history) => {
+  const body = JSON.stringify(job);
   return async dispatch => {
     try {
-      dispatch(asyncActionStart());
+      dispatch(asyncActionStart('fetch-job'));
       const newJob = await axios.post(`/api/job`, body, HEADER_JSON);
-      dispatch({ type: UPDATE_JOB, payload: newJob });
+      dispatch({ type: FETCH_JOB, payload: newJob.data });
       dispatch(asyncActionFinish());
+      history.push(`/admin/job/${newJob.data._id}`);
     } catch (error) {
       console.log(error);
       dispatch(asyncActionError());
@@ -81,13 +83,21 @@ export const createJob = (orgId, LocationId) => {
   };
 };
 
-export const updateJob = job => {
+export const updateJob = (prop, value) => {
+  return dispatch => {
+    dispatch({ type: UPDATE_JOB, payload: { prop: prop, value: value } });
+  };
+};
+
+export const saveJob = job => {
+  const body = JSON.stringify(job);
   return async dispatch => {
     try {
       dispatch(asyncActionStart());
-      await axios.put(`/api/job/${job._id}`);
-      dispatch({ type: UPDATE_JOB, payload: job });
+      const savedJob = await axios.put(`/api/job`, body, HEADER_JSON);
+      dispatch({ type: FETCH_JOB, payload: savedJob.data });
       dispatch(asyncActionFinish());
+      toastr.success('Success!', 'Job Saved');
     } catch (error) {
       console.log(error);
       dispatch(asyncActionError());
@@ -101,41 +111,6 @@ export const deleteJob = job => {
       dispatch(asyncActionStart());
       await axios.delete(`/api/job/${job._id}`);
       dispatch({ type: DELETE_JOB, payload: job._id });
-      dispatch(asyncActionFinish());
-    } catch (error) {
-      console.log(error);
-      dispatch(asyncActionError());
-    }
-  };
-};
-
-export const loadJob = id => {
-  return async dispatch => {
-    try {
-      dispatch(asyncActionStart());
-      const job = await axios.get(`/api/job/${id}`);
-      dispatch({ type: JOB_LOADED, payload: job.data });
-      dispatch(asyncActionFinish());
-    } catch (error) {
-      console.log(error);
-      dispatch(asyncActionError());
-    }
-  };
-};
-
-export const saveJob = job => {
-  const body = JSON.stringify(job);
-  return async dispatch => {
-    try {
-      dispatch(asyncActionStart());
-      const savedJob = await axios.post(`/api/jobs`, body, HEADER_JSON);
-      dispatch({
-        type: JOB_SAVED,
-        payload: {
-          savedJob
-        }
-      });
-      toastr.success('Success!', 'Job Saved!');
       dispatch(asyncActionFinish());
     } catch (error) {
       console.log(error);

@@ -7,21 +7,13 @@ const Job = require('../../models/Job');
 const Org = require('../../models/Organization');
 const User = require('../../models/User');
 
-// @route    GET api/jobs/:orgId
+// @route    GET api/job/list
 // @desc     Get all Jobs by Organization
-// @access   Public
-router.get('/all', auth, async (req, res) => {
+// @access   Private
+router.get('/list', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    const org = await (await Org.findById(user.organization)).populate({
-      path: 'answers',
-      populate: {
-        path: 'user',
-        select: ['displayName', 'screenName', 'avatar']
-      }
-    });
     const jobs = await Job.find({ organization: user.organization });
-
     res.json(jobs);
   } catch (err) {
     console.error(err.message);
@@ -29,7 +21,7 @@ router.get('/all', auth, async (req, res) => {
   }
 });
 
-// @route    GET api/jobs/:jobId
+// @route    GET api/job/:jobId
 // @desc     Get Job by Id
 // @access   Public
 router.get('/:jobId', async (req, res) => {
@@ -53,54 +45,60 @@ router.get('/:jobId', async (req, res) => {
 // @route    POST api/job
 // @desc     Create Job
 // @access   Private
-router.post(
-  '/',
-  [
-    auth,
-    [
-      check('description', 'Description is required')
-        .not()
-        .isEmpty(),
-      check('summary', 'Summary is required')
-        .not()
-        .isEmpty(),
-      check('title', 'Title is required')
-        .not()
-        .isEmpty()
-    ]
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    const { jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount, location } = req.body;
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
+router.post('/', auth, async (req, res) => {
+  const { jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount } = req.body;
 
-    try {
-      const user = await User.findById(req.user.id);
+  try {
+    const user = await User.findById(req.user.id);
+    const org = await Org.findById(user.organization);
 
-      const newJob = new Job({
-        organization: user.organization,
-        jobId: jobId,
-        jobType: jobType,
-        title: title,
-        summary: summary,
-        description: description,
-        status: status,
-        salaryPeriod: salaryPeriod,
-        salaryAmount: salaryAmount,
-        location: location
-      });
+    const newJob = new Job({
+      organization: org._id,
+      location: org.location,
+      jobId: jobId,
+      jobType: jobType,
+      title: title,
+      summary: summary,
+      description: description,
+      status: status,
+      salaryPeriod: salaryPeriod,
+      salaryAmount: salaryAmount
+    });
 
-      const job = await newJob.save();
+    const job = await newJob.save();
 
-      res.json(job);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server Error');
-    }
+    res.json(job);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
   }
-);
+});
+
+// @route    PUT api/job/
+// @desc     Update Job
+// @access   Private
+router.put('/', auth, async (req, res) => {
+  const { _id, jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount } = req.body;
+  try {
+    const job = await Job.findById(_id);
+
+    job.jobId = jobId;
+    job.jobType = jobType;
+    job.title = title;
+    job.summary = summary;
+    job.description = description;
+    job.status = status;
+    job.salaryPeriod = salaryPeriod;
+    job.salaryAmount = salaryAmount;
+
+    await job.save();
+    // const job = await Job.findOneAndUpdate({ _id: req.params.id }, update);
+    res.json(job);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 // @route    DELETE api/tags/:id
 // @desc     Delete Tag

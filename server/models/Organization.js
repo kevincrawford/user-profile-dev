@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const pointSchema = require('./PointSchema');
 
 const OrganizationSchema = new Schema({
   name: {
@@ -26,6 +27,9 @@ const OrganizationSchema = new Schema({
       ref: 'user'
     }
   ],
+  loc: {
+    type: pointSchema
+  },
   location: {
     type: Schema.Types.ObjectId,
     ref: 'location'

@@ -14,6 +14,127 @@ const Location = require('../../models/Location');
 const User = require('../../models/User');
 const Role = require('../../models/Role');
 
+// @route    GET Geo Test
+// @desc     Get all organizations
+// @access   Private
+router.get('/geo/:address', async (req, res) => {
+  try {
+    const latlng = await util.geoFindByAddress(req.params.address);
+    // console.log('geo: latlng: ', latlng);
+    res.json(latlng.json.results[0].geometry.location);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// const test = {
+//   "status": 200,
+//   "headers": {
+//       "content-type": "application/json; charset=UTF-8",
+//       "date": "Wed, 04 Mar 2020 19:15:01 GMT",
+//       "pragma": "no-cache",
+//       "expires": "Fri, 01 Jan 1990 00:00:00 GMT",
+//       "cache-control": "no-cache, must-revalidate",
+//       "access-control-allow-origin": "*",
+//       "server": "mafe",
+//       "x-xss-protection": "0",
+//       "x-frame-options": "SAMEORIGIN",
+//       "server-timing": "gfet4t7; dur=258",
+//       "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000",
+//       "accept-ranges": "none",
+//       "vary": "Accept-Language,Accept-Encoding",
+//       "connection": "close"
+//   },
+//   "json": {
+//       "results": [
+//           {
+//               "address_components": [
+//                   {
+//                       "long_name": "Evanston",
+//                       "short_name": "Evanston",
+//                       "types": [
+//                           "locality",
+//                           "political"
+//                       ]
+//                   },
+//                   {
+//                       "long_name": "Evanston Township",
+//                       "short_name": "Evanston Township",
+//                       "types": [
+//                           "administrative_area_level_3",
+//                           "political"
+//                       ]
+//                   },
+//                   {
+//                       "long_name": "Cook County",
+//                       "short_name": "Cook County",
+//                       "types": [
+//                           "administrative_area_level_2",
+//                           "political"
+//                       ]
+//                   },
+//                   {
+//                       "long_name": "Illinois",
+//                       "short_name": "IL",
+//                       "types": [
+//                           "administrative_area_level_1",
+//                           "political"
+//                       ]
+//                   },
+//                   {
+//                       "long_name": "United States",
+//                       "short_name": "US",
+//                       "types": [
+//                           "country",
+//                           "political"
+//                       ]
+//                   }
+//               ],
+//               "formatted_address": "Evanston, IL, USA",
+//               "geometry": {
+//                   "bounds": {
+//                       "northeast": {
+//                           "lat": 42.0718018,
+//                           "lng": -87.665297
+//                       },
+//                       "southwest": {
+//                           "lat": 42.01903009999999,
+//                           "lng": -87.7326599
+//                       }
+//                   },
+//                   "location": {
+//                       "lat": 42.0450722,
+//                       "lng": -87.68769689999999
+//                   },
+//                   "location_type": "APPROXIMATE",
+//                   "viewport": {
+//                       "northeast": {
+//                           "lat": 42.0718018,
+//                           "lng": -87.665297
+//                       },
+//                       "southwest": {
+//                           "lat": 42.01903009999999,
+//                           "lng": -87.7326599
+//                       }
+//                   }
+//               },
+//               "place_id": "ChIJdwroNP3PD4gRGmfABQ2hIW8",
+//               "types": [
+//                   "locality",
+//                   "political"
+//               ]
+//           }
+//       ],
+//       "status": "OK"
+//   },
+//   "requestUrl": "https://maps.googleapis.com/maps/api/geocode/json?address=Evanston%2BIL&key=AIzaSyC4D1LiEjXq9Gw_Jx4m0fk1vfKwb6frWiI",
+//   "query": {
+//       "address": "Evanston+IL",
+//       "key": "AIzaSyC4D1LiEjXq9Gw_Jx4m0fk1vfKwb6frWiI"
+//   }
+// }
+
 // @route    GET api/organization
 // @desc     Get all organizations
 // @access   Private
@@ -117,7 +238,7 @@ router.post('/register', async (req, res) => {
     const domainParts = website.split('.');
     const domain = `${domainParts[domainParts.length - 2]}.${domainParts[domainParts.length - 1]}`;
 
-    const latlng = await util.geoFindByAddress(`${street}, ${city} ${state}`);
+    const latlng = await util.geoFindByAddress(`${city} ${state}`);
 
     let locationData = {
       contact: user._id,
@@ -127,8 +248,8 @@ router.post('/register', async (req, res) => {
       state: state,
       zip: zip,
       phone: phone,
-      lat: latlng.lat,
-      lng: latlng.lng
+      lat: latlng.json.results[0].geometry.location.lat,
+      lng: latlng.json.results[0].geometry.location.lng
     };
 
     let orgLocation = new Location(locationData);

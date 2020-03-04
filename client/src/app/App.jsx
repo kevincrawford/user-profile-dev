@@ -25,7 +25,8 @@ import About from './feature/about/About';
 import Jobs from './feature/jobs/Jobs';
 import ProfilePage from './feature/profile/ProfilePage';
 
-import Admin from './feature/admin/Admin';
+// import Admin from './feature/admin/Admin';
+import AdminJobList from './feature/admin/component/jobs/AdminJobList';
 import AdminJobForm from './feature/admin/component/jobs/AdminJobForm';
 import AdminLanding from './feature/admin/AdminLanding';
 
@@ -37,10 +38,10 @@ const mapState = state => ({
 });
 
 // Need to apply the hocs here to avoid applying them inside the render method
-const Login     = userIsNotAuthenticatedRedir(LoginForm);
-const Profile   = userIsAuthenticatedRedir(ProfilePage);
-const AdminMain = userIsAuthenticatedRedir(userIsAdminRedir(Admin));
-const AdminJob  = userIsAuthenticatedRedir(userIsAdminRedir(AdminJobForm));
+const Login = userIsNotAuthenticatedRedir(LoginForm);
+const Profile = userIsAuthenticatedRedir(ProfilePage);
+const AdminMain = userIsAuthenticatedRedir(userIsAdminRedir(AdminJobList));
+const AdminJob = userIsAuthenticatedRedir(userIsAdminRedir(AdminJobForm));
 
 class App extends Component {
   componentDidMount() {
