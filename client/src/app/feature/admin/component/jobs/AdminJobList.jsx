@@ -10,7 +10,8 @@ import { fetchJobs, fetchOrg, clearJob } from '../../AdminActions';
 const mapState = state => ({
   loading: state.async.loading,
   loadingName: state.async.elementName,
-  jobs: state.admin.jobs
+  jobs: state.admin.jobs,
+  user: state.auth.currentUser
 });
 
 const actions = {
@@ -23,18 +24,20 @@ export class AdminJobList extends Component {
   constructor(props) {
     super(props);
 
-    console.log('fetchOrg');
-    this.props.fetchOrg();
-
-    console.log('fetchJobs');
+    this.props.fetchOrg(this.props.user.organization);
     this.props.fetchJobs();
 
     this.handleEditClick = this.handleEditClick.bind(this);
+    this.handleRemoveClick = this.handleRemoveClick.bind(this);
     this.handleNewJob = this.handleNewJob.bind(this);
   }
 
   handleEditClick(id) {
     this.props.history.push(`/admin/job/${id}`);
+  }
+
+  handleRemoveClick(id) {
+    console.log(id);
   }
 
   handleNewJob(id) {
@@ -70,13 +73,16 @@ export class AdminJobList extends Component {
           <Table.Body>
             {jobs &&
               jobs.map(job => (
-                <Table.Row key={job._id} onClick={() => this.handleEditClick(job._id)}>
+                <Table.Row key={job._id}>
                   <Table.Cell>{job.title}</Table.Cell>
                   <Table.Cell>{job.status}</Table.Cell>
                   <Table.Cell>{moment(job.updated).from()}</Table.Cell>
                   <Table.Cell textAlign='right'>
-                  <Icon link color='red' name='trash outline' />
-                  <Icon link color='green' name='edit outline' />
+                    {/*
+                    <Icon link color='red' name='remove' onClick={() => this.handleRemoveClick(job._id)} />
+                    &nbsp;&nbsp;
+                    */}
+                    <Icon link color='green' name='edit outline' onClick={() => this.handleEditClick(job._id)} />
                   </Table.Cell>
                 </Table.Row>
               ))}
