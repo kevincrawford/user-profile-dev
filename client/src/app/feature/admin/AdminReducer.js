@@ -1,17 +1,26 @@
 import { createReducer } from '../../common/util/ReducerUtil';
-import { FETCH_JOBS, FETCH_JOB, UPDATE_JOB, FETCH_ORG } from './AdminConstants';
+import { FETCH_JOBS, FETCH_JOB, UPDATE_JOB, CLEAR_JOB, FETCH_ORG } from './AdminConstants';
+
+const emptyJob = {
+  jobId: '',
+  jobType: 'Full-time',
+  title: '',
+  summary: '',
+  description: '',
+  status: 'Draft',
+  salaryPeriod: 'Year',
+  salaryAmount: ''
+};
 
 const initialState = {
-  job: {
-    jobId: '',
-    jobType: 'Full-time',
-    title: '',
-    summary: '',
-    description: '',
-    status: 'Draft',
-    salaryPeriod: 'Year',
-    salaryAmount: ''
-  }
+  job: emptyJob
+};
+
+const fetchOrg = (state, payload) => {
+  return {
+    ...state,
+    org: payload
+  };
 };
 
 const fetchJobs = (state, payload) => {
@@ -28,13 +37,6 @@ const fetchJob = (state, payload) => {
   };
 };
 
-const fetchOrg = (state, payload) => {
-  return {
-    ...state,
-    org: payload
-  };
-};
-
 const updateJob = (state, payload) => {
   return {
     ...state,
@@ -45,9 +47,17 @@ const updateJob = (state, payload) => {
   };
 };
 
+const clearJob = (state, payload) => {
+  return {
+    ...state,
+    job: emptyJob
+  };
+};
+
 export default createReducer(initialState, {
   [FETCH_JOBS]: fetchJobs,
   [FETCH_JOB]: fetchJob,
   [UPDATE_JOB]: updateJob,
-  [FETCH_ORG]: fetchOrg
+  [FETCH_ORG]: fetchOrg,
+  [CLEAR_JOB]: clearJob
 });

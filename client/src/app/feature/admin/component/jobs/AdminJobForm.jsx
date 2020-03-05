@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Form, Input, Dropdown, Button } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
+import { Form, Input, Dropdown, Button, Breadcrumb } from 'semantic-ui-react';
 import { Editor } from '@tinymce/tinymce-react';
-import { createJob, fetchJob, updateJob, saveJob } from '../../AdminActions';
+import { createJob, fetchJob, updateJob, saveJob, clearJob } from '../../AdminActions';
 import { asyncActionStart } from '../../../../common/actions/async/asyncActions';
 import Loading from '../../../../common/ui/loading/Loading';
 
@@ -15,11 +16,17 @@ export class AdminJobForm extends Component {
       this.props.fetchJob(this.props.match.params.id, this.props.history);
     }
 
+    this.handleNewJob = this.handleNewJob.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleEditorChange = this.handleEditorChange.bind(this);
     this.onSalaryRangeSelect = this.onSalaryRangeSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleNewJob(id) {
+    this.props.clearJob();
+    this.props.history.push(`/admin/job/new`);
   }
 
   handleChange(e) {
@@ -54,89 +61,105 @@ export class AdminJobForm extends Component {
     const { jobId, jobType, title, summary, description, status, salaryAmount } = this.props.job;
     if (this.props.loading && this.props.loadingName === 'fetch-job') return <Loading />;
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <div className='job-edit flex-box sm'>
-          <div className='grow'>
-            <div className='flex-box between sm mb-3'>
-              <div className='half'>
-                <label>Job ID</label>
-                <Form.Input name='jobId' value={jobId} onChange={this.handleChange} />
-              </div>
-              <div className='half'>
-                <label>Job Type</label>
-                <Form.Select
-                  fluid
-                  name='jobType'
-                  value={jobType}
-                  onChange={this.handleSelectChange}
-                  options={jobTypeOptions}
-                />
-              </div>
+      <>
+        <div className='admin-nav'>
+          <div className='flex-box between'>
+            <div className='flex-box align-center grow'>
+              <Breadcrumb size='large'>
+                <Breadcrumb.Section link onClick={() => this.props.history.push('/admin')}>
+                  Job List
+                </Breadcrumb.Section>
+                <Breadcrumb.Divider icon='right chevron' />
+                <Breadcrumb.Section>Edit Job</Breadcrumb.Section>
+              </Breadcrumb>
             </div>
-            <div className='flex-box between sm mb-3'>
-              <div className='half'>
-                <label>Title</label>
-                <Form.Input name='title' value={title} onChange={this.handleChange} />
-              </div>
-              <div className='half'>
-                <label>Salary</label>
-                <Input
-                  fluid
-                  label={
-                    <Dropdown defaultValue='Year' options={salaryPeriodOptions} onChange={this.onSalaryRangeSelect} />
-                  }
-                  icon='dollar sign'
-                  iconPosition='left'
-                  labelPosition='right'
-                  name='salaryAmount'
-                  value={salaryAmount}
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div>
-              <label>Summary</label>
-              <Form.Input name='summary' value={summary} onChange={this.handleChange} />
-            </div>
-            <div className='mt-3'>
-              <label>Description</label>
-              <Editor
-                initialValue={`<p>${description}</p>`}
-                apiKey='twpt6v84p920kri6p37w1wk4258x70z5e2yjhikzlu6mysb6'
-                onEditorChange={this.handleEditorChange}
-                init={{
-                  height: 250,
-                  menubar: false,
-                  elementpath: false,
-                  plugins: ['lists link searchreplace fullscreen paste'],
-                  toolbar: 'fullscreen | bold italic underline strikethrough | bullist numlist | link ',
-                  default_link_target: '_blank',
-                  link_assume_external_targets: true,
-                  link_title: false,
-                  target_list: false
-                }}
-              />
-            </div>
-          </div>
-          <div className='spacer'></div>
-          <div className='publish-panel'>
-            <label>&nbsp;</label>
-            <div className='flex-box between mb-3'>
-              <div className='half'>
-                <Button fluid color='blue' content='preview' onClick={this.handleSubmit} />
-              </div>
-              <div className='half'>
-                <Button fluid color='green' content='save' onClick={this.handleSubmit} />
-              </div>
-            </div>
-            {status === 'Draft' ? (
-              <Button fluid color='green' content='Publish' />
-            ) : (
-              <Button fluid color='grey' content='Unpublish' />
-            )}
+            <Button content='New Job' primary onClick={this.handleNewJob} />
           </div>
         </div>
-      </Form>
+        <Form onSubmit={this.handleSubmit}>
+          <div className='job-edit flex-box sm'>
+            <div className='grow'>
+              <div className='flex-box between sm mb-3'>
+                <div className='half'>
+                  <label>Job ID</label>
+                  <Form.Input name='jobId' value={jobId} onChange={this.handleChange} />
+                </div>
+                <div className='half'>
+                  <label>Job Type</label>
+                  <Form.Select
+                    fluid
+                    name='jobType'
+                    value={jobType}
+                    onChange={this.handleSelectChange}
+                    options={jobTypeOptions}
+                  />
+                </div>
+              </div>
+              <div className='flex-box between sm mb-3'>
+                <div className='half'>
+                  <label>Title</label>
+                  <Form.Input name='title' value={title} onChange={this.handleChange} />
+                </div>
+                <div className='half'>
+                  <label>Salary</label>
+                  <Input
+                    fluid
+                    label={
+                      <Dropdown defaultValue='Year' options={salaryPeriodOptions} onChange={this.onSalaryRangeSelect} />
+                    }
+                    icon='dollar sign'
+                    iconPosition='left'
+                    labelPosition='right'
+                    name='salaryAmount'
+                    value={salaryAmount}
+                    onChange={this.handleChange}
+                  />
+                </div>
+              </div>
+              <div>
+                <label>Summary</label>
+                <Form.Input name='summary' value={summary} onChange={this.handleChange} />
+              </div>
+              <div className='mt-3'>
+                <label>Description</label>
+                <Editor
+                  initialValue={`<p>${description}</p>`}
+                  apiKey='twpt6v84p920kri6p37w1wk4258x70z5e2yjhikzlu6mysb6'
+                  onEditorChange={this.handleEditorChange}
+                  init={{
+                    height: 250,
+                    menubar: false,
+                    elementpath: false,
+                    plugins: ['lists link searchreplace fullscreen paste'],
+                    toolbar: 'fullscreen | bold italic underline strikethrough | bullist numlist | link ',
+                    default_link_target: '_blank',
+                    link_assume_external_targets: true,
+                    link_title: false,
+                    target_list: false
+                  }}
+                />
+              </div>
+            </div>
+            <div className='spacer'></div>
+            <div className='publish-panel'>
+              <label>&nbsp;</label>
+              <div className='flex-box between mb-3'>
+                <div className='half'>
+                  <Button fluid color='blue' content='preview' onClick={this.handleSubmit} />
+                </div>
+                <div className='half'>
+                  <Button fluid color='green' content='save' onClick={this.handleSubmit} />
+                </div>
+              </div>
+              {status === 'Draft' ? (
+                <Button fluid color='green' content='Publish' />
+              ) : (
+                <Button fluid color='grey' content='Unpublish' />
+              )}
+            </div>
+          </div>
+        </Form>
+      </>
     );
   }
 }
@@ -168,7 +191,8 @@ const mapDispatchToProps = {
   fetchJob,
   createJob,
   updateJob,
-  saveJob
+  saveJob,
+  clearJob
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminJobForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminJobForm));

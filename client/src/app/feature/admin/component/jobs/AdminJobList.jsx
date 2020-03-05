@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Table, Icon, Button } from 'semantic-ui-react';
+import { Table, Icon, Button, Breadcrumb } from 'semantic-ui-react';
 import Loading from '../../../../common/ui/loading/Loading';
 import moment from 'moment/moment.js';
 
-import { fetchJobs, fetchOrg } from '../../AdminActions';
+import { fetchJobs, fetchOrg, clearJob } from '../../AdminActions';
 
 const mapState = state => ({
   loading: state.async.loading,
@@ -14,6 +14,7 @@ const mapState = state => ({
 });
 
 const actions = {
+  clearJob,
   fetchJobs,
   fetchOrg
 };
@@ -37,6 +38,7 @@ export class AdminJobList extends Component {
   }
 
   handleNewJob(id) {
+    this.props.clearJob();
     this.props.history.push(`/admin/job/new`);
   }
 
@@ -45,8 +47,15 @@ export class AdminJobList extends Component {
     if (loading && loadingName === 'admin-job-list') return <Loading />;
     return (
       <div>
-        <div className='text-right'>
-          <Button content='New Job' primary onClick={this.handleNewJob} />
+        <div className='admin-nav'>
+          <div className='flex-box between'>
+            <div className='flex-box align-center grow'>
+              <Breadcrumb size='large'>
+                <Breadcrumb.Section>Job List</Breadcrumb.Section>
+              </Breadcrumb>
+            </div>
+            <Button content='New Job' primary onClick={this.handleNewJob} />
+          </div>
         </div>
         <Table selectable>
           <Table.Header>
@@ -70,6 +79,16 @@ export class AdminJobList extends Component {
                   </Table.Cell>
                 </Table.Row>
               ))}
+            <Table.Row onClick={this.handleNewJob}>
+              <Table.Cell>
+                <span className='link'>Create New Job</span>
+              </Table.Cell>
+              <Table.Cell></Table.Cell>
+              <Table.Cell></Table.Cell>
+              <Table.Cell textAlign='right'>
+                <Icon link color='green' name='add' />
+              </Table.Cell>
+            </Table.Row>
           </Table.Body>
         </Table>
       </div>

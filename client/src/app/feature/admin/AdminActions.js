@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { HEADER_JSON } from '../../common/constants/apiConstants';
-import { FETCH_ORG, FETCH_JOBS, FETCH_JOB, UPDATE_JOB, DELETE_JOB } from './AdminConstants';
+import { FETCH_ORG, FETCH_JOBS, FETCH_JOB, UPDATE_JOB, CLEAR_JOB, DELETE_JOB } from './AdminConstants';
 import { LOGIN_SUCCESS } from '../../common/ui/auth/AuthContantants';
 import { loadUser, welcomeUser } from '../../common/ui/auth/AuthActions';
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../common/actions/async/asyncActions';
@@ -86,6 +86,12 @@ export const createJob = (job, history) => {
 export const updateJob = (prop, value) => {
   return dispatch => {
     dispatch({ type: UPDATE_JOB, payload: { prop: prop, value: value } });
+  };
+};
+
+export const clearJob = () => {
+  return dispatch => {
+    dispatch({ type: CLEAR_JOB });
   };
 };
 
