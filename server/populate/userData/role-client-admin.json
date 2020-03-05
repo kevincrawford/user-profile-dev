@@ -1,0 +1,7 @@
+{
+  "_id": { "$oid": "5db1f99e167a5b31606e1c04" },
+  "users": [],
+  "type": "client-admin",
+  "description": "Main client contact. Ability to manage all client account information.",
+  "__v": { "$numberInt": "0" }
+}

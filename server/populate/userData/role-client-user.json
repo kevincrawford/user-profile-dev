@@ -1,0 +1,7 @@
+{
+  "_id": { "$oid": "5db1f9bc167a5b31606e1c05" },
+  "users": [],
+  "type": "client-user",
+  "description": "Client contact. Ability to post jobs.",
+  "__v": { "$numberInt": "0" }
+}

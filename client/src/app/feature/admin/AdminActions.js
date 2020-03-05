@@ -6,8 +6,8 @@ import { loadUser, welcomeUser } from '../../common/ui/auth/AuthActions';
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../common/actions/async/asyncActions';
 import { toastr } from 'react-redux-toastr';
 
-// Register User
-export const registerOrg = org => {
+// Register Org User
+export const registerOrg = (org, history) => {
   return async dispatch => {
     const body = JSON.stringify(org);
     try {
@@ -15,6 +15,7 @@ export const registerOrg = org => {
       dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
       await dispatch(loadUser());
       dispatch(welcomeUser());
+      history.push('/admin');
     } catch (error) {
       console.log(error);
     }

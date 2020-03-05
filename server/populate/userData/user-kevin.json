@@ -1,0 +1,11 @@
+{
+  "_id": { "$oid": "5db20e194e81523c184774e3" },
+  "roles": [{ "$oid": "5db1f8e6167a5b31606e1c02" }],
+  "displayName": "Kevin Crawford",
+  "screenName": "kcrawford",
+  "email": "content@spedxchange.com",
+  "avatar": "//www.gravatar.com/avatar/5e5602daf8db547e421c455f8a11a5a1?s=200&r=pg&d=mm",
+  "password": "$2a$10$TdRvf5GqHooG3sh8C2UNlOu7nE2w3uwhDymK3hQZYdL3JFHYw391a",
+  "created": { "$date": { "$numberLong": "1571950105943" } },
+  "__v": { "$numberInt": "1" }
+}

@@ -1,0 +1,15 @@
+{
+  "_id": { "$oid": "5db20a711d091137e81bbd94" },
+  "roles": [
+    { "$oid": "5db1f8e6167a5b31606e1c02" },
+    { "$oid": "5db1f9e5167a5b31606e1c06" },
+    { "$oid": "5db1f93a167a5b31606e1c03" }
+  ],
+  "displayName": "John Consalvi",
+  "screenName": "jconsalvi",
+  "email": "john@spedxchange.com",
+  "avatar": "//www.gravatar.com/avatar/d4f1b266504bc83252c529d847a57dde?s=200&r=pg&d=mm",
+  "password": "$2a$10$zhgoDDM0o7VCvKa/paLWSu/GBmzvbhleu85z0UNSFrzbBwjL5E.0u",
+  "created": { "$date": { "$numberLong": "1571949169844" } },
+  "__v": { "$numberInt": "1" }
+}

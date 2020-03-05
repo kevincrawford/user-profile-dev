@@ -1,0 +1,13 @@
+{
+  "_id": { "$oid": "5db2f64473b87d4cf01560da" },
+  "roles": [],
+  "displayName": "Whitney de Haseth",
+  "screenName": "wstrum",
+  "firstName": "Whitney",
+  "email": "whitney@spedxchange.com",
+  "lastName": "de Haseth",
+  "avatar": "//www.gravatar.com/avatar/d81544e23641ed1437d2c8150a425e04?s=200&r=pg&d=mm",
+  "password": "$2a$10$VyHFNiuXh8cL0EROfGvDNuup41fncS98lxC78bH8Sux.W2DwgAudW",
+  "created": { "$date": { "$numberLong": "1572009540868" } },
+  "__v": { "$numberInt": "0" }
+}

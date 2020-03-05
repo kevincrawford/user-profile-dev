@@ -1,6 +1,7 @@
 /* eslint no-useless-escape: 0 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { ReCaptcha } from 'react-recaptcha-v3';
 import { setRecaptchaToken } from '../../common/ui/auth/AuthActions';
 import { registerOrg } from './AdminActions';
@@ -11,7 +12,7 @@ import TextInput from '../../common/ui/form/TextInput';
 
 export class AdminLanding extends Component {
   onFormSubmit = values => {
-    this.props.registerOrg(values);
+    this.props.registerOrg(values, this.props.history);
   };
 
   verifyCallback = recaptchaToken => {
@@ -22,7 +23,11 @@ export class AdminLanding extends Component {
     const { handleSubmit, invalid, submitting } = this.props;
     return (
       <Form className='form-container' onSubmit={handleSubmit(this.onFormSubmit)} autoComplete='off'>
-        <ReCaptcha sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M' action='create_org' verifyCallback={this.verifyCallback} />
+        <ReCaptcha
+          sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
+          action='create_org'
+          verifyCallback={this.verifyCallback}
+        />
         <h1>
           Start Hiring. <em>Fast.</em>
         </h1>
@@ -66,11 +71,17 @@ export class AdminLanding extends Component {
         <hr className='mb-0' />
         <p className='small mt-0'>
           By clicking "Sign Up" you agree to the SPEDxchange{' '}
-          <a href='https://app.termly.io/document/terms-of-use-for-website/c2c6e3f1-ffcf-4ff2-ad92-f67aba4f6f53' target='_blank' rel='noopener noreferrer'>
+          <a
+            href='https://app.termly.io/document/terms-of-use-for-website/c2c6e3f1-ffcf-4ff2-ad92-f67aba4f6f53'
+            target='_blank'
+            rel='noopener noreferrer'>
             Terms of Use
           </a>{' '}
           and{' '}
-          <a href='https://app.termly.io/document/privacy-policy/9e6f1ec2-6b4e-4bce-944c-dc3fa68768c5' target='_blank' rel='noopener noreferrer'>
+          <a
+            href='https://app.termly.io/document/privacy-policy/9e6f1ec2-6b4e-4bce-944c-dc3fa68768c5'
+            target='_blank'
+            rel='noopener noreferrer'>
             Privacy Policy
           </a>
           .
@@ -87,7 +98,9 @@ const isValidEmail = createValidator(
   message => value => {
     if (
       value &&
-      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(value)
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(
+        value
+      )
     ) {
       return message;
     }
@@ -122,4 +135,4 @@ const actions = {
   registerOrg
 };
 
-export default connect(mapState, actions)(reduxForm({ form: 'registerOrgForm', validate })(AdminLanding));
+export default withRouter(connect(mapState, actions)(reduxForm({ form: 'registerOrgForm', validate })(AdminLanding)));

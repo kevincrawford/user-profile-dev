@@ -1,0 +1,14 @@
+{
+  "contact": "5db20e194e81523c184774e3",
+  "name": "SPEDxchange",
+  "street": "1740 Ridge Ave, Suite 500",
+  "city": "Evanston",
+  "state": "IL",
+  "zip": "60201",
+  "phone": "(224) 300-7733",
+  "loc": {
+    "coordinates": [42.0450722, -87.68769689999999],
+    "type": "Point"
+  },
+  "organization": ""
+}

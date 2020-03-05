@@ -1,0 +1,12 @@
+{
+  "_id": { "$oid": "5ddd973d940f8800178c5e96" },
+  "roles": [{ "$oid": "5db1f8e6167a5b31606e1c02" }],
+  "displayName": "Vanessa Cervantes",
+  "firstName": "Vanessa",
+  "lastName": "Cervantes",
+  "email": "vanessa@spedxchange.com",
+  "avatar": "//www.gravatar.com/avatar/e358bb3436a87843cd772693398aab07?s=200&r=pg&d=mp",
+  "password": "$2a$10$mkK3emEW5lYFNp9dS96wCO6IJ6FSAu9aVJSf0rlOXQeu3tdzThJYq",
+  "created": { "$date": { "$numberLong": "1574803261483" } },
+  "__v": { "$numberInt": "1" }
+}

@@ -1,0 +1,6 @@
+{"_id":{"$oid":"5db1f8e6167a5b31606e1c02"},"users":[],"type":"reader","description":"Read-only privilages","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5db1f93a167a5b31606e1c03"},"users":[],"type":"moderator","description":"Ability to create, edit, delete, and answer question","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5db1f99e167a5b31606e1c04"},"users":[],"type":"client-admin","description":"Main client contact. Ability to manage all client account information.","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5db1f9bc167a5b31606e1c05"},"users":[],"type":"client-user","description":"Client contact. Ability to post jobs.","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5db1f9e5167a5b31606e1c06"},"users":[],"type":"site-admin","description":"Super User. All rights","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5db832d2f714df14b45ad6a0"},"users":[],"type":"tmp","description":"Temporary user","__v":{"$numberInt":"0"}}
