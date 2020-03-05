@@ -7,7 +7,7 @@ import { createJob, fetchJob, updateJob, saveJob, clearJob } from '../../AdminAc
 import { asyncActionStart } from '../../../../common/actions/async/asyncActions';
 import Loading from '../../../../common/ui/loading/Loading';
 import AdminJobPreview from './AdminJobPreview';
-import AdminJobSummaryPreview from './AdminJobSummaryPreview';
+// import AdminJobSummaryPreview from './AdminJobSummaryPreview';
 
 export class AdminJobForm extends Component {
   constructor(props) {

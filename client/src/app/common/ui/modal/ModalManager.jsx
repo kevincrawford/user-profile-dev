@@ -7,6 +7,7 @@ import UnauthModal from './UnauthModal';
 import AskQuestionModal from './AskQuestionModal';
 import ContactModal from './ContactModal';
 import ScholarshipModal from './ScholarshipModal';
+import ProfileAboutModal from '../../../feature/profile/components/modal/ProfileAboutModal';
 
 const modalLookup = {
   LoginModal,
@@ -15,7 +16,8 @@ const modalLookup = {
   UnauthModal,
   AskQuestionModal,
   ContactModal,
-  ScholarshipModal
+  ScholarshipModal,
+  ProfileAboutModal
 };
 
 const mapState = state => ({

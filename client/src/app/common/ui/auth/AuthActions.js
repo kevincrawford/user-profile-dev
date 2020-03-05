@@ -11,7 +11,8 @@ import {
   FETCH_SCHOLARSHIP_APPLICATION,
   SET_RECAPTCHA_TOKEN,
   SET_REGISTER_STEP,
-  SET_EMPLOYER
+  SET_EMPLOYER,
+  UPDATE_PROFILE
 } from './AuthContantants';
 import { HEADER_JSON } from '../../constants/apiConstants';
 import { closeModal } from '../../ui/modal/ModalActions';
@@ -72,6 +73,27 @@ export const registerUser = (user, history) => {
         _error: 'Sign Up Failed'
       });
     }
+  };
+};
+
+export const updateUserProfile = profile => {
+  return async dispatch => {
+    const body = JSON.stringify(profile);
+    try {
+      const userInfo = await axios.put('/api/users/profile', body, HEADER_JSON);
+      dispatch({
+        type: USER_LOADED,
+        payload: userInfo.data
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+};
+
+export const updateProfile = (prop, value) => {
+  return dispatch => {
+    dispatch({ type: UPDATE_PROFILE, payload: { prop: prop, value: value } });
   };
 };
 

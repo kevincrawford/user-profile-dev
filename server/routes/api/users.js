@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../../middleware/auth');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -70,6 +71,44 @@ router.post('/', async (req, res) => {
       if (err) throw err;
       res.json({ token });
     });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// @route    PUT api/users
+// @desc     Update User
+// @access   Private
+router.put('/profile', auth, async (req, res) => {
+  try {
+    const { displayName, title, summary } = req.body;
+    const user = await User.findById(req.user.id);
+
+    const oldDisplayName = user.displayName;
+    const oldFirstName = user.firstName;
+    const oldLastName = user.lastName;
+
+    const names = displayName
+      .replace(/\s+/g, ' ')
+      .trim()
+      .split(' ');
+    const firstName = names[0];
+    const lastName = names.length > 1 ? names[names.length - 1] : '';
+
+    let useNewDisplayName = true;
+    if (!firstName || firstName.length < 1) {
+      useNewDisplayName = false;
+    }
+    user.displayName = useNewDisplayName ? displayName : oldDisplayName;
+    user.firstName = useNewDisplayName ? firstName : oldFirstName;
+    user.lastName = useNewDisplayName ? lastName : oldLastName;
+    user.title = title;
+    user.summary = summary;
+    console.log('new user profile before save: ', user);
+    await user.save();
+    console.log('new user profile: ', user);
+    res.json(user);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');

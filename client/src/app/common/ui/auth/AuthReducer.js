@@ -11,7 +11,8 @@ import {
   FETCH_SCHOLARSHIP_APPLICATION,
   SET_RECAPTCHA_TOKEN,
   SET_REGISTER_STEP,
-  SET_EMPLOYER
+  SET_EMPLOYER,
+  UPDATE_PROFILE
 } from './AuthContantants';
 
 const initialState = {
@@ -66,6 +67,16 @@ const logoutUser = state => {
   };
 };
 
+const updateProfile = (state, payload) => {
+  return {
+    ...state,
+    currentUser: {
+      ...state.currentUser,
+      [payload.prop]: payload.value
+    }
+  };
+};
+
 const toggleForgotPassword = state => {
   return {
     ...state,
@@ -113,5 +124,6 @@ export default createReducer(initialState, {
   [FETCH_SCHOLARSHIP_APPLICATION]: loadScholarshipApplication,
   [SET_RECAPTCHA_TOKEN]: setRecaptchaToken,
   [SET_REGISTER_STEP]: setRegisterStep,
-  [SET_EMPLOYER]: setIsEmployer
+  [SET_EMPLOYER]: setIsEmployer,
+  [UPDATE_PROFILE]: updateProfile
 });
