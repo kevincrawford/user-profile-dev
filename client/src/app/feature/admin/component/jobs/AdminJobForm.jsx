@@ -93,12 +93,12 @@ export class AdminJobForm extends Component {
         <Form onSubmit={this.handleSubmit}>
           <div className='job-edit flex-box sm'>
             {this.state.preview ? (
-              <div className='grow'>
+              <div className='grow   pr-3'>
                 <AdminJobPreview />
               </div>
             ) : (
-              <div className='grow'>
-                <div className='flex-box between sm mb-3'>
+              <div className='grow pr-3'>
+                <div className='flex-box between sm mb-4'>
                   <div className='half'>
                     <label>Title</label>
                     <Form.Input name='title' value={title} onChange={this.handleChange} />
@@ -108,7 +108,7 @@ export class AdminJobForm extends Component {
                     <Form.Input name='jobId' value={jobId} onChange={this.handleChange} />
                   </div>
                 </div>
-                <div className='flex-box between sm mb-3'>
+                <div className='flex-box between sm mb-4'>
                   <div className='half'>
                     <label>Job Type</label>
                     <Form.Select
@@ -143,11 +143,11 @@ export class AdminJobForm extends Component {
                   <label>Application Link</label>
                   <Form.Input name='applyLink' value={applyLink} onChange={this.handleChange} />
                 </div>
-                <div className='mt-3'>
+                <div className='mt-4'>
                   <label>Summary</label>
                   <Form.Input name='summary' value={summary} onChange={this.handleChange} />
                 </div>
-                <div className='mt-3'>
+                <div className='mt-4'>
                   <label>Description</label>
                   <Editor
                     initialValue={`<p>${description}</p>`}
