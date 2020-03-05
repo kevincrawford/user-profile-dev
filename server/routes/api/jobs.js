@@ -46,7 +46,7 @@ router.get('/:jobId', async (req, res) => {
 // @desc     Create Job
 // @access   Private
 router.post('/', auth, async (req, res) => {
-  const { jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount } = req.body;
+  const { jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount, applyLink } = req.body;
 
   try {
     const user = await User.findById(req.user.id);
@@ -55,6 +55,7 @@ router.post('/', auth, async (req, res) => {
     const newJob = new Job({
       organization: org._id,
       location: org.location,
+      loc: org.loc,
       jobId: jobId,
       jobType: jobType,
       title: title,
@@ -62,7 +63,8 @@ router.post('/', auth, async (req, res) => {
       description: description,
       status: status,
       salaryPeriod: salaryPeriod,
-      salaryAmount: salaryAmount
+      salaryAmount: salaryAmount,
+      applyLink: applyLink
     });
 
     const job = await newJob.save();
@@ -78,9 +80,11 @@ router.post('/', auth, async (req, res) => {
 // @desc     Update Job
 // @access   Private
 router.put('/', auth, async (req, res) => {
-  const { _id, jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount } = req.body;
+  const { _id, jobId, jobType, title, summary, description, status, salaryPeriod, salaryAmount, applyLink } = req.body;
   try {
     const job = await Job.findById(_id);
+    const user = await User.findById(req.user.id);
+    const org = await Org.findById(user.organization);
 
     job.jobId = jobId;
     job.jobType = jobType;
@@ -90,6 +94,8 @@ router.put('/', auth, async (req, res) => {
     job.status = status;
     job.salaryPeriod = salaryPeriod;
     job.salaryAmount = salaryAmount;
+    job.applyLink = applyLink;
+    job.loc = org.loc;
 
     await job.save();
     // const job = await Job.findOneAndUpdate({ _id: req.params.id }, update);

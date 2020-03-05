@@ -75,7 +75,8 @@ export class AdminJobList extends Component {
                   <Table.Cell>{job.status}</Table.Cell>
                   <Table.Cell>{moment(job.updated).from()}</Table.Cell>
                   <Table.Cell textAlign='right'>
-                    <Icon link name='edit outline' />
+                  <Icon link color='red' name='trash outline' />
+                  <Icon link color='green' name='edit outline' />
                   </Table.Cell>
                 </Table.Row>
               ))}

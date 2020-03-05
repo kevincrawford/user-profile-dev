@@ -19,6 +19,9 @@ const JobSchema = new Schema({
   description: {
     type: String
   },
+  applyLink: {
+    type: String
+  },
   organization: {
     type: Schema.Types.ObjectId,
     ref: 'organization'
