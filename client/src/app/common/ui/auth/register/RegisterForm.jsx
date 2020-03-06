@@ -27,7 +27,9 @@ const isValidEmail = createValidator(
   message => value => {
     if (
       value &&
-      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(value)
+      !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(
+        value
+      )
     ) {
       return message;
     }
@@ -71,8 +73,14 @@ export class RegisterForm extends Component {
     const { handleSubmit, error, invalid, subbmitting, config } = this.props;
     return (
       <Form className='register-form' onSubmit={handleSubmit(this.onRegisterSubmit)} autoComplete='off'>
-        <ReCaptcha sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M' action='signup' verifyCallback={this.verifyCallback} />
-        {config && config.postJobs && <Field name='isEmployer' component={TextInput} type='hidden' style={{ height: 0 }} />}
+        <ReCaptcha
+          sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
+          action='signup'
+          verifyCallback={this.verifyCallback}
+        />
+        {config && config.postJobs && (
+          <Field name='isEmployer' component={TextInput} type='hidden' style={{ height: 0 }} />
+        )}
         <label>Name</label>
         <Field name='displayName' type='text' component={TextInput} />
         <label>Email</label>
@@ -93,11 +101,17 @@ export class RegisterForm extends Component {
         <hr className='mb-0' />
         <p className='small mt-0'>
           By clicking "Sign Up" you agree to the SPEDxchange{' '}
-          <a href='https://app.termly.io/document/terms-of-use-for-website/c2c6e3f1-ffcf-4ff2-ad92-f67aba4f6f53' target='_blank' rel='noopener noreferrer'>
+          <a
+            href='https://app.termly.io/document/terms-of-use-for-website/c2c6e3f1-ffcf-4ff2-ad92-f67aba4f6f53'
+            target='_blank'
+            rel='noopener noreferrer'>
             Terms of Use
           </a>{' '}
           and{' '}
-          <a href='https://app.termly.io/document/privacy-policy/9e6f1ec2-6b4e-4bce-944c-dc3fa68768c5' target='_blank' rel='noopener noreferrer'>
+          <a
+            href='https://app.termly.io/document/privacy-policy/9e6f1ec2-6b4e-4bce-944c-dc3fa68768c5'
+            target='_blank'
+            rel='noopener noreferrer'>
             Privacy Policy
           </a>
           .
@@ -110,4 +124,4 @@ export class RegisterForm extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(reduxForm({ form: 'registerForm', validate })(RegisterForm)));
+export default connect(mapState, actions)(reduxForm({ form: 'registerForm', validate })(withRouter(RegisterForm)));

@@ -47,9 +47,4 @@ class ContactModal extends Component {
   }
 }
 
-export default withRouter(
-  connect(
-    mapState,
-    actions
-  )(ContactModal)
-);
+export default connect(mapState, actions)(withRouter(ContactModal));

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Segment, List, Image } from 'semantic-ui-react';
 import { truncateText } from '../../../common/util/truncateText';
@@ -19,7 +18,9 @@ class QuestionListItem extends Component {
           <QuestionStats question={question} />
           <div className='grow info'>
             <h3>
-              <span className='link' onClick={() => this.handleClickQuestion(`/questions/${question.uid}/${question.slug}`)}>
+              <span
+                className='link'
+                onClick={() => this.handleClickQuestion(`/questions/${question.uid}/${question.slug}`)}>
                 {question.title}
               </span>
             </h3>
@@ -38,7 +39,12 @@ class QuestionListItem extends Component {
                   {question.updated && <div className='asked'>asked {moment(question.updated).from()}</div>}
                 </div>
                 <div className='grow'>
-                  <List horizontal>{question.tags && Object.values(question.tags).map((tag, idx) => <QuestionListTag key={idx.toString()} tag={tag} />)}</List>
+                  <List horizontal>
+                    {question.tags &&
+                      Object.values(question.tags).map((tag, idx) => (
+                        <QuestionListTag key={idx.toString()} tag={tag} />
+                      ))}
+                  </List>
                 </div>
               </div>
             </div>
@@ -49,4 +55,4 @@ class QuestionListItem extends Component {
   }
 }
 
-export default withRouter(connect()(QuestionListItem));
+export default withRouter(QuestionListItem);

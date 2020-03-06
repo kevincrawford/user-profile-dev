@@ -46,4 +46,4 @@ class RegisterModal extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(RegisterModal));
+export default connect(mapState, actions)(withRouter(RegisterModal));

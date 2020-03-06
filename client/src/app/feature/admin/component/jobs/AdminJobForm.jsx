@@ -229,4 +229,4 @@ const mapDispatchToProps = {
   clearJob
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AdminJobForm));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AdminJobForm));

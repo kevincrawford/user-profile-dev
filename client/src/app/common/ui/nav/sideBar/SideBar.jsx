@@ -29,18 +29,60 @@ class SideBar extends Component {
     const { isSideBarOpen, activeNavItem } = this.props;
     return (
       <Menu text vertical className={isSideBarOpen ? 'app-sidebar' : 'app-sidebar hidden'}>
-        <Menu.Item link name='Eye On SPED' item={NAV_ITEMS.news} active={activeNavItem.link === '/news'} onClick={this.handleItemClick} />
-        <Menu.Item link name='Resources' item={NAV_ITEMS.resources} active={activeNavItem.link === '/resources'} onClick={this.handleItemClick} />
-        <Menu.Item link name='Scholarships' item={NAV_ITEMS.scholarships} active={activeNavItem.link === '/scholarships'} onClick={this.handleItemClick} />
-        <Menu.Item link name='About Us' item={NAV_ITEMS.about} active={activeNavItem.link === '/about'} onClick={this.handleItemClick} />
-        <Menu.Item link name='Contact Us' item={NAV_ITEMS.contact} active={activeNavItem.link === '/contact'} onClick={this.openContactModal} />
+        <Menu.Item
+          link
+          name='Eye On SPED'
+          item={NAV_ITEMS.news}
+          active={activeNavItem.link === '/news'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          link
+          name='Resources'
+          item={NAV_ITEMS.resources}
+          active={activeNavItem.link === '/resources'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          link
+          name='Scholarships'
+          item={NAV_ITEMS.scholarships}
+          active={activeNavItem.link === '/scholarships'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          link
+          name='About Us'
+          item={NAV_ITEMS.about}
+          active={activeNavItem.link === '/about'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          link
+          name='Contact Us'
+          item={NAV_ITEMS.contact}
+          active={activeNavItem.link === '/contact'}
+          onClick={this.openContactModal}
+        />
         <hr />
-        <Menu.Item link name='Questions' item={NAV_ITEMS.questions} active={activeNavItem.link === '/questions'} onClick={this.handleItemClick} />
+        <Menu.Item
+          link
+          name='Questions'
+          item={NAV_ITEMS.questions}
+          active={activeNavItem.link === '/questions'}
+          onClick={this.handleItemClick}
+        />
         <hr />
-        <Menu.Item link name='Jobs' item={NAV_ITEMS.jobs} active={activeNavItem.link === '/jobs'} onClick={this.handleItemClick} />
+        <Menu.Item
+          link
+          name='Jobs'
+          item={NAV_ITEMS.jobs}
+          active={activeNavItem.link === '/jobs'}
+          onClick={this.handleItemClick}
+        />
       </Menu>
     );
   }
 }
 
-export default withRouter(connect(mapState, actions)(SideBar));
+export default connect(mapState, actions)(withRouter(SideBar));

@@ -78,4 +78,4 @@ const actions = {
   signOut
 };
 
-export default withRouter(connect(mapState, actions)(NavBar));
+export default connect(mapState, actions)(withRouter(NavBar));

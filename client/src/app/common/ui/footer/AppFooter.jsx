@@ -17,7 +17,8 @@ export class AppFooter extends Component {
   checkUser = pathName => {
     const { auth, history, openModal } = this.props;
     const isUser = auth.authenticated && auth.currentUser ? true : false;
-    const isAdmin = auth.authenticated && auth.currentUser && auth.currentUser.roles.findIndex(isUserAdmin) > -1 ? true : false;
+    const isAdmin =
+      auth.authenticated && auth.currentUser && auth.currentUser.roles.findIndex(isUserAdmin) > -1 ? true : false;
 
     if (pathName === '/profile') {
       if (isUser) {
@@ -92,17 +93,24 @@ export class AppFooter extends Component {
             </div>
             <div className='col-md mb-3'>
               <h6>Legal</h6>
-              <a href='https://app.termly.io/document/privacy-policy/9e6f1ec2-6b4e-4bce-944c-dc3fa68768c5' target='_blank' rel='noopener noreferrer'>
+              <a
+                href='https://app.termly.io/document/privacy-policy/9e6f1ec2-6b4e-4bce-944c-dc3fa68768c5'
+                target='_blank'
+                rel='noopener noreferrer'>
                 Privacy Policy
               </a>
-              <a href='https://app.termly.io/document/terms-of-use-for-website/c2c6e3f1-ffcf-4ff2-ad92-f67aba4f6f53' target='_blank' rel='noopener noreferrer'>
+              <a
+                href='https://app.termly.io/document/terms-of-use-for-website/c2c6e3f1-ffcf-4ff2-ad92-f67aba4f6f53'
+                target='_blank'
+                rel='noopener noreferrer'>
                 Terms of Use
               </a>
             </div>
           </div>
           <div className='flex-box sm legal'>
             <div className='grow'>
-              <strong>SPEDxchange</strong> | 1740 Ridge Ave, Suite 500 | Evanston Il, 60201 | <a href='tel:1-224-300-7733'>224.300.7733</a>
+              <strong>SPEDxchange</strong> | 1740 Ridge Ave, Suite 500 | Evanston Il, 60201 |{' '}
+              <a href='tel:1-224-300-7733'>224.300.7733</a>
             </div>
             <div>&copy; Copyright 2019 SPEDxchange</div>
           </div>
@@ -120,4 +128,4 @@ const actions = {
   openModal
 };
 
-export default withRouter(connect(mapState, actions)(AppFooter));
+export default connect(mapState, actions)(withRouter(AppFooter));

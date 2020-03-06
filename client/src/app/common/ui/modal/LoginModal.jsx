@@ -48,4 +48,4 @@ class LoginModal extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(LoginModal));
+export default connect(mapState, actions)(withRouter(LoginModal));

@@ -77,4 +77,4 @@ export class Admin extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(Admin));
+export default connect(mapState, actions)(withRouter(Admin));

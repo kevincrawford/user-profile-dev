@@ -76,9 +76,21 @@ export class AccountForm extends Component {
           {step === 1 && (
             <>
               <label>Type</label>
-              <Field name='type' component={SelectInput} options={typeOptions} label='Organization Type' placeholder='Select Type...' />
+              <Field
+                name='type'
+                component={SelectInput}
+                options={typeOptions}
+                label='Organization Type'
+                placeholder='Select Type...'
+              />
               <label>Size</label>
-              <Field name='size' component={SelectInput} options={sizeOptions} label='Organization Size' placeholder='Select Size...' />
+              <Field
+                name='size'
+                component={SelectInput}
+                options={sizeOptions}
+                label='Organization Size'
+                placeholder='Select Size...'
+              />
             </>
           )}
           {step === 2 && (
@@ -142,4 +154,4 @@ export class AccountForm extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(reduxForm({ form: 'accountForm', validate })(AccountForm)));
+export default connect(mapState, actions)(reduxForm({ form: 'accountForm', validate })(withRouter(AccountForm)));

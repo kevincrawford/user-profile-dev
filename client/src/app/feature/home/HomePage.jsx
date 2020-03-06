@@ -64,14 +64,18 @@ const HomePage = ({ history, openModal }) => {
         <Container>
           <h2>Future Graduates</h2>
           <p>
-            The field of special education is waiting for you! Whether you have just taken your first university class or are preparing for your first job, we, at SPEDxchange, know
-            you are going to make an impact!
+            The field of special education is waiting for you! Whether you have just taken your first university class
+            or are preparing for your first job, we, at SPEDxchange, know you are going to make an impact!
           </p>
           <p>
-            <strong onClick={() => openModal('RegisterModal')}>Sign up</strong> today and you will also have access to exclusive content and more...
+            <strong onClick={() => openModal('RegisterModal')}>Sign up</strong> today and you will also have access to
+            exclusive content and more...
           </p>
           <ul>
-            <li>Get answers to your questions, provide input, and share feedback on the special education issues that matter to you</li>
+            <li>
+              Get answers to your questions, provide input, and share feedback on the special education issues that
+              matter to you
+            </li>
             <li>Connect with other members in the special education field</li>
             <li>Find scholarship opportunities nationwide</li>
             <li>Prepare yourself for the job search and preparation process</li>
@@ -107,8 +111,9 @@ const HomePage = ({ history, openModal }) => {
             <li>Build and curate your districts Brand across social media and ongoing online presence</li>
           </ul>
           <p>
-            SPEDxchange offers new methods to source and attract candidates to your district. <strong onClick={() => openModal('ContactModal')}>Contact us</strong> today to advance
-            your chances for success in this intense and short hiring window.
+            SPEDxchange offers new methods to source and attract candidates to your district.{' '}
+            <strong onClick={() => openModal('ContactModal')}>Contact us</strong> today to advance your chances for
+            success in this intense and short hiring window.
           </p>
           <p>
             <em>Make your SPED staff more consistent year over year, within budget, dependable and loyal.</em>
@@ -124,15 +129,18 @@ const HomePage = ({ history, openModal }) => {
           <div className='wide'>
             <h2>SPED Professionals</h2>
             <p>
-              At SPEDxchange, we understand the demands special educators and clinical special education professionals face daily, and we support you. We are the special education
-              community you can turn to for answers. Build connections with other professionals while sharing your insights, knowledge, and experiences. Our unique question and
-              answer platform is a community you can count on for support and feedback on complex situations. At SPEDxchange, we believe that discovery and growth come from seeking
-              answers and working together to find solutions.
+              At SPEDxchange, we understand the demands special educators and clinical special education professionals
+              face daily, and we support you. We are the special education community you can turn to for answers. Build
+              connections with other professionals while sharing your insights, knowledge, and experiences. Our unique
+              question and answer platform is a community you can count on for support and feedback on complex
+              situations. At SPEDxchange, we believe that discovery and growth come from seeking answers and working
+              together to find solutions.
             </p>
             <p className='hidden-sm'>
-              While SPEDxchange is first and foremost a community to support special education professionals as they grow in their careers, it also can support you in the job
-              search process. Throughout your career, your definition of a dream job may change. Build your profile, post your resume, and set job criteria in order to locate and
-              secure the dream job for the next chapter of your career.
+              While SPEDxchange is first and foremost a community to support special education professionals as they
+              grow in their careers, it also can support you in the job search process. Throughout your career, your
+              definition of a dream job may change. Build your profile, post your resume, and set job criteria in order
+              to locate and secure the dream job for the next chapter of your career.
             </p>
           </div>
           <div className='narrow'>
@@ -179,4 +187,4 @@ const actions = {
   openModal
 };
 
-export default withRouter(connect(mapState, actions)(HomePage));
+export default connect(mapState, actions)(withRouter(HomePage));

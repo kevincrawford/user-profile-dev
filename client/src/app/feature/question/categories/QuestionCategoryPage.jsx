@@ -26,7 +26,12 @@ class QuestionCategoryPage extends Component {
                     size='mini'
                     content=''
                     icon='question'
-                    label={{ basic: true, color: 'green', pointing: 'left', content: `${category.questionCount} Questions` }}
+                    label={{
+                      basic: true,
+                      color: 'green',
+                      pointing: 'left',
+                      content: `${category.questionCount} Questions`
+                    }}
                   />
                 </div>
               )}
@@ -46,4 +51,4 @@ const actions = {
   loadQuestionCategories
 };
 
-export default withRouter(connect(mapState, actions)(QuestionCategoryPage));
+export default connect(mapState, actions)(withRouter(QuestionCategoryPage));

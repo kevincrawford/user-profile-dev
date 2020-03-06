@@ -36,19 +36,9 @@ export class ResetForm extends Component {
   };
 
   render() {
-    const {
-      loading,
-      loadingName,
-      updatePassword,
-      handleSubmit,
-      error
-    } = this.props;
+    const { loading, loadingName, updatePassword, handleSubmit, error } = this.props;
     return (
-      <Form
-        className='register-form'
-        onSubmit={handleSubmit(updatePassword)}
-        autoComplete='off'
-      >
+      <Form className='register-form' onSubmit={handleSubmit(updatePassword)} autoComplete='off'>
         <Field name='token' component={HiddenInput} />
         <ReCaptcha
           sitekey='6LdfOb8UAAAAAJg87yIa2NJwxwP8ZkJJg18XGG1M'
@@ -64,19 +54,10 @@ export class ResetForm extends Component {
             {error}
           </Label>
         )}
-        <Button
-          color='green'
-          loading={loadingName === 'update-password' && loading}
-          content='Reset Password'
-        />
+        <Button color='green' loading={loadingName === 'update-password' && loading} content='Reset Password' />
       </Form>
     );
   }
 }
 
-export default withRouter(
-  connect(
-    mapState,
-    actions
-  )(reduxForm({ form: 'resetPasswordForm', validate })(ResetForm))
-);
+export default connect(mapState, actions)(reduxForm({ form: 'resetPasswordForm', validate })(withRouter(ResetForm)));

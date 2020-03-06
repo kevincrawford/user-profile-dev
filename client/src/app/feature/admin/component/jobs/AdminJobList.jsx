@@ -103,4 +103,4 @@ export class AdminJobList extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(AdminJobList));
+export default connect(mapState, actions)(withRouter(AdminJobList));

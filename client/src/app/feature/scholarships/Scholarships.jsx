@@ -9,13 +9,15 @@ const scholarshipList = [
     title: 'Alabama Student Grant Program',
     amount: '$1,200',
     deadline: 'Varies',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/alabama-student-grant-program'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/alabama-student-grant-program'
   },
   {
     title: 'Bethesda Auxiliary Scholarships',
     amount: '$3,000',
     deadline: '05/17/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/bethesda-auxiliary-scholarships'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/bethesda-auxiliary-scholarships'
   },
   {
     title: 'Bethesda Lutheran Communities Lutheran Student Scholastic & Service Scholarship',
@@ -35,25 +37,29 @@ const scholarshipList = [
     title: 'Cameron Impact Scholarship',
     amount: '$50,000',
     deadline: '09/13/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/cameron-impact-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/cameron-impact-scholarship'
   },
   {
     title: 'Christa McAuliffe Teacher Incentive Program',
     amount: '$5,000',
     deadline: '06/04/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/christa-mcauliffe-teacher-incentive-program'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/christa-mcauliffe-teacher-incentive-program'
   },
   {
     title: 'CSUB Benjamin Schneider Memorial Scholarship',
     amount: 'Varies',
     deadline: '11/30/2019',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/csub-benjamin-schneider-memorial-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/csub-benjamin-schneider-memorial-scholarship'
   },
   {
     title: 'Davis-Blackford Families Scholarship',
     amount: '$1,000',
     deadline: '02/14/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/davis-blackford-families-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/davis-blackford-families-scholarship'
   },
   {
     title: 'Dr Barbara Odom-Wesley Spirit of Achievement Scholarship',
@@ -66,19 +72,22 @@ const scholarshipList = [
     title: 'Fulgham-Fulghum Family Scholarship',
     amount: '$1,000',
     deadline: '04/15/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/fulgham-fulghum-family-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/fulgham-fulghum-family-scholarship'
   },
   {
     title: 'Gill-Elliott Scholarship',
     amount: '$2,000',
     deadline: '03/15/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/gill-elliott-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/gill-elliott-scholarship'
   },
   {
     title: 'GRCF John T. and Frances J. Maghielse Scholarship',
     amount: 'Varies',
     deadline: '03/01/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/grcf-john-t-and-frances-j-maghielse-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/grcf-john-t-and-frances-j-maghielse-scholarship'
   },
   {
     title: 'GRCF Roger and Jacquelyn Vander Laan Family Scholarship',
@@ -91,13 +100,15 @@ const scholarshipList = [
     title: 'Irene Palko Scholarship Fund',
     amount: '$1,000',
     deadline: '02/14/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/irene-palko-scholarship-fund'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/irene-palko-scholarship-fund'
   },
   {
     title: 'James F. Reville Scholarship',
     amount: '$3,000',
     deadline: '01/13/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/james-f-reville-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/james-f-reville-scholarship'
   },
   {
     title: 'Joseph T. Weingold Scholarship for Special Education Students',
@@ -110,7 +121,8 @@ const scholarshipList = [
     title: 'Kent R. Smith Fund',
     amount: '$1,000',
     deadline: '05/30/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/kent-r-smith-fund'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/kent-r-smith-fund'
   },
   {
     title: 'Lillian Kitchen and Zella Kitchen Challis Scholarship',
@@ -123,31 +135,36 @@ const scholarshipList = [
     title: 'Madeline Maurer Scholarship',
     amount: '$1,000',
     deadline: '05/30/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/madeline-maurer-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/madeline-maurer-scholarship'
   },
   {
     title: 'Mike Lozano Scholarship',
     amount: '$2,500',
     deadline: '02/10/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/mike-lozano-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/mike-lozano-scholarship'
   },
   {
     title: 'NAJA Graduate Scholarship Program',
     amount: 'Varies',
     deadline: '02/01/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/naja-graduate-scholarship-program'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/naja-graduate-scholarship-program'
   },
   {
     title: 'Olivia M. Marquart Scholarships',
     amount: '$2,500',
     deadline: '03/01/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/olivia-m-marquart-scholarships'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/olivia-m-marquart-scholarships'
   },
   {
     title: 'Pancholi Scholarship for Nevada Educators',
     amount: '$2,000',
     deadline: '12/13/2019',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/pancholi-scholarship-for-nevada-educators'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/pancholi-scholarship-for-nevada-educators'
   },
   {
     title: 'Paraprofessional Teacher Preparation Grant Program',
@@ -160,19 +177,22 @@ const scholarshipList = [
     title: 'Pepsi-Cola Bottling of Eastern Oregon Scholarship',
     amount: '$1,000',
     deadline: '02/01/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/pepsi-cola-bottling-of-eastern-oregon-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/pepsi-cola-bottling-of-eastern-oregon-scholarship'
   },
   {
     title: 'Samuel Huntington Public Service Award',
     amount: '$15,000',
     deadline: '01/17/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/samuel-huntington-public-service-award'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/samuel-huntington-public-service-award'
   },
   {
     title: 'Save a Life Scholarship',
     amount: '$1,500',
     deadline: '10/01/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/save-a-life-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/save-a-life-scholarship'
   },
   {
     title: 'T.E.A.C.H. Early Childhood Minnesota Scholarship Programs',
@@ -185,19 +205,22 @@ const scholarshipList = [
     title: 'TEACH Grant',
     amount: '$4,000',
     deadline: 'Varies',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/teach-grant'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/teach-grant'
   },
   {
     title: 'Teacher.org Inspire Our Future Scholarship',
     amount: '$500',
     deadline: '04/01/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/teacher-org-inspire-our-future-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/teacher-org-inspire-our-future-scholarship'
   },
   {
     title: 'Tennessee Christa McAuliffe Scholarship',
     amount: '$500',
     deadline: '04/01/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/tennessee-christa-mcauliffe-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/tennessee-christa-mcauliffe-scholarship'
   },
   {
     title: 'The Brown Medical and Educational (MAE) Foundation Teaching Scholarship',
@@ -210,25 +233,29 @@ const scholarshipList = [
     title: 'The Quell Bridge the Gap Scholarship',
     amount: '$2,000',
     deadline: '04/15/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/the-quell-bridge-the-gap-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/the-quell-bridge-the-gap-scholarship'
   },
   {
     title: 'The Robert Noyce Scholarship',
     amount: '$30,000',
     deadline: '01/12/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/the-robert-noyce-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/the-robert-noyce-scholarship'
   },
   {
     title: 'Two Ten Higher Education Scholarship',
     amount: '$16,000',
     deadline: '04/19/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/two-ten-higher-education-scholarship'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/two-ten-higher-education-scholarship'
   },
   {
     title: 'UCT Scholarship Program',
     amount: '$2,500',
     deadline: '11/15/2020',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/uct-scholarship-program'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/uct-scholarship-program'
   },
   {
     title: 'Ups for Downs Katie MacDonald Memorial Scholarship',
@@ -241,7 +268,8 @@ const scholarshipList = [
     title: 'Virginia Teaching Scholarship Loan Program (VTSLP)',
     amount: '$10,000',
     deadline: 'Varies',
-    link: 'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/virginia-teaching-scholarship-loan-program-vtslp'
+    link:
+      'https://www.scholarships.com/financial-aid/college-scholarships/scholarship-directory/academic-major/special-education/virginia-teaching-scholarship-loan-program-vtslp'
   },
   {
     title: 'Washington HECB American Indian Endowed Scholarship',
@@ -278,7 +306,11 @@ export class Scholarships extends Component {
       );
     }
     if (type === 'facebook') {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, 'facebook-share-dialog', 'width=600,height=480');
+      window.open(
+        `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+        'facebook-share-dialog',
+        'width=600,height=480'
+      );
     }
   };
 
@@ -317,8 +349,14 @@ export class Scholarships extends Component {
                     2020 Special Education Teacher Scholarship - <small>$</small>1,000
                   </strong>
                 </h1>
-                <p>SPEDxchange is offering a $1,000 scholarship for undergraduate or graduate students that are interested in working with special needs students.</p>
-                <p>This award is for undergraduate or graduate students that are pursuing a degree in following special education or a related fields:</p>
+                <p>
+                  SPEDxchange is offering a $1,000 scholarship for undergraduate or graduate students that are
+                  interested in working with special needs students.
+                </p>
+                <p>
+                  This award is for undergraduate or graduate students that are pursuing a degree in following special
+                  education or a related fields:
+                </p>
                 <p>
                   <strong>Special Education Teacher</strong>
                   <br />
@@ -372,4 +410,4 @@ const actions = {
   openModal
 };
 
-export default withRouter(connect(mapState, actions)(Scholarships));
+export default connect(mapState, actions)(withRouter(Scholarships));

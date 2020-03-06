@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { loadQuestionBySlugAsView, loadQuestionBySlug, likeQuestion, unlikeQuestion, likeAnswer, unlikeAnswer } from '../questionActions';
+import {
+  loadQuestionBySlugAsView,
+  loadQuestionBySlug,
+  likeQuestion,
+  unlikeQuestion,
+  likeAnswer,
+  unlikeAnswer
+} from '../questionActions';
 import { Button, List, Image } from 'semantic-ui-react';
 import moment from 'moment/moment.js';
 import Loading from '../../../common/ui/loading/Loading';
@@ -115,4 +122,4 @@ class QuestionDetail extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(QuestionDetail));
+export default connect(mapState, actions)(withRouter(QuestionDetail));

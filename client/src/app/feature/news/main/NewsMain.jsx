@@ -61,4 +61,4 @@ class NewsMain extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(NewsMain));
+export default connect(mapState, actions)(withRouter(NewsMain));

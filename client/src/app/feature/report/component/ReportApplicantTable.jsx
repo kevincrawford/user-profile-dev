@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { Table } from 'semantic-ui-react';
 
 export class ReportApplicantTable extends Component {
-  handleName(user) {
-    if (!user.firstName) {
-      const names = user.displayName
+  handleName(applicant) {
+    console.log('handleName: applicant: ', applicant.user);
+    if (!applicant || !applicant.user || !applicant.user.firstName) {
+      if(!applicant || !applicant.user || !applicant.user.firstName) return <span>N/A</span>
+      const names = applicant.user.displayName
         .replace(/\s+/g, ' ')
         .trim()
         .split(' ');
@@ -19,7 +21,7 @@ export class ReportApplicantTable extends Component {
     } else {
       return (
         <>
-          <span>{user.firstName}</span> <span>{user.lastName}</span>
+          <span>{applicant.user.firstName}</span> <span>{applicant.user.lastName}</span>
         </>
       );
     }
@@ -31,6 +33,18 @@ export class ReportApplicantTable extends Component {
     } else {
       return <span>ADMIN</span>;
     }
+  }
+
+  renderApplicantRow(applicant) {
+    console.log('renderApplicantRow: applicant: ', applicant);
+    if (!applicant || applicant === null || !applicant._id || !applicant.user) return <></>;
+    return (
+      <Table.Row key={applicant._id}>
+        <Table.Cell>{this.handleName(applicant)}</Table.Cell>
+        <Table.Cell>{applicant.user.email}</Table.Cell>
+        <Table.Cell>{applicant.scholarshipName}</Table.Cell>
+      </Table.Row>
+    );
   }
 
   render() {
@@ -46,15 +60,7 @@ export class ReportApplicantTable extends Component {
         </Table.Header>
 
         <Table.Body>
-          {applicants &&
-            applicants.length > 0 &&
-            applicants.map(applicant => (
-              <Table.Row key={applicant.user._id}>
-                <Table.Cell>{this.handleName(applicant.user)}</Table.Cell>
-                <Table.Cell>{applicant.user.email}</Table.Cell>
-                <Table.Cell>{applicant.scholarshipName}</Table.Cell>
-              </Table.Row>
-            ))}
+          {applicants && applicants.length > 0 && applicants.map(applicant => this.renderApplicantRow(applicant))}
         </Table.Body>
       </Table>
     );

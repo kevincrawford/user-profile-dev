@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { Modal, Button, Divider } from 'semantic-ui-react';
 import { openModal, closeModal } from './ModalActions';
 
-const mapState = state => ({});
+const mapState = state => ({
+  currentModal: state.modals
+});
 
 const actions = { openModal, closeModal };
 
@@ -19,23 +21,26 @@ export class UnauthModal extends Component {
     this.props.closeModal();
   }
 
+  handleAction(modalType) {
+    this.props.openModal(modalType, { fromAuth: true });
+  }
+
   handleCloseModal = () => {
     this.props.history.goBack();
     this.props.closeModal();
   };
 
   render() {
-    const { openModal } = this.props;
     return (
       <Modal size='mini' className='unauth-modal' open={true} onClose={this.handleCloseModal}>
         <Modal.Header>You must be logged in to share...</Modal.Header>
         <Modal.Description>
           <Button.Group widths={3}>
-            <Button fluid color='teal' onClick={() => openModal('LoginModal', { fromAuth: true })}>
+            <Button fluid color='teal' onClick={() => this.handleAction('LoginModal')}>
               Login
             </Button>
             <Button.Or />
-            <Button fluid positive onClick={() => openModal('RegisterModal', { fromAuth: true })}>
+            <Button fluid positive onClick={() => this.handleAction('RegisterModal')}>
               Sign Up
             </Button>
           </Button.Group>
@@ -49,4 +54,4 @@ export class UnauthModal extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(UnauthModal));
+export default connect(mapState, actions)(withRouter(UnauthModal));

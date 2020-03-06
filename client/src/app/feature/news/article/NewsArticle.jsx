@@ -27,13 +27,25 @@ export class NewsArticle extends Component {
   handleSocialClick = type => {
     const url = window.location.protocol + '//' + window.location.host + this.props.match.url;
     if (type === 'twitter') {
-      window.open(`https://twitter.com/intent/tweet?text=SPEDxchange:%20${this.props.currentArticle.title}&amp;url=${url}`, 'twitter-share-dialog', 'width=600,height=480');
+      window.open(
+        `https://twitter.com/intent/tweet?text=SPEDxchange:%20${this.props.currentArticle.title}&amp;url=${url}`,
+        'twitter-share-dialog',
+        'width=600,height=480'
+      );
     }
     if (type === 'linkedin') {
-      window.open(`https://www.linkedin.com/shareArticle?mini=true&amp;url=${url}&amp;title=${this.props.currentArticle.title}`, 'linkedin-share-dialog', 'width=600,height=480');
+      window.open(
+        `https://www.linkedin.com/shareArticle?mini=true&amp;url=${url}&amp;title=${this.props.currentArticle.title}`,
+        'linkedin-share-dialog',
+        'width=600,height=480'
+      );
     }
     if (type === 'facebook') {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, 'facebook-share-dialog', 'width=600,height=480');
+      window.open(
+        `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+        'facebook-share-dialog',
+        'width=600,height=480'
+      );
     }
   };
 
@@ -57,7 +69,10 @@ export class NewsArticle extends Component {
               <div>
                 <h1>{currentArticle.title}</h1>
                 <div>
-                  <img src={`https://spedxchange.s3.us-east-2.amazonaws.com/news/${currentArticle.uid}/${currentArticle.photoURL}.jpg`} alt='{currentArticle.slug}' />
+                  <img
+                    src={`https://spedxchange.s3.us-east-2.amazonaws.com/news/${currentArticle.uid}/${currentArticle.photoURL}.jpg`}
+                    alt='{currentArticle.slug}'
+                  />
                 </div>
               </div>
 
@@ -105,4 +120,4 @@ export class NewsArticle extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(NewsArticle));
+export default connect(mapState, actions)(withRouter(NewsArticle));

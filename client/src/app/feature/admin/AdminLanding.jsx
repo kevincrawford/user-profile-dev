@@ -135,4 +135,4 @@ const actions = {
   registerOrg
 };
 
-export default withRouter(connect(mapState, actions)(reduxForm({ form: 'registerOrgForm', validate })(AdminLanding)));
+export default connect(mapState, actions)(reduxForm({ form: 'registerOrgForm', validate })(withRouter(AdminLanding)));

@@ -50,4 +50,4 @@ const mapState = state => ({
 
 const actions = { toggleSideBar, navItemClick };
 
-export default withRouter(connect(mapState, actions)(RouterStateHandler));
+export default connect(mapState, actions)(withRouter(RouterStateHandler));

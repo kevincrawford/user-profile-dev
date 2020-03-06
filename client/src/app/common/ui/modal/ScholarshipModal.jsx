@@ -31,4 +31,4 @@ class ScholarshipModal extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(ScholarshipModal));
+export default connect(mapState, actions)(withRouter(ScholarshipModal));

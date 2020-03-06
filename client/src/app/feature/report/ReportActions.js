@@ -7,7 +7,6 @@ export const fetchUsers = id => {
     try {
       dispatch(asyncActionStart('fetch-users'));
       const users = await axios.get(`/api/reports/users`);
-      console.log('users: ', users);
       dispatch({ type: FETCH_USERS, payload: users.data });
       dispatch(asyncActionFinish());
     } catch (error) {

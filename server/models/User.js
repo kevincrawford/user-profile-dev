@@ -21,12 +21,10 @@ const UserSchema = new Schema({
     unique: true
   },
   title: {
-    type: String,
-    unique: true
+    type: String
   },
   summary: {
-    type: String,
-    unique: true
+    type: String
   },
   email: {
     type: String,

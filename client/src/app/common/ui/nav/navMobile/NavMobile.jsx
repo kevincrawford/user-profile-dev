@@ -97,4 +97,4 @@ class NavMobile extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(NavMobile));
+export default connect(mapState, actions)(withRouter(NavMobile));

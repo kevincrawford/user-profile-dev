@@ -58,4 +58,4 @@ class AnswerForm extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(reduxForm({ form: 'answerForm', validate })(AnswerForm)));
+export default connect(mapState, actions)(reduxForm({ form: 'answerForm', validate })(withRouter(AnswerForm)));

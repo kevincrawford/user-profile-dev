@@ -33,4 +33,4 @@ class ResetModal extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(ResetModal));
+export default connect(mapState, actions)(withRouter(ResetModal));

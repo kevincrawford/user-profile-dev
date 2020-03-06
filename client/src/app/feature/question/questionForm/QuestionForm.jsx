@@ -164,7 +164,13 @@ class QuestionForm extends Component {
                   <h5>
                     <strong>2. </strong>Add tags to help the right people find and answer your question.
                   </h5>
-                  <Field name='tags' component={TagInput} tags={tagNames} updateTags={handleUpdateTagNames} placeholder='e.g. (policy behavior kindergarten)' />
+                  <Field
+                    name='tags'
+                    component={TagInput}
+                    tags={tagNames}
+                    updateTags={handleUpdateTagNames}
+                    placeholder='e.g. (policy behavior kindergarten)'
+                  />
                 </div>
                 <Button positive type='button' className='mt-3' onClick={() => handleTabChange(2)}>
                   Next&nbsp;&nbsp;
@@ -198,7 +204,9 @@ class QuestionForm extends Component {
             {activeQuestionTab === 3 && (
               <div>
                 <div>
-                  {this.props.questionData && this.props.questionData.values && <QuestionPreview question={this.props.questionData.values} user={this.props.currentUser} />}
+                  {this.props.questionData && this.props.questionData.values && (
+                    <QuestionPreview question={this.props.questionData.values} user={this.props.currentUser} />
+                  )}
                 </div>
                 <hr />
                 <div className='flex-box between'>
@@ -227,4 +235,4 @@ class QuestionForm extends Component {
   }
 }
 
-export default withRouter(connect(mapState, actions)(reduxForm({ form: 'questionForm', validate })(QuestionForm)));
+export default connect(mapState, actions)(reduxForm({ form: 'questionForm', validate })(withRouter(QuestionForm)));

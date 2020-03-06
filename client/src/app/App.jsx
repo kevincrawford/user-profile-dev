@@ -91,7 +91,10 @@ class App extends Component {
                     <Route exact path='/questions' component={QuestionDashboard} />
                     <Route path='/questions/:uid/:slug' component={QuestionDetail} />
                     <Route path='/categories' component={QuestionCategoryPage} />
-                    <Route path={['/ask', '/ask/:id', '/ask/:uid/:slug']} component={UserCanAsk(QuestionForm)} />
+                    <Route
+                      path={['/ask', '/ask/:id', '/ask/:uid/:slug']}
+                      component={UserCanAsk(withRouter(QuestionForm))}
+                    />
                     <Route exact path='/news' component={NewsMain} />
                     <Route path='/news/:uid/:slug' component={NewsArticle} />
                     <Route exact path='/scholarships' component={Scholarships} />
@@ -118,4 +121,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(connect(mapState)(App));
+export default connect(mapState)(withRouter(App));

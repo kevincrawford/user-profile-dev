@@ -12,15 +12,12 @@ const ScholarshipApplication = require('../../models/ScholarshipApplication');
 router.get('/users', auth, async (req, res) => {
   try {
     const users = await User.find().select('-password');
-    const applicantsFind = await ScholarshipApplication.find();
-
-    let applicants = [];
-    let item;
-    for (item of applicantsFind) {
-      const record = await User.findById(item.user).select('-password');
-      item.userRecord = record;
-      applicants.push(item);
-    }
+    const applicants = await ScholarshipApplication.find().populate('user', [
+      'displayName',
+      'firstName',
+      'lastName',
+      'email'
+    ]);
 
     const result = {
       users: users,
@@ -60,7 +57,6 @@ router.get('/convertUserId', async (req, res) => {
         res.status(500).send('Server Error');
       }
     });
-
     // Clean up queues
     if (requests.length > 0) await ScholarshipApplication.bulkWrite(requests);
     res.json({ response: 'done' });
