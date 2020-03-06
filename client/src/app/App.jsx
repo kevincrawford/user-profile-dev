@@ -24,6 +24,7 @@ import Resources from './feature/resources/Resources';
 import About from './feature/about/About';
 import Jobs from './feature/jobs/Jobs';
 import ProfilePage from './feature/profile/ProfilePage';
+import Report from './feature/report/Report';
 
 // import Admin from './feature/admin/Admin';
 import AdminJobList from './feature/admin/component/jobs/AdminJobList';
@@ -42,6 +43,7 @@ const Login = userIsNotAuthenticatedRedir(LoginForm);
 const Profile = userIsAuthenticatedRedir(ProfilePage);
 const AdminMain = userIsAuthenticatedRedir(userIsAdminRedir(AdminJobList));
 const AdminJob = userIsAuthenticatedRedir(userIsAdminRedir(AdminJobForm));
+const ReportMain = userIsAuthenticatedRedir(userIsAdminRedir(Report));
 
 class App extends Component {
   componentDidMount() {
@@ -101,6 +103,7 @@ class App extends Component {
                     <Route exact path='/postjob' component={AdminLanding} />
                     <Route exact path='/admin' component={AdminMain} />
                     <Route path='/admin/job/:id' component={AdminJob} />
+                    <Route exact path='/spedxchange-reports' component={ReportMain} />
                   </Switch>
                 </div>
               </Container>

@@ -16,6 +16,7 @@ import JobsReducer from '../feature/jobs/actions/jobsReducer';
 import AccountReducer from '../feature/account/accountReducer';
 import DashboardReducer from '../feature/dashboard/DashboardReducer';
 import AdminReducer from '../feature/admin/AdminReducer';
+import ReportReducer from '../feature/report/ReportReducer';
 
 const rootReducer = combineReducers({
   toastr: ToastrReducer,
@@ -34,7 +35,8 @@ const rootReducer = combineReducers({
   contact: ContactReducer,
   account: AccountReducer,
   dashboard: DashboardReducer,
-  admin: AdminReducer
+  admin: AdminReducer,
+  report: ReportReducer
 });
 
 export default rootReducer;
