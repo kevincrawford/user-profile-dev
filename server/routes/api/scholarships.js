@@ -34,6 +34,26 @@ router.get('/applications/:scholarshipName', auth, async (req, res) => {
   }
 });
 
+// @route    GET api/scholarship/applications/users/:scholarshipId
+// @desc     Get all Scholarship Applications by ScholarshipId
+// @access   Public
+router.get('/applications/users/:scholarshipName', async (req, res) => {
+  try {
+    const applications = await ScholarshipApplication.find(
+      {
+        scholarshipName: req.params.scholarshipName
+      },
+      'user school'
+    )
+      .sort({ likeCount: -1 })
+      .populate({ path: 'user', select: '-password -roles -avatar -created -__v' });
+    res.json(applications);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route    GET api/scholarship/application/:applicationId/:vote
 // @desc     Vote on Scholarship Application
 // @access   Public

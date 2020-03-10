@@ -14,6 +14,20 @@ const isNumeric = n => {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
+// @route    GET api/auth/all
+// @desc     Get User Record
+// @access   Private
+router.get('/all', async (req, res) => {
+  try {
+    const user = await User.find().select(
+      '-password -avatar -created -roles -firstName -lastName -__v -reset_password_expires -reset_password_token -screenName'
+    );
+    res.json(user);
+  } catch (err) {
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route    GET api/auth
 // @desc     Get User Record
 // @access   Private

@@ -6,8 +6,9 @@ import { openModal } from '../../ui/modal/ModalActions';
 // };
 
 const testAuth = (state, ownProps) => {
-  console.log('testAuth: state: ', state);
-  console.log('testAuth: ownProps: ', ownProps);
+  // console.log('testAuth:');
+  // console.log('testAuth: state: ', state);
+  // console.log('testAuth: ownProps: ', ownProps);
   if (state.auth.loading) return true;
   if (state.auth.authenticated) return true;
   // console.log('testAuth: ownProps: ', ownProps);
@@ -21,6 +22,7 @@ export const UserCanAsk = connectedReduxRedirect({
   redirectPath: '/questions',
   authenticatedSelector: testAuth,
   redirectAction: newLoc => dispatch => {
+    console.log('redirectAction: ');
     // console.log('newLoc: ', newLoc);
     // console.log('dispatch: ', dispatch);
 

@@ -14,7 +14,7 @@ export const registerOrg = (org, history) => {
       const userToken = await axios.post('/api/organization/register', body, HEADER_JSON);
       dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
       await dispatch(loadUser());
-      dispatch(welcomeUser());
+      // dispatch(welcomeUser());
       history.push('/admin');
     } catch (error) {
       console.log(error);

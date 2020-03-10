@@ -11,13 +11,19 @@ const mapState = state => ({
 const actions = { openModal, closeModal };
 
 export class UnauthModal extends Component {
+  constructor(props) {
+    super(props);
+    this.handleRouteChanged = this.handleRouteChanged.bind(this);
+    this.handleAction = this.handleAction.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
-      this.onRouteChanged();
+      this.handleRouteChanged();
     }
   }
 
-  onRouteChanged() {
+  handleRouteChanged() {
     this.props.closeModal();
   }
 
