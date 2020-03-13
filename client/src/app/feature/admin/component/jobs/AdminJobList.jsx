@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { Table, Icon, Button, Breadcrumb } from 'semantic-ui-react';
 import Loading from '../../../../common/ui/loading/Loading';
 import moment from 'moment/moment.js';
-
-import { fetchJobs, fetchOrg, clearJob } from '../../AdminActions';
+import * as _ from 'lodash';
+import { fetchJobs, fetchOrg, clearJob, saveJob, createJob } from '../../AdminActions';
 import { openModal } from '../../../../common/ui/modal/ModalActions';
 
 export class AdminJobList extends Component {
@@ -13,7 +13,7 @@ export class AdminJobList extends Component {
     super(props);
 
     this.state = {
-      filter: {status: }
+      filter: ['Published', 'Draft']
     };
 
     this.handleEditClick = this.handleEditClick.bind(this);
@@ -27,9 +27,9 @@ export class AdminJobList extends Component {
     this.props.fetchJobs(this.props.user.organization);
   }
 
-  handleJobAction(job, action) {
+  handleJobAction(job, action, index) {
     console.log(job);
-    this.props.openModal('AdminJobModal', { job: job, action: action });
+    this.props.openModal('AdminJobModal', { ...this.props, job: job, action: action });
   }
 
   handleEditClick(id) {
@@ -43,12 +43,18 @@ export class AdminJobList extends Component {
 
   filterJobs() {
     if (this.state.filter) {
-      return this.props.jobs.filter(job => {
-        for (var key in filter) {
-          if (job[key] === undefined || job[key] != job[key]) return false;
-        }
-        return true;
-      });
+      const predicate = function() {
+        const args = _.toArray(arguments);
+        // console.log('args: ', args);
+        return job => {
+          // console.log('job: ', job);
+          let equalsJobStatus = _.partial(_.isEqual, job.status);
+          return args.some(equalsJobStatus);
+        };
+      };
+      return _.filter(this.props.jobs, predicate(...this.state.filter));
+    } else {
+      return this.props.jobs;
     }
   }
 
@@ -79,8 +85,8 @@ export class AdminJobList extends Component {
 
           <Table.Body>
             {Array.isArray(jobs) &&
-              jobs.length > 0 &&
-              jobs.map(job => (
+              this.filterJobs(jobs).length > 0 &&
+              this.filterJobs(jobs).map((job, index) => (
                 <Table.Row key={job._id}>
                   <Table.Cell>{job.title}</Table.Cell>
                   <Table.Cell>{job.status}</Table.Cell>
@@ -96,15 +102,15 @@ export class AdminJobList extends Component {
                       color='orange'
                       name='file archive outline'
                       title='Archive Job'
-                      onClick={() => this.handleJobAction(job, 'archive')}
+                      onClick={() => this.handleJobAction(job, 'archive', index)}
                     />
                     <Icon
                       link
                       className='ml-2'
                       color='grey'
                       name='copy outline'
-                      title='Duplicate Job'
-                      onClick={() => this.handleJobAction(job, 'duplicate')}
+                      title='Copy Job'
+                      onClick={() => this.handleJobAction(job, 'copy', index)}
                     />
                     <Icon
                       link
@@ -142,6 +148,8 @@ const mapState = state => ({
 });
 
 const actions = {
+  createJob,
+  saveJob,
   clearJob,
   fetchJobs,
   fetchOrg,

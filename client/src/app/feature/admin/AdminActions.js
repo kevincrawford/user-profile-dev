@@ -1,6 +1,15 @@
 import axios from 'axios';
 import { HEADER_JSON } from '../../common/constants/apiConstants';
-import { FETCH_ORG, FETCH_JOBS, FETCH_JOB, UPDATE_JOB, UPDATE_JOB_PROP, CLEAR_JOB, DELETE_JOB } from './AdminConstants';
+import {
+  FETCH_ORG,
+  FETCH_JOBS,
+  FETCH_JOB,
+  UPDATE_JOBS,
+  UPDATE_JOB,
+  UPDATE_JOB_PROP,
+  CLEAR_JOB,
+  DELETE_JOB
+} from './AdminConstants';
 import { LOGIN_SUCCESS } from '../../common/ui/auth/AuthContantants';
 import { loadUser, welcomeUser } from '../../common/ui/auth/AuthActions';
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../common/actions/async/asyncActions';
@@ -74,7 +83,7 @@ export const createJob = (job, history) => {
     try {
       dispatch(asyncActionStart('fetch-job'));
       const newJob = await axios.post(`/api/job`, body, HEADER_JSON);
-      console.log('newJob: ', newJob);
+      // console.log('newJob: ', newJob);
       dispatch({ type: FETCH_JOB, payload: newJob.data });
       dispatch(asyncActionFinish());
       if (history) {
@@ -85,6 +94,15 @@ export const createJob = (job, history) => {
       console.log(error);
       dispatch(asyncActionError());
     }
+  };
+};
+
+export const updateJobs = jobs => {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_JOBS,
+      payload: jobs
+    });
   };
 };
 

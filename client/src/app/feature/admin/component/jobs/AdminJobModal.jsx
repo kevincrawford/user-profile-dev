@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { createJob, updateJob, saveJob } from '../../AdminActions';
 import { closeModal } from '../../../../common/ui/modal/ModalActions';
 
 import { Modal, Button } from 'semantic-ui-react';
@@ -23,16 +22,21 @@ export class AdminJobModal extends Component {
 
   handleJobAction() {
     const currentJob = Object.assign({}, this.props.job);
-    console.log('action: ', this.props.action);
-    console.log('currentJob: ', currentJob);
-    if (this.props.action === 'duplicate') {
+    let time = 100;
+    if (this.props.action === 'copy') {
+      time = 1000;
       delete currentJob._id;
+      currentJob.title = currentJob.title + '(copy)';
+      currentJob.status = 'Draft';
       this.props.createJob(currentJob, null);
     }
     if (this.props.action === 'archive') {
       currentJob.status = 'Archived';
       this.props.saveJob(currentJob);
     }
+    setTimeout(() => {
+      this.props.fetchJobs(this.props.user.organization);
+    }, time);
     this.handleCloseModal();
   }
 
@@ -48,35 +52,31 @@ export class AdminJobModal extends Component {
     const { job, action } = this.props;
     return (
       <Modal size='mini' open={true} onClose={this.handleCloseModal}>
+        <Modal.Header>
+          <span className='capitalize'>{action} Job</span>
+        </Modal.Header>
         <Modal.Content>
           <Modal.Description>
+            <div>Do you want to {action} the job titled:</div>
             <div>
-              {action} for {job.title}
+              <strong>{job.title}?</strong>
             </div>
-            <Button onClick={this.handleJobAction}></Button>
           </Modal.Description>
         </Modal.Content>
+        <Modal.Actions>
+          <Button onClick={this.handleCloseModal}>Cancel</Button>
+          <Button positive className='capitalize' onClick={this.handleJobAction}>
+            Confirm
+          </Button>
+        </Modal.Actions>
       </Modal>
     );
   }
 }
 
-const DuplicateJob = ({ job }) => {
-  return <div>duplicate {job.title}</div>;
-};
-
-const ArchiveJob = ({ job }) => {
-  return <div>archive {job.title}</div>;
-};
-
-const mapStateToProps = state => ({
-    
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
-  createJob,
-  updateJob,
-  saveJob,
   closeModal
 };
 

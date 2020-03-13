@@ -29,7 +29,7 @@ export class AdminJobForm extends Component {
   componentDidMount() {
     // console.log('componentDidMount');
     if (this.props.match.params.id !== 'new') {
-      console.log('fetchJob');
+      // console.log('fetchJob');
       this.props.fetchJob(this.props.match.params.id, this.props.history);
     }
   }
@@ -46,7 +46,7 @@ export class AdminJobForm extends Component {
   }
 
   handleChange(e) {
-    console.log('handleChange');
+    // console.log('handleChange');
     this.props.updateJobProp(e.target.name, e.target.value);
   }
 

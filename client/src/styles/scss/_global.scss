@@ -57,6 +57,10 @@ secondary rgb: rgba(103, 28, 142, 1.0)
   color: var(--primary-color);
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 h1:first-line,
 h2:first-line {
   line-height: 1em;

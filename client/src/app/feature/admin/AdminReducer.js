@@ -1,5 +1,13 @@
 import { createReducer } from '../../common/util/ReducerUtil';
-import { FETCH_JOBS, FETCH_JOB, UPDATE_JOB, UPDATE_JOB_PROP, CLEAR_JOB, FETCH_ORG } from './AdminConstants';
+import {
+  FETCH_JOBS,
+  FETCH_JOB,
+  UPDATE_JOBS,
+  UPDATE_JOB,
+  UPDATE_JOB_PROP,
+  CLEAR_JOB,
+  FETCH_ORG
+} from './AdminConstants';
 
 const emptyJob = {
   jobId: '',
@@ -38,6 +46,13 @@ const fetchJob = (state, payload) => {
   };
 };
 
+const updateJobs = (state, payload) => {
+  return {
+    ...state,
+    jobs: payload
+  };
+};
+
 const updateJob = (state, payload) => {
   return {
     ...state,
@@ -65,6 +80,7 @@ const clearJob = (state, payload) => {
 export default createReducer(initialState, {
   [FETCH_JOBS]: fetchJobs,
   [FETCH_JOB]: fetchJob,
+  [UPDATE_JOBS]: updateJobs,
   [UPDATE_JOB]: updateJob,
   [UPDATE_JOB_PROP]: updateJobProp,
   [FETCH_ORG]: fetchOrg,

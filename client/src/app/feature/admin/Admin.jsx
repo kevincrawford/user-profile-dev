@@ -59,10 +59,10 @@ export class Admin extends Component {
   constructor(props) {
     super(props);
 
-    console.log('fetchOrg');
+    // console.log('fetchOrg');
     this.props.fetchOrg();
 
-    console.log('fetchJobs');
+    // console.log('fetchJobs');
     this.props.fetchJobs();
 
     if (this.props.match.params.id !== 'new') {
