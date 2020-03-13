@@ -6,43 +6,50 @@ import Loading from '../../../../common/ui/loading/Loading';
 import moment from 'moment/moment.js';
 
 import { fetchJobs, fetchOrg, clearJob } from '../../AdminActions';
-
-const mapState = state => ({
-  loading: state.async.loading,
-  loadingName: state.async.elementName,
-  jobs: state.admin.jobs,
-  user: state.auth.currentUser
-});
-
-const actions = {
-  clearJob,
-  fetchJobs,
-  fetchOrg
-};
+import { openModal } from '../../../../common/ui/modal/ModalActions';
 
 export class AdminJobList extends Component {
   constructor(props) {
     super(props);
 
-    this.props.fetchOrg(this.props.user.organization);
-    this.props.fetchJobs();
+    this.state = {
+      filter: {status: }
+    };
 
     this.handleEditClick = this.handleEditClick.bind(this);
-    this.handleRemoveClick = this.handleRemoveClick.bind(this);
+    this.handleJobAction = this.handleJobAction.bind(this);
     this.handleNewJob = this.handleNewJob.bind(this);
+    this.filterJobs = this.filterJobs.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchOrg(this.props.user.organization);
+    this.props.fetchJobs(this.props.user.organization);
+  }
+
+  handleJobAction(job, action) {
+    console.log(job);
+    this.props.openModal('AdminJobModal', { job: job, action: action });
   }
 
   handleEditClick(id) {
     this.props.history.push(`/admin/job/${id}`);
   }
 
-  handleRemoveClick(id) {
-    console.log(id);
-  }
-
   handleNewJob(id) {
     this.props.clearJob();
     this.props.history.push(`/admin/job/new`);
+  }
+
+  filterJobs() {
+    if (this.state.filter) {
+      return this.props.jobs.filter(job => {
+        for (var key in filter) {
+          if (job[key] === undefined || job[key] != job[key]) return false;
+        }
+        return true;
+      });
+    }
   }
 
   render() {
@@ -63,15 +70,16 @@ export class AdminJobList extends Component {
         <Table selectable>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell width={8}>Job Title</Table.HeaderCell>
-              <Table.HeaderCell width={1}>Status</Table.HeaderCell>
+              <Table.HeaderCell width={6}>Job Title</Table.HeaderCell>
+              <Table.HeaderCell width={2}>Status</Table.HeaderCell>
               <Table.HeaderCell width={2}>Last Update</Table.HeaderCell>
-              <Table.HeaderCell width={1} textAlign='right'></Table.HeaderCell>
+              <Table.HeaderCell width={2} textAlign='right'></Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
           <Table.Body>
-            {jobs &&
+            {Array.isArray(jobs) &&
+              jobs.length > 0 &&
               jobs.map(job => (
                 <Table.Row key={job._id}>
                   <Table.Cell>{job.title}</Table.Cell>
@@ -82,7 +90,30 @@ export class AdminJobList extends Component {
                     <Icon link color='red' name='remove' onClick={() => this.handleRemoveClick(job._id)} />
                     &nbsp;&nbsp;
                     */}
-                    <Icon link color='green' name='edit outline' onClick={() => this.handleEditClick(job._id)} />
+                    <Icon
+                      link
+                      className='ml-2'
+                      color='orange'
+                      name='file archive outline'
+                      title='Archive Job'
+                      onClick={() => this.handleJobAction(job, 'archive')}
+                    />
+                    <Icon
+                      link
+                      className='ml-2'
+                      color='grey'
+                      name='copy outline'
+                      title='Duplicate Job'
+                      onClick={() => this.handleJobAction(job, 'duplicate')}
+                    />
+                    <Icon
+                      link
+                      className='ml-2'
+                      color='green'
+                      name='edit outline'
+                      title='Edit Job'
+                      onClick={() => this.handleEditClick(job._id)}
+                    />
                   </Table.Cell>
                 </Table.Row>
               ))}
@@ -102,5 +133,19 @@ export class AdminJobList extends Component {
     );
   }
 }
+
+const mapState = state => ({
+  loading: state.async.loading,
+  loadingName: state.async.elementName,
+  jobs: state.admin.jobs,
+  user: state.auth.currentUser
+});
+
+const actions = {
+  clearJob,
+  fetchJobs,
+  fetchOrg,
+  openModal
+};
 
 export default connect(mapState, actions)(withRouter(AdminJobList));

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Form, Input, Dropdown, Button, Breadcrumb } from 'semantic-ui-react';
 import { Editor } from '@tinymce/tinymce-react';
-import { createJob, fetchJob, updateJob, saveJob, clearJob } from '../../AdminActions';
+import { createJob, fetchJob, updateJobProp, saveJob, clearJob } from '../../AdminActions';
 import { asyncActionStart } from '../../../../common/actions/async/asyncActions';
 import Loading from '../../../../common/ui/loading/Loading';
 import AdminJobPreview from './AdminJobPreview';
@@ -17,11 +17,6 @@ export class AdminJobForm extends Component {
       preview: false
     };
 
-    if (this.props.match.params.id !== 'new') {
-      console.log('fetchJob');
-      this.props.fetchJob(this.props.match.params.id, this.props.history);
-    }
-
     this.handleTogglePreview = this.handleTogglePreview.bind(this);
     this.handleNewJob = this.handleNewJob.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -29,6 +24,14 @@ export class AdminJobForm extends Component {
     this.handleEditorChange = this.handleEditorChange.bind(this);
     this.onSalaryRangeSelect = this.onSalaryRangeSelect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    // console.log('componentDidMount');
+    if (this.props.match.params.id !== 'new') {
+      console.log('fetchJob');
+      this.props.fetchJob(this.props.match.params.id, this.props.history);
+    }
   }
 
   handleTogglePreview() {
@@ -44,29 +47,33 @@ export class AdminJobForm extends Component {
 
   handleChange(e) {
     console.log('handleChange');
-    this.props.updateJob(e.target.name, e.target.value);
+    this.props.updateJobProp(e.target.name, e.target.value);
   }
 
   handleSelectChange(e, data) {
-    this.props.updateJob(data.name, data.value);
+    this.props.updateJobProp(data.name, data.value);
   }
 
   handleEditorChange = (content, editor) => {
-    this.props.updateJob('description', content);
+    this.props.updateJobProp('description', content);
   };
 
   onSalaryRangeSelect(e) {
-    this.props.updateJob('salaryPeriod', e.target.textContent);
+    this.props.updateJobProp('salaryPeriod', e.target.textContent);
   }
 
-  handleSubmit(event) {
-    // console.log('handleSubmit: state: ', this.state);
-    // console.log('handleSubmit: props: ', this.props);
-    if (this.props.match.params.id !== 'new') {
-      this.props.saveJob(this.props.job);
-    } else {
-      this.props.createJob(this.props.job, this.props.history);
-    }
+  handleSubmit(event, publish) {
+    if (publish === 'publish') this.props.updateJobProp('status', 'Published');
+    if (publish === 'unpublish') this.props.updateJobProp('status', 'Draft');
+
+    setTimeout(() => {
+      if (this.props.match.params.id !== 'new') {
+        this.props.saveJob(this.props.job);
+      } else {
+        this.props.createJob(this.props.job, this.props.history);
+      }
+    }, 150);
+
     event.preventDefault();
   }
 
@@ -150,7 +157,8 @@ export class AdminJobForm extends Component {
                 <div className='mt-4'>
                   <label>Description</label>
                   <Editor
-                    initialValue={`<p>${description}</p>`}
+                    initialValue={description && description.length > 0 ? description : `<p></p>`}
+                    value={description}
                     apiKey='twpt6v84p920kri6p37w1wk4258x70z5e2yjhikzlu6mysb6'
                     onEditorChange={this.handleEditorChange}
                     init={{
@@ -186,9 +194,9 @@ export class AdminJobForm extends Component {
                 </div>
               </div>
               {status === 'Draft' ? (
-                <Button fluid color='green' content='Publish' />
+                <Button fluid color='green' content='Publish' onClick={e => this.handleSubmit(e, 'publish')} />
               ) : (
-                <Button fluid color='grey' content='Unpublish' />
+                <Button fluid color='grey' content='Unpublish' onClick={e => this.handleSubmit(e, 'unpublish')} />
               )}
             </div>
           </div>
@@ -224,7 +232,7 @@ const mapDispatchToProps = {
   asyncActionStart,
   fetchJob,
   createJob,
-  updateJob,
+  updateJobProp,
   saveJob,
   clearJob
 };

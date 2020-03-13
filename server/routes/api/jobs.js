@@ -10,10 +10,11 @@ const User = require('../../models/User');
 // @route    GET api/job/list
 // @desc     Get all Jobs by Organization
 // @access   Private
-router.get('/list', auth, async (req, res) => {
+router.get('/list/:orgId', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    const jobs = await Job.find({ organization: user.organization });
+    const org = req.params.orgId || user.organization;
+    const jobs = await Job.find({ organization: org });
     res.json(jobs);
   } catch (err) {
     console.error(err.message);
@@ -111,27 +112,20 @@ router.put('/', auth, async (req, res) => {
 // @access   Private
 router.delete('/:id', auth, async (req, res) => {
   try {
-    const tag = await Tag.findById(req.params.id);
+    const job = await Job.findById(req.params.id);
 
-    if (!tag) {
+    if (!job) {
       return res.status(404).json({ msg: 'Tag not found' });
     }
 
-    // remove tag from questions
-    for (let questionId of tag.questions) {
-      let question = await Question.findById(questionId);
-      question.tags.pull({ _id: req.params.id });
-      await question.save();
-    }
+    job.status = 'Archived';
+    await job.save();
 
-    // remove tag
-    await tag.remove();
-
-    res.json({ msg: 'Tag removed' });
+    res.json({ msg: 'Job Archived' });
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
-      return res.status(404).json({ msg: 'Tag not found' });
+      return res.status(404).json({ msg: 'Job not found' });
     }
     res.status(500).send('Server Error');
   }

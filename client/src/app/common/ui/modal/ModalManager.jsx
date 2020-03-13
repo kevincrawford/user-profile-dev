@@ -8,6 +8,7 @@ import AskQuestionModal from './AskQuestionModal';
 import ContactModal from './ContactModal';
 import ScholarshipModal from './ScholarshipModal';
 import ProfileAboutModal from '../../../feature/profile/components/modal/ProfileAboutModal';
+import AdminJobModal from '../../../feature/admin/component/jobs/AdminJobModal';
 
 const modalLookup = {
   LoginModal,
@@ -17,7 +18,8 @@ const modalLookup = {
   AskQuestionModal,
   ContactModal,
   ScholarshipModal,
-  ProfileAboutModal
+  ProfileAboutModal,
+  AdminJobModal
 };
 
 const mapState = state => ({

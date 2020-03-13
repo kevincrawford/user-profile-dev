@@ -10,7 +10,7 @@
     "url": "https://www.spedxchange.com/"
   },
   "scripts": {
-    "start": "node server",
+    "start": "npm run dev",
     "build": "npm run build --prefix client && node moveAssets.js",
     "server": "nodemon server",
     "install:client": "cd client && npm install",

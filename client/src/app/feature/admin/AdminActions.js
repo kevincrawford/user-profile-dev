@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { HEADER_JSON } from '../../common/constants/apiConstants';
-import { FETCH_ORG, FETCH_JOBS, FETCH_JOB, UPDATE_JOB, CLEAR_JOB, DELETE_JOB } from './AdminConstants';
+import { FETCH_ORG, FETCH_JOBS, FETCH_JOB, UPDATE_JOB, UPDATE_JOB_PROP, CLEAR_JOB, DELETE_JOB } from './AdminConstants';
 import { LOGIN_SUCCESS } from '../../common/ui/auth/AuthContantants';
 import { loadUser, welcomeUser } from '../../common/ui/auth/AuthActions';
 import { asyncActionStart, asyncActionFinish, asyncActionError } from '../../common/actions/async/asyncActions';
@@ -14,7 +14,7 @@ export const registerOrg = (org, history) => {
       const userToken = await axios.post('/api/organization/register', body, HEADER_JSON);
       dispatch({ type: LOGIN_SUCCESS, payload: userToken.data });
       await dispatch(loadUser());
-      // dispatch(welcomeUser());
+      dispatch(welcomeUser());
       history.push('/admin');
     } catch (error) {
       console.log(error);
@@ -36,11 +36,11 @@ export const fetchOrg = id => {
   };
 };
 
-export const fetchJobs = () => {
+export const fetchJobs = orgId => {
   return async dispatch => {
     try {
       dispatch(asyncActionStart('admin-job-list'));
-      const jobs = await axios.get(`/api/job/list`);
+      const jobs = await axios.get(`/api/job/list/${orgId}`);
       dispatch({ type: FETCH_JOBS, payload: jobs.data });
       dispatch(asyncActionFinish());
     } catch (error) {
@@ -55,7 +55,7 @@ export const fetchJob = (id, history) => {
     try {
       dispatch(asyncActionStart('fetch-job'));
       const job = await axios.get(`/api/job/${id}`);
-      console.log('job: ', job.data);
+      // console.log('job: ', job.data);
       dispatch({ type: FETCH_JOB, payload: job.data });
       dispatch(asyncActionFinish());
     } catch (error) {
@@ -74,9 +74,13 @@ export const createJob = (job, history) => {
     try {
       dispatch(asyncActionStart('fetch-job'));
       const newJob = await axios.post(`/api/job`, body, HEADER_JSON);
+      console.log('newJob: ', newJob);
       dispatch({ type: FETCH_JOB, payload: newJob.data });
       dispatch(asyncActionFinish());
-      history.push(`/admin/job/${newJob.data._id}`);
+      if (history) {
+        history.push(`/admin/job/${newJob.data._id}`);
+      }
+      toastr.success('Success!', 'Job Saved');
     } catch (error) {
       console.log(error);
       dispatch(asyncActionError());
@@ -84,9 +88,18 @@ export const createJob = (job, history) => {
   };
 };
 
-export const updateJob = (prop, value) => {
+export const updateJob = job => {
   return dispatch => {
-    dispatch({ type: UPDATE_JOB, payload: { prop: prop, value: value } });
+    dispatch({
+      type: UPDATE_JOB,
+      payload: job
+    });
+  };
+};
+
+export const updateJobProp = (prop, value) => {
+  return dispatch => {
+    dispatch({ type: UPDATE_JOB_PROP, payload: { prop: prop, value: value } });
   };
 };
 
