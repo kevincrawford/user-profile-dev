@@ -16,7 +16,7 @@ const rad = x => {
 };
 
 const getDistance = (p1, p2) => {
-  console.log('p1, p2: ', p1, p2);
+  // console.log('p1, p2: ', p1, p2);
   var R = 6371000; // Earth’s mean radius in meter
   var dLat = rad(p2[0] - p1[0]);
   var dLong = rad(p2[1] - p1[1]);
@@ -25,7 +25,7 @@ const getDistance = (p1, p2) => {
     Math.cos(rad(p1[0])) * Math.cos(rad(p2[0])) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   var d = R * c * 0.00062137;
-  console.log('d: ', d);
+  // console.log('d: ', d);
   return d; // returns the distance in meter
 };
 
@@ -128,7 +128,7 @@ router.get('/jobsByDistance', async (req, res) => {
     const lng = parseFloat(41.881832);
     const lat = parseFloat(-87.623177);
     let maxDistance = parseFloat(5);
-    console.log('milesToMeters(maxDistance): ', milesToMeters(maxDistance));
+    // console.log('milesToMeters(maxDistance): ', milesToMeters(maxDistance));
     // console.log('meterConversion.mToKm(maxDistance): ', meterConversion.mToKm(maxDistance));
     // console.log('meterConversion.kmToM(maxDistance): ', meterConversion.kmToM(maxDistance));
     // console.log(

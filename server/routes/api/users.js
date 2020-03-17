@@ -16,7 +16,7 @@ const Role = require('../../models/Role');
 router.post('/', async (req, res) => {
   try {
     const { displayName, email, password, isEmployer } = req.body;
-    console.log('req.body: ', req.body);
+    // console.log('req.body: ', req.body);
     let user = await User.findOne({ email });
 
     if (user) {
@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
     if (isEmployer) {
       roles.push('client-user');
     }
-    console.log('roles: ', roles);
+    // console.log('roles: ', roles);
 
     user = new User({
       displayName: displayName,
@@ -105,9 +105,9 @@ router.put('/profile', auth, async (req, res) => {
     user.lastName = useNewDisplayName ? lastName : oldLastName;
     user.title = title;
     user.summary = summary;
-    console.log('new user profile before save: ', user);
+    // console.log('new user profile before save: ', user);
     await user.save();
-    console.log('new user profile: ', user);
+    // console.log('new user profile: ', user);
     res.json(user);
   } catch (err) {
     console.error(err.message);

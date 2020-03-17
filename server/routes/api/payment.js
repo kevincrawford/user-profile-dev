@@ -27,22 +27,22 @@ router.get('/subscribe/:productId', auth, async (req, res) => {
       await user.save();
     }
 
-    console.log('customer.id: ', customer.id);
+    // console.log('customer.id: ', customer.id);
 
     const subscription = await stripe.subscriptions.create({
       customer: user.stripeId,
       items: [{ plan: productId }]
     });
 
-    console.log('customer: ', customer);
-    console.log('subscription: ', subscription);
+    // console.log('customer: ', customer);
+    // console.log('subscription: ', subscription);
 
     res.json({
       customer: customer,
       subscription: subscription
     });
   } catch (err) {
-    console.error(err.message);
+    // console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
