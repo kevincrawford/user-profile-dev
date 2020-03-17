@@ -193,10 +193,12 @@ router.get('/jobsByDistance', async (req, res) => {
 router.get('/:jobId', async (req, res) => {
   try {
     const job = await Job.findById(req.params.jobId);
-
+    const org = await Org.findById(job.organization);
     if (!job) {
       return res.status(404).json({ msg: 'Job not found' });
     }
+
+    if (!job.jobAdmin) job.jobAdmin = org.users[0];
 
     res.json(job);
   } catch (err) {
@@ -213,6 +215,7 @@ router.get('/:jobId', async (req, res) => {
 // @access   Private
 router.post('/', auth, async (req, res) => {
   const {
+    jobAdmin,
     jobId,
     jobType,
     title,
@@ -222,18 +225,19 @@ router.post('/', auth, async (req, res) => {
     salaryPeriod,
     salaryAmount,
     applyLink,
-    locations
+    location
   } = req.body;
 
   try {
     const user = await User.findById(req.user.id);
     const org = await Org.findById(user.organization);
-    const loc = await Location.findById(location);
+    const loc = await Location.findById(location || org.location);
 
     const newJob = new Job({
       organization: org._id,
       location: loc,
       loc: loc.loc,
+      jobAdmin: jobAdmin,
       jobId: jobId,
       jobType: jobType,
       title: title,
@@ -264,6 +268,7 @@ router.post('/', auth, async (req, res) => {
 // @access   Private
 router.put('/:jobId', auth, async (req, res) => {
   const {
+    jobAdmin,
     jobId,
     jobType,
     title,
@@ -276,10 +281,13 @@ router.put('/:jobId', auth, async (req, res) => {
     location
   } = req.body;
 
+  console.log('location: ', location);
+
   try {
     const job = await Job.findById(req.params.jobId);
     const loc = await Location.findById(location);
 
+    job.jobAdmin = jobAdmin;
     job.jobId = jobId;
     job.jobType = jobType;
     job.title = title;
@@ -289,7 +297,9 @@ router.put('/:jobId', auth, async (req, res) => {
     job.salaryPeriod = salaryPeriod;
     job.salaryAmount = salaryAmount;
     job.applyLink = applyLink;
+    job.location = location;
     job.loc = loc.loc;
+    job.updated = new Date();
 
     await job.save();
     res.json(job);

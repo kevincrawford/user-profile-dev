@@ -132,7 +132,7 @@ export const saveJob = job => {
   return async dispatch => {
     try {
       dispatch(asyncActionStart());
-      const savedJob = await axios.put(`/api/job`, body, HEADER_JSON);
+      const savedJob = await axios.put(`/api/job/${job._id}`, body, HEADER_JSON);
       dispatch({ type: FETCH_JOB, payload: savedJob.data });
       dispatch(asyncActionFinish());
       toastr.success('Success!', 'Job Saved');

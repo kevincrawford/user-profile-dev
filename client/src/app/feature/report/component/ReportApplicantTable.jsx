@@ -4,7 +4,7 @@ import { Table } from 'semantic-ui-react';
 
 export class ReportApplicantTable extends Component {
   handleName(applicant) {
-    console.log('handleName: applicant: ', applicant.user);
+    // console.log('handleName: applicant: ', applicant.user);
     if (!applicant || !applicant.user || !applicant.user.firstName) {
       if(!applicant || !applicant.user || !applicant.user.firstName) return <span>N/A</span>
       const names = applicant.user.displayName
@@ -36,7 +36,7 @@ export class ReportApplicantTable extends Component {
   }
 
   renderApplicantRow(applicant) {
-    console.log('renderApplicantRow: applicant: ', applicant);
+    // console.log('renderApplicantRow: applicant: ', applicant);
     if (!applicant || applicant === null || !applicant._id || !applicant.user) return <></>;
     return (
       <Table.Row key={applicant._id}>

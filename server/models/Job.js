@@ -6,6 +6,10 @@ const JobSchema = new Schema({
   jobId: {
     type: String
   },
+  jobAdmin: {
+    type: Schema.Types.ObjectId,
+    ref: 'user'
+  },
   jobType: {
     type: String,
     default: 'Full-time'

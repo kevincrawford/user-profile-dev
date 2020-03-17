@@ -23,12 +23,12 @@ export class AdminJobList extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchOrg(this.props.user.organization);
-    this.props.fetchJobs(this.props.user.organization);
+    // this.props.fetchOrg(this.props.user.organization);
+    // this.props.fetchJobs(this.props.user.organization);
   }
 
-  handleJobAction(job, action, index) {
-    console.log(job);
+  handleJobAction(job, action) {
+    // console.log(job);
     this.props.openModal('AdminJobModal', { ...this.props, job: job, action: action });
   }
 

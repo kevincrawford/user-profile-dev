@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Form, Input, Dropdown, Button, Breadcrumb } from 'semantic-ui-react';
 import { Editor } from '@tinymce/tinymce-react';
-import { createJob, fetchOrg, fetchJob, updateJobProp, saveJob, clearJob } from '../../AdminActions';
+import { createJob, fetchJob, updateJobProp, saveJob, clearJob } from '../../AdminActions';
 import { asyncActionStart } from '../../../../common/actions/async/asyncActions';
 import Loading from '../../../../common/ui/loading/Loading';
 import AdminJobPreview from './AdminJobPreview';
@@ -14,7 +14,9 @@ export class AdminJobForm extends Component {
     super(props);
 
     this.state = {
-      preview: false
+      preview: false,
+      userOptions: [],
+      locationOptions: []
     };
 
     this.handleTogglePreview = this.handleTogglePreview.bind(this);
@@ -30,9 +32,27 @@ export class AdminJobForm extends Component {
     if (this.props.match.params.id !== 'new') {
       this.props.fetchJob(this.props.match.params.id, this.props.history);
     }
-    this.props.fetchOrg(this.props.auth.currentUser.organization);
 
-    console.log('this.props.org: ', this.props.org);
+    setTimeout(() => {
+      if (this.props.org && this.props.org.users && this.props.org.users.length > 0) {
+        let userOptions = [];
+        for (let user of this.props.org.users) {
+          userOptions.push({ key: user._id, text: `${user.firstName} ${user.lastName}`, value: user._id });
+        }
+        // console.log('userOptions:', userOptions);
+
+        let locationOptions = [];
+        for (let location of this.props.org.locations) {
+          locationOptions.push({ key: location._id, text: location.name, value: location._id });
+        }
+        // console.log('locationOptions:', locationOptions);
+        this.setState({
+          ...this.state,
+          userOptions: userOptions,
+          locationOptions: locationOptions
+        });
+      }
+    }, 150);
   }
 
   handleTogglePreview() {
@@ -74,13 +94,24 @@ export class AdminJobForm extends Component {
       } else {
         this.props.createJob(this.props.job, this.props.history);
       }
-    }, 150);
+    }, 100);
 
     event.preventDefault();
   }
 
   render() {
-    const { jobId, jobType, title, summary, description, status, salaryAmount, applyLink } = this.props.job;
+    const {
+      jobAdmin,
+      jobId,
+      jobType,
+      title,
+      summary,
+      description,
+      status,
+      salaryAmount,
+      applyLink,
+      location
+    } = this.props.job;
     if (this.props.loading && this.props.loadingName === 'fetch-job') return <Loading />;
     return (
       <>
@@ -102,12 +133,12 @@ export class AdminJobForm extends Component {
         <Form onSubmit={this.handleSubmit}>
           <div className='job-edit flex-box sm'>
             {this.state.preview ? (
-              <div className='grow pr-3'>
+              <div className='grow pr-4'>
                 <AdminJobPreview />
               </div>
             ) : (
-              <div className='grow pr-3'>
-                <div className='mb-3'>
+              <div className='grow pr-4'>
+                <div className='mb-4'>
                   <label>Title</label>
                   <Form.Input name='title' value={title} onChange={this.handleChange} />
                 </div>
@@ -140,7 +171,8 @@ export class AdminJobForm extends Component {
             )}
             <div className='spacer'></div>
             <div className='publish-panel'>
-              <div className='flex-box between mb-3'>
+              <label>&nbsp;</label>
+              <div className='flex-box between mb-4'>
                 <div className='half'>
                   <Button
                     fluid
@@ -154,31 +186,51 @@ export class AdminJobForm extends Component {
                   <Button fluid color='blue' content='Save' onClick={this.handleSubmit} />
                 </div>
               </div>
-              {status === 'Draft' ? (
-                <Button fluid color='green' content='Publish' onClick={e => this.handleSubmit(e, 'publish')} />
-              ) : (
-                <Button fluid color='grey' content='Unpublish' onClick={e => this.handleSubmit(e, 'unpublish')} />
-              )}
-
-              <div className='mb-3'>
-                <label>Job Administrator</label>
-                {this.props.org && this.props.org.users && this.props.org.users.length > 0 && (
-                  <Form.Select
-                    fluid
-                    name='jobType'
-                    value={jobType}
-                    onChange={this.handleSelectChange}
-                    options={jobTypeOptions}
-                  />
+              <div className='mb-4'>
+                {status === 'Draft' ? (
+                  <Button fluid color='green' content='Publish' onClick={e => this.handleSubmit(e, 'publish')} />
+                ) : (
+                  <Button fluid color='grey' content='Unpublish' onClick={e => this.handleSubmit(e, 'unpublish')} />
                 )}
               </div>
 
-              <div className='mt-3 mb-3'>
+              <div className='mb-4'>
                 <label>Job ID</label>
                 <Form.Input name='jobId' value={jobId} onChange={this.handleChange} />
               </div>
 
-              <div className='mb-3'>
+              {this.state.userOptions && this.state.userOptions.length > 1 && (
+                <div className='mb-4'>
+                  <label>Job Administrator</label>
+                  <Form.Select
+                    fluid
+                    name='jobAdmin'
+                    value={jobAdmin}
+                    onChange={this.handleSelectChange}
+                    options={this.state.userOptions}
+                  />
+                </div>
+              )}
+
+              {this.state.locationOptions && this.state.locationOptions.length > 1 && (
+                <div className='mb-4'>
+                  <label>Location</label>
+                  <Form.Select
+                    fluid
+                    name='location'
+                    value={location}
+                    onChange={this.handleSelectChange}
+                    options={this.state.locationOptions}
+                  />
+                </div>
+              )}
+
+              <div className='mb-4'>
+                <label>Application Link</label>
+                <Form.Input name='applyLink' value={applyLink} onChange={this.handleChange} />
+              </div>
+
+              <div className='mb-4'>
                 <label>Job Type</label>
                 <Form.Select
                   fluid
@@ -189,7 +241,7 @@ export class AdminJobForm extends Component {
                 />
               </div>
 
-              <div className='mb-3'>
+              <div className='mb-4'>
                 <label>Salary</label>
                 <Input
                   fluid
@@ -203,11 +255,6 @@ export class AdminJobForm extends Component {
                   value={salaryAmount}
                   onChange={this.handleChange}
                 />
-              </div>
-
-              <div className='mb-3'>
-                <label>Application Link</label>
-                <Form.Input name='applyLink' value={applyLink} onChange={this.handleChange} />
               </div>
             </div>
           </div>
@@ -241,7 +288,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   asyncActionStart,
-  fetchOrg,
   fetchJob,
   createJob,
   updateJobProp,
