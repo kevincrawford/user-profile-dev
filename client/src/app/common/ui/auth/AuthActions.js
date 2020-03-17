@@ -16,7 +16,7 @@ import {
 } from './AuthContantants';
 import { HEADER_JSON } from '../../constants/apiConstants';
 import { closeModal } from '../../ui/modal/ModalActions';
-import { fetchOrg } from '../../../feature/admin/AdminActions';
+import { fetchOrg, fetchJobs } from '../../../feature/admin/AdminActions';
 import { toastr } from 'react-redux-toastr';
 import setAuthToken from '../../util/setAuthToken';
 
@@ -39,6 +39,7 @@ export const loadUser = () => {
       });
       if (userInfo.data.organization && userInfo.data.organization.length > 0) {
         dispatch(fetchOrg(userInfo.data.organization));
+        dispatch(fetchJobs(userInfo.data.organization));
       }
     } catch (err) {
       dispatch({

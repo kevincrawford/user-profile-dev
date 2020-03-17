@@ -168,9 +168,6 @@ router.get('/:id', async (req, res) => {
       })
       .populate({
         path: 'users'
-      })
-      .populate({
-        path: 'jobs'
       });
 
     if (!org) {

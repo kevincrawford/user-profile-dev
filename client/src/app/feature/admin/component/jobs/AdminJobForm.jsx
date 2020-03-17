@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Form, Input, Dropdown, Button, Breadcrumb } from 'semantic-ui-react';
 import { Editor } from '@tinymce/tinymce-react';
-import { createJob, fetchJob, updateJobProp, saveJob, clearJob } from '../../AdminActions';
+import { createJob, fetchOrg, fetchJob, updateJobProp, saveJob, clearJob } from '../../AdminActions';
 import { asyncActionStart } from '../../../../common/actions/async/asyncActions';
 import Loading from '../../../../common/ui/loading/Loading';
 import AdminJobPreview from './AdminJobPreview';
@@ -27,15 +27,17 @@ export class AdminJobForm extends Component {
   }
 
   componentDidMount() {
-    // console.log('componentDidMount');
     if (this.props.match.params.id !== 'new') {
-      // console.log('fetchJob');
       this.props.fetchJob(this.props.match.params.id, this.props.history);
     }
+    this.props.fetchOrg(this.props.auth.currentUser.organization);
+
+    console.log('this.props.org: ', this.props.org);
   }
 
   handleTogglePreview() {
     this.setState({
+      ...this.state,
       preview: !this.state.preview
     });
   }
@@ -54,9 +56,9 @@ export class AdminJobForm extends Component {
     this.props.updateJobProp(data.name, data.value);
   }
 
-  handleEditorChange = (content, editor) => {
+  handleEditorChange(content, editor) {
     this.props.updateJobProp('description', content);
-  };
+  }
 
   onSalaryRangeSelect(e) {
     this.props.updateJobProp('salaryPeriod', e.target.textContent);
@@ -100,56 +102,16 @@ export class AdminJobForm extends Component {
         <Form onSubmit={this.handleSubmit}>
           <div className='job-edit flex-box sm'>
             {this.state.preview ? (
-              <div className='grow   pr-3'>
+              <div className='grow pr-3'>
                 <AdminJobPreview />
               </div>
             ) : (
               <div className='grow pr-3'>
-                <div className='flex-box between sm mb-4'>
-                  <div className='half'>
-                    <label>Title</label>
-                    <Form.Input name='title' value={title} onChange={this.handleChange} />
-                  </div>
-                  <div className='half'>
-                    <label>Job ID</label>
-                    <Form.Input name='jobId' value={jobId} onChange={this.handleChange} />
-                  </div>
+                <div className='mb-3'>
+                  <label>Title</label>
+                  <Form.Input name='title' value={title} onChange={this.handleChange} />
                 </div>
-                <div className='flex-box between sm mb-4'>
-                  <div className='half'>
-                    <label>Job Type</label>
-                    <Form.Select
-                      fluid
-                      name='jobType'
-                      value={jobType}
-                      onChange={this.handleSelectChange}
-                      options={jobTypeOptions}
-                    />
-                  </div>
-                  <div className='half'>
-                    <label>Salary</label>
-                    <Input
-                      fluid
-                      label={
-                        <Dropdown
-                          defaultValue='Year'
-                          options={salaryPeriodOptions}
-                          onChange={this.onSalaryRangeSelect}
-                        />
-                      }
-                      icon='dollar sign'
-                      iconPosition='left'
-                      labelPosition='right'
-                      name='salaryAmount'
-                      value={salaryAmount}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label>Application Link</label>
-                  <Form.Input name='applyLink' value={applyLink} onChange={this.handleChange} />
-                </div>
+
                 <div className='mt-4'>
                   <label>Summary</label>
                   <Form.Input name='summary' value={summary} onChange={this.handleChange} />
@@ -162,7 +124,7 @@ export class AdminJobForm extends Component {
                     apiKey='twpt6v84p920kri6p37w1wk4258x70z5e2yjhikzlu6mysb6'
                     onEditorChange={this.handleEditorChange}
                     init={{
-                      height: 250,
+                      height: 400,
                       menubar: false,
                       elementpath: false,
                       plugins: ['lists link searchreplace fullscreen paste'],
@@ -178,7 +140,6 @@ export class AdminJobForm extends Component {
             )}
             <div className='spacer'></div>
             <div className='publish-panel'>
-              <label>&nbsp;</label>
               <div className='flex-box between mb-3'>
                 <div className='half'>
                   <Button
@@ -198,6 +159,56 @@ export class AdminJobForm extends Component {
               ) : (
                 <Button fluid color='grey' content='Unpublish' onClick={e => this.handleSubmit(e, 'unpublish')} />
               )}
+
+              <div className='mb-3'>
+                <label>Job Administrator</label>
+                {this.props.org && this.props.org.users && this.props.org.users.length > 0 && (
+                  <Form.Select
+                    fluid
+                    name='jobType'
+                    value={jobType}
+                    onChange={this.handleSelectChange}
+                    options={jobTypeOptions}
+                  />
+                )}
+              </div>
+
+              <div className='mt-3 mb-3'>
+                <label>Job ID</label>
+                <Form.Input name='jobId' value={jobId} onChange={this.handleChange} />
+              </div>
+
+              <div className='mb-3'>
+                <label>Job Type</label>
+                <Form.Select
+                  fluid
+                  name='jobType'
+                  value={jobType}
+                  onChange={this.handleSelectChange}
+                  options={jobTypeOptions}
+                />
+              </div>
+
+              <div className='mb-3'>
+                <label>Salary</label>
+                <Input
+                  fluid
+                  label={
+                    <Dropdown defaultValue='Year' options={salaryPeriodOptions} onChange={this.onSalaryRangeSelect} />
+                  }
+                  icon='dollar sign'
+                  iconPosition='left'
+                  labelPosition='right'
+                  name='salaryAmount'
+                  value={salaryAmount}
+                  onChange={this.handleChange}
+                />
+              </div>
+
+              <div className='mb-3'>
+                <label>Application Link</label>
+                <Form.Input name='applyLink' value={applyLink} onChange={this.handleChange} />
+              </div>
             </div>
           </div>
         </Form>
@@ -230,6 +241,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   asyncActionStart,
+  fetchOrg,
   fetchJob,
   createJob,
   updateJobProp,
