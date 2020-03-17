@@ -7,6 +7,10 @@ const OrganizationSchema = new Schema({
     type: String,
     required: true
   },
+  status: {
+    type: String,
+    default: 'trial'
+  },
   summary: {
     type: String
   },
