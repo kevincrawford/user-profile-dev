@@ -281,8 +281,6 @@ router.put('/:jobId', auth, async (req, res) => {
     location
   } = req.body;
 
-  console.log('location: ', location);
-
   try {
     const job = await Job.findById(req.params.jobId);
     const loc = await Location.findById(location);

@@ -2,7 +2,12 @@ module.exports = jobs = {
   '1558467442127': {
     uid: '1558467442127',
     status: 'Published',
-    admin: { email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu', title: 'Human Resources Specialist' },
+    admin: {
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist'
+    },
     jobId: '4323',
     salaryPeriod: 'Hour',
     organizationId: 'nashua-school-district',
@@ -22,8 +27,14 @@ module.exports = jobs = {
       name: 'Nashua School District',
       addrStreet: '141 Ledge Street'
     },
-    publishDate: { _seconds: '{"type":"number","data":1558539156}', _nanoseconds: '{"type":"number","data":602000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1558539156}', _nanoseconds: '{"type":"number","data":602000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1558539156}',
+      _nanoseconds: '{"type":"number","data":602000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558539156}',
+      _nanoseconds: '{"type":"number","data":602000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'Under the direction of the classroom teacher the Para Educator assists with implementation of IEP goals and objectives pertaining to educational needs, social-emotional, behavioral development, fine and gross motor skills to foster independence.  Assist with the physical and minimal health needs of the children, which may include lifting, feeding, toileting/diapering, and personal hygiene.\nInterested applicants should apply on our website at www.nashua.edu ',
@@ -36,13 +47,21 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558467442}', _nanoseconds: '{"type":"number","data":127000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558467442}',
+      _nanoseconds: '{"type":"number","data":127000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District'
   },
   '1558467905775': {
     status: 'Published',
-    admin: { email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu', title: 'Human Resources Specialist' },
+    admin: {
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist'
+    },
     jobId: '3349, 4468, 4519, 4462',
     salaryPeriod: 'Hour',
     organizationId: 'nashua-school-district',
@@ -62,8 +81,14 @@ module.exports = jobs = {
       addrCity: 'Nashua',
       addrState: 'New Hampshire'
     },
-    publishDate: { _seconds: '{"type":"number","data":1558539168}', _nanoseconds: '{"type":"number","data":317000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559318087}', _nanoseconds: '{"type":"number","data":634000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1558539168}',
+      _nanoseconds: '{"type":"number","data":317000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559318087}',
+      _nanoseconds: '{"type":"number","data":634000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'High School Diploma or GED.  Title 1 Schools require Highly Qualified Status that would include either an Associate’s Degree or an equivalent two years of college, Bachelor degree or Para-educator II certification from the NH Dept of Education.\nInterested applicants should apply on our website at www.nashua.edu ',
@@ -76,7 +101,10 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558467905}', _nanoseconds: '{"type":"number","data":775000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558467905}',
+      _nanoseconds: '{"type":"number","data":775000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1558467905775'
@@ -93,13 +121,21 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558468114}', _nanoseconds: '{"type":"number","data":400000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558468114}',
+      _nanoseconds: '{"type":"number","data":400000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1558468114400',
     status: 'Published',
-    admin: { email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu', title: 'Human Resources Specialist' },
-    jobId: '4472, 4517, 4527, ',
+    admin: {
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist'
+    },
+    jobId: '4472, 4517, 4527',
     salaryPeriod: 'Hour',
     organizationId: 'nashua-school-district',
     isActive: '{"type":"bool","data":true}',
@@ -118,8 +154,14 @@ module.exports = jobs = {
       name: 'Nashua School District',
       addrStreet: '141 Ledge Street'
     },
-    publishDate: { _seconds: '{"type":"number","data":1558539192}', _nanoseconds: '{"type":"number","data":577000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1558539192}', _nanoseconds: '{"type":"number","data":577000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1558539192}',
+      _nanoseconds: '{"type":"number","data":577000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558539192}',
+      _nanoseconds: '{"type":"number","data":577000000}'
+    },
     startDate: '{"type":"null"}'
   },
   '1558550302128': {
@@ -127,7 +169,12 @@ module.exports = jobs = {
     organization: 'Boston Preparatory Charter Public School',
     uid: '1558550302128',
     status: 'Published',
-    admin: { uid: 'mcrowley@bostonprep.org', title: '{"type":"null"}', email: 'mcrowley@bostonprep.org', name: 'Michaela Crowley' },
+    admin: {
+      uid: 'mcrowley@bostonprep.org',
+      title: '{"type":"null"}',
+      email: 'mcrowley@bostonprep.org',
+      name: 'Michaela Crowley'
+    },
     jobId: '{"type":"null"}',
     salaryPeriod: 'Year',
     organizationId: 'boston-preparatory-charter-public-school',
@@ -138,13 +185,25 @@ module.exports = jobs = {
       addrCity: 'Boston',
       addrState: 'MA',
       addrZip: '02136',
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'mcrowley@bostonprep.org', name: 'Michaela Crowley', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'mcrowley@bostonprep.org',
+        name: 'Michaela Crowley',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Boston Preparatory Charter Public School',
       addrStreet: '885 River Street'
     },
-    publishDate: { _seconds: '{"type":"number","data":1558550303}', _nanoseconds: '{"type":"number","data":612000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1558550500}', _nanoseconds: '{"type":"number","data":386000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1558550303}',
+      _nanoseconds: '{"type":"number","data":612000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558550500}',
+      _nanoseconds: '{"type":"number","data":386000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       "Boston Preparatory Charter Public School (Boston Prep) prepares students to succeed in a four-year college and embody, in thought and action, lifelong ethical growth.   We create an environment structured around scholarship and personal growth cultivates students' virtues of courage, compassion, integrity, perseverance, and respect. Boston Prep is looking to hire a High School Special Education Teacher for the 2019-2020 school year.  We hope that you consider applying.",
@@ -167,12 +226,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558550663}', _nanoseconds: '{"type":"number","data":514000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558550663}',
+      _nanoseconds: '{"type":"number","data":514000000}'
+    },
     locationId: 'Boston Preparatory Charter Public School',
     organization: 'Boston Preparatory Charter Public School',
     uid: '1558550663514',
     status: 'Published',
-    admin: { email: 'mcrowley@bostonprep.org', name: 'Michaela Crowley', uid: 'mcrowley@bostonprep.org', title: 'Director of Human Capital' },
+    admin: {
+      email: 'mcrowley@bostonprep.org',
+      name: 'Michaela Crowley',
+      uid: 'mcrowley@bostonprep.org',
+      title: 'Director of Human Capital'
+    },
     jobId: '{"type":"null"}',
     salaryPeriod: 'Year',
     organizationId: 'boston-preparatory-charter-public-school',
@@ -180,7 +247,13 @@ module.exports = jobs = {
     title: 'Reading Specialist',
     salaryAmount: '{"type":"null"}',
     location: {
-      contact: { email: 'mcrowley@bostonprep.org', name: 'Michaela Crowley', phone: '{"type":"null"}', title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}' },
+      contact: {
+        email: 'mcrowley@bostonprep.org',
+        name: 'Michaela Crowley',
+        phone: '{"type":"null"}',
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Boston Preparatory Charter Public School',
       addrStreet: '885 River Street',
@@ -188,8 +261,14 @@ module.exports = jobs = {
       addrState: 'MA',
       addrZip: '02136'
     },
-    publishDate: { _seconds: '{"type":"number","data":1558550663}', _nanoseconds: '{"type":"number","data":514000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1558550666}', _nanoseconds: '{"type":"number","data":158000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1558550663}',
+      _nanoseconds: '{"type":"number","data":514000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558550666}',
+      _nanoseconds: '{"type":"number","data":158000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       "Boston Preparatory Charter Public School (Boston Prep) prepares students to succeed in a four-year college and embody, in thought and action, lifelong ethical growth.   We create an environment structured around scholarship and personal growth cultivates students' virtues of courage, compassion, integrity, perseverance, and respect. Boston Prep is looking to hire a Reading Specialist  for the 2019-2020 school year.  We hope that you consider applying.",
@@ -198,7 +277,12 @@ module.exports = jobs = {
   },
   '1558556227663': {
     status: 'Published',
-    admin: { uid: 'chandr@nashua.edu', title: 'Human Resources Specialist', email: 'chandr@nashua.edu', name: 'Renu Chand' },
+    admin: {
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist',
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand'
+    },
     jobId: '4514',
     salaryPeriod: 'Year',
     organizationId: 'nashua-school-district',
@@ -218,8 +302,14 @@ module.exports = jobs = {
       contact: { title: 'HR Specialist', email: 'chandr@nashua.edu', name: 'Renu Chand', phone: '(603) 966-1000' },
       isPrimary: '{"type":"bool","data":true}'
     },
-    publishDate: { _seconds: '{"type":"number","data":1558569230}', _nanoseconds: '{"type":"number","data":261000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1558569509}', _nanoseconds: '{"type":"number","data":489000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1558569230}',
+      _nanoseconds: '{"type":"number","data":261000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558569509}',
+      _nanoseconds: '{"type":"number","data":489000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'NH licensed as Speech Language Pathologist.  Knowledge of statutes related to special education and IEP development.  Good communication skills.\nApplicants should apply online @ www.nashua.edu, and include your letter of interest, resume, copies of official transcripts, letters of recommendation and NH license.',
@@ -232,7 +322,10 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558556227}', _nanoseconds: '{"type":"number","data":663000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558556227}',
+      _nanoseconds: '{"type":"number","data":663000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1558556227663'
@@ -249,12 +342,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Part-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558556381}', _nanoseconds: '{"type":"number","data":314000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558556381}',
+      _nanoseconds: '{"type":"number","data":314000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1558556381314',
     status: 'Published',
-    admin: { uid: 'chandr@nashua.edu', title: 'Human Resources Specialist', email: 'chandr@nashua.edu', name: 'Renu Chand' },
+    admin: {
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist',
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand'
+    },
     jobId: '4408',
     salaryPeriod: 'Year',
     organizationId: 'nashua-school-district',
@@ -275,13 +376,21 @@ module.exports = jobs = {
       addrCity: 'Nashua'
     },
     publishDate: '{"type":"null"}',
-    updatedAt: { _seconds: '{"type":"number","data":1558569960}', _nanoseconds: '{"type":"number","data":118000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558569960}',
+      _nanoseconds: '{"type":"number","data":118000000}'
+    },
     startDate: '{"type":"null"}'
   },
   '1558556503176': {
     uid: '1558556503176',
     status: 'Published',
-    admin: { title: 'Human Resources Specialist', email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu' },
+    admin: {
+      title: 'Human Resources Specialist',
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu'
+    },
     jobId: '4326',
     salaryPeriod: 'Year',
     organizationId: 'nashua-school-district',
@@ -302,7 +411,10 @@ module.exports = jobs = {
         'The Nashua, New Hampshire School District is located in the most southern region of the state, just north of Boston and yet within easy access to the majestic White Mountains and New England’s scenic seacoast. Nashua is a city of 88,000 residents with much to offer. Most notably, the City has a long tradition of supporting public education, both with resources and volunteers.\n\nNashua is a closely knit community and offers a wonderful quality of life to its residents. Nashua features a vibrant downtown known for its family-owned businesses and shops and award-winning restaurants. For these reasons, and our high-quality public school district, Money magazine named Nashua twice (1987 and 1997) as one of the best places to live and raise a family.\n\nConsistently expressed as strengths of the Nashua School District are a strong professional development program, two comprehensive high schools, progressive and innovative culture, parent and community volunteerism, wide-array of program offerings, and highly dedicated staff.\n\nThe Nashua School District provides instruction for each student based on high quality local, state, and national standards, and is delivered through exemplary teaching practices that are supported by a process of continuous review and improvement.\n\nWelcome to the Nashua School District!'
     },
     publishDate: '{"type":"null"}',
-    updatedAt: { _seconds: '{"type":"number","data":1558570032}', _nanoseconds: '{"type":"number","data":827000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558570032}',
+      _nanoseconds: '{"type":"number","data":827000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'Teaching applicants must be NH certified or eligible as a Deaf and Hearing Disability Teacher.  We are seeking applicants proficient in sign language. Experience with deaf and/or hard of hearing students in a school setting is preferred.',
@@ -315,14 +427,22 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558556503}', _nanoseconds: '{"type":"number","data":176000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558556503}',
+      _nanoseconds: '{"type":"number","data":176000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District'
   },
   '1558556690746': {
     uid: '1558556690746',
     status: 'Published',
-    admin: { email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu', title: 'Human Resources Specialist' },
+    admin: {
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist'
+    },
     jobId: '4413, 4415',
     salaryPeriod: 'Year',
     organizationId: 'nashua-school-district',
@@ -343,9 +463,13 @@ module.exports = jobs = {
       addrStreet: '141 Ledge Street'
     },
     publishDate: '{"type":"null"}',
-    updatedAt: { _seconds: '{"type":"number","data":1558570043}', _nanoseconds: '{"type":"number","data":789000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558570043}',
+      _nanoseconds: '{"type":"number","data":789000000}'
+    },
     startDate: '{"type":"null"}',
-    summary: ' NH licensed as Speech Language Pathologist.  Knowledge of statutes related to special education and IEP development.  Good communication skills.',
+    summary:
+      ' NH licensed as Speech Language Pathologist.  Knowledge of statutes related to special education and IEP development.  Good communication skills.',
     description:
       '<p>Skills required include evaluation, consultation, individual and/or group counseling.&nbsp; Additional Skills include CBM, FBA/Behavior Intervention plans.&nbsp; Experience with emotional/behavioral disorders and autism population preferred, but not a must.&nbsp;&nbsp;<br />Applicants should apply online @ www.nashua.edu <u>and include your letter of interest, resume, copies of official transcripts, letters of recommendation and NH license.</u></p>',
     adminId: 'Renu Chand',
@@ -355,7 +479,10 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558556690}', _nanoseconds: '{"type":"number","data":746000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558556690}',
+      _nanoseconds: '{"type":"number","data":746000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District'
   },
@@ -371,12 +498,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Part-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558556989}', _nanoseconds: '{"type":"number","data":633000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558556989}',
+      _nanoseconds: '{"type":"number","data":633000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1558556989633',
     status: 'Published',
-    admin: { email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu', title: 'Human Resources Specialist' },
+    admin: {
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist'
+    },
     jobId: '4485, 4487, 4488, 4489',
     salaryPeriod: 'Hour',
     organizationId: 'nashua-school-district',
@@ -397,11 +532,17 @@ module.exports = jobs = {
       isPrimary: '{"type":"bool","data":true}'
     },
     publishDate: '{"type":"null"}',
-    updatedAt: { _seconds: '{"type":"number","data":1558569918}', _nanoseconds: '{"type":"number","data":252000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558569918}',
+      _nanoseconds: '{"type":"number","data":252000000}'
+    },
     startDate: '{"type":"null"}'
   },
   '1558557141664': {
-    updatedAt: { _seconds: '{"type":"number","data":1558569889}', _nanoseconds: '{"type":"number","data":314000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558569889}',
+      _nanoseconds: '{"type":"number","data":314000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       ' High School Diploma or GED.  Title 1 Schools require Highly Qualified Status that would include either an Associate’s Degree or an equivalent two years of college, Bachelor degree or Para-educator II certification from the NH Dept of Education. Interested applicants should apply on our website at www.nashua.edu ',
@@ -414,12 +555,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558557141}', _nanoseconds: '{"type":"number","data":664000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558557141}',
+      _nanoseconds: '{"type":"number","data":664000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1558557141664',
     status: 'Published',
-    admin: { email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu', title: 'Human Resources Specialist' },
+    admin: {
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist'
+    },
     jobId: '4521',
     salaryPeriod: 'Hour',
     organizationId: 'nashua-school-district',
@@ -443,12 +592,20 @@ module.exports = jobs = {
   },
   '1558557451323': {
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1558557451}', _nanoseconds: '{"type":"number","data":323000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1558557451}',
+      _nanoseconds: '{"type":"number","data":323000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1558557451323',
     status: 'Published',
-    admin: { email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu', title: 'Human Resources Specialist' },
+    admin: {
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist'
+    },
     jobId: '4200, 4327, 4443',
     salaryPeriod: 'Year',
     organizationId: 'nashua-school-district',
@@ -469,7 +626,10 @@ module.exports = jobs = {
       addrStreet: '141 Ledge Street'
     },
     publishDate: '{"type":"null"}',
-    updatedAt: { _seconds: '{"type":"number","data":1558569873}', _nanoseconds: '{"type":"number","data":258000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558569873}',
+      _nanoseconds: '{"type":"number","data":258000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       "Currently enrolled in a graduate program of School Psychology, graduating with at least a Master's degree and the ability to be certified in School Psychology. \nApplicants should apply online @ www.nashua.edu and include your letter of interest, resume, copies of official transcripts, letters of recommendation and certification.\n",
@@ -484,7 +644,12 @@ module.exports = jobs = {
   },
   '1558557539066': {
     status: 'Published',
-    admin: { email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu', title: 'Human Resources Specialist' },
+    admin: {
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist'
+    },
     jobId: '4403, 4404',
     salaryPeriod: 'Year',
     organizationId: 'nashua-school-district',
@@ -505,7 +670,10 @@ module.exports = jobs = {
       addrCity: 'Nashua'
     },
     publishDate: '{"type":"null"}',
-    updatedAt: { _seconds: '{"type":"number","data":1558569832}', _nanoseconds: '{"type":"number","data":945000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1558569832}',
+      _nanoseconds: '{"type":"number","data":945000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       ' NH Certified or eligible as a School Psychologist.  Knowledge of statutes related to special education and IEP development.  Good interpersonal and communication skills.       \n Interested Applicants should apply online at www.nashua.edu and include a letter of interest, resume, official transcripts, three letters of recommendation, copy of NH certification or letter of eligibility.                           ',
@@ -535,12 +703,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559241057}', _nanoseconds: '{"type":"number","data":405000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559241057}',
+      _nanoseconds: '{"type":"number","data":405000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1559241057405',
     status: 'Published',
-    admin: { uid: 'chandr@nashua.edu', title: 'Human Resources Specialist', email: 'chandr@nashua.edu', name: 'Renu Chand' },
+    admin: {
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist',
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand'
+    },
     jobId: '4318',
     salaryPeriod: 'Day',
     organizationId: 'nashua-school-district',
@@ -560,19 +736,33 @@ module.exports = jobs = {
       description:
         'The Nashua, New Hampshire School District is located in the most southern region of the state, just north of Boston and yet within easy access to the majestic White Mountains and New England’s scenic seacoast. Nashua is a city of 88,000 residents with much to offer. Most notably, the City has a long tradition of supporting public education, both with resources and volunteers.\n\nNashua is a closely knit community and offers a wonderful quality of life to its residents. Nashua features a vibrant downtown known for its family-owned businesses and shops and award-winning restaurants. For these reasons, and our high-quality public school district, Money magazine named Nashua twice (1987 and 1997) as one of the best places to live and raise a family.\n\nConsistently expressed as strengths of the Nashua School District are a strong professional development program, two comprehensive high schools, progressive and innovative culture, parent and community volunteerism, wide-array of program offerings, and highly dedicated staff.\n\nThe Nashua School District provides instruction for each student based on high quality local, state, and national standards, and is delivered through exemplary teaching practices that are supported by a process of continuous review and improvement.\n\nWelcome to the Nashua School District!'
     },
-    publishDate: { _seconds: '{"type":"number","data":1559241057}', _nanoseconds: '{"type":"number","data":405000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559241057}', _nanoseconds: '{"type":"number","data":405000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1559241057}',
+      _nanoseconds: '{"type":"number","data":405000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559241057}',
+      _nanoseconds: '{"type":"number","data":405000000}'
+    },
     startDate: '{"type":"null"}'
   },
   '1559313897638': {
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559313897}', _nanoseconds: '{"type":"number","data":638000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559313897}',
+      _nanoseconds: '{"type":"number","data":638000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1559313897638',
     status: 'Published',
-    admin: { title: 'Human Resources Specialist', email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu' },
+    admin: {
+      title: 'Human Resources Specialist',
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu'
+    },
     jobId: '4399',
     salaryPeriod: 'Hour',
     organizationId: 'nashua-school-district',
@@ -592,8 +782,14 @@ module.exports = jobs = {
       contact: { email: 'chandr@nashua.edu', name: 'Renu Chand', phone: '(603) 966-1000', title: 'HR Specialist' },
       isPrimary: '{"type":"bool","data":true}'
     },
-    publishDate: { _seconds: '{"type":"number","data":1559313897}', _nanoseconds: '{"type":"number","data":637000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559313897}', _nanoseconds: '{"type":"number","data":638000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1559313897}',
+      _nanoseconds: '{"type":"number","data":637000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559313897}',
+      _nanoseconds: '{"type":"number","data":638000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       ' High School Diploma or GED.  Title 1 Schools require Highly Qualified Status that would include either an Associate’s Degree or an equivalent two years of college, Bachelor degree or Para-educator II certification from the NH Dept of Education.\nInterested applicants should apply on our website at www.nashua.edu ',
@@ -617,12 +813,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559316275}', _nanoseconds: '{"type":"number","data":496000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559316275}',
+      _nanoseconds: '{"type":"number","data":496000000}'
+    },
     locationId: 'KIPP Bay Area Public Schools',
     organization: 'KIPP Bay Area Public Schools',
     uid: '1559316275496',
     status: 'Published',
-    admin: { email: 'ryan.weidmann@kippbayarea.org', name: 'Ryan Weidmann', uid: 'ryan.weidmann@kippbayarea.org', title: '{"type":"null"}' },
+    admin: {
+      email: 'ryan.weidmann@kippbayarea.org',
+      name: 'Ryan Weidmann',
+      uid: 'ryan.weidmann@kippbayarea.org',
+      title: '{"type":"null"}'
+    },
     jobId: 'Ed Specialist General',
     salaryPeriod: 'Year',
     organizationId: 'kipp-bay-area-public-schools',
@@ -635,22 +839,42 @@ module.exports = jobs = {
       addrCity: 'Oakland',
       addrState: 'CA',
       addrZip: '94607',
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'ryan.weidmann@kippbayarea.org', name: 'Ryan Weidmann', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'ryan.weidmann@kippbayarea.org',
+        name: 'Ryan Weidmann',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}'
     },
-    publishDate: { _seconds: '{"type":"number","data":1559316275}', _nanoseconds: '{"type":"number","data":496000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559316308}', _nanoseconds: '{"type":"number","data":891000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1559316275}',
+      _nanoseconds: '{"type":"number","data":496000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559316308}',
+      _nanoseconds: '{"type":"number","data":891000000}'
+    },
     startDate: '{"type":"null"}'
   },
   '1559316447489': {
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559316447}', _nanoseconds: '{"type":"number","data":489000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559316447}',
+      _nanoseconds: '{"type":"number","data":489000000}'
+    },
     locationId: 'KIPP Bay Area Public Schools',
     organization: 'KIPP Bay Area Public Schools',
     uid: '1559316447489',
     status: 'Published',
-    admin: { title: '{"type":"null"}', email: 'ryan.weidmann@kippbayarea.org', name: 'Ryan Weidmann', uid: 'ryan.weidmann@kippbayarea.org' },
+    admin: {
+      title: '{"type":"null"}',
+      email: 'ryan.weidmann@kippbayarea.org',
+      name: 'Ryan Weidmann',
+      uid: 'ryan.weidmann@kippbayarea.org'
+    },
     jobId: 'Ed Specialist (STP)',
     salaryPeriod: 'Year',
     organizationId: 'kipp-bay-area-public-schools',
@@ -658,7 +882,13 @@ module.exports = jobs = {
     title: 'Education Specialist: Specialized Teaching Program (STP)',
     salaryAmount: '{"type":"null"}',
     location: {
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'ryan.weidmann@kippbayarea.org', name: 'Ryan Weidmann', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'ryan.weidmann@kippbayarea.org',
+        name: 'Ryan Weidmann',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'KIPP Bay Area Public Schools',
       addrStreet: '1000 Broadway',
@@ -666,8 +896,14 @@ module.exports = jobs = {
       addrState: 'CA',
       addrZip: '94607'
     },
-    publishDate: { _seconds: '{"type":"number","data":1559316447}', _nanoseconds: '{"type":"number","data":489000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559316447}', _nanoseconds: '{"type":"number","data":489000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1559316447}',
+      _nanoseconds: '{"type":"number","data":489000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559316447}',
+      _nanoseconds: '{"type":"number","data":489000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'About KIPP Bay Area Public Schools\n\nKIPP is a non-profit network of 224 college-preparatory, public charter schools across the country educating early childhood, elementary, middle, and high school students. KIPP schools are united by a common mission, a commitment to excellence, and a belief that if we help children develop the academic and character strengths they need for college and choice-filled lives, they will be able to build a better tomorrow for themselves, for their communities, and for us all.\n\nThere are currently 15 KIPP schools across the Bay Area educating nearly 6,000 students in East Palo Alto, Oakland, San Francisco, San Lorenzo, San Jose, and Redwood City and supporting over 3,000 alumni around the country.\n\nPosition Overview\n\nThe mission of the Specialized Teaching Program is to prepare students with moderate/severe difficulties in academics, communication, socialization, life skills, and behavior for a lifetime of learning, employment, and civic engagement.  The Education Specialist will be an essential member of the Specialized Teaching Program’s development and implementation team. The Education Specialist will provide for the academic, social and emotional growth of each student manifesting behavior, academic and social deficits requiring a more restrictive setting.  The Education Specialist will continually monitor each student’s progress to maximize his or her fullest potential and collaborate with the general education team to create meaningful inclusion opportunities for each student.\n\nThe ideal candidate for this position is confident in assessing and teaching students with autism and other students with severe difficulties in communication, socialization and behavior as well as confident in advising others.  S/he will provide training to classroom teachers, school staff, paraeducators, parents and the students on pedagogy, learning styles and practical strategies to enable access to the curriculum and social opportunities. We are looking for someone who is passionate about developing a model program aligned to KIPP’s mission of preparing students to lead a choice-filled life.',
@@ -680,7 +916,10 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}'
   },
   '1559316766256': {
-    updatedAt: { _seconds: '{"type":"number","data":1559316308}', _nanoseconds: '{"type":"number","data":891000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559316308}',
+      _nanoseconds: '{"type":"number","data":891000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'About KIPP Bay Area Public Schools\n\nKIPP is a non-profit network of 224 college-preparatory, public charter schools across the country educating early childhood, elementary, middle, and high school students. KIPP schools are united by a common mission, a commitment to excellence, and a belief that if we help children develop the academic and character strengths they need for college and choice-filled lives, they will be able to build a better tomorrow for themselves, for their communities, and for us all.\n\nThere are currently 15 KIPP schools across the Bay Area educating nearly 6,000 students in East Palo Alto, Oakland, San Francisco, San Lorenzo, San Jose, and Redwood City and supporting over 3,000 alumni around the country.\n\nPosition Overview\n\nAt KIPP Bay Area Public Schools, the Special Education Teacher, or Education Specialist, is considered an integral part of the general education staff, therefore, they will be expected to collaborate and consult with all teachers on a regular basis.  Students on Individual Education Plans are assigned to general education classrooms for a majority of the school day.',
@@ -693,12 +932,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559316275}', _nanoseconds: '{"type":"number","data":496000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559316275}',
+      _nanoseconds: '{"type":"number","data":496000000}'
+    },
     locationId: 'KIPP Bay Area Public Schools',
     organization: 'KIPP Bay Area Public Schools',
     uid: '1559316766256',
     status: 'Published',
-    admin: { title: '{"type":"null"}', email: 'ryan.weidmann@kippbayarea.org', name: 'Ryan Weidmann', uid: 'ryan.weidmann@kippbayarea.org' },
+    admin: {
+      title: '{"type":"null"}',
+      email: 'ryan.weidmann@kippbayarea.org',
+      name: 'Ryan Weidmann',
+      uid: 'ryan.weidmann@kippbayarea.org'
+    },
     jobId: 'Ed Specialist General',
     organizationId: 'kipp-bay-area-public-schools',
     salaryPeriod: 'Year',
@@ -706,7 +953,13 @@ module.exports = jobs = {
     salaryAmount: '',
     title: 'Education Specialist (Special Education Teacher) (copy)',
     location: {
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'ryan.weidmann@kippbayarea.org', name: 'Ryan Weidmann', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'ryan.weidmann@kippbayarea.org',
+        name: 'Ryan Weidmann',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'KIPP Bay Area Public Schools',
       addrStreet: '1000 Broadway',
@@ -714,7 +967,10 @@ module.exports = jobs = {
       addrState: 'CA',
       addrZip: '94607'
     },
-    publishDate: { _seconds: '{"type":"number","data":1559316275}', _nanoseconds: '{"type":"number","data":496000000}' }
+    publishDate: {
+      _seconds: '{"type":"number","data":1559316275}',
+      _nanoseconds: '{"type":"number","data":496000000}'
+    }
   },
   '1559317890250': {
     jobId: '4322, 4466, 4502, 4520, 4525',
@@ -736,8 +992,14 @@ module.exports = jobs = {
       name: 'Nashua School District',
       addrStreet: '141 Ledge Street'
     },
-    publishDate: { _seconds: '{"type":"number","data":1559317890}', _nanoseconds: '{"type":"number","data":250000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559318020}', _nanoseconds: '{"type":"number","data":906000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1559317890}',
+      _nanoseconds: '{"type":"number","data":250000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559318020}',
+      _nanoseconds: '{"type":"number","data":906000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'High School Diploma or GED.  Title 1 Schools require Highly Qualified Status that would include either an Associate’s Degree or an equivalent two years of college, Bachelor degree or Para-educator II certification from the NH Dept of Education\nInterested applicants should apply on our website at www.nashua.edu ',
@@ -750,12 +1012,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559317890}', _nanoseconds: '{"type":"number","data":250000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559317890}',
+      _nanoseconds: '{"type":"number","data":250000000}'
+    },
     locationId: 'Nashua School District',
     organization: 'Nashua School District',
     uid: '1559317890250',
     status: 'Published',
-    admin: { email: 'chandr@nashua.edu', name: 'Renu Chand', uid: 'chandr@nashua.edu', title: 'Human Resources Specialist' }
+    admin: {
+      email: 'chandr@nashua.edu',
+      name: 'Renu Chand',
+      uid: 'chandr@nashua.edu',
+      title: 'Human Resources Specialist'
+    }
   },
   '1559682580994': {
     summary:
@@ -769,12 +1039,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559682580}', _nanoseconds: '{"type":"number","data":994000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559682580}',
+      _nanoseconds: '{"type":"number","data":994000000}'
+    },
     locationId: 'Shasta County Office of Education',
     organization: 'Shasta County Office of Education',
     uid: '1559682580994',
     status: 'Scheduled',
-    admin: { email: 'sjohnson@shastacoe.org', name: 'Sue Johnson', uid: 'sjohnson@shastacoe.org', title: '{"type":"null"}' },
+    admin: {
+      email: 'sjohnson@shastacoe.org',
+      name: 'Sue Johnson',
+      uid: 'sjohnson@shastacoe.org',
+      title: '{"type":"null"}'
+    },
     jobId: '{"type":"null"}',
     salaryPeriod: 'Year',
     organizationId: 'shasta-county-office-of-education',
@@ -785,13 +1063,22 @@ module.exports = jobs = {
       addrCity: 'Redding',
       addrState: 'CA',
       addrZip: '96001',
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'sjohnson@shastacoe.org', name: 'Sue Johnson', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'sjohnson@shastacoe.org',
+        name: 'Sue Johnson',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Shasta County Office of Education',
       addrStreet: '1644 Magnolia Avenue'
     },
     publishDate: { _seconds: '{"type":"number","data":1563525000}', _nanoseconds: '{"type":"number","data":0}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559682580}', _nanoseconds: '{"type":"number","data":994000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559682580}',
+      _nanoseconds: '{"type":"number","data":994000000}'
+    },
     startDate: '{"type":"null"}'
   },
   '1559759503003': {
@@ -809,15 +1096,26 @@ module.exports = jobs = {
       phone: '(603) 895-4299',
       addrZip: '03077',
       description: 'Learning. Growing. Forever Green.',
-      contact: { title: 'Special Education Director', email: 's.riddell@sau33.com', name: 'Scott Riddell', phone: '(603) 895-4299' },
+      contact: {
+        title: 'Special Education Director',
+        email: 's.riddell@sau33.com',
+        name: 'Scott Riddell',
+        phone: '(603) 895-4299'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Raymond School District',
       addrStreet: '43 Harriman Hill Road',
       exists: '{"type":"bool","data":true}',
       addrCity: 'Raymond'
     },
-    publishDate: { _seconds: '{"type":"number","data":1559759518}', _nanoseconds: '{"type":"number","data":523000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559928143}', _nanoseconds: '{"type":"number","data":429000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1559759518}',
+      _nanoseconds: '{"type":"number","data":523000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559928143}',
+      _nanoseconds: '{"type":"number","data":429000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       ' To assess, diagnose, treat, and help to prevent disorders related to speech, language development, cognitive communication, voice, swallowing and fluency in students. ',
@@ -839,7 +1137,10 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559856301}', _nanoseconds: '{"type":"number","data":929000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559856301}',
+      _nanoseconds: '{"type":"number","data":929000000}'
+    },
     locationId: 'Trinity Alps Unified School Dist',
     organization: 'Trinity Alps Unified School Dist',
     uid: '1559856301929',
@@ -852,7 +1153,13 @@ module.exports = jobs = {
     title: 'Special Education Teacher, Mild/Moderate or Moderate /Severe',
     salaryAmount: '$41,615.00- $83,802.00 DOE',
     location: {
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'mebrown@tausd.org', name: 'Maria Brown', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'mebrown@tausd.org',
+        name: 'Maria Brown',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Trinity Alps Unified School Dist',
       addrStreet: 'P O Box 1227',
@@ -861,7 +1168,10 @@ module.exports = jobs = {
       addrZip: '96093'
     },
     publishDate: { _seconds: '{"type":"number","data":1559858400}', _nanoseconds: '{"type":"number","data":0}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559856301}', _nanoseconds: '{"type":"number","data":929000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559856301}',
+      _nanoseconds: '{"type":"number","data":929000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'The instructor shall work under the supervision of the Trinity Alps Unified School District Administration, and in accordance with the school and district policies.  The Special Education teacher shall be responsible to provide direct and indirect instructional support to students in general education and specialized settings. The instructor shall employ individualized instructional strategies and techniques, modify academic content as necessary to meet students’ varying needs and interests. Teach pro-social behavior, as determined by the students’ individualized education programs (IEPs), and design/monitor behavioral objectives in an overall positive behavioral support system. Knowledge of teaching methods and instructional strategies appropriate to a variety of disabilities. Confer with parents, administrators, program specialists, social workers, and other professionals to develop individualized education programs (IEPs) designed to access the general curriculum to the degree possible, and facilitate adapted curriculum as necessary. Maintain accurate and complete student records and prepare reports.\nLocated in the small mountain town of Weaverville California in the heart of the Trinity Alps is Weaverville Elementary School a small TK-8 school with current student population of 376 and  Trinity High School with a student population is just under 400..\nThe elementary school mission is to increase the opportunities for successful teaching and successful learning, is committed to the concept of education that offers programs and instructional processes to all students, utilizing state-of-the-art technology, flexible teaching and varied learning formats. WES is also committed to providing a learning environment using the best resources to motivate all students to become life-long learners and responsible citizens in a global society. \n\nTrinity High School students travel from as far away as Coffee Creek, Salyer, Buckhorn Mountain, and Browns Creek.  The campus resides on 23 acres and contains twenty-six classroom, a library, career center, gym, computer labs, and cafeteria. Red and white are the school colors, and the wolf is our mascot.  THS has many extra and co-curricular activities including ASB, athletics, FFA, FBLA and a wide range of clubs.\n\nIn the spring of 2014 THS was ranked 107th of all the schools in California and 806 in the nation by the Washington Post for how effectively a school prepares its student for college. Trinity High has a strong AP program and excellent graduation rates.\n\nThe community of Weaverville is a blend of professionals, blue-collar workers and retirees. The primary employer is the County of Trinity, timber and tourism also being an important part of our economy. Other significant employers include Schmidbauer lumber mill, Trinity Hospital and Trinity Alps Unified School District. In addition small business are actively involved in serving the needs of local residents and tourists who pass through the community en route to Trinity Lake and the Trinity Alps. Fishing, hiking, golfing, river rafting and hunting are available in the area.\n\nCommunity service groups have been particularly supportive of the School District activities and a strong relationship exists between the school and community.\nhttp://weavervilleonline.net/\n\n\nThe Trinity Alps Unified School District is an equal opportunity employer and does not discriminate on the basis of sexual orientation, gender, ethnic group identification, race, ancestry, national origin, religion, color, age, or mental or physical disability. To answer inquiries and/or to handle a complaint, please contact TAUSD  Superintendent.P.O. Box 1227, Weaverville, CA 96093. (530)623-6104. Ext. 253 (Title VI, Title IX, and Section 504 Vocational Rehabilitation).\nRequired Credentials: Valid California Special Education Credential (M/M),(M/S) or comparable out-of-state certification, and possess or obtain CLAD certificate. Must be NCLB compliant at the time of hire.  \nExcellent medical, dental and vision package available. Upon offer of employment, the following will be required. DOJ/FBI (fingerprints) clearance, a pre-employment physical and a required TB clearance.\nPosition Open until filled (Consideration of applications immediately)\n183 days follows the school calendar Full time starting the  school year  ',
@@ -873,7 +1183,10 @@ module.exports = jobs = {
   },
   '1559922676722': {
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559922676}', _nanoseconds: '{"type":"number","data":722000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559922676}',
+      _nanoseconds: '{"type":"number","data":722000000}'
+    },
     locationId: 'Raymond School District',
     organization: 'Raymond School District',
     uid: '1559922676722',
@@ -892,13 +1205,24 @@ module.exports = jobs = {
       phone: '(603) 895-4299',
       addrZip: '03077',
       description: 'Learning. Growing. Forever Green.',
-      contact: { title: 'Special Education Director', email: 's.riddell@sau33.com', name: 'Scott Riddell', phone: '(603) 895-4299' },
+      contact: {
+        title: 'Special Education Director',
+        email: 's.riddell@sau33.com',
+        name: 'Scott Riddell',
+        phone: '(603) 895-4299'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Raymond School District',
       addrStreet: '43 Harriman Hill Road'
     },
-    publishDate: { _seconds: '{"type":"number","data":1559922679}', _nanoseconds: '{"type":"number","data":673000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559928126}', _nanoseconds: '{"type":"number","data":476000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1559922679}',
+      _nanoseconds: '{"type":"number","data":673000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559928126}',
+      _nanoseconds: '{"type":"number","data":476000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       "Our Special Education Case Managers/Teachers are a member of each grade level team and manage the IEP's for that grade level in collaboration with the grade level academic and unified arts teachers. There are five special education case managers, eighteen special education paraeducators and the building special education coordinator who make up the special education program at the middle school.",
@@ -925,7 +1249,10 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559922676}', _nanoseconds: '{"type":"number","data":722000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559922676}',
+      _nanoseconds: '{"type":"number","data":722000000}'
+    },
     locationId: 'Iber Holmes Gove Middle School',
     organization: 'Raymond School District',
     uid: '1559922808609',
@@ -946,24 +1273,44 @@ module.exports = jobs = {
       phone: '(603) 895-4299',
       addrZip: '03077',
       description: 'Learning. Growing. Forever Green.',
-      contact: { title: 'Special Education Director', email: 's.riddell@sau33.com', name: 'Scott Riddell', phone: '(603) 895-4299' }
+      contact: {
+        title: 'Special Education Director',
+        email: 's.riddell@sau33.com',
+        name: 'Scott Riddell',
+        phone: '(603) 895-4299'
+      }
     },
-    publishDate: { _seconds: '{"type":"number","data":1559922679}', _nanoseconds: '{"type":"number","data":673000000}' }
+    publishDate: {
+      _seconds: '{"type":"number","data":1559922679}',
+      _nanoseconds: '{"type":"number","data":673000000}'
+    }
   },
   '1560457892898': {
     title: 'Education Specialist',
     salaryAmount: 'starting at 80,000',
     location: {
       addrZip: '95126',
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'shanlon@promisepublicschools.org', name: 'Samantha Hanlon', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'shanlon@promisepublicschools.org',
+        name: 'Samantha Hanlon',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Promise Academy',
       addrStreet: '1100 Shasta Ave #E110',
       addrCity: 'San Jose ',
       addrState: 'CA'
     },
-    publishDate: { _seconds: '{"type":"number","data":1560457892}', _nanoseconds: '{"type":"number","data":897000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1560457892}', _nanoseconds: '{"type":"number","data":898000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1560457892}',
+      _nanoseconds: '{"type":"number","data":897000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1560457892}',
+      _nanoseconds: '{"type":"number","data":898000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'Promise Academy is looking to hire an Education Specialist.  This person will oversee the Special Education caseload, provide push-in services, and coordinate services from outside organizations. ',
@@ -976,12 +1323,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1560457892}', _nanoseconds: '{"type":"number","data":898000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1560457892}',
+      _nanoseconds: '{"type":"number","data":898000000}'
+    },
     locationId: 'Promise Academy',
     organization: 'Promise Academy',
     uid: '1560457892898',
     status: 'Published',
-    admin: { title: '{"type":"null"}', email: 'shanlon@promisepublicschools.org', name: 'Samantha Hanlon', uid: 'shanlon@promisepublicschools.org' },
+    admin: {
+      title: '{"type":"null"}',
+      email: 'shanlon@promisepublicschools.org',
+      name: 'Samantha Hanlon',
+      uid: 'shanlon@promisepublicschools.org'
+    },
     jobId: '1',
     salaryPeriod: 'Year',
     organizationId: 'promise-academy',
@@ -998,13 +1353,25 @@ module.exports = jobs = {
       addrCity: 'San Jose ',
       addrState: 'CA',
       addrZip: '95126',
-      contact: { email: 'shanlon@promisepublicschools.org', name: 'Samantha Hanlon', phone: '{"type":"null"}', title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}' },
+      contact: {
+        email: 'shanlon@promisepublicschools.org',
+        name: 'Samantha Hanlon',
+        phone: '{"type":"null"}',
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Promise Academy',
       addrStreet: '1100 Shasta Ave #E110'
     },
-    publishDate: { _seconds: '{"type":"number","data":1560457988}', _nanoseconds: '{"type":"number","data":813000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1560457988}', _nanoseconds: '{"type":"number","data":813000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1560457988}',
+      _nanoseconds: '{"type":"number","data":813000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1560457988}',
+      _nanoseconds: '{"type":"number","data":813000000}'
+    },
     startDate: '{"type":"null"}',
     summary: '',
     description:
@@ -1016,12 +1383,20 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1560457988}', _nanoseconds: '{"type":"number","data":813000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1560457988}',
+      _nanoseconds: '{"type":"number","data":813000000}'
+    },
     locationId: 'Promise Academy',
     organization: 'Promise Academy',
     uid: '1560457988813',
     status: 'Published',
-    admin: { title: '{"type":"null"}', email: 'shanlon@promisepublicschools.org', name: 'Samantha Hanlon', uid: 'shanlon@promisepublicschools.org' }
+    admin: {
+      title: '{"type":"null"}',
+      email: 'shanlon@promisepublicschools.org',
+      name: 'Samantha Hanlon',
+      uid: 'shanlon@promisepublicschools.org'
+    }
   },
   '1560527902817': {
     adminId: 'Kirsteen Patterson',
@@ -1029,16 +1404,30 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     status: 'Published',
     jobType: 'Full-time',
-    admin: { email: 'kpatterson@medford.k12.ma.us', name: 'Kirsteen Patterson', uid: 'kpatterson@medford.k12.ma.us', title: '{"type":"null"}' },
+    admin: {
+      email: 'kpatterson@medford.k12.ma.us',
+      name: 'Kirsteen Patterson',
+      uid: 'kpatterson@medford.k12.ma.us',
+      title: '{"type":"null"}'
+    },
     descriptionFileUrl: '{"type":"null"}',
     salaryPeriod: 'Year',
     organizationId: 'medford-public-schools',
     isActive: '{"type":"bool","data":true}',
-    createdAt: { _seconds: '{"type":"number","data":1560527902}', _nanoseconds: '{"type":"number","data":817000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1560527902}',
+      _nanoseconds: '{"type":"number","data":817000000}'
+    },
     location: {
       addrState: 'MA',
       addrZip: '02155',
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'kpatterson@medford.k12.ma.us', name: 'Kirsteen Patterson', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'kpatterson@medford.k12.ma.us',
+        name: 'Kirsteen Patterson',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Medford Public Schools',
       addrStreet: '489 Winthrop Street',
@@ -1049,7 +1438,10 @@ module.exports = jobs = {
     publishDate: '{"type":"null"}',
     organization: '{"type":"null"}',
     locationId: 'Medford Public Schools',
-    updatedAt: { _seconds: '{"type":"number","data":1560527902}', _nanoseconds: '{"type":"number","data":817000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1560527902}',
+      _nanoseconds: '{"type":"number","data":817000000}'
+    },
     startDate: '{"type":"null"}',
     uid: '1560527902817',
     summary: 'Elementary School Adjustment Counselor',
@@ -1059,7 +1451,12 @@ module.exports = jobs = {
   '1560883934312': {
     uid: '1560883934312',
     status: 'Published',
-    admin: { email: 'shanlon@promisepublicschools.org', name: 'Samantha Hanlon', uid: 'shanlon@promisepublicschools.org', title: '{"type":"null"}' },
+    admin: {
+      email: 'shanlon@promisepublicschools.org',
+      name: 'Samantha Hanlon',
+      uid: 'shanlon@promisepublicschools.org',
+      title: '{"type":"null"}'
+    },
     jobId: '1',
     salaryPeriod: 'Year',
     organizationId: 'promise-academy',
@@ -1067,7 +1464,13 @@ module.exports = jobs = {
     title: 'Education Specialist (copy)',
     salaryAmount: 'starting at 80,000',
     location: {
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'shanlon@promisepublicschools.org', name: 'Samantha Hanlon', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'shanlon@promisepublicschools.org',
+        name: 'Samantha Hanlon',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Promise Academy',
       addrStreet: '1100 Shasta Ave #E110',
@@ -1075,8 +1478,14 @@ module.exports = jobs = {
       addrState: 'CA',
       addrZip: '95126'
     },
-    publishDate: { _seconds: '{"type":"number","data":1560457892}', _nanoseconds: '{"type":"number","data":897000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1560883936}', _nanoseconds: '{"type":"number","data":583000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1560457892}',
+      _nanoseconds: '{"type":"number","data":897000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1560883936}',
+      _nanoseconds: '{"type":"number","data":583000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'Promise Academy is looking to hire an Education Specialist.  This person will oversee the Special Education caseload, provide push-in services, and coordinate services from outside organizations. ',
@@ -1089,7 +1498,10 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1560457892}', _nanoseconds: '{"type":"number","data":898000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1560457892}',
+      _nanoseconds: '{"type":"number","data":898000000}'
+    },
     locationId: 'Promise Academy',
     organization: 'Promise Academy'
   },
@@ -1097,7 +1509,13 @@ module.exports = jobs = {
     title: 'Special Education Teacher, Mild/Moderate or Moderate /Severe (copy)',
     salaryAmount: '$41,615.00- $83,802.00 DOE',
     location: {
-      contact: { title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}', email: 'mebrown@tausd.org', name: 'Maria Brown', phone: '{"type":"null"}' },
+      contact: {
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}',
+        email: 'mebrown@tausd.org',
+        name: 'Maria Brown',
+        phone: '{"type":"null"}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Trinity Alps Unified School Dist',
       addrStreet: 'P O Box 1227',
@@ -1106,7 +1524,10 @@ module.exports = jobs = {
       addrZip: '96093'
     },
     publishDate: { _seconds: '{"type":"number","data":1559858400}', _nanoseconds: '{"type":"number","data":0}' },
-    updatedAt: { _seconds: '{"type":"number","data":1559856301}', _nanoseconds: '{"type":"number","data":929000000}' },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1559856301}',
+      _nanoseconds: '{"type":"number","data":929000000}'
+    },
     startDate: '{"type":"null"}',
     summary:
       'The instructor shall work under the supervision of the Trinity Alps Unified School District Administration, and in accordance with the school and district policies.  The Special Education teacher shall be responsible to provide direct and indirect instructional support to students in general education and specialized settings. The instructor shall employ individualized instructional strategies and techniques, modify academic content as necessary to meet students’ varying needs and interests. Teach pro-social behavior, as determined by the students’ individualized education programs (IEPs), and design/monitor behavioral objectives in an overall positive behavioral support system. Knowledge of teaching methods and instructional strategies appropriate to a variety of disabilities. Confer with parents, administrators, program specialists, social workers, and other professionals to develop individualized education programs (IEPs) designed to access the general curriculum to the degree possible, and facilitate adapted curriculum as necessary. Maintain accurate and complete student records and prepare reports.\nLocated in the small mountain town of Weaverville California in the heart of the Trinity Alps is Weaverville Elementary School a small TK-8 school with current student population of 376 and  Trinity High School with a student population is just under 400..\nThe elementary school mission is to increase the opportunities for successful teaching and successful learning, is committed to the concept of education that offers programs and instructional processes to all students, utilizing state-of-the-art technology, flexible teaching and varied learning formats. WES is also committed to providing a learning environment using the best resources to motivate all students to become life-long learners and responsible citizens in a global society. \n\nTrinity High School students travel from as far away as Coffee Creek, Salyer, Buckhorn Mountain, and Browns Creek.  The campus resides on 23 acres and contains twenty-six classroom, a library, career center, gym, computer labs, and cafeteria. Red and white are the school colors, and the wolf is our mascot.  THS has many extra and co-curricular activities including ASB, athletics, FFA, FBLA and a wide range of clubs.\n\nIn the spring of 2014 THS was ranked 107th of all the schools in California and 806 in the nation by the Washington Post for how effectively a school prepares its student for college. Trinity High has a strong AP program and excellent graduation rates.\n\nThe community of Weaverville is a blend of professionals, blue-collar workers and retirees. The primary employer is the County of Trinity, timber and tourism also being an important part of our economy. Other significant employers include Schmidbauer lumber mill, Trinity Hospital and Trinity Alps Unified School District. In addition small business are actively involved in serving the needs of local residents and tourists who pass through the community en route to Trinity Lake and the Trinity Alps. Fishing, hiking, golfing, river rafting and hunting are available in the area.\n\nCommunity service groups have been particularly supportive of the School District activities and a strong relationship exists between the school and community.\nhttp://weavervilleonline.net/\n\n\nThe Trinity Alps Unified School District is an equal opportunity employer and does not discriminate on the basis of sexual orientation, gender, ethnic group identification, race, ancestry, national origin, religion, color, age, or mental or physical disability. To answer inquiries and/or to handle a complaint, please contact TAUSD  Superintendent.P.O. Box 1227, Weaverville, CA 96093. (530)623-6104. Ext. 253 (Title VI, Title IX, and Section 504 Vocational Rehabilitation).\nRequired Credentials: Valid California Special Education Credential (M/M),(M/S) or comparable out-of-state certification, and possess or obtain CLAD certificate. Must be NCLB compliant at the time of hire.  \nExcellent medical, dental and vision package available. Upon offer of employment, the following will be required. DOJ/FBI (fingerprints) clearance, a pre-employment physical and a required TB clearance.\nPosition Open until filled (Consideration of applications immediately)\n183 days follows the school calendar Full time starting the  school year  ',
@@ -1119,7 +1540,10 @@ module.exports = jobs = {
     expiresDate: '{"type":"null"}',
     jobType: 'Full-time',
     descriptionFileUrl: '{"type":"null"}',
-    createdAt: { _seconds: '{"type":"number","data":1559856301}', _nanoseconds: '{"type":"number","data":929000000}' },
+    createdAt: {
+      _seconds: '{"type":"number","data":1559856301}',
+      _nanoseconds: '{"type":"number","data":929000000}'
+    },
     locationId: 'Trinity Alps Unified School Dist',
     organization: 'Trinity Alps Unified School Dist',
     uid: '1562017683414',
@@ -1143,7 +1567,12 @@ module.exports = jobs = {
     organization: 'Boyd Elementary School',
     uid: '1562614902043',
     status: 'Published',
-    admin: { title: '{"type":"null"}', email: 'abracey@boydisd.net', name: 'Anke Bracey', uid: 'abracey@boydisd.net' },
+    admin: {
+      title: '{"type":"null"}',
+      email: 'abracey@boydisd.net',
+      name: 'Anke Bracey',
+      uid: 'abracey@boydisd.net'
+    },
     jobId: '5672',
     organizationId: 'boyd-elementary-school',
     salaryPeriod: 'Year',
@@ -1152,15 +1581,27 @@ module.exports = jobs = {
     title: 'Elementary Special Education Teacher',
     location: {
       addrZip: '76023',
-      contact: { email: 'abracey@boydisd.net', name: 'Anke Bracey', phone: '{"type":"null"}', title: '{"type":"null"}', isPrimary: '{"type":"bool","data":true}' },
+      contact: {
+        email: 'abracey@boydisd.net',
+        name: 'Anke Bracey',
+        phone: '{"type":"null"}',
+        title: '{"type":"null"}',
+        isPrimary: '{"type":"bool","data":true}'
+      },
       isPrimary: '{"type":"bool","data":true}',
       name: 'Boyd Elementary School',
       addrStreet: '500 East Morton Avenue',
       addrCity: 'Boyd',
       addrState: 'TX'
     },
-    publishDate: { _seconds: '{"type":"number","data":1562614902}', _nanoseconds: '{"type":"number","data":43000000}' },
-    updatedAt: { _seconds: '{"type":"number","data":1562616018}', _nanoseconds: '{"type":"number","data":489000000}' },
+    publishDate: {
+      _seconds: '{"type":"number","data":1562614902}',
+      _nanoseconds: '{"type":"number","data":43000000}'
+    },
+    updatedAt: {
+      _seconds: '{"type":"number","data":1562616018}',
+      _nanoseconds: '{"type":"number","data":489000000}'
+    },
     startDate: '{"type":"null"}',
     summary: 'Special Education Teacher for Grades PreK-3rd',
     description:

@@ -128,6 +128,7 @@ export const clearJob = () => {
 };
 
 export const saveJob = job => {
+  console.log('job: ', job);
   const body = JSON.stringify(job);
   return async dispatch => {
     try {
