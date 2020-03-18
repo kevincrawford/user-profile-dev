@@ -43,7 +43,7 @@ class ProfileAboutModal extends Component {
       title: title,
       summary: summary
     };
-    console.log('form: ', form);
+    // console.log('form: ', form);
     if (!form.displayName || form.displayName.length < 0) {
       return;
     }

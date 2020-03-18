@@ -41,7 +41,7 @@ export class Jobs extends Component {
   }
 
   onSubmit(values) {
-    console.log('values: ', values);
+    // console.log('values: ', values);
     const { q, l } = values;
     if (!q || !l) {
       return;
@@ -108,14 +108,19 @@ export class Jobs extends Component {
             </a>
           </span>
         )}
-        <div className='job-list'>
-          {backfillJobs &&
-            backfillJobs.length > 0 &&
-            backfillJobs.map((job, idx) => <JobsListItem key={idx.toString()} job={job} />)}
-        </div>
+        {backfillJobs && backfillJobs.length > 0 && (
+          <div className='job-list'>
+            {backfillJobs.map((job, idx) => (
+              <JobsListItem key={idx.toString()} job={job} />
+            ))}
+          </div>
+        )}
+        {(!localJobs || localJobs.length < 1) && (!backfillJobs || backfillJobs.length < 1) && (
+          <div>No Search Results</div>
+        )}
       </>
     );
   }
 }
 
-export default connect(mapState, actions)(reduxForm({ form: 'jobSearchForm', validate })(Jobs));
+export default connect(mapState, actions)(reduxForm({ form: 'jobSearchForm', validate })(withRouter(Jobs)));

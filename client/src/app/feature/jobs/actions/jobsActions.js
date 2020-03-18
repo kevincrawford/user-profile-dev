@@ -42,7 +42,7 @@ export const fetchLocalJobs = (q, l) => {
 };
 
 export const fetchBackfillJobs = params => {
-  console.log('fetchBackfillJobs: params: ', params);
+  // console.log('fetchBackfillJobs: params: ', params);
   const requestParams = params ? params : defaultParams;
   requestParams.r = requestParams.r ? requestParams.r : 50;
   requestParams.action = 'request_for_listings';
@@ -51,8 +51,10 @@ export const fetchBackfillJobs = params => {
   const requestUrl = `https://hiteacherhunters.com/ajax/?${queryString}`;
   requestParams.q = requestParams.q ? requestParams.q : 'SPED';
   requestParams.l = requestParams.l ? requestParams.l : 'Chicago, IL';
-  const localUrl = `api/job/jobsByLocation/${requestParams.q}/${requestParams.l}/${requestParams.r}`;
-  // console.log(requestUrl);
+  const localUrl = `api/job/jobsByLocation/${requestParams.q}/${requestParams.l.replace(', USA', '')}/${
+    requestParams.r
+  }`;
+  // console.log('requestUrl: ', requestUrl);
 
   return async dispatch => {
     try {
@@ -74,7 +76,9 @@ export const fetchBackfillJobs = params => {
         data.date = job.querySelector('.listing-item__date').structuredText.trim();
         jobs.push(data);
       }
-      const localJobList = await axios.get(localUrl);
+      // console.log(jobs);
+      // console.log(encodeURI(localUrl));
+      const localJobList = await axios.get(encodeURI(localUrl));
 
       dispatch({
         type: FETCH_BACKFILL_JOBS,

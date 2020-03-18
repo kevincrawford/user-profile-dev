@@ -49,7 +49,7 @@ router.get('/list/:orgId', auth, async (req, res) => {
 // @access   Public
 router.get('/jobsByDistFn', async (req, res) => {
   try {
-    console.log('getDistance: ', getDistance([42.0450722, -87.68769689999999], [41.881832, -87.623177]));
+    // console.log('getDistance: ', getDistance([42.0450722, -87.68769689999999], [41.881832, -87.623177]));
     const query = {
       $where: () => {
         return getDistance(this.loc.coordinates, [41.881832, -87.623177]) === 1;
@@ -129,13 +129,14 @@ q: "special education"
 l: "Chicago, IL, USA"
 */
   const { l, d } = req.params;
-  const lParts = l.split(', ');
+  // const lParts = l.split(',');
 
   try {
-    const latlng = await util.geoFindByAddress(`${lParts[0]} ${lParts[1]}`);
+    const latlng = await util.geoFindByAddress(l);
+    // console.log('latlng: ', latlng);
     const point = {
       type: 'Point',
-      coordinates: [latlng.json.results[0].geometry.location.lat, latlng.json.results[0].geometry.location.lng]
+      coordinates: [latlng.json.results[0].geometry.location.lng, latlng.json.results[0].geometry.location.lat]
     };
     const lat = parseFloat(point.coordinates[0]);
     const lng = parseFloat(point.coordinates[1]);

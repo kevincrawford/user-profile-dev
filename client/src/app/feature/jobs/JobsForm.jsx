@@ -31,7 +31,7 @@ export class JobsForm extends Component {
   }
 
   onSubmit(values) {
-    console.log('values: ', values);
+    // console.log('values: ', values);
     const { q, l } = values;
     if (!q || !l) {
       return;

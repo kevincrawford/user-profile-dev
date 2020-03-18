@@ -22,7 +22,7 @@ export const UserCanAsk = connectedReduxRedirect({
   redirectPath: '/questions',
   authenticatedSelector: testAuth,
   redirectAction: newLoc => dispatch => {
-    console.log('redirectAction: ');
+    // console.log('redirectAction: ');
     // console.log('newLoc: ', newLoc);
     // console.log('dispatch: ', dispatch);
 
