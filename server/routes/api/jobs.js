@@ -136,10 +136,10 @@ l: "Chicago, IL, USA"
     // console.log('latlng: ', latlng);
     const point = {
       type: 'Point',
-      coordinates: [latlng.json.results[0].geometry.location.lng, latlng.json.results[0].geometry.location.lat]
+      coordinates: [latlng.json.results[0].geometry.location.lat, latlng.json.results[0].geometry.location.lng]
     };
-    const lat = parseFloat(point.coordinates[0]);
-    const lng = parseFloat(point.coordinates[1]);
+    const lat = parseFloat(point.coordinates[1]);
+    const lng = parseFloat(point.coordinates[0]);
     const dis = parseFloat(d);
     const query = {
       loc: {
