@@ -86,10 +86,13 @@ router.post('/register', async (req, res) => {
     const domain = `${domainParts[domainParts.length - 2]}.${domainParts[domainParts.length - 1]}`;
 
     const latlng = await util.geoFindByAddress(`${city} ${state}`);
+    // console.log('lat: ', latlng.json.results[0].geometry.location.lat);
+    // console.log('lng: ', latlng.json.results[0].geometry.location.lng);
     const point = {
       type: 'Point',
-      coordinates: [latlng.json.results[0].geometry.location.lat, latlng.json.results[0].geometry.location.lng]
+      coordinates: [latlng.json.results[0].geometry.location.lng, latlng.json.results[0].geometry.location.lat]
     };
+    // console.log('coordinates: ', point.coordinates);
 
     let locationData = {
       contact: user._id,
@@ -197,7 +200,7 @@ router.post('/location', auth, async (req, res) => {
     const latlng = await util.geoFindByAddress(`${street}, ${city} ${state}`);
     const point = {
       type: 'Point',
-      coordinates: [latlng.json.results[0].geometry.location.lat, latlng.json.results[0].geometry.location.lng]
+      coordinates: [latlng.json.results[0].geometry.location.lng, latlng.json.results[0].geometry.location.lat]
     };
 
     const newLocation = new Location({
@@ -234,7 +237,7 @@ router.put('/location/:locationId', auth, async (req, res) => {
     const latlng = await util.geoFindByAddress(`${street}, ${city} ${state}`);
     const point = {
       type: 'Point',
-      coordinates: [latlng.json.results[0].geometry.location.lat, latlng.json.results[0].geometry.location.lng]
+      coordinates: [latlng.json.results[0].geometry.location.lng, latlng.json.results[0].geometry.location.lat]
     };
 
     location.contact = contact;
