@@ -23,7 +23,15 @@ const validate = combineValidators({
 });
 
 export class JobsForm extends Component {
-  onSubmit = values => {
+  constructor(props) {
+    super(props);
+
+    this.onSubmit = this.onSubmit.bind(this);
+    this.handleCitySelect = this.handleCitySelect.bind(this);
+  }
+
+  onSubmit(values) {
+    console.log('values: ', values);
     const { q, l } = values;
     if (!q || !l) {
       return;
@@ -33,13 +41,13 @@ export class JobsForm extends Component {
       q: q.trim()
     };
     this.props.fetchBackfillJobs(params);
-  };
+  }
 
-  handleCitySelect = selectedCity => {
+  handleCitySelect(selectedCity) {
     geocodeByAddress(selectedCity).then(() => {
       this.props.change('l', selectedCity);
     });
-  };
+  }
 
   render() {
     return (
@@ -69,9 +77,4 @@ export class JobsForm extends Component {
   }
 }
 
-export default withRouter(
-  connect(
-    null,
-    actions
-  )(reduxForm({ form: 'jobSearchForm', validate })(JobsForm))
-);
+export default connect(null, actions)(reduxForm({ form: 'jobSearchForm', validate })(withRouter(JobsForm)));

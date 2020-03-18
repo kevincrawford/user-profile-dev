@@ -8,7 +8,8 @@ const initialState = {
 const loadBackfilJobs = (state, payload) => {
   return {
     ...state,
-    backfillJobs: payload
+    backfillJobs: payload.jobs,
+    localJobs: payload.localJobs
   };
 };
 

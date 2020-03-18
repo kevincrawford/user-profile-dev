@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { check, validationResult } = require('express-validator');
 const auth = require('../../middleware/auth');
+const util = require('../routeUtil');
 
 const Job = require('../../models/Job');
 const Org = require('../../models/Organization');
@@ -104,6 +104,58 @@ router.get('/jobsByRadiusDistance/:lat/:lng/:dis', async (req, res) => {
     };
 
     const jobs = await Job.find(query);
+    if (!jobs) {
+      return res.status(404).json({ msg: 'Job not found' });
+    }
+
+    let activeJobs = [];
+    jobs.forEach(job => {
+      if (job.status === 'Published' && getDistance([lat, lng], job.loc.coordinates) <= dis) activeJobs.push(job);
+    });
+
+    res.json(activeJobs);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route    GET api/job/jobsByRadiusDistance
+// @desc     Get All Jobs By Radius Distance
+// @access   Public
+router.get('/jobsByLocation/:q/:l/:d', async (req, res) => {
+  /*
+q: "special education"
+l: "Chicago, IL, USA"
+*/
+  const { l, d } = req.params;
+  const lParts = l.split(', ');
+
+  try {
+    const latlng = await util.geoFindByAddress(`${lParts[0]} ${lParts[1]}`);
+    const point = {
+      type: 'Point',
+      coordinates: [latlng.json.results[0].geometry.location.lat, latlng.json.results[0].geometry.location.lng]
+    };
+    const lat = parseFloat(point.coordinates[0]);
+    const lng = parseFloat(point.coordinates[1]);
+    const dis = parseFloat(d);
+    const query = {
+      loc: {
+        $geoWithin: {
+          $centerSphere: [[lat, lng], dis / 3963.190592]
+        }
+      }
+    };
+
+    const jobs = await Job.find(query)
+      .populate({
+        path: 'location'
+      })
+      .populate({
+        path: 'organization'
+      });
+
     if (!jobs) {
       return res.status(404).json({ msg: 'Job not found' });
     }
