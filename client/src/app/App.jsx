@@ -23,6 +23,7 @@ import ScholarshipTeacher from './feature/scholarships/ScholarshipTeacher';
 import Resources from './feature/resources/Resources';
 import About from './feature/about/About';
 import Jobs from './feature/jobs/Jobs';
+import JobDetailPage from './feature/jobs/JobDetailPage';
 import ProfilePage from './feature/profile/ProfilePage';
 import Report from './feature/report/Report';
 
@@ -101,7 +102,8 @@ class App extends Component {
                     <Route exact path='/scholarships/teacher' component={ScholarshipTeacher} />
                     <Route path='/resources' component={Resources} />
                     <Route path='/about' component={About} />
-                    <Route path='/jobs' component={Jobs} />
+                    <Route exact path='/jobs' component={Jobs} />
+                    <Route path='/jobs/:id' component={JobDetailPage} />
                     <Route exact path='/profile' component={Profile} />
                     <Route exact path='/postjob' component={AdminLanding} />
                     <Route exact path='/admin' component={AdminMain} />
