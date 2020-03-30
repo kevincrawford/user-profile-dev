@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Icon, Button, Label } from 'semantic-ui-react';
 import moment from 'moment/moment.js';
-import { fetchJob } from '../admin/AdminActions';
+import { fetchJob, fetchOrg } from '../admin/AdminActions';
 import Loading from '../../common/ui/loading/Loading';
 
 export class JobDetailPage extends Component {
@@ -13,7 +13,15 @@ export class JobDetailPage extends Component {
 
   render() {
     const { loading, loadingEl } = this.props;
-    if (loading || loadingEl === 'fetch-job' || !this.props.org) return <Loading />;
+    if (
+      loading ||
+      loadingEl === 'fetch-job' ||
+      !this.props.job ||
+      !this.props.job._id ||
+      !this.props.org ||
+      !this.props.org._id
+    )
+      return <Loading />;
     const {
       name,
       location: { city, state }

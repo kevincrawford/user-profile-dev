@@ -66,6 +66,7 @@ export const fetchJob = (id, history) => {
       const job = await axios.get(`/api/job/${id}`);
       // console.log('job: ', job.data);
       dispatch({ type: FETCH_JOB, payload: job.data });
+      dispatch({ type: FETCH_ORG, payload: job.data.organization });
       dispatch(asyncActionFinish());
     } catch (error) {
       console.log(error);

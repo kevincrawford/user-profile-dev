@@ -245,13 +245,12 @@ router.get('/jobsByDistance', async (req, res) => {
 // @access   Public
 router.get('/:jobId', async (req, res) => {
   try {
-    const job = await Job.findById(req.params.jobId);
-    const org = await Org.findById(job.organization);
+    const job = await Job.findById(req.params.jobId).populate({
+      path: 'organization'
+    });
     if (!job) {
       return res.status(404).json({ msg: 'Job not found' });
     }
-
-    // if (!job.jobAdmin) job.jobAdmin = org.users[0];
 
     res.json(job);
   } catch (err) {
