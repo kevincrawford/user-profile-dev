@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment/moment.js';
-import { Button } from 'semantic-ui-react';
 
 export class JobsListLocalItem extends Component {
   render() {
@@ -11,9 +10,9 @@ export class JobsListLocalItem extends Component {
       <div className='job-list-item'>
         <hr />
         <h3>
-          <Button variant='link' onClick={() => this.props.history.push(`/jobs/${_id}`)} title={title}>
+          <a href={`/jobs/${_id}`} title={title} title={title}>
             {title}
-          </Button>
+          </a>
         </h3>
         <p>
           <strong>{organization.name}</strong>&nbsp;&nbsp;|&nbsp;{' '}
@@ -33,9 +32,7 @@ export class JobsListLocalItem extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {};
 

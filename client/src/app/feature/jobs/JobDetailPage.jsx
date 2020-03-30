@@ -11,13 +11,13 @@ export class JobDetailPage extends Component {
   }
 
   render() {
+    const { loading, loadingEl } = this.props;
+    if (loading || loadingEl === 'fetch-job' || !this.props.org) return <Loading />;
     const {
       name,
       location: { city, state }
     } = this.props.org;
-    const { jobType, title, description, updated } = this.props.job;
-    const { loading, loadingEl } = this.props;
-    if (loading || loadingEl === 'fetch-job') return <Loading />;
+    const { jobType, title, description, applyLink, updated } = this.props.job;
     return (
       <div className='job-post-full'>
         <div className='preview-wrap'>
@@ -46,11 +46,14 @@ export class JobDetailPage extends Component {
               {jobType}
             </Label>
           </div>
-          <div className='apply-section'>
-            <Button type='button' color='blue'>
-              Apply
-            </Button>
-          </div>
+          {applyLink && (
+            <div className='apply-section'>
+              <Button type='button' href={applyLink} color='blue'>
+                Apply
+              </Button>
+            </div>
+          )}
+
           <div dangerouslySetInnerHTML={{ __html: description }} />
         </div>
       </div>
