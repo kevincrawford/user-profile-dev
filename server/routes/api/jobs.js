@@ -251,7 +251,7 @@ router.get('/:jobId', async (req, res) => {
       return res.status(404).json({ msg: 'Job not found' });
     }
 
-    if (!job.jobAdmin) job.jobAdmin = org.users[0];
+    // if (!job.jobAdmin) job.jobAdmin = org.users[0];
 
     res.json(job);
   } catch (err) {

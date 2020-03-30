@@ -7,6 +7,7 @@ import Loading from '../../common/ui/loading/Loading';
 
 export class JobDetailPage extends Component {
   componentDidMount() {
+    console.log('JobDetailPage: id: ', this.props.match.params.id);
     this.props.fetchJob(this.props.match.params.id);
   }
 
