@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Container, Icon } from 'semantic-ui-react';
 import { openModal } from '../modal/ModalActions';
 
-const isUserAdmin = role => {
+const isUserAdmin = (role) => {
   return role.type === 'client-user';
 };
 
@@ -14,7 +14,7 @@ export class AppFooter extends Component {
     this.props.openModal('RegisterModal', { link: 'test' });
   };
 
-  checkUser = pathName => {
+  checkUser = (pathName) => {
     const { auth, history, openModal } = this.props;
     const isUser = auth.authenticated && auth.currentUser ? true : false;
     const isAdmin =
@@ -74,7 +74,7 @@ export class AppFooter extends Component {
             </div>
             <div className='social'>
               <h6>Connect</h6>
-              <a href='https://twitter.com/SPEDxchange_llc' target='_blank' rel='noopener noreferrer'>
+              <a href='https://twitter.com/theSPEDxchange' target='_blank' rel='noopener noreferrer'>
                 <Icon fitted name='twitter' />
                 &nbsp; Twitter
               </a>
@@ -86,9 +86,16 @@ export class AppFooter extends Component {
                 <Icon fitted name='linkedin' />
                 &nbsp; LinkdIn
               </a>
-              <a href='https://www.instagram.com/SPEDxchange_llc/' target='_blank' rel='noopener noreferrer'>
+              <a href='https://www.instagram.com/spedxchange/' target='_blank' rel='noopener noreferrer'>
                 <Icon fitted name='instagram' />
                 &nbsp; Instagram
+              </a>
+              <a
+                href='https://www.youtube.com/channel/UChimMb9m3ASj5X6wxMSTSAA'
+                target='_blank'
+                rel='noopener noreferrer'>
+                <Icon fitted name='youtube' />
+                &nbsp; YouTube
               </a>
             </div>
             <div className='col-md mb-3'>
@@ -120,12 +127,12 @@ export class AppFooter extends Component {
   }
 }
 
-const mapState = state => ({
-  auth: state.auth
+const mapState = (state) => ({
+  auth: state.auth,
 });
 
 const actions = {
-  openModal
+  openModal,
 };
 
 export default connect(mapState, actions)(withRouter(AppFooter));
