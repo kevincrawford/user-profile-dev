@@ -6,10 +6,10 @@ const { check, validationResult } = require('express-validator');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 
-// @route    GET api/profile
+// @route    GET api/profile/all
 // @desc     Get all profiles
 // @access   Public
-router.get('/', async (req, res) => {
+router.get('/all', async (req, res) => {
   try {
     const profiles = await Profile.find().populate('user', ['displayName', 'avatar']);
     res.json(profiles);
@@ -45,16 +45,10 @@ router.post(
   [
     auth,
     [
-      check('status', 'Status is required')
-        .not()
-        .isEmpty(),
-      check('skills', 'Skills is required')
-        .not()
-        .isEmpty(),
-      check('headline', 'Headline is required')
-        .not()
-        .isEmpty()
-    ]
+      check('status', 'Status is required').not().isEmpty(),
+      check('skills', 'Skills is required').not().isEmpty(),
+      check('headline', 'Headline is required').not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -62,7 +56,20 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { company, title, location, status, skills, headline, bio, website, facebook, twitter, instagram, linkedin } = req.body;
+    const {
+      company,
+      title,
+      location,
+      status,
+      skills,
+      headline,
+      bio,
+      website,
+      facebook,
+      twitter,
+      instagram,
+      linkedin,
+    } = req.body;
 
     // Build profile object
     const profileFields = {};
@@ -74,7 +81,7 @@ router.post(
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
     if (skills) {
-      profileFields.skills = skills.split(',').map(skill => skill.trim());
+      profileFields.skills = skills.split(',').map((skill) => skill.trim());
     }
     profileFields.updated = Date.now();
 
@@ -88,7 +95,11 @@ router.post(
 
     try {
       // Using upsert option (creates new doc if no match is found):
-      let profile = await Profile.findOneAndUpdate({ user: req.user.id }, { $set: profileFields }, { new: true, upsert: true });
+      let profile = await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $set: profileFields },
+        { new: true, upsert: true }
+      );
       let user = await User.findOne({ _id: req.user.id });
       // console.log('user: ', user);
       if (!user.profile) {
@@ -109,7 +120,7 @@ router.post(
 router.get('/user/:user_id', async (req, res) => {
   try {
     const profile = await Profile.findOne({
-      user: req.params.user_id
+      user: req.params.user_id,
     }).populate('user', ['displayName', 'avatar']);
 
     if (!profile) return res.status(400).json({ msg: 'Profile not found' });
@@ -149,19 +160,11 @@ router.put(
   [
     auth,
     [
-      check('title', 'Title is required')
-        .not()
-        .isEmpty(),
-      check('company', 'Company is required')
-        .not()
-        .isEmpty(),
-      check('location', 'Location is required')
-        .not()
-        .isEmpty(),
-      check('from', 'From date is required')
-        .not()
-        .isEmpty()
-    ]
+      check('title', 'Title is required').not().isEmpty(),
+      check('company', 'Company is required').not().isEmpty(),
+      check('location', 'Location is required').not().isEmpty(),
+      check('from', 'From date is required').not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -179,7 +182,7 @@ router.put(
       description,
       from,
       to,
-      current
+      current,
     };
 
     try {
@@ -220,19 +223,11 @@ router.put(
   [
     auth,
     [
-      check('school', 'School is required')
-        .not()
-        .isEmpty(),
-      check('degree', 'Degree is required')
-        .not()
-        .isEmpty(),
-      check('fieldOfStudy', 'Field of study is required')
-        .not()
-        .isEmpty(),
-      check('from', 'From date is required')
-        .not()
-        .isEmpty()
-    ]
+      check('school', 'School is required').not().isEmpty(),
+      check('degree', 'Degree is required').not().isEmpty(),
+      check('fieldOfStudy', 'Field of study is required').not().isEmpty(),
+      check('from', 'From date is required').not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -250,7 +245,7 @@ router.put(
       from,
       to,
       current,
-      description
+      description,
     };
 
     try {
@@ -291,16 +286,10 @@ router.put(
   [
     auth,
     [
-      check('certificateName', 'Certification name is required')
-        .not()
-        .isEmpty(),
-      check('issuer', 'Issuing authority is required')
-        .not()
-        .isEmpty(),
-      check('issued', 'Issue date is required')
-        .not()
-        .isEmpty()
-    ]
+      check('certificateName', 'Certification name is required').not().isEmpty(),
+      check('issuer', 'Issuing authority is required').not().isEmpty(),
+      check('issued', 'Issue date is required').not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -314,7 +303,7 @@ router.put(
       certificateName,
       issuer,
       issued,
-      description
+      description,
     };
 
     try {
@@ -355,16 +344,10 @@ router.put(
   [
     auth,
     [
-      check('resumeName', 'File name is required')
-        .not()
-        .isEmpty(),
-      check('storageName', 'Storage name is required')
-        .not()
-        .isEmpty(),
-      check('url', 'URL date is required')
-        .not()
-        .isEmpty()
-    ]
+      check('resumeName', 'File name is required').not().isEmpty(),
+      check('storageName', 'Storage name is required').not().isEmpty(),
+      check('url', 'URL date is required').not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -377,7 +360,7 @@ router.put(
     const newResume = {
       resumeName,
       storageName,
-      url
+      url,
     };
 
     try {
@@ -417,14 +400,7 @@ router.put(
   '/coverletter',
   [
     auth,
-    [
-      check('title', 'Title is required')
-        .not()
-        .isEmpty(),
-      check('content', 'Content is required')
-        .not()
-        .isEmpty()
-    ]
+    [check('title', 'Title is required').not().isEmpty(), check('content', 'Content is required').not().isEmpty()],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -436,7 +412,7 @@ router.put(
 
     const newCoverLetter = {
       title,
-      content
+      content,
     };
 
     try {
@@ -474,14 +450,7 @@ router.delete('/coverletter/:letter_id', auth, async (req, res) => {
 // @access   Private
 router.put(
   '/association',
-  [
-    auth,
-    [
-      check('associationName', 'Association name is required')
-        .not()
-        .isEmpty()
-    ]
-  ],
+  [auth, [check('associationName', 'Association name is required').not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -492,7 +461,7 @@ router.put(
 
     const newAssociation = {
       associationName,
-      description
+      description,
     };
 
     try {
